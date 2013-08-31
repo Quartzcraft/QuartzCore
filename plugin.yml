@@ -1,0 +1,18 @@
+name: QuartzCore
+version: 1.6.2
+author: The QuartzCraft Team! SoulPunisher, mba2012 and nfell2009!
+website: http://www.quartzcraft.co.uk/
+main: uk.co.quartzcraft.QuartzCore
+
+commands:
+   quartz:
+      description: Runs quick checks.
+      usage: /quartz
+      permission: QCC.quartz
+      permission-message: Unknown Command. Type "help" for help.
+   m:
+      description: Switches player gamemode between 0 and 1.
+      usage: /m
+      permission: QCC.admin.m
+      permission-message: Unknown Command. Type "help" for help.
+
