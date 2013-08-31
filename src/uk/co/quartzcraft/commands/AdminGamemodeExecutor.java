@@ -1,4 +1,4 @@
-package uk.co.quartzcraft;
+package uk.co.quartzcraft.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;

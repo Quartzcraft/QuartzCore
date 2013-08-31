@@ -15,4 +15,10 @@ commands:
       usage: /m
       permission: QCC.admin.m
       permission-message: Unknown Command. Type "help" for help.
+   list:
+      description: Lists online players.
+      usage: /list
+      permission: QCC.list
+      permission-message: Unknown Command. Type "help" for help.
+      alias: who
 

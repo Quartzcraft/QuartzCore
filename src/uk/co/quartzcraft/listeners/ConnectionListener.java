@@ -1,4 +1,4 @@
-package uk.co.quartzcraft;
+package uk.co.quartzcraft.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

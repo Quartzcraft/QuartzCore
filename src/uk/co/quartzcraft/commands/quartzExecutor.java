@@ -1,4 +1,4 @@
-package uk.co.quartzcraft;
+package uk.co.quartzcraft.commands;
 
 import uk.co.quartzcraft.QuartzCore;
 
@@ -10,11 +10,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class quartz implements CommandExecutor {
+public class quartzExecutor implements CommandExecutor {
 
 	private QuartzCore plugin;
 
-	public quartz(QuartzCore plugin) {
+	public void quartz(QuartzCore plugin) {
 		this.plugin = plugin;
 	}
 
