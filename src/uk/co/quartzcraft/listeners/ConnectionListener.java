@@ -12,7 +12,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class ConnectionListener implements Listener {
 
-	private String quartzJoinMessage = ChatColor.GOLD + "A player joined!";
+	public String quartzJoinMessage = ChatColor.GOLD + "A player joined!";
 
 	public void setJoinMessage(String joinMessage) {
 		this.quartzJoinMessage  = joinMessage;
@@ -22,15 +22,12 @@ public class ConnectionListener implements Listener {
 	public void onPlayerLogin(PlayerLoginEvent event) {
 		Player player = event.getPlayer();
 		
-		//Bukkit.getServer().broadcastMessage(player + " joined!");
-		//player.sendMessage("Welcome back, " + player + "!");
-		//announce("A member joined!");
 	}
 	
-	public void onPlayerJoin(PlayerJoinEvent event) {
-		Player player = event.getPlayer();
+	public void onPlayerJoin(PlayerJoinEvent join) {
+		Player player = join.getPlayer();
 		
-		Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "+" + player + " joined!");
+		Bukkit.getServer().broadcastMessage(ChatColor.GREEN + "+" + player + " joined!");
 		player.sendMessage("Welcome back, " + player + "!");
 		//announce("A member joined!");
 	}
