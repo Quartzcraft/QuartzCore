@@ -3,6 +3,7 @@ package uk.co.quartzcraft;
 import uk.co.quartzcraft.*;
 import uk.co.quartzcraft.commands.*;
 import uk.co.quartzcraft.listeners.*;
+import uk.co.quartzcraft.services.*;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,17 +14,23 @@ public class QuartzCore extends JavaPlugin {
 	 
 	@Override
 	public void onEnable(){
-        // TODO Insert logic to be performed when the plugin is enabled
+		
+        //Startup notice
+		getLogger().info("The QuartzCore Plugin has been enabled!");
+		
+		//Listeners
 		getServer().getPluginManager().registerEvents(new ConnectionListener(), this);
-	    getLogger().info("The QuartzCore Plugin has been enabled!");
-	   	getCommand("quartz").setExecutor(new quartzExecutor());
-	   	getCommand("m").setExecutor(new AdminGamemodeExecutor());
-	   	getCommand("list").setExecutor(new PlayerListExecutor());
+		
+	    //Commands
+	   	getCommand("quartz").setExecutor(new QuartzCommand());
+	   	getCommand("m").setExecutor(new AdminGamemodeCommand());
+	   	getCommand("list").setExecutor(new PlayerListCommand());
+	   	getCommand("test").setExecutor(new TestCommand());
 	}
 	 
 	@Override
 	public void onDisable() {
-    	// TODO Insert logic to be performed when the plugin is disabled
+    	//Shutdown notice
 		getLogger().info("The QuartzCore Plugin has been disabled!");
 	}
 }
