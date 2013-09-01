@@ -8,7 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class PlayerListExecutor implements CommandExecutor  {
+public class PlayerListCommand implements CommandExecutor  {
 	
 	int numberOnlinePlayers = Bukkit.getOnlinePlayers().length;
 
