@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.commands;
+package uk.co.quartzcraft.command;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 
 import uk.co.quartzcraft.services.AnnounceService;
 
-public class TestCommand implements CommandExecutor {
+public class CommandTest implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		

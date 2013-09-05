@@ -36,3 +36,8 @@ commands:
       usage: /get
       permission: QCC.get
       permission-message: Unknown Command. Type "help" for help.
+   donate:
+      description: Tells you how to donate.
+      usage: /donate
+      permission: QCC.donate
+      permission-message: Unknown Command. Type "help" for help.

@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.commands;
+package uk.co.quartzcraft.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -6,7 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class AdminGoCommand {
+public class CommandGo {
 
 public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		
