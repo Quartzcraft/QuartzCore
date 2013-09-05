@@ -1,7 +1,8 @@
 package uk.co.quartzcraft;
 
 import uk.co.quartzcraft.*;
-import uk.co.quartzcraft.commands.*;
+import uk.co.quartzcraft.chat.*;
+import uk.co.quartzcraft.command.*;
 import uk.co.quartzcraft.listeners.*;
 import uk.co.quartzcraft.services.*;
 
@@ -15,17 +16,18 @@ public class QuartzCore extends JavaPlugin {
 	@Override
 	public void onEnable(){
 		
-        //Startup notice
-		getLogger().info("The QuartzCore Plugin has been enabled!");
-		
 		//Listeners
 		getServer().getPluginManager().registerEvents(new ConnectionListener(), this);
 		
 	    //Commands
-	   	getCommand("quartz").setExecutor(new QuartzCommand());
-	   	getCommand("m").setExecutor(new AdminGamemodeCommand());
-	   	getCommand("list").setExecutor(new PlayerListCommand());
-	   	getCommand("test").setExecutor(new TestCommand());
+	   	getCommand("quartz").setExecutor(new CommandQuartz());
+	   	getCommand("test").setExecutor(new CommandTest());
+	   	getCommand("m").setExecutor(new CommandM());
+	   	getCommand("list").setExecutor(new CommandList());
+	   	getCommand("donate").setExecutor(new CommandDonate());
+	   	
+	   	//Startup notice
+	  	getLogger().info("The QuartzCore Plugin has been enabled!");
 	}
 	 
 	@Override
