@@ -1,13 +1,14 @@
-package uk.co.quartzcraft.services;
+package uk.co.quartzcraft.chat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
-public class AnnounceService {
+
+public class Announce {
 
 	public static void announce(String message) {
 		
-		message = ChatFormatParseService.parseChatColour(message);
+		message = ChatFormatParser.parseChatColour(message);
 				
 		Bukkit.getServer().broadcastMessage(message);
 	}
@@ -15,13 +16,13 @@ public class AnnounceService {
 	public static void announceWithPrefix(String prefix, String prefixColour, String message) {
 		
 		//Parse Message
-		message = ChatFormatParseService.parseChatColour(message);
+		message = ChatFormatParser.parseChatColour(message);
 		
 		//Parse Prefix
-		prefix = ChatFormatParseService.parseChatColour(prefix);
+		prefix = ChatFormatParser.parseChatColour(prefix);
 		
 		//Parse Prefix Colour
-		prefixColour = ChatFormatParseService.parseChatColour(prefixColour);
+		prefixColour = ChatFormatParser.parseChatColour(prefixColour);
 		
 		Bukkit.getServer().broadcastMessage(prefixColour + "[" + prefix + "] " + message);
 	}

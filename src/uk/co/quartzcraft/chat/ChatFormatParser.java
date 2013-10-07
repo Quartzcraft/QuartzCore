@@ -1,8 +1,8 @@
-package uk.co.quartzcraft.services;
+package uk.co.quartzcraft.chat;
 
 import org.bukkit.ChatColor;
 
-public class ChatFormatParseService {
+public class ChatFormatParser {
 
 	public static String parseChatColour(String message) {
 		
