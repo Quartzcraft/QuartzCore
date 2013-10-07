@@ -41,3 +41,21 @@ commands:
       usage: /donate
       permission: QCC.donate
       permission-message: Unknown Command. Type "help" for help.
+   chat:
+      description: Basic chat command
+      usage: /chat
+      permission: QCC.chat
+      permission-message: Unknown Command. Type "help" for help.
+      alias: ch
+   mood:
+      description: Changes mood
+      usage: /mood
+      permission: QCC.mood
+      permission-message: Unknown Command. Type "help" for help.
+      alias: mo, md, moo
+   group:
+      description: Basic group command
+      usage: /group
+      permission: QCC.group
+      permission-message: Unknown Command. Type "help" for help.
+      alias: g, gr
