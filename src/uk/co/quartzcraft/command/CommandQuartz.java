@@ -1,5 +1,6 @@
 package uk.co.quartzcraft.command;
 
+import uk.co.quartzcraft.Defaults;
 import uk.co.quartzcraft.QuartzCore;
 
 import org.bukkit.Bukkit;
@@ -10,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class CommandQuartz implements CommandExecutor {
+public class CommandQuartz implements CommandExecutor, Defaults {
 
 	private QuartzCore plugin;
 
@@ -20,7 +21,7 @@ public class CommandQuartz implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		if(cmd.getName().equalsIgnoreCase("quartz")){ // If the player typed /quartz then do the following...
-			sender.sendMessage(ChatColor.GOLD + "QuartzCore version " + ChatColor.GREEN + "DEV " + "1" + ChatColor.GOLD + " for Minecraft 1.6.2");
+			sender.sendMessage(ChatColor.GOLD + "QuartzCore version " + ChatColor.GREEN + release + " " + version + ChatColor.GOLD + " for Minecraft 1.6.2");
 			return true;
 		} //If this has happened the function will return true. 
 	        // If this hasn't happened the a value of false will be returned.

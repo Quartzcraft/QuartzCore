@@ -5,7 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import uk.co.quartzcraft.services.AnnounceService;
+import uk.co.quartzcraft.chat.Announce;
 
 public class CommandTest implements CommandExecutor {
 
@@ -13,8 +13,8 @@ public class CommandTest implements CommandExecutor {
 		
 		if(command.getName().equalsIgnoreCase("test")){ 
 			
-			AnnounceService.announce("&4This is a test announcement!");
-			AnnounceService.announceWithPrefix("QuartzCraft", "&a", "&6The test command has been run!");
+			Announce.announce("&4This is a test announcement!");
+			Announce.announceWithPrefix("QuartzCraft", "&a", "&6The test command has been run!");
 			return true;
 		}
 		return false;
