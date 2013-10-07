@@ -1,5 +1,7 @@
 package uk.co.quartzcraft.listeners;
 
+import uk.co.quartzcraft.*;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
@@ -22,14 +24,19 @@ public class ConnectionListener implements Listener {
 	public void onPlayerLogin(PlayerLoginEvent event) {
 		Player player = event.getPlayer();
 		
+		if(QuartzPlayer.locatePlayer(player) == true) {
+			//get player data from database
+		} else {
+			//register player
+			player.kickPlayer("You could not be found in our database! Please reconnect.");
+		}
+		
 	}
 	
 	public void onPlayerJoin(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
 		
-		Bukkit.getServer().broadcastMessage(ChatColor.GREEN + "+" + player + " joined!");
-		player.sendMessage("Welcome back, " + player + "!");
-		//announce("A member joined!");
+		
 	}
 	
 	public void onPlayerQuit(PlayerQuitEvent event) {
