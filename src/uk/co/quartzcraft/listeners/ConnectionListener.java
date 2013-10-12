@@ -14,10 +14,10 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class ConnectionListener implements Listener {
 
-	public String quartzJoinMessage = ChatColor.GOLD + "A player joined!";
+	//public String quartzJoinMessage = ChatColor.GOLD + "A player joined!";
 
 	public void setJoinMessage(String joinMessage) {
-		this.quartzJoinMessage  = joinMessage;
+		//this.quartzJoinMessage  = joinMessage;
 	}
 	
 	@EventHandler
@@ -28,17 +28,20 @@ public class ConnectionListener implements Listener {
 			//get player data from database
 		} else {
 			//register player
-			player.kickPlayer("You could not be found in our database! Please reconnect.");
+			player.kickPlayer("Welcome to QuartzCraft! As you are a new player, we had to register you. Please reconnect.");
 		}
 		
 	}
 	
+	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
 		
-		
+		player.sendMessage("Welcome back, " + player + "!");
+		player.sendMessage("Your QC balance is: ");
 	}
 	
+	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		Player player = event.getPlayer();
 		
