@@ -41,7 +41,7 @@ public class QuartzCore extends JavaPlugin implements Defaults {
 	   	getCommand("list").setExecutor(new CommandList());
 	   	getCommand("donate").setExecutor(new CommandDonate());
 	   	getCommand("chat").setExecutor(new CommandChat());
-	   	getCommand("group").setExecutor(new CommandGroup());
+	   	getCommand("team").setExecutor(new CommandTeam());
 	   	
 	   	//ChatChannels
 	   	//logger.info("[STARTUP]Registering chat channels...");

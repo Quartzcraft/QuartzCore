@@ -53,9 +53,9 @@ commands:
       permission: QCC.mood
       permission-message: Unknown Command. Type "help" for help.
       alias: mo, md, moo
-   group:
-      description: Basic group command
-      usage: /group
-      permission: QCC.group
+   team:
+      description: Basic team command
+      usage: /team
+      permission: QCC.team
       permission-message: Unknown Command. Type "help" for help.
-      alias: g, gr
+      alias: t, te
