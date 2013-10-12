@@ -26,4 +26,6 @@ public class Announce {
 		
 		Bukkit.getServer().broadcastMessage(prefixColour + "[" + prefix + "] " + message);
 	}
+	
+	//
 }

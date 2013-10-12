@@ -8,4 +8,10 @@ public class QuartzPlayer {
 		
 		return false;
 	}
+	
+	public static boolean registerPlayer(Player player) {
+		
+		
+		return false;
+	}
 }
