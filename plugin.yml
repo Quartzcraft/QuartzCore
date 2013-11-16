@@ -10,6 +10,11 @@ commands:
       usage: /quartz
       permission: QCC.quartz
       permission-message: Unknown Command. Type "help" for help.
+   register:
+      description: Registers a player
+      usage: /register
+      permission: QCC.register
+      permission-message: Unknown Command. Type "help" for help.
    test:
       description: Test command, set to test whatever.
       usage: /test
@@ -36,6 +41,12 @@ commands:
       usage: /get
       permission: QCC.get
       permission-message: Unknown Command. Type "help" for help.
+   cleardrops:
+      description: Cears all drops of the ground.
+      usage: /cleardrops
+      permission: QCC.admin.drops
+      permission-message: Unknown Command. Type "help" for help.
+      alias: t, te
    donate:
       description: Tells you how to donate.
       usage: /donate
