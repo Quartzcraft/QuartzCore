@@ -24,13 +24,6 @@ public class ConnectionListener implements Listener {
 	public void onPlayerLogin(PlayerLoginEvent event) {
 		Player player = event.getPlayer();
 		
-		if(QuartzPlayer.locatePlayer(player) == true) {
-			//get player data from database
-		} else {
-			//register player
-			player.kickPlayer("Welcome to QuartzCraft! As you are a new player, we had to register you. Please reconnect.");
-		}
-		
 	}
 	
 	@EventHandler
