@@ -3,12 +3,12 @@ package uk.co.quartzcraft;
 import java.sql.Connection;
 import java.util.logging.Logger;
 
-import uk.co.quartzcraft.*;
 import uk.co.quartzcraft.database.*;
 import uk.co.quartzcraft.chat.*;
 import uk.co.quartzcraft.command.*;
 import uk.co.quartzcraft.listeners.*; 
 
+import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,10 +19,10 @@ public class QuartzCore extends JavaPlugin implements Defaults {
 	public static Connection DBCore = null;
 	public static Connection DBXen = null;
 	
+	Server server = getServer();
 	Logger logger = getLogger();
 	 
 	MySQL MySQL = new MySQL(plugin, "localhost", "3306", "Quartz", "root", "database1");
-	
 	MySQL MySQLxen = new MySQL(plugin, "localhost", "3306", "XenForo", "root", "database1");
 	
 	@Override
@@ -37,7 +37,7 @@ public class QuartzCore extends JavaPlugin implements Defaults {
 		
 		//Listeners
 		logger.info("[STARTUP]Registering listeners...");
-		getServer().getPluginManager().registerEvents(new ConnectionListener(), this);
+		server.getPluginManager().registerEvents(new ConnectionListener(), this);
 		
 	    //Commands
 		logger.info("[STARTUP]Registering commands...");
@@ -50,6 +50,7 @@ public class QuartzCore extends JavaPlugin implements Defaults {
 	   	getCommand("chat").setExecutor(new CommandChat());
 	   	getCommand("team").setExecutor(new CommandTeam());
 	   	getCommand("cleardrops").setExecutor(new CommandCleardrops());
+	   	getCommand("report").setExecutor(new CommandReport());
 	   	
 	   	//ChatChannels
 	   	//logger.info("[STARTUP]Registering chat channels...");
@@ -61,6 +62,9 @@ public class QuartzCore extends JavaPlugin implements Defaults {
 	 
 	@Override
 	public void onDisable() {
+		
+		//Database
+		logger.info("[SHUTDOWN]Terminating connection to database");
 		
     	//Shutdown notice
 		logger.info("The QuartzCore Plugin has been disabled!");
