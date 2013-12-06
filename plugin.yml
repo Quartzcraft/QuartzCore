@@ -70,3 +70,8 @@ commands:
       permission: QCC.team
       permission-message: Unknown Command. Type "help" for help.
       alias: t, te
+   report:
+      description: Report a rule breaker
+      usage: /report
+      permission: QCC.report
+      permission-message: Unknown Command. Type "help" for help.
