@@ -28,6 +28,7 @@ public class CommandTest implements CommandExecutor {
 			//String String = "player";
 			
 			try {
+				//Statement s = MySQL.open().createStatement();
 				Statement statement = QuartzCore.DBXen.createStatement();
 				
 				ResultSet res = statement.executeQuery("SELECT * FROM xf_user_field WHERE Minecraft_Username = '" + sender + "';");

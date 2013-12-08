@@ -25,8 +25,8 @@ public class QuartzCore extends JavaPlugin {
 	Server server = getServer();
 	Logger logger = getLogger();
 	 
-	MySQL MySQL = new MySQL(plugin, "localhost", "3306", "Quartz", "root", "database1");
-	MySQL MySQLxen = new MySQL(plugin, "localhost", "3306", "XenForo", "root", "database1");
+	public MySQL MySQLcore = new MySQL(plugin, "localhost", "3306", "Quartz", "root", "database1");
+	public MySQL MySQLxen = new MySQL(plugin, "localhost", "3306", "XenForo", "root", "database1");
 	
 	@Override
 	public void onEnable() {
@@ -35,7 +35,7 @@ public class QuartzCore extends JavaPlugin {
 		
 		//Database
 		logger.info("[STARTUP]Connecting to Database");
-		DBCore = MySQL.openConnection();
+		DBCore = MySQLcore.openConnection();
 		DBXen = MySQLxen.openConnection();
 
 		
