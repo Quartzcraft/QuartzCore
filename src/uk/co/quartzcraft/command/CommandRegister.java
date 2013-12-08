@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import uk.co.quartzcraft.QuartzCore;
-import uk.co.quartzcraft.QuartzPlayer;
 import uk.co.quartzcraft.chat.Announce;
 
 public class CommandRegister implements CommandExecutor {

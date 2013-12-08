@@ -12,7 +12,10 @@ import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class QuartzCore extends JavaPlugin implements Defaults {
+public class QuartzCore extends JavaPlugin {
+	
+	public static double version = 1.0;
+	public static String release = "BETA";
 	
 	public Plugin plugin = this.plugin;
 	
@@ -34,6 +37,7 @@ public class QuartzCore extends JavaPlugin implements Defaults {
 		logger.info("[STARTUP]Connecting to Database");
 		DBCore = MySQL.openConnection();
 		DBXen = MySQLxen.openConnection();
+
 		
 		//Listeners
 		logger.info("[STARTUP]Registering listeners...");
