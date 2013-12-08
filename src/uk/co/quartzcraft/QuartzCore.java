@@ -12,6 +12,12 @@ import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * Core file for QuartzCore plugin.
+ * 
+ * @author mba2012
+ * @author SoulPunisher
+ */
 public class QuartzCore extends JavaPlugin {
 	
 	public static double version = 1.0;
