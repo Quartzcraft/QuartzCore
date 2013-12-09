@@ -27,21 +27,6 @@ public class CommandTest implements CommandExecutor {
 			
 			//String String = "player";
 			
-			try {
-				//Statement s = MySQL.open().createStatement();
-				Statement statement = QuartzCore.DBXen.createStatement();
-				
-				ResultSet res = statement.executeQuery("SELECT * FROM xf_user_field WHERE Minecraft_Username = '" + sender + "';");
-				res.next();
-				Announce.announceWithPrefix("Database", "&5", "&bThe database retrived data! The release version is:" + QuartzCore.release);
-				
-				return true;
-				
-			} catch(SQLException err) {
-				Announce.announceWithPrefix("Database", "&5", "&bSome sort of error occured... The release version is:" + QuartzCore.release);
-				return false;
-			}
-			
 		}
 		return false;
 	}

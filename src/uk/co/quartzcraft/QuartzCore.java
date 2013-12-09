@@ -25,14 +25,14 @@ public class QuartzCore extends JavaPlugin {
 	
 	public Plugin plugin = this.plugin;
 	
-	public static Connection DBCore = null;
-	public static Connection DBXen = null;
+	//public static Connection DBCore = null;
+	//public static Connection DBXen = null;
 	
 	Server server = getServer();
 	Logger logger = getLogger();
 	 
-	public MySQL MySQLcore = new MySQL(plugin, "localhost", "3306", "Quartz", "root", "database1");
-	public MySQL MySQLxen = new MySQL(plugin, "localhost", "3306", "XenForo", "root", "database1");
+	//public MySQL MySQLcore = new MySQL(plugin, "localhost", "3306", "Quartz", "root", "database1");
+	//public MySQL MySQLxen = new MySQL(plugin, "localhost", "3306", "XenForo", "root", "database1");
 	
 	@Override
 	public void onEnable() {
@@ -40,9 +40,9 @@ public class QuartzCore extends JavaPlugin {
 		logger.info("[STARTUP LOGGER]Console logger discovered");
 		
 		//Database
-		logger.info("[STARTUP]Connecting to Database");
-		DBCore = MySQLcore.openConnection();
-		DBXen = MySQLxen.openConnection();
+		//logger.info("[STARTUP]Connecting to Database");
+		//DBCore = MySQLcore.openConnection();
+		//DBXen = MySQLxen.openConnection();
 
 		
 		//Listeners
