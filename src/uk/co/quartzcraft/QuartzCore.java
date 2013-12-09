@@ -55,11 +55,6 @@ public class QuartzCore extends JavaPlugin {
 	   	getCommand("register").setExecutor(new CommandRegister());
 	   	getCommand("test").setExecutor(new CommandTest());
 	   	getCommand("m").setExecutor(new CommandM());
-	   	getCommand("list").setExecutor(new CommandList());
-	   	getCommand("donate").setExecutor(new CommandDonate());
-	   	getCommand("chat").setExecutor(new CommandChat());
-	   	getCommand("team").setExecutor(new CommandTeam());
-	   	getCommand("cleardrops").setExecutor(new CommandCleardrops());
 	   	getCommand("report").setExecutor(new CommandReport());
 	   	
 	   	//ChatChannels
