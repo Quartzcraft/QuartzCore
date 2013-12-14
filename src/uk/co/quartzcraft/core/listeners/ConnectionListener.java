@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.listeners;
+package uk.co.quartzcraft.core.listeners;
 
 import uk.co.quartzcraft.*;
 

@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.listeners;
+package uk.co.quartzcraft.core.listeners;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

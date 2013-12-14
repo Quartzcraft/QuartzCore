@@ -2,7 +2,7 @@ name: QuartzCore
 version: 1.6.4
 author: The QuartzCraft Team! SoulPunisher, mba2012 and nfell2009!
 website: http://www.quartzcraft.co.uk/
-main: uk.co.quartzcraft.QuartzCore
+main: uk.co.quartzcraft.core.QuartzCore
 
 commands:
    quartz:

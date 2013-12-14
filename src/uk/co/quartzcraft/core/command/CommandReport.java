@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.command;
+package uk.co.quartzcraft.core.command;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
