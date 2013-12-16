@@ -10,7 +10,7 @@ public abstract class QSubCommand {
         
         public boolean needsPlayer()
         {
-                return false;
+                return true;
         }
         
         public abstract void onCommand(CommandSender sender, Command cmd, String label, String[] args);
