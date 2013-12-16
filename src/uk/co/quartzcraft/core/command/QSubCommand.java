@@ -28,6 +28,8 @@ public abstract class QSubCommand {
                                 if(sender instanceof Player)
                                 {
                                         onCommand(sender, cmd, label, args);
+                                } else {
+                                	sender.sendMessage("This command can only be used ingame by a player.");
                                 }
                         }
                         else
