@@ -55,6 +55,10 @@ public class QuartzCore extends JavaPlugin {
 		
 		log.info("[QC][STARTUP LOGGER]Console logger discovered");
 		
+		//Phrases
+		log.info("[QC][STARTUP]Creating Phrases");
+		ChatPhrase.addPhrase("Unknown_Command", "Unknown Command. Please see the QuartzCraft Wiki for help.");
+		
 		//Listeners
 		log.info("[QC][STARTUP]Registering listeners...");
 		//server.getPluginManager().registerEvents(new ConnectionListener(), this);
