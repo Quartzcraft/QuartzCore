@@ -8,7 +8,7 @@ public class Announce {
 
 	public static void announce(String message) {
 		
-		message = ChatFormatParser.parseChatColour(message);
+		message = ChatFormatParser.parseChat(message);
 				
 		Bukkit.getServer().broadcastMessage(message);
 	}
@@ -16,15 +16,15 @@ public class Announce {
 	public static void announceWithPrefix(String prefix, String prefixColour, String message) {
 		
 		//Parse Message
-		message = ChatFormatParser.parseChatColour(message);
+		message = ChatFormatParser.parseChat(message);
 		
 		//Parse Prefix
-		prefix = ChatFormatParser.parseChatColour(prefix);
+		prefix = ChatFormatParser.parseChat(prefix);
 		
 		//Parse Prefix Colour
-		prefixColour = ChatFormatParser.parseChatColour(prefixColour);
+		prefixColour = ChatFormatParser.parseChat(prefixColour);
 		
-		Bukkit.getServer().broadcastMessage(prefixColour + "[" + prefix + "] " + message);
+		Bukkit.getServer().broadcastMessage(prefixColour + "[" + prefix + prefixColour + "] " + ChatColor.RESET + message);
 	}
 	
 	//

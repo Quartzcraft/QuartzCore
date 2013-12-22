@@ -26,4 +26,25 @@ public class ChatFormatParser {
 		
 		return message;
 	}
+	
+	public static String parseChatFormat(String message) {
+		
+		//Parse Colours
+		message = message.replaceAll("&k", ChatColor.MAGIC + "");
+		message = message.replaceAll("&0", ChatColor.ITALIC + "");
+		message = message.replaceAll("&n", ChatColor.UNDERLINE + "");
+		message = message.replaceAll("&m", ChatColor.STRIKETHROUGH + "");
+		message = message.replaceAll("&l", ChatColor.BOLD + "");
+		message = message.replaceAll("&r", ChatColor.RESET + "");
+		
+		return message;
+	}
+
+	public static String parseChat(String message) {
+	
+	message = parseChatColour(message);
+	message = parseChatFormat(message);	
+	
+	return message;
+	}
 }
