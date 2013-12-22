@@ -38,8 +38,8 @@ public class QuartzCore extends JavaPlugin {
 	public static Connection DBCore = null;
 	public static Connection DBXen = null;
 	 
-	//public MySQL MySQLcore = new MySQL(plugin, "localhost", "3306", "Quartz", "root", "database1");
-	public MySQL MySQLxen = new MySQL(plugin, "ns1.gingetechnologies.com", "3306", "quartz_craft", "quartz", "226+nBEV[{RL");
+	public MySQL MySQLcore = new MySQL(plugin, "127.0.0.1", "3306", "4814", "4814", "a55a5042c5");
+	//public MySQL MySQLxen = new MySQL(plugin, "ns1.gingetechnologies.com", "3306", "quartz_craft", "quartz", "226+nBEV[{RL");
 	
 	@Override
 	public void onDisable() {
@@ -58,6 +58,7 @@ public class QuartzCore extends JavaPlugin {
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
 		ChatPhrase.addPhrase("Unknown_Command", "Unknown Command. Please see the QuartzCraft Wiki for help.");
+		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
 		
 		//Listeners
 		log.info("[QC][STARTUP]Registering listeners...");
@@ -75,8 +76,8 @@ public class QuartzCore extends JavaPlugin {
 	   	
 	   	//Database
 	  	log.info("[QC][STARTUP]Connecting to Database");
-	  	//DBCore = MySQLcore.openConnection();
-	  	DBXen = MySQLxen.openConnection();
+	  	DBCore = MySQLcore.openConnection();
+	  	//DBXen = MySQLxen.openConnection();
 	  		
 	   	//Startup notice
 	  	log.info("[QC]The QuartzCore Plugin has been enabled!");

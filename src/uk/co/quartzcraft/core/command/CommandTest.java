@@ -16,6 +16,7 @@ import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.database.*;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.Announce;
+import uk.co.quartzcraft.core.chat.ChatPhrase;
 
 public class CommandTest implements CommandExecutor {
 	
@@ -29,7 +30,7 @@ public class CommandTest implements CommandExecutor {
 			Announce.announceWithPrefix("QuartzCraft", "&a", "&6The test command has been run!");
 			
 			//run database query
-			
+			/*
 			try {
 		        Statement s = QuartzCore.DBXen.createStatement();
 		        ResultSet res = s.executeQuery("SELECT * FROM xf_user_field WHERE minecraft_username =" + sender + " ;");
@@ -46,6 +47,8 @@ public class CommandTest implements CommandExecutor {
 		    } catch (SQLException ex) {
 		        Logger.getLogger("Minecraft").log(Level.SEVERE, null, ex);
 		    }
+		    
+		    */
 			
 			//String String = "player";
 			
