@@ -1,5 +1,7 @@
 package uk.co.quartzcraft.core.entity;
 
+import java.util.HashMap;
+
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -13,7 +15,7 @@ public class QPlayer {
 		sender.sendMessage(message);
 	}
 	
-	public static String[] getData(Player player) {
+	public static HashMap getData(Player player) {
 		
 		return null;
 	}
