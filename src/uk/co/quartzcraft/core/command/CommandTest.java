@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import uk.co.quartzcraft.core.database.*;
+import uk.co.quartzcraft.core.entity.QPlayer;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.Announce;
 import uk.co.quartzcraft.core.chat.ChatPhrase;
@@ -28,6 +29,7 @@ public class CommandTest implements CommandExecutor {
 			
 			Announce.announce("&4This is a test announcement!");
 			Announce.announceWithPrefix("QuartzCraft", "&a", "&6The test command has been run!");
+			QPlayer.sendMessage(sender, ChatPhrase.getPhrase("test_phrase"));
 			
 			//run database query
 			/*
