@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import uk.co.quartzcraft.core.chat.*;
 
-public class QPlayer {
+public abstract class QPlayer {
 
 	public static void sendMessage(CommandSender sender, String message) {
 		ChatFormatParser.parseChat(message);
@@ -19,4 +19,6 @@ public class QPlayer {
 		
 		return null;
 	}
+	
+	public abstract HashMap getDataSpecServer();
 }
