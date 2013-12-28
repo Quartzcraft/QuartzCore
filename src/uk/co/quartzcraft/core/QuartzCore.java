@@ -58,6 +58,7 @@ public class QuartzCore extends JavaPlugin {
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
 		ChatPhrase.addPhrase("Unknown_Command", "Unknown Command. Please see the QuartzCraft Wiki for help.");
+		ChatPhrase.addPhrase("subcommand_not_found", "&3This is a test of the phrases system.");
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
 		
 		//Listeners

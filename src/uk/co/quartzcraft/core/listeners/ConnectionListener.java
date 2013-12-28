@@ -21,8 +21,13 @@ public class ConnectionListener implements Listener {
 	}
 	
 	@EventHandler
-	public void onPlayerLogin(PlayerLoginEvent event) {
-		Player player = event.getPlayer();
+	public void onPlayerLogin(PlayerLoginEvent login) {
+		Player player = login.getPlayer();
+		
+		//get player data from database
+		//get player usergroup 
+		//set player usergroup
+		//other stuff
 		
 	}
 	
@@ -35,8 +40,8 @@ public class ConnectionListener implements Listener {
 	}
 	
 	@EventHandler
-	public void onPlayerQuit(PlayerQuitEvent event) {
-		Player player = event.getPlayer();
+	public void onPlayerQuit(PlayerQuitEvent quit) {
+		Player player = quit.getPlayer();
 		
 		Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "-" + player + " disconnected!");
 	}
