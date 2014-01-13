@@ -6,12 +6,7 @@ import java.util.logging.Logger;
 import uk.co.quartzcraft.core.database.*;
 import uk.co.quartzcraft.core.chat.*;
 import uk.co.quartzcraft.core.command.*;
-import uk.co.quartzcraft.core.command.CommandM;
-import uk.co.quartzcraft.core.command.CommandQuartz;
-import uk.co.quartzcraft.core.command.CommandReport;
-import uk.co.quartzcraft.core.command.CommandTest;
 import uk.co.quartzcraft.core.database.MySQL;
-import uk.co.quartzcraft.core.listeners.ConnectionListener;
 import uk.co.quartzcraft.core.listeners.*; 
 
 import org.bukkit.ChatColor;
@@ -76,7 +71,8 @@ public class QuartzCore extends JavaPlugin {
 		
 		//Listeners
 		log.info("[QC][STARTUP]Registering listeners...");
-		//server.getPluginManager().registerEvents(new ConnectionListener(), this);
+		//getServer().getPluginManager().registerEvents(new ConnectionListener(this), this);
+		new ConnectionListener(this);
 		
 	    //Commands
 		log.info("[QC][STARTUP]Registering commands...");

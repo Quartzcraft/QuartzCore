@@ -3,6 +3,7 @@ package uk.co.quartzcraft.core.command;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,6 +31,9 @@ public class CommandTest implements CommandExecutor {
 			Announce.announce("&4This is a test announcement!");
 			Announce.announceWithPrefix("QuartzCraft", "&a", "&6The test command has been run!");
 			QPlayer.sendMessage(sender, ChatPhrase.getPhrase("test_phrase"));
+			Player player = (Player)sender;
+			
+			UUID UUID = player.getUniqueId();
 			
 			//run database query
 			
@@ -53,6 +57,6 @@ public class CommandTest implements CommandExecutor {
 			//String String = "player";
 			
 		}
-		return false;
+		return true;
 	}
 }

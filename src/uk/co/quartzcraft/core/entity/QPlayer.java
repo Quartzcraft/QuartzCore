@@ -40,5 +40,5 @@ public abstract class QPlayer {
 		
 	}
 	
-	public abstract HashMap getDataSpecServer();
+	public abstract HashMap getDataThisPlugin();
 }
