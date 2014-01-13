@@ -48,3 +48,18 @@ commands:
       permission: QCC.report
       default: op
       permission-message: Unknown Command. Type "help" for help.
+   promo:
+      description: Main promo command
+      usage: /promo
+      permission: QCC.promo
+      default: op
+      permission-message: Unknown Command. Type "help" for help.
+Permissions:
+   QCC.chat.*:
+      description: Allows access to all QCC chat permissions.
+      default: op
+      children:
+         QCC.chat.filterBypass: true
+   QCC.chat.filterBypass:
+      description: Allows bypass of the chat filter.
+      default: op
