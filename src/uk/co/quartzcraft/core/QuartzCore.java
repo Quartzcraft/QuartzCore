@@ -14,6 +14,7 @@ import uk.co.quartzcraft.core.database.MySQL;
 import uk.co.quartzcraft.core.listeners.ConnectionListener;
 import uk.co.quartzcraft.core.listeners.*; 
 
+import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -57,6 +58,7 @@ public class QuartzCore extends JavaPlugin {
 		
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
+		ChatPhrase.addPhrase("Unknown_SubCommand", "&3Could not find the specified SubCommand! &aVisit the QuartzCraft Wiki for help.");
 		ChatPhrase.addPhrase("Unknown_Command", "Unknown Command. Please see the QuartzCraft Wiki for help.");
 		ChatPhrase.addPhrase("subcommand_not_found", "&3This is a test of the phrases system.");
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
