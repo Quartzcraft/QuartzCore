@@ -38,9 +38,9 @@ public class QuartzCore extends JavaPlugin {
 	
 	public static Connection DBCore = null;
 	public static Connection DBXen = null;
-	 
-	public MySQL MySQLcore = new MySQL(plugin, "127.0.0.1", "3306", "4814", "4814", "a55a5042c5");
-	//public MySQL MySQLxen = new MySQL(plugin, "ns1.gingetechnologies.com", "3306", "quartz_craft", "quartz", "226+nBEV[{RL");
+    
+	public static MySQL MySQLcore = null;
+	//public MySQL MySQLxen = null;
 	
 	@Override
 	public void onDisable() {
@@ -55,6 +55,17 @@ public class QuartzCore extends JavaPlugin {
 	public void onEnable() {
 		
 		log.info("[QC][STARTUP LOGGER]Console logger discovered");
+		
+		log.info("[QC]Running plugin configuration");
+		this.saveDefaultConfig();
+		
+		String SQLCoreHost = this.getConfig().getString("database.core.host");
+		String SQLCoreDatabase = this.getConfig().getString("database.core.database");
+		String SQLCoreUser = this.getConfig().getString("database.core.username");
+		String SQLCorePassword = this.getConfig().getString("database.core.password");
+		MySQLcore = new MySQL(plugin, SQLCoreHost, "3306", SQLCoreDatabase, SQLCoreUser, SQLCorePassword);
+		//public MySQL MySQLxen = new MySQL(plugin, "ns1.gingetechnologies.com", "3306", "quartz_craft", "quartz", "226+nBEV[{RL");
+
 		
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");

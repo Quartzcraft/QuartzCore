@@ -32,25 +32,23 @@ public class CommandTest implements CommandExecutor {
 			QPlayer.sendMessage(sender, ChatPhrase.getPhrase("test_phrase"));
 			
 			//run database query
-			/*
+			
 			try {
-		        Statement s = QuartzCore.DBXen.createStatement();
-		        ResultSet res = s.executeQuery("SELECT * FROM xf_user_field WHERE minecraft_username =" + sender + " ;");
-		        if (res.next()) {
-		            if (res.getString("minecraft_username") == null) {
-		                return false;
-		            } else {
-		            	sender.sendMessage("Hello, " + res.getString("minecraft_username"));
-		                return true;
-		            }
+		        Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
+		        ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE DisplayName ='mba2012';");
+		        res.next();
+		        //sender.sendMessage("Hello, " + res.getString("DisplayName"));
+		        if (res.getString("DisplayName") == null) {
+		        	sender.sendMessage(":/");
 		        } else {
-		            return false;
+		        	sender.sendMessage("Hello, " + res.getString("DisplayName"));
+		        	return true;
 		        }
 		    } catch (SQLException ex) {
 		        Logger.getLogger("Minecraft").log(Level.SEVERE, null, ex);
 		    }
 		    
-		    */
+		    
 			
 			//String String = "player";
 			

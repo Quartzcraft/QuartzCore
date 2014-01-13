@@ -1,0 +1,12 @@
+database:
+   core:
+      host: 
+      database: 
+      username: 
+      password: 
+   website:
+      host: 
+      database: 
+      username:
+      password:
+   
