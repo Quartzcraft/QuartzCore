@@ -14,11 +14,10 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.*;
 
 public abstract class QPlayer {
-
-	public static void sendMessage(CommandSender sender, String message) {
+	public static void sendMessage(Player player, String message) {
 		ChatFormatParser.parseChat(message);
 		
-		sender.sendMessage(message);
+		player.sendMessage(message);
 	}
 	
 	public static ResultSet getData(QPlayer player) {
