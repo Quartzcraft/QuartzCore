@@ -65,7 +65,7 @@ public class QuartzCore extends JavaPlugin {
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
 		ChatPhrase.addPhrase("Unknown_SubCommand", "&3Could not find the specified SubCommand! &aVisit the QuartzCraft Wiki for help.");
-		ChatPhrase.addPhrase("Unknown_Command", "Unknown Command. Please see the QuartzCraft Wiki for help.");
+		ChatPhrase.addPhrase("Unknown_Command", "Unknown Command! Please see the QuartzCraft Wiki for help.");
 		ChatPhrase.addPhrase("subcommand_not_found", "&3This is a test of the phrases system.");
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
 		ChatPhrase.addPhrase("database_error", "&3A database error occured!");
@@ -83,6 +83,7 @@ public class QuartzCore extends JavaPlugin {
 	   	getCommand("test").setExecutor(new CommandTest());
 	   	getCommand("m").setExecutor(new CommandM());
 	   	getCommand("report").setExecutor(new CommandReport());
+	   	getCommand("promo").setExecutor(new CommandPromo());
 	   	getCommand("qplayer").setExecutor(new CommandQPlayer());
 	   	
 	   	//ChatChannels
