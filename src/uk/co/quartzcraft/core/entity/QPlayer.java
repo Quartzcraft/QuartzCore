@@ -15,12 +15,23 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.*;
 
 public abstract class QPlayer {
+	
+	/**
+	 * Sends a message to the specified player. Message is parsed by ChatFormatParser.
+	 * @param player
+	 * @param message
+	 */
 	public static void sendMessage(Player player, String message) {
 		ChatFormatParser.parseChat(message);
 		
 		player.sendMessage(message);
 	}
 	
+	/**
+	 * Gets player data from QuartzCore PlayerData database table by using UUID.
+	 * @param UUID
+	 * @return ResultSet
+	 */
 	public static ResultSet getData(UUID UUID) {
 		
 		String SUUID = UUID.toString();
@@ -42,6 +53,13 @@ public abstract class QPlayer {
 		
 	}
 	
+	/**
+	 * 
+	 * Gets player data from QuartzCore PlayerData database table by used the QPlayer object.
+	 * @author mba2012
+	 * @param qplayer
+	 * @deprecated Just going to use getData().
+	 */
 	public static ResultSet getQPlayer(QPlayer qplayer) {
 		
 		String playername = qplayer.toString();
@@ -61,10 +79,20 @@ public abstract class QPlayer {
 		
 	}
 	
+	/**
+	 * Updates the QuartzCraft PlayerData to set the connection status. 
+	 * @param player
+	 * @param conn
+	 */
 	public static void setConnectionStatus(Player player, boolean conn) {
 		
 	}
 	
+	/**
+	 * Creates a play in the QuartzCore PlayerData database.
+	 * @param player
+	 * @return boolean
+	 */
 	public static boolean createPlayer(Player player) {
 		
 		long time = System.currentTimeMillis();
@@ -94,6 +122,10 @@ public abstract class QPlayer {
 	
 	public abstract boolean createPlayerThisPlugin();
 
+	/**
+	 * 
+	 * @param player
+	 */
 	public static void addUUID(Player player) {
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
