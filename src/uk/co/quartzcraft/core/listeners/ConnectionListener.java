@@ -1,7 +1,13 @@
 package uk.co.quartzcraft.core.listeners;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.UUID;
+
 import uk.co.quartzcraft.*;
 import uk.co.quartzcraft.core.QuartzCore;
+import uk.co.quartzcraft.core.chat.ChatPhrase;
 import uk.co.quartzcraft.core.entity.QPlayer;
 
 import org.bukkit.Bukkit;
@@ -21,9 +27,43 @@ public class ConnectionListener implements Listener {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 	
+	/**
+	 * Still a WIP - Must get player creation working some time.
+	 * @param login
+	 */
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerLogin(PlayerLoginEvent login) {
 		Player player = login.getPlayer();
+		String splayer = player.toString();
+		
+		UUID UUID = player.getUniqueId();
+		String SUUID = UUID.toString();
+		
+		Statement s1;
+		try {
+			s1 = QuartzCore.MySQLcore.openConnection().createStatement();
+			ResultSet res1 = s1.executeQuery("SELECT * FROM PlayerData WHERE UUID='" + SUUID + "'");
+			res1.next();
+			if(res1 != null) {
+				if(res1.getString("UUID") == SUUID) {
+					QPlayer.setConnectionStatus(player, true);
+				} else {
+					QPlayer.addUUID(player);
+				}
+			} else {
+				/*
+				if(QPlayer.createPlayer(player)) {
+					//Do nothing
+				} else {
+					player.kickPlayer(ChatPhrase.getPhrase("database_error_contact"));
+				}
+				*/
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		//get player data from database
 		//get player usergroup 
@@ -32,11 +72,13 @@ public class ConnectionListener implements Listener {
 		
 	}
 	
-	@EventHandler(priority = EventPriority.LOWEST)
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
+		String splayer = player.toString();
+		String playername = player.getDisplayName();
 		
-		player.sendMessage("Welcome back, " + player + "!");
+		player.sendMessage("Welcome back, " + playername + "!");
 		//player.sendMessage("Your QC balance is: ");
 	}
 	
