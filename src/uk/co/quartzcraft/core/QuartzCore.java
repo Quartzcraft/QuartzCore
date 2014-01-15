@@ -1,6 +1,7 @@
 package uk.co.quartzcraft.core;
 
 import java.sql.Connection;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import uk.co.quartzcraft.core.database.*;
@@ -87,6 +88,7 @@ public class QuartzCore extends JavaPlugin {
 	   	getCommand("report").setExecutor(new CommandReport());
 	   	getCommand("promo").setExecutor(new CommandPromo());
 	   	getCommand("qplayer").setExecutor(new CommandQPlayer());
+	   	CommandQPlayer.addCommand(Arrays.asList("role"), new QPlayerGroupSubCommand());
 	   	
 	   	//ChatChannels
 	   	//logger.info("[STARTUP]Registering chat channels...");

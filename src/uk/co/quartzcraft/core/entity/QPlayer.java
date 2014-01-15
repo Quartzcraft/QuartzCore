@@ -145,5 +145,10 @@ public abstract class QPlayer {
 		
 	}
 
+	public static void setGroup(String playername, String GroupName) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

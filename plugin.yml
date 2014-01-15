@@ -69,3 +69,9 @@ Permissions:
    QCC.chat.filterBypass:
       description: Allows bypass of the chat filter.
       default: op
+   QCC.group.*:
+      description: Allows access to all QPlayer commands.
+      default: op
+   QCC.QPlayer.group:
+      description: Allows user to set another users group.
+      default: op
