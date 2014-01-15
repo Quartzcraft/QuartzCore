@@ -69,9 +69,9 @@ public class QuartzCore extends JavaPlugin {
 		ChatPhrase.addPhrase("Unknown_Command", "Unknown Command! Please see the QuartzCraft Wiki for help.");
 		ChatPhrase.addPhrase("subcommand_not_found", "&3This is a test of the phrases system.");
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
-		ChatPhrase.addPhrase("database_error", "&3A database error occured!");
-		ChatPhrase.addPhrase("database_error_contact", "&3A database error occured! &aPlease contact an administrator on the QuartzCraft website immediately.");
-		ChatPhrase.addPhrase("player_use_only", "&3This command can only be used ingame by a player.");
+		ChatPhrase.addPhrase("database_error", "&4A database error occured!");
+		ChatPhrase.addPhrase("database_error_contact", "&4A database error occured! &aPlease contact an administrator on the QuartzCraft website immediately.");
+		ChatPhrase.addPhrase("player_use_only", "&4This command can only be used ingame by a player.");
 		
 		
 		
