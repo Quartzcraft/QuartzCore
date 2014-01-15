@@ -70,6 +70,8 @@ public class QuartzCore extends JavaPlugin {
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
 		ChatPhrase.addPhrase("database_error", "&3A database error occured!");
 		ChatPhrase.addPhrase("database_error_contact", "&3A database error occured! &aPlease contact an administrator on the QuartzCraft website immediately.");
+		ChatPhrase.addPhrase("player_use_only", "&3This command can only be used ingame by a player.");
+		
 		
 		
 		//Listeners

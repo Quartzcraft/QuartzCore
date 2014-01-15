@@ -4,6 +4,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import uk.co.quartzcraft.core.chat.ChatPhrase;
+
 public abstract class QSubCommand {
 	
         public abstract String getPermission();
@@ -19,7 +21,7 @@ public abstract class QSubCommand {
         {
                 if(!sender.hasPermission(getPermission()))
                 {
-                        sender.sendMessage("Unknown Command. Visit the QuartzCraft Wiki for help.");
+                        sender.sendMessage(ChatPhrase.getPhrase("Unknown_Command"));
                 }
                 else
                 {
@@ -29,7 +31,7 @@ public abstract class QSubCommand {
                                 {
                                         onCommand(sender, cmd, label, args);
                                 } else {
-                                	sender.sendMessage("This command can only be used ingame by a player.");
+                                	sender.sendMessage(ChatPhrase.getPhrase("player_use_only"));
                                 }
                         }
                         else
