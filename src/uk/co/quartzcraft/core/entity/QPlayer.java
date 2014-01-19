@@ -112,7 +112,6 @@ public abstract class QPlayer {
 	        	return false;
 	        }
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
@@ -138,7 +137,6 @@ public abstract class QPlayer {
 			res.next();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
@@ -146,8 +144,18 @@ public abstract class QPlayer {
 	}
 
 	public static void setGroup(String playername, String GroupName) {
-		// TODO Auto-generated method stub
 		
+	}
+
+	public static String getLastSeen(String SUUID) {
+		String lastSeen = null;
+		
+		return lastSeen;
+	}
+
+	public static String getDisplayName(Player player) {
+
+		return null;
 	}
 
 
