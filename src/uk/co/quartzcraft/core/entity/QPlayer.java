@@ -109,21 +109,18 @@ public abstract class QPlayer {
 	        if(res != null) {
 	        	return true;
 	        } else {
-	        	return false;
-	        }
+				return false;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
-	
-	public abstract HashMap getDataThisPlugin();
-	
-	public abstract boolean createPlayerThisPlugin();
 
 	/**
-	 * 
+	 * Adds the UUID to a row in the player data table.
 	 * @param player
+	 * @deprecated
 	 */
 	public static void addUUID(Player player) {
 		UUID UUID = player.getUniqueId();
@@ -143,6 +140,12 @@ public abstract class QPlayer {
 		
 	}
 
+	/**
+	 * Sets the users group
+	 * 
+	 * @param playername
+	 * @param GroupName
+	 */
 	public static void setGroup(String playername, String GroupName) {
 		
 	}
@@ -157,6 +160,10 @@ public abstract class QPlayer {
 
 		return null;
 	}
+	
+	public abstract ResultSet getDataThisPlugin();
+	
+	public abstract boolean createPlayerThisPlugin();
 
 
 }
