@@ -10,6 +10,15 @@ import uk.co.quartzcraft.core.command.QSubCommand;
 
 public class ChatFilter {
 
+	/**
+	 * Filters the chat to find any bad words, responds with either true or false
+	 * 
+	 * @author mba2012
+	 * @param msg
+	 * @return boolean
+	 */
+
+	public boolean filterChatFind(String msg) {
 		
 		String[] wordsToFilter = null;
 		

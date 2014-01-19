@@ -36,6 +36,13 @@ public class ChatPhrase {
 		return value;
 	}
 	
+	/**
+	 * Gets the requested phrase.
+	 * 
+	 * @author mba2012
+	 * @param requested_phrase_id
+	 * @return phrase
+	 */
 	public static String getPhrase(String requested_phrase_id) {
 		
 		String phrase_key = match(requested_phrase_id);
@@ -47,6 +54,13 @@ public class ChatPhrase {
 		return final_phrase;
 	}
 	
+	/**
+	 * Adds a phrase to the phrase list.
+	 * 
+	 * @author mba2012
+	 * @param phrase_id
+	 * @param phrase
+	 */
 	public static void addPhrase(String phrase_id, String phrase) {
         phrases.put(phrase_id, phrase);
 	}

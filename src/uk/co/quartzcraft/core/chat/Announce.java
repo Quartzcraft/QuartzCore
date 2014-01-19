@@ -6,6 +6,12 @@ import org.bukkit.ChatColor;
 
 public class Announce {
 
+	/**
+	 * Makes a broadcast
+	 * 
+	 * @author SoulPunisher, mba2012
+	 * @param message
+	 */
 	public static void announce(String message) {
 		
 		message = ChatFormatParser.parseChat(message);
@@ -13,6 +19,14 @@ public class Announce {
 		Bukkit.getServer().broadcastMessage(message);
 	}
 	
+	/**
+	 * Makes a broadcast with a prefix. 
+	 * 
+	 * @author SoulPunisher, mba2012
+	 * @param prefix
+	 * @param prefixColour
+	 * @param message
+	 */
 	public static void announceWithPrefix(String prefix, String prefixColour, String message) {
 		
 		//Parse Message
