@@ -48,20 +48,21 @@ public class ConnectionListener implements Listener {
 				if(res1.getString("UUID") == SUUID) {
 					QPlayer.setConnectionStatus(player, true);
 				} else {
-					QPlayer.addUUID(player);
+					QPlayer.createPlayer(player);
 				}
-			} else {
-				/*
-				if(QPlayer.createPlayer(player)) {
-					//Do nothing
-				} else {
-					player.kickPlayer(ChatPhrase.getPhrase("database_error_contact"));
-				}
-				*/
-			}
+			} 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		if(login.getResult() == PlayerLoginEvent.Result.KICK_WHITELIST){
+			String message = ChatPhrase.getPhrase("Kick_Whitelist");
+            login.setKickMessage(message);
+            
+		} else if(login.getResult() == PlayerLoginEvent.Result.KICK_FULL){
+			String message = ChatPhrase.getPhrase("Server_Full");
+            login.setKickMessage(message);
+            
 		}
 		
 		
@@ -73,8 +74,29 @@ public class ConnectionListener implements Listener {
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onPlayerJoinHigh(PlayerJoinEvent join) {
+		Player player = join.getPlayer();
+		UUID UUID = player.getUniqueId();
+		String SUUID = UUID.toString();
+		
+		String splayer = player.toString();
+		String playername = player.getDisplayName();
+		String lastSeen = QPlayer.getLastSeen(SUUID);
+		
+		String message = playername + ChatColor.YELLOW + " joined, last seen " + lastSeen;
+		
+		join.setJoinMessage(message);
+		
+		//player.sendMessage("Welcome back, " + playername + "!");
+		//player.sendMessage("Your QC balance is: ");
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerJoin(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
+		UUID UUID = player.getUniqueId();
+		String SUUID = UUID.toString();
+		
 		String splayer = player.toString();
 		String playername = player.getDisplayName();
 		
@@ -86,8 +108,11 @@ public class ConnectionListener implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent quit) {
 		//Shouldn't really be monitor, but need to make sure all other permissions plugins are finished.
 		Player player = quit.getPlayer();
+		String playername = QPlayer.getDisplayName(player);
 		
-		Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "-" + player + " disconnected!");
+		String message = playername + ChatColor.YELLOW + " disconnected.";
+		
+		quit.setQuitMessage(message);
 	}
 	
 }
