@@ -65,13 +65,15 @@ public class QuartzCore extends JavaPlugin {
 		
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
-		ChatPhrase.addPhrase("Unknown_SubCommand", "&3Could not find the specified SubCommand! &aVisit the QuartzCraft Wiki for help.");
-		ChatPhrase.addPhrase("Unknown_Command", "Unknown Command! Please see the QuartzCraft Wiki for help.");
-		ChatPhrase.addPhrase("subcommand_not_found", "&3This is a test of the phrases system.");
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
-		ChatPhrase.addPhrase("database_error", "&4A database error occured!");
-		ChatPhrase.addPhrase("database_error_contact", "&4A database error occured! &aPlease contact an administrator on the QuartzCraft website immediately.");
+		ChatPhrase.addPhrase("Unknown_SubCommand", "&cCould not find the specified SubCommand! &aVisit the QuartzCraft Wiki for help.");
+		ChatPhrase.addPhrase("Unknown_Command", "&cUnknown Command! &aPlease see the QuartzCraft Wiki for help.");
+		ChatPhrase.addPhrase("Specify_Subcommand", "&cPlease specify a SubCommand. &aVisit the QuartzCraft Wiki for help.");
+		ChatPhrase.addPhrase("database_error", "&cA database error occured!");
+		ChatPhrase.addPhrase("database_error_contact", "&cA database error occured! &aPlease contact an administrator on the QuartzCraft website immediately.");
 		ChatPhrase.addPhrase("player_use_only", "&4This command can only be used ingame by a player.");
+		ChatPhrase.addPhrase("Server_Full", "&cServer Full! &aIt appears that the server is full. Please try again later, or purchase a supporter rank at http://quartzcraft.co.uk");
+		ChatPhrase.addPhrase("Kick_Whitelist", "&cYou are not whitelisted");
 		
 		
 		
