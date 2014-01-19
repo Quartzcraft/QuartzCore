@@ -10,7 +10,6 @@ import uk.co.quartzcraft.core.command.QSubCommand;
 
 public class ChatFilter {
 
-	public boolean filterChatFind(String msg, Player sender) {
 		
 		String[] wordsToFilter = null;
 		
@@ -27,22 +26,13 @@ public class ChatFilter {
 		wordsToFilter[10] = "dickhead";
 		
 		for(String s : wordsToFilter) {
-			if(sender.hasPermission("QCC.chat.bypassFilter")) {
-				return false;
+			if(msg.equalsIgnoreCase(s)) {
+				return true;
 			} else {
-				if(msg.equalsIgnoreCase(s)) {
-					return true;
-				} else {
-					return false;
-				}
+				return false;
 			}
 		}
-		return false;
+		return true;
 		
-	}
-	
-	public String filterEditMessage(String msg, Player sender) {
-		
-		return msg;
 	}
 }
