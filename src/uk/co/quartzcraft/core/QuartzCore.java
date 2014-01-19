@@ -79,6 +79,7 @@ public class QuartzCore extends JavaPlugin {
 		log.info("[QC][STARTUP]Registering listeners...");
 		//getServer().getPluginManager().registerEvents(new ConnectionListener(this), this);
 		new ConnectionListener(this);
+		new ChatListener(this);
 		
 	    //Commands
 		log.info("[QC][STARTUP]Registering commands...");
