@@ -72,7 +72,7 @@ public class QuartzCore extends JavaPlugin {
 		ChatPhrase.addPhrase("database_error", "&cA database error occured!");
 		ChatPhrase.addPhrase("database_error_contact", "&cA database error occured! &aPlease contact an administrator on the QuartzCraft website immediately.");
 		ChatPhrase.addPhrase("player_use_only", "&4This command can only be used ingame by a player.");
-		ChatPhrase.addPhrase("Server_Full", "&cServer Full! &aIt appears that the server is full. Please try again later, or purchase a supporter rank at http://quartzcraft.co.uk");
+		ChatPhrase.addPhrase("Server_Full", "&cServer Full!\n &aIt appears that the server is full. Please try again later, or purchase a supporter rank at http://quartzcraft.co.uk");
 		ChatPhrase.addPhrase("Kick_Whitelist", "&cYou are not whitelisted");
 		ChatPhrase.addPhrase("specify_username", "&cPlease specify a user!");
 		ChatPhrase.addPhrase("promoted_player_yes", "&aThe player was successfully promoted!");
