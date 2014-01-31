@@ -74,6 +74,9 @@ public class QuartzCore extends JavaPlugin {
 		ChatPhrase.addPhrase("player_use_only", "&4This command can only be used ingame by a player.");
 		ChatPhrase.addPhrase("Server_Full", "&cServer Full! &aIt appears that the server is full. Please try again later, or purchase a supporter rank at http://quartzcraft.co.uk");
 		ChatPhrase.addPhrase("Kick_Whitelist", "&cYou are not whitelisted");
+		ChatPhrase.addPhrase("specify_username", "&cPlease specify a user!");
+		ChatPhrase.addPhrase("promoted_player_yes", "&aThe player was successfully promoted!");
+		ChatPhrase.addPhrase("promoted_player_no", "&cThe player failed to be promoted!");
 		
 		
 		
