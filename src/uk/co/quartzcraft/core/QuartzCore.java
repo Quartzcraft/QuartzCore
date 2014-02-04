@@ -76,8 +76,8 @@ public class QuartzCore extends JavaPlugin {
 		ChatPhrase.addPhrase("Server_Full", "&cServer Full!\n &aIt appears that the server is full. Please try again later, or purchase a supporter rank at http://quartzcraft.co.uk");
 		ChatPhrase.addPhrase("Kick_Whitelist", "&cYou are not whitelisted");
 		ChatPhrase.addPhrase("specify_username", "&cPlease specify a user!");
-		ChatPhrase.addPhrase("promoted_player_yes", "&aThe player was successfully promoted!");
-		ChatPhrase.addPhrase("promoted_player_no", "&cThe player failed to be promoted!");
+		ChatPhrase.addPhrase("promoted_player_yes", "&aThe player was successfully moved groups!");
+		ChatPhrase.addPhrase("promoted_player_no", "&cThe player failed to move groups!");
 		
 		
 		
