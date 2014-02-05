@@ -14,7 +14,9 @@ public class CommandChat implements CommandExecutor {
 		if(command.getName().equalsIgnoreCase("chat")) {
 			
 			return true;
+		} else {
+			return false;
 		}
-		return false;
+		
 	}
 }

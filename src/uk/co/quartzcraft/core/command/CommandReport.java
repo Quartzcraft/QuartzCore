@@ -20,11 +20,12 @@ public class CommandReport implements CommandExecutor {
 	    		if(arg0.length == 0) {
 	    			player.sendMessage(ChatColor.RED + "Please specify a player to report");
 	    		} else {
-	    			
+	    			//stuffs
+	    			return true;
 	    		}
 	    	}
 		} 
-		return false;
+		return true;
 	}
 
 }

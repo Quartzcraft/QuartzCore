@@ -58,7 +58,7 @@ public class CommandTest implements CommandExecutor {
 			
 			//String String = "player";
 			
-		}
+		} 
 		return true;
 	}
 }
