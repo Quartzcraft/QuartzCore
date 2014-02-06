@@ -1,72 +1,77 @@
 name: QuartzCore
-version: 1.6.2
+version: 1.0.0
 author: The QuartzCraft Team! SoulPunisher, mba2012 and nfell2009!
 website: http://www.quartzcraft.co.uk/
-main: uk.co.quartzcraft.QuartzCore
+main: uk.co.quartzcraft.core.QuartzCore
 
 commands:
    quartz:
       description: Runs quick checks.
       usage: /quartz
       permission: QCC.quartz
-      permission-message: Unknown Command. Type "help" for help.
-   register:
-      description: Registers a player
-      usage: /register
-      permission: QCC.register
-      permission-message: Unknown Command. Type "help" for help.
+      default: op
+      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
    test:
       description: Test command, set to test whatever.
       usage: /test
       permission: QCC.dev.test
-      permission-message: Unknown Command. Type "help" for help.
+      default: op
+      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
    m:
       description: Switches player gamemode between 0 and 1.
       usage: /m
       permission: QCC.admin.m
-      permission-message: Unknown Command. Type "help" for help.
-   list:
-      description: Lists online players.
-      usage: /list
-      permission: QCC.list
-      permission-message: Unknown Command. Type "help" for help.
-      alias: who
+      default: op
+      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
    go:
       description: Teleports you to a player.
       usage: /go
       permission: QCC.go
-      permission-message: Unknown Command. Type "help" for help.
+      default: op
+      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
    get:
       description: Teleports a player to you.
       usage: /get
       permission: QCC.get
-      permission-message: Unknown Command. Type "help" for help.
-   cleardrops:
-      description: Cears all drops of the ground.
-      usage: /cleardrops
-      permission: QCC.admin.drops
-      permission-message: Unknown Command. Type "help" for help.
-      alias: t, te
-   donate:
-      description: Tells you how to donate.
-      usage: /donate
-      permission: QCC.donate
-      permission-message: Unknown Command. Type "help" for help.
+      default: op
+      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
    chat:
       description: Basic chat command
       usage: /chat
       permission: QCC.chat
-      permission-message: Unknown Command. Type "help" for help.
+      default: op
+      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
       alias: ch
-   mood:
-      description: Changes mood
-      usage: /mood
-      permission: QCC.mood
-      permission-message: Unknown Command. Type "help" for help.
-      alias: mo, md, moo
-   team:
-      description: Basic team command
-      usage: /team
-      permission: QCC.team
-      permission-message: Unknown Command. Type "help" for help.
-      alias: t, te
+   report:
+      description: Report a rule breaker
+      usage: /report
+      permission: QCC.report
+      default: op
+      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
+   promo:
+      description: Main promo command
+      usage: /promo
+      permission: QCC.promo
+      default: op
+      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
+   qplayer:
+      description: Player manipulation command
+      usage: /qplayer
+      permission: QCC.admin.qplayer
+      default: op
+      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
+Permissions:
+   QCC.chat.*:
+      description: Allows access to all QCC chat permissions.
+      default: op
+      children:
+         QCC.chat.filterBypass: true
+   QCC.chat.filterBypass:
+      description: Allows bypass of the chat filter.
+      default: op
+   QCC.group.*:
+      description: Allows access to all QPlayer commands.
+      default: op
+   QCC.QPlayer.group:
+      description: Allows user to set another users group.
+      default: op

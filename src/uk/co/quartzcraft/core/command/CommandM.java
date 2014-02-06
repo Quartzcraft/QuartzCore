@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.command;
+package uk.co.quartzcraft.core.command;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -36,9 +36,10 @@ public class CommandM implements CommandExecutor {
 			}
 			
 			return true;
+		} else {
+			return false;
 		}
 		//sender.sendMessage(ChatColor.RED + "Your gamemode could not be changed!");
-		return false;
 	}
 
 }

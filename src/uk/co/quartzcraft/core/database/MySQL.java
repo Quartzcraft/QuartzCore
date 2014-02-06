@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.database;
+package uk.co.quartzcraft.core.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.util.logging.Level;
 
 import org.bukkit.plugin.Plugin;
 
-import uk.co.quartzcraft.database.Database;
+import uk.co.quartzcraft.core.database.*;
 
 /**
  * Connects to and uses a MySQL database

@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.database;
+package uk.co.quartzcraft.core.database;
 
 import java.sql.Connection;
 

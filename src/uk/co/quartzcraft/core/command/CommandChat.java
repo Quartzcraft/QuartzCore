@@ -1,21 +1,22 @@
-package uk.co.quartzcraft.command;
+package uk.co.quartzcraft.core.command;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
-public class CommandTeam implements CommandExecutor {
+import uk.co.quartzcraft.core.chat.*;
+
+public class CommandChat implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		
-		if(command.getName().equalsIgnoreCase("team")){ 
+		if(command.getName().equalsIgnoreCase("chat")) {
 			
 			return true;
+		} else {
+			return false;
 		}
-		return false;
+		
 	}
-
-	
 }

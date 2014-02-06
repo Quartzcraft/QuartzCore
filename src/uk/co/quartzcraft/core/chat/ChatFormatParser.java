@@ -1,9 +1,16 @@
-package uk.co.quartzcraft.chat;
+package uk.co.quartzcraft.core.chat;
 
 import org.bukkit.ChatColor;
 
 public class ChatFormatParser {
 
+	/**
+	 * Parses the chat colours.
+	 * 
+	 * @author mba2012
+	 * @param message
+	 * @return message
+	 */
 	public static String parseChatColour(String message) {
 		
 		//Parse Colours
@@ -25,5 +32,40 @@ public class ChatFormatParser {
 		message = message.replaceAll("&f", ChatColor.WHITE + "");
 		
 		return message;
+	}
+	
+	/**
+	 * Parses chat formatting.
+	 * 
+	 * @author mba2012
+	 * @param message
+	 * @return message
+	 */
+	public static String parseChatFormat(String message) {
+		
+		//Parse Colours
+		message = message.replaceAll("&k", ChatColor.MAGIC + "");
+		message = message.replaceAll("&0", ChatColor.ITALIC + "");
+		message = message.replaceAll("&n", ChatColor.UNDERLINE + "");
+		message = message.replaceAll("&m", ChatColor.STRIKETHROUGH + "");
+		message = message.replaceAll("&l", ChatColor.BOLD + "");
+		message = message.replaceAll("&r", ChatColor.RESET + "");
+		
+		return message;
+	}
+
+	/**
+	 * Parses chat, using the format and colour parsers.
+	 * 
+	 * @author mba2012
+	 * @param message
+	 * @return message
+	 */
+	public static String parseChat(String message) {
+	
+	message = parseChatColour(message);
+	message = parseChatFormat(message);	
+	
+	return message;
 	}
 }
