@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.mysql.jdbc.PreparedStatement;
+
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.*;
 
@@ -103,16 +105,11 @@ public abstract class QPlayer {
 		
 		try {
 			Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
-			ResultSet res = s.executeQuery("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', " + date + ", 9, 1);");
-	        res.next();
-	        
-	        if(res != null) {
-	        	return true;
-	        } else {
-				return false;
-			}
+			s.executeQuery("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', " + date + ", 9, 1);");
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			player.kickPlayer(ChatPhrase.getPhrase("database_error_contact") + ChatPhrase.getPhrase("could_not_create_player"));
 			return false;
 		}
 	}
