@@ -22,6 +22,7 @@ public abstract class QPlayer {
 	 * Sends a message to the specified player. Message is parsed by ChatFormatParser.
 	 * @param player
 	 * @param message
+	 * @deprecated It appears that the normal player.sendMessage() method works fine.
 	 */
 	public static void sendMessage(Player player, String message) {
 		ChatFormatParser.parseChat(message);
