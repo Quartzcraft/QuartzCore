@@ -110,7 +110,6 @@ public abstract class QPlayer {
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			player.kickPlayer(ChatPhrase.getPhrase("database_error_contact") + ChatPhrase.getPhrase("could_not_create_player"));
 			return false;
 		}
 	}

@@ -48,7 +48,12 @@ public class ConnectionListener implements Listener {
 				if(res1.getString("UUID") == SUUID) {
 					QPlayer.setConnectionStatus(player, true);
 				} else {
-					QPlayer.createPlayer(player);
+					boolean result = QPlayer.createPlayer(player);
+					if(result) {
+						player.kickPlayer(ChatPhrase.getPhrase("database_error_contact") + ChatPhrase.getPhrase("could_not_create_player"));
+					} else {
+						//Nothing
+					}
 				}
 			} 
 		} catch (SQLException e) {
