@@ -23,8 +23,11 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class ConnectionListener implements Listener {
 	
+	private static QuartzCore plugin;
+	
 	public ConnectionListener(QuartzCore plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        this.plugin = plugin;
     }
 	
 	/**
@@ -86,14 +89,13 @@ public class ConnectionListener implements Listener {
 		
 		String splayer = player.toString();
 		String playername = player.getDisplayName();
-		String lastSeen = QPlayer.getLastSeen(SUUID);
 		
-		String message = playername + ChatColor.YELLOW + " joined, last seen " + lastSeen;
-		
-		join.setJoinMessage(message);
-		
-		//player.sendMessage("Welcome back, " + playername + "!");
-		//player.sendMessage("Your QC balance is: ");
+		if(plugin.getConfig().getString("settings.connection-broadcast") == "true") {
+			String lastSeen = QPlayer.getLastSeen(SUUID);
+			String message = playername + ChatColor.YELLOW + " joined, last seen " + lastSeen;
+			
+			join.setJoinMessage(message);
+		}
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -106,7 +108,6 @@ public class ConnectionListener implements Listener {
 		String playername = player.getDisplayName();
 		
 		player.sendMessage("Welcome back, " + playername + "!");
-		//player.sendMessage("Your QC balance is: ");
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -115,9 +116,11 @@ public class ConnectionListener implements Listener {
 		Player player = quit.getPlayer();
 		String playername = QPlayer.getDisplayName(player);
 		
-		String message = playername + ChatColor.YELLOW + " disconnected.";
-		
-		quit.setQuitMessage(message);
+		if(plugin.getConfig().getString("settings.connection-broadcast") == "true") {
+			String message = playername + ChatColor.YELLOW + " disconnected.";
+			
+			quit.setQuitMessage(message);
+		}
 	}
 	
 }
