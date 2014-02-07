@@ -3,6 +3,7 @@ package uk.co.quartzcraft.core.entity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -11,12 +12,18 @@ import java.util.logging.Logger;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.*;
 
 public abstract class QPlayer {
+	
+	private static java.sql.Timestamp getCurrentTimeStamp() {
+	    java.util.Date today = new java.util.Date();
+	    return new java.sql.Timestamp(today.getTime());
+	}
 	
 	/**
 	 * Sends a message to the specified player. Message is parsed by ChatFormatParser.
@@ -99,14 +106,17 @@ public abstract class QPlayer {
 	public static boolean createPlayer(Player player) {
 		
 		long time = System.currentTimeMillis();
-		java.sql.Date date = new java.sql.Date(time);
+		//java.sql.Date date = new java.sql.Date(time);
+		Date date = new Date(System.currentTimeMillis());
 		
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
 		
 		try {
-			Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
-			s.executeUpdate("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', " + date + ", 9, 1);");
+			java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
+			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', ?, 9, 1);");
+			s.setTimestamp(1, getCurrentTimeStamp());
+			s.executeUpdate( /* "INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', 9, 0);" */);
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

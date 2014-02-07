@@ -49,13 +49,13 @@ public class ConnectionListener implements Listener {
 			if(res1.next()) {
 				if(res1.getString("UUID") == SUUID) {
 					QPlayer.setConnectionStatus(player, true);
-					plugin.log.info("Player, " + player.getDisplayName() + " sucessfully joined!");
+					plugin.log.info("[QC] Player, " + player.getDisplayName() + " sucessfully joined!");
 				} else {
-					plugin.log.info("Something went wrong!");
+					plugin.log.info("[QC] Something went wrong!");
 				}
 			} else {
 				if(QPlayer.createPlayer(player)) {
-					plugin.log.info("Player, " + player.getDisplayName() + " was created with UUID of " + SUUID);
+					plugin.log.info("[QC] Player, " + player.getDisplayName() + " was created with UUID of " + SUUID);
 				} else {
 					player.kickPlayer(ChatPhrase.getPhrase("database_error_contact") + ChatPhrase.getPhrase("could_not_create_player"));
 				}
