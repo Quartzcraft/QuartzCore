@@ -31,7 +31,7 @@ public class ConnectionListener implements Listener {
     }
 	
 	/**
-	 * Still a WIP - Must get player creation working some time.
+	 * Manages the login stuff for QuartzCore.
 	 * @param login
 	 */
 	@EventHandler(priority = EventPriority.LOWEST)
