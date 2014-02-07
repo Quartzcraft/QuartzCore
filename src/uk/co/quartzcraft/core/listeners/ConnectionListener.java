@@ -46,19 +46,20 @@ public class ConnectionListener implements Listener {
 		try {
 			s1 = QuartzCore.MySQLcore.openConnection().createStatement();
 			ResultSet res1 = s1.executeQuery("SELECT * FROM PlayerData WHERE UUID='" + SUUID + "'");
-			res1.next();
-			if(res1 != null) {
+			if(res1.next()) {
 				if(res1.getString("UUID") == SUUID) {
 					QPlayer.setConnectionStatus(player, true);
+					plugin.log.info("Player, " + player.getDisplayName() + " sucessfully joined!");
 				} else {
-					boolean result = QPlayer.createPlayer(player);
-					if(result) {
-						player.kickPlayer(ChatPhrase.getPhrase("database_error_contact") + ChatPhrase.getPhrase("could_not_create_player"));
-					} else {
-						//Nothing
-					}
+					plugin.log.info("Something went wrong!");
 				}
-			} 
+			} else {
+				if(QPlayer.createPlayer(player)) {
+					plugin.log.info("Player, " + player.getDisplayName() + " was created with UUID of " + SUUID);
+				} else {
+					player.kickPlayer(ChatPhrase.getPhrase("database_error_contact") + ChatPhrase.getPhrase("could_not_create_player"));
+				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -98,8 +99,8 @@ public class ConnectionListener implements Listener {
 		}
 	}
 	
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerJoin(PlayerJoinEvent join) {
+	@EventHandler(priority = EventPriority.LOWEST)
+	public void onPlayerJoinLow(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();

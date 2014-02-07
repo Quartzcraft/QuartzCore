@@ -106,7 +106,7 @@ public abstract class QPlayer {
 		
 		try {
 			Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
-			s.executeQuery("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', " + date + ", 9, 1);");
+			s.executeUpdate("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', " + date + ", 9, 1);");
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
