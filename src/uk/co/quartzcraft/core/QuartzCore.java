@@ -25,12 +25,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class QuartzCore extends JavaPlugin {
 	
 	public static String version = "1.0.0";
-	public static String release = "BETA";
+	public static String release = "VERSION";
 	
 	public Plugin plugin = this.plugin;
 	public Server server = getServer();
 	public static final Logger log = Logger.getLogger("Minecraft");
-	//public final PluginManager manager = getServer().getPluginManager();
 	
 	public static Connection DBCore = null;
 	public static Connection DBXen = null;

@@ -113,7 +113,6 @@ public class ConnectionListener implements Listener {
 	
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerQuit(PlayerQuitEvent quit) {
-		//Shouldn't really be monitor, but need to make sure all other permissions plugins are finished.
 		Player player = quit.getPlayer();
 		String playername = QPlayer.getDisplayName(player);
 		
