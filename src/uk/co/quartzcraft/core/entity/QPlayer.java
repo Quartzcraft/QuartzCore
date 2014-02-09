@@ -9,6 +9,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -20,6 +21,11 @@ import uk.co.quartzcraft.core.chat.*;
 
 public abstract class QPlayer {
 	
+	private static QuartzCore plugin;
+	
+	public void QuartzKingdomsConfig(QuartzCore plugin) {
+		this.plugin = plugin;
+	}
 	private static java.sql.Timestamp getCurrentTimeStamp() {
 	    java.util.Date today = new java.util.Date();
 	    return new java.sql.Timestamp(today.getTime());
@@ -148,13 +154,40 @@ public abstract class QPlayer {
 	}
 
 	/**
-	 * Sets the users group
+	 * Sets the users primary group
 	 * 
 	 * @param playername
 	 * @param GroupName
 	 */
-	public static void setGroup(String playername, String GroupName) {
+	public static boolean setPrimaryGroup(CommandSender sender, String playername, String GroupName) {
+		String promoteCommand = plugin.getConfig().getString("settings.primary-promote-command");
+		promoteCommand.replaceAll("<group>", GroupName);
+		promoteCommand.replaceAll("<user>", playername);
 		
+		if(Bukkit.getServer().dispatchCommand(sender, promoteCommand)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Adds a secondary group for the user.
+	 * 
+	 * @param playername
+	 * @param GroupName
+	 */
+	public static boolean addSecondaryGroup(CommandSender sender, String playername, String GroupName) {
+		String promoteCommand = plugin.getConfig().getString("settings.secondary-promote-command");
+		promoteCommand.replaceAll("<group>", GroupName);
+		promoteCommand.replaceAll("<user>", playername);
+		
+		if(Bukkit.getServer().dispatchCommand(sender, promoteCommand)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	}
 
 	public static String getLastSeen(String SUUID) {

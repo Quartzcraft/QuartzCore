@@ -14,7 +14,7 @@ public class QPlayerGroupSubCommand extends QSubCommand {
 
 	@Override
 	public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		QPlayer.setGroup(label, label);
+		QPlayer.setPrimaryGroup(sender, label, label);
 
 	}
 
