@@ -35,7 +35,7 @@ public class QuartzCore extends JavaPlugin {
 	public static Connection DBXen = null;
     
 	public static MySQL MySQLcore = null;
-	//public MySQL MySQLxen = null;
+	public static MySQL MySQLweb = null;
 	
 	@Override
 	public void onDisable() {
@@ -51,16 +51,23 @@ public class QuartzCore extends JavaPlugin {
 		
 		log.info("[QC][STARTUP LOGGER]Console logger discovered");
 		
+		//Config files
 		log.info("[QC]Running plugin configuration");
 		this.saveDefaultConfig();
 		
+		//Core Database
 		String SQLCoreHost = this.getConfig().getString("database.core.host");
 		String SQLCoreDatabase = this.getConfig().getString("database.core.database");
 		String SQLCoreUser = this.getConfig().getString("database.core.username");
 		String SQLCorePassword = this.getConfig().getString("database.core.password");
 		MySQLcore = new MySQL(plugin, SQLCoreHost, "3306", SQLCoreDatabase, SQLCoreUser, SQLCorePassword);
-		//public MySQL MySQLxen = new MySQL(plugin, "ns1.gingetechnologies.com", "3306", "quartz_craft", "quartz", "226+nBEV[{RL");
-
+		
+		//Website Database
+		String SQLWebHost = this.getConfig().getString("database.web.host");
+		String SQLWebDatabase = this.getConfig().getString("database.web.database");
+		String SQLWebUser = this.getConfig().getString("database.web.username");
+		String SQLWebPassword = this.getConfig().getString("database.web.password");
+		MySQLweb = new MySQL(plugin, SQLWebHost, "3306", SQLWebDatabase, SQLWebUser, SQLWebPassword);
 		
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
