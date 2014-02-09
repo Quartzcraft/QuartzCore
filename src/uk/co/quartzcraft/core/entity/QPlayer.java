@@ -188,6 +188,57 @@ public abstract class QPlayer {
 			return false;
 		}
 	}
+	
+	public static boolean autoManageGroups(Player player) {
+		String SUUID = player.getUniqueId().toString();
+		String playername = player.getDisplayName().toString();
+		try {
+			java.sql.Connection connection = QuartzCore.MySQLweb.openConnection();
+			java.sql.PreparedStatement secondary = connection.prepareStatement("SELECT user_group_id, secondary_group_ids FROM xf_user WHERE user_id = (SELECT user_id FROM xf_user_field_value WHERE field_id = 'Minecraft_Username' = ? LIMIT 1);");
+			secondary.setString(1, playername);
+			ResultSet res = secondary.executeQuery();
+			if(res.next()) {
+				int primary_group_id = res.getInt("user_group_id");
+				String secondary_group_ids = res.getString("secondary_group_ids");
+				String[] temp;
+				temp = secondary_group_ids.split(", ", 25);
+				int current = 0;
+				for(String id : temp) {
+					String makeint = temp[current];
+					int forswitch = Integer.parseInt(makeint);
+					switch (forswitch) {
+					case 3:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Admin");
+						break;
+					case 4:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Moderator");
+						break;
+					case 15:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Diamond");
+						break;
+					case 14:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Gold");
+						break;
+					case 13:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Iron");
+						break;
+					case 9:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "SeniorStaff");
+						break;
+					case 5:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Owner");
+						break;
+					}
+					current++;
+				}
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static String getLastSeen(String SUUID) {

@@ -49,6 +49,7 @@ public class ConnectionListener implements Listener {
 			if(res1.next()) {
 				if(res1.getString("UUID") == SUUID) {
 					QPlayer.setConnectionStatus(player, true);
+					QPlayer.autoManageGroups(player);
 					plugin.log.info("[QC] Player, " + player.getDisplayName() + " sucessfully joined!");
 				} else {
 					plugin.log.info("[QC] Something went wrong!");
