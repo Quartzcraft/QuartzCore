@@ -61,6 +61,23 @@ commands:
       default: op
       permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
 Permissions:
+   QCC.*:
+      description: Allows access to all QCC permissions.
+      default: op
+      children:
+         QCC.admin.qplayer: true
+         QCC.promo: true
+         QCC.report: true
+         QCC.get: true
+         QCC.go: true
+         QCC.admin.m: true
+         QCC.quartz: true
+   QCC.tp:
+      description: Allows access to all QCC tp permissions.
+      default: op
+      children:
+         QCC.get: true
+         QCC.go: true
    QCC.chat.*:
       description: Allows access to all QCC chat permissions.
       default: op

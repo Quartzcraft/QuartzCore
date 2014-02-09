@@ -11,5 +11,7 @@ database:
       password:
 settings:
    join-broadcast: false
+   primary-promote-command: pex user <user> group set <group>
+   secondary-promote-command: pex user <user> group add <group>
 
    
