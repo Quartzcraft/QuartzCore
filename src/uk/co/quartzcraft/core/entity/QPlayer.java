@@ -69,30 +69,10 @@ public abstract class QPlayer {
 		
 	}
 	
-	/**
-	 * 
-	 * Gets player data from QuartzCore PlayerData database table by used the QPlayer object.
-	 * @author mba2012
-	 * @param qplayer
-	 * @deprecated Just going to use getData().
-	 */
-	public static ResultSet getQPlayer(QPlayer qplayer) {
+	public static int getUserID(Player player) {
+		String SUUID = player.getUniqueId().toString();
 		
-		String playername = qplayer.toString();
-		try {
-			Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
-	        ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE DisplayName ='" + playername + "';");
-	        res.next();
-	        
-	        if(res.getString("DisplayName") == playername) {
-	        	return res;
-	        }
-	        
-		} catch(SQLException e) {
-			Logger.getLogger("Minecraft").log(Level.SEVERE, null, e);
-		}
-		return null;
-		
+		return 0;
 	}
 	
 	/**
@@ -110,7 +90,6 @@ public abstract class QPlayer {
 	 * @return boolean
 	 */
 	public static boolean createPlayer(Player player) {
-		
 		long time = System.currentTimeMillis();
 		//java.sql.Date date = new java.sql.Date(time);
 		Date date = new Date(System.currentTimeMillis());
@@ -121,36 +100,15 @@ public abstract class QPlayer {
 		try {
 			java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
 			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', ?, 9, 1);");
-			s.setTimestamp(1, getCurrentTimeStamp());
-			s.executeUpdate( /* "INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', 9, 0);" */);
-			return true;
+			if(s.executeUpdate( /* "INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', 9, 0);" */) == 1) {
+				return true;
+			} else {
+				return false;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
-	}
-
-	/**
-	 * Adds the UUID to a row in the player data table.
-	 * @param player
-	 * @deprecated
-	 */
-	public static void addUUID(Player player) {
-		UUID UUID = player.getUniqueId();
-		String SUUID = UUID.toString();
-		
-		String playername = player.getDisplayName();
-		
-		try {
-			Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
-	        ResultSet res = s.executeQuery("UPDATE PlayerData SET UUID='" + SUUID + "' WHERE DisplayName='" + playername + "';");
-			res.next();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-        
-		
 	}
 
 	/**
