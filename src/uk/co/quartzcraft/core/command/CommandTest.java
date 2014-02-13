@@ -32,7 +32,7 @@ public class CommandTest implements CommandExecutor {
 			
 			Announce.announce("&4This is a test announcement!");
 			Announce.announceWithPrefix("QuartzCraft", "&a", "&6The test command has been run!");
-			QPlayer.sendMessage(player, ChatPhrase.getPhrase("test_phrase"));
+			sender.sendMessage(ChatPhrase.getPhrase("test_phrase"));
 			
 			
 			UUID UUID = player.getUniqueId();
