@@ -61,7 +61,20 @@ public abstract class QPlayer {
 	public static int getUserID(Player player) {
 		String SUUID = player.getUniqueId().toString();
 		
-		return 0;
+		Statement s;
+		try {
+			s = QuartzCore.MySQLcore.openConnection().createStatement();
+			ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE UUID ='" + SUUID + "';");
+	        if(res.next()) {
+	        	int id = res.getInt("id");
+	        	return id;
+	        } else {
+	        	return 0;
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 	
 	/**
