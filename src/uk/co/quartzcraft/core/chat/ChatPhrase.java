@@ -5,15 +5,24 @@ import java.util.List;
 
 import com.sun.tools.javac.code.Attribute.Array;
 
+import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.command.QSubCommand;
 
 public class ChatPhrase {
-
+private static QuartzCore plugin;
+	
+	public ChatPhrase(QuartzCore plugin) {
+        this.plugin = plugin;
+    }
+	
 	private static HashMap<String, String> phrases = new HashMap<String, String>();
+	public static String error = "The requested phrase could not be found!";
 	
 	public static String match(String phrase_to_match) {
 		boolean match = false; 
-		String error = "The requested phrase could not be found!";
+		if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
+			String error = phrase_to_match;
+		}
 		
 		for(String phrase_key : phrases.keySet()) {
 			if(phrase_key.equalsIgnoreCase(phrase_to_match)) {
