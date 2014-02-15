@@ -207,11 +207,6 @@ public abstract class QPlayer {
 		
 		return lastSeen;
 	}
-
-	public static String getDisplayName(Player player) {
-
-		return null;
-	}
 	
 	public abstract ResultSet getDataThisPlugin();
 	
