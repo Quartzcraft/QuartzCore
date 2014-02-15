@@ -115,10 +115,9 @@ public class ConnectionListener implements Listener {
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerQuit(PlayerQuitEvent quit) {
 		Player player = quit.getPlayer();
-		String playername = QPlayer.getDisplayName(player);
 		
 		if(plugin.getConfig().getString("settings.connection-broadcast") == "true") {
-			String message = playername + ChatColor.YELLOW + " disconnected.";
+			String message = player.getDisplayName() + ChatColor.YELLOW + " disconnected.";
 			
 			quit.setQuitMessage(message);
 		}
