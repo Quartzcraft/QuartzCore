@@ -32,7 +32,7 @@ public class QuartzCore extends JavaPlugin {
 	public static final Logger log = Logger.getLogger("Minecraft");
 	
 	public static Connection DBCore = null;
-	public static Connection DBXen = null;
+	public static Connection DBWeb = null;
     
 	public static MySQL MySQLcore = null;
 	public static MySQL MySQLweb = null;
@@ -110,7 +110,7 @@ public class QuartzCore extends JavaPlugin {
 	   	//Database
 	  	log.info("[QC][STARTUP]Connecting to Database");
 	  	DBCore = MySQLcore.openConnection();
-	  	//DBXen = MySQLxen.openConnection();
+	  	DBWeb = MySQLweb.openConnection();
 	  		
 	   	//Startup notice
 	  	log.info("[QC]The QuartzCore Plugin has been enabled!");
