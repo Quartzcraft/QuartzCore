@@ -83,6 +83,28 @@ public abstract class QPlayer {
 		}
 	}
 	
+	public static String getDisplayName(Player player) {
+		
+		return null;
+	}
+	
+	public static String getDisplayName(int id) {
+		Statement s;
+		
+		try {
+			s = QuartzCore.MySQLcore.openConnection().createStatement();
+			ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE id ='" + id + "';");
+	        if(res.next()) {
+	        	return res.getString(3);
+	        } else {
+	        	return null;
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	/**
 	 * Updates the QuartzCraft PlayerData to set the connection status. 
 	 * 
