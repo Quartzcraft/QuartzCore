@@ -33,6 +33,7 @@ public abstract class QPlayer {
 	
 	/**
 	 * Gets player data from QuartzCore PlayerData database table by using UUID.
+	 * 
 	 * @param UUID
 	 * @return ResultSet
 	 */
@@ -65,6 +66,7 @@ public abstract class QPlayer {
 	
 	/**
 	 * Updates the QuartzCraft PlayerData to set the connection status. 
+	 * 
 	 * @param player
 	 * @param conn
 	 */
@@ -73,9 +75,10 @@ public abstract class QPlayer {
 	}
 	
 	/**
-	 * Creates a play in the QuartzCore PlayerData database.
+	 * Creates a player in the QuartzCore PlayerData database.
+	 * 
 	 * @param player
-	 * @return boolean
+	 * @return boolean - true if player was created, false if otherwise
 	 */
 	public static boolean createPlayer(Player player) {
 		long time = System.currentTimeMillis();
@@ -135,6 +138,12 @@ public abstract class QPlayer {
 		}
 	}
 	
+	/**
+	 * Automatically manages a users group depending on their groups on the website.
+	 * 
+	 * @param player
+	 * @return boolean - true if was successful, false if otherwise.
+	 */
 	public static boolean autoManageGroups(Player player) {
 		String SUUID = player.getUniqueId().toString();
 		String playername = player.getDisplayName().toString();
@@ -187,6 +196,12 @@ public abstract class QPlayer {
 		}
 	}
 
+	/**
+	 * Gets the date the user was last seen
+	 * 
+	 * @param SUUID
+	 * @return String of the last seen date in format - X days ago
+	 */
 	public static String getLastSeen(String SUUID) {
 		String lastSeen = null;
 		
