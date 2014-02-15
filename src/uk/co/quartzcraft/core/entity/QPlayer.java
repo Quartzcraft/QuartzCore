@@ -58,6 +58,12 @@ public abstract class QPlayer {
 		
 	}
 	
+	/**
+	 * Gets a users id from the PlayerData database
+	 * 
+	 * @param player
+	 * @return id of the player
+	 */
 	public static int getUserID(Player player) {
 		String SUUID = player.getUniqueId().toString();
 		
