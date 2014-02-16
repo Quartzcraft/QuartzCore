@@ -144,6 +144,7 @@ public abstract class QPlayer {
 		try {
 			java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
 			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', ?, 9, 1);");
+			s.setString(1, date.toString());
 			if(s.executeUpdate( /* "INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', 9, 0);" */) == 1) {
 				return true;
 			} else {
