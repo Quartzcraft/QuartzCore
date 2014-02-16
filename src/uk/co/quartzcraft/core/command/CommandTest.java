@@ -33,31 +33,6 @@ public class CommandTest implements CommandExecutor {
 			Announce.announce("&4This is a test announcement!");
 			Announce.announceWithPrefix("QuartzCraft", "&a", "&6The test command has been run!");
 			sender.sendMessage(ChatPhrase.getPhrase("test_phrase"));
-			
-			
-			UUID UUID = player.getUniqueId();
-			
-			//run database query
-			
-			try {
-		        Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
-		        ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE DisplayName ='mba2012';");
-		        res.next();
-		        //sender.sendMessage("Hello, " + res.getString("DisplayName"));
-		        if (res.getString("DisplayName") == null) {
-		        	sender.sendMessage(":/");
-		        } else {
-		        	sender.sendMessage("Hello, " + res.getString("DisplayName"));
-		        	return true;
-		        }
-		    } catch (SQLException ex) {
-		        Logger.getLogger("Minecraft").log(Level.SEVERE, null, ex);
-		    }
-		    
-		    
-			
-			//String String = "player";
-			
 		} 
 		return true;
 	}
