@@ -37,7 +37,7 @@ public abstract class QPlayer {
 	 * @param UUID
 	 * @return ResultSet
 	 */
-	public static ResultSet getData(UUID UUID) {
+	public static HashMap getData(UUID UUID) {
 		
 		String SUUID = UUID.toString();
 		try {
@@ -46,7 +46,7 @@ public abstract class QPlayer {
 	        res.next();
 	        
 	        if(res.getString("UUID") == SUUID) {
-	        	return res;
+	        	return null;
 	        } else {
 	        	return null;
 	        }
