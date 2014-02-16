@@ -83,11 +83,23 @@ public abstract class QPlayer {
 		}
 	}
 	
+	/**
+	 * Gets the display name of the player.
+	 * 
+	 * @param player
+	 * @return The display name of the player as defined in the QuartzCore database
+	 */
 	public static String getDisplayName(Player player) {
 		
 		return null;
 	}
 	
+	/**
+	 * Gets the display name of the player.
+	 * 
+	 * @param id
+	 * @return The display name of the player as defined in the QuartzCore database
+	 */
 	public static String getDisplayName(int id) {
 		Statement s;
 		
