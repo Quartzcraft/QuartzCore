@@ -35,7 +35,7 @@ public abstract class QPlayer {
 	 * Gets player data from QuartzCore PlayerData database table by using UUID.
 	 * 
 	 * @param UUID
-	 * @return ResultSet
+	 * @return a map of all the data
 	 */
 	public static HashMap getData(UUID UUID) {
 		
@@ -121,7 +121,7 @@ public abstract class QPlayer {
 	 * Updates the QuartzCraft PlayerData to set the connection status. 
 	 * 
 	 * @param player
-	 * @param conn
+	 * @param connection status
 	 */
 	public static void setConnectionStatus(Player player, boolean conn) {
 		
