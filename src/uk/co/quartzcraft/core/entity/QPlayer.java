@@ -162,12 +162,22 @@ public abstract class QPlayer {
 	 * @param playername
 	 * @param GroupName
 	 */
-	public static boolean setPrimaryGroup(CommandSender sender, String playername, String GroupName) {
+	public static boolean setPrimaryGroup(CommandSender sender, String playername, String GroupName, boolean promote) {
 		String promoteCommand = plugin.getConfig().getString("settings.primary-promote-command");
+		String demoteCommand = plugin.getConfig().getString("settings.primary-demote-command");
 		promoteCommand.replaceAll("<group>", GroupName);
 		promoteCommand.replaceAll("<user>", playername);
+		demoteCommand.replaceAll("<group>", GroupName);
+		demoteCommand.replaceAll("<user>", playername);
+		boolean success = false;
 		
-		if(Bukkit.getServer().dispatchCommand(sender, promoteCommand)) {
+		if(promote) {
+			success = Bukkit.getServer().dispatchCommand(sender, promoteCommand);
+		} else {
+			success = Bukkit.getServer().dispatchCommand(sender, demoteCommand);
+		}
+		
+		if(success) {
 			return true;
 		} else {
 			return false;
@@ -217,25 +227,25 @@ public abstract class QPlayer {
 					int forswitch = Integer.parseInt(makeint);
 					switch (forswitch) {
 					case 3:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Admin");
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Admin", true);
 						break;
 					case 4:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Moderator");
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Moderator", true);
 						break;
 					case 15:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Diamond");
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Diamond", true);
 						break;
 					case 14:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Gold");
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Gold", true);
 						break;
 					case 13:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Iron");
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Iron", true);
 						break;
 					case 9:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "SeniorStaff");
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "SeniorStaff", true);
 						break;
 					case 5:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Owner");
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Owner", true);
 						break;
 					}
 					current++;
