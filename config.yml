@@ -13,6 +13,6 @@ settings:
    join-broadcast: false
    primary-promote-command: pex user <user> group set <group>
    secondary-promote-command: pex user <user> group add <group>
-   phrase-fallback: false
+   phrase-fallback: false #This doesn't actually change anything yet, just keep it at false.
 
    
