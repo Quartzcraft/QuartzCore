@@ -121,7 +121,7 @@ public abstract class QPlayer {
 	 * Updates the QuartzCraft PlayerData to set the connection status. 
 	 * 
 	 * @param player
-	 * @param connection status
+	 * @param conn Connection status 
 	 */
 	public static void setConnectionStatus(Player player, boolean conn) {
 		
