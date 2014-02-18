@@ -222,6 +222,36 @@ public abstract class QPlayer {
 				String[] temp;
 				temp = secondary_group_ids.split(", ", 25);
 				int current = 0;
+				//Remove groups
+				for(String id : temp) {
+					String makeint = temp[current];
+					int forswitch = Integer.parseInt(makeint);
+					switch (forswitch) {
+					case 3:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Admin", false);
+						break;
+					case 4:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Moderator", false);
+						break;
+					case 15:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Diamond", false);
+						break;
+					case 14:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Gold", false);
+						break;
+					case 13:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Iron", false);
+						break;
+					case 9:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "SeniorStaff", false);
+						break;
+					case 5:
+						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Owner", false);
+						break;
+					}
+					current++;
+				}
+				//Set groups
 				for(String id : temp) {
 					String makeint = temp[current];
 					int forswitch = Integer.parseInt(makeint);
