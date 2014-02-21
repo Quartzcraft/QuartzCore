@@ -12,12 +12,14 @@ import java.util.logging.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.*;
+import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 
 public abstract class QPlayer {
 	
@@ -146,6 +148,8 @@ public abstract class QPlayer {
 			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', ?, 9, 1);");
 			s.setString(1, date.toString());
 			if(s.executeUpdate( /* "INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', 9, 0);" */) == 1) {
+				QPlayerCreationEvent event = new QPlayerCreationEvent(player);
+				Bukkit.getServer().getPluginManager().callEvent(event);
 				return true;
 			} else {
 				return false;
