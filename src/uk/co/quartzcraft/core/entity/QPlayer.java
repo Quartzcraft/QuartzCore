@@ -92,8 +92,20 @@ public abstract class QPlayer {
 	 * @return The display name of the player as defined in the QuartzCore database
 	 */
 	public static String getDisplayName(Player player) {
+		Statement s;
 		
-		return null;
+		try {
+			s = QuartzCore.MySQLcore.openConnection().createStatement();
+			ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE DisplayName ='" + player.getDisplayName().toString() + "';");
+	        if(res.next()) {
+	        	return res.getString(3);
+	        } else {
+	        	return null;
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**
