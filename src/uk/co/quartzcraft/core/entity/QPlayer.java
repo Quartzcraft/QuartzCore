@@ -296,9 +296,9 @@ public abstract class QPlayer {
 		return lastSeen;
 	}
 	
-	public abstract HashMap getDataThisPlugin();
+	public abstract HashMap getDataThisPlugin(Player player);
 	
-	public abstract boolean createPlayerThisPlugin();
+	public abstract boolean createPlayerThisPlugin(Player player);
 
 
 }
