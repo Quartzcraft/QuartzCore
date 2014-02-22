@@ -59,7 +59,7 @@ public class ConnectionListener implements Listener {
 				if(QPlayer.createPlayer(player)) {
 					plugin.log.info("[QC] Player, " + player.getDisplayName() + " was created with UUID of " + SUUID);
 				} else {
-					player.kickPlayer(ChatPhrase.getPhrase("database_error_contact") + ChatPhrase.getPhrase("could_not_create_player"));
+					player.kickPlayer(ChatPhrase.getPhrase("database_error_contact") + "\n" + ChatPhrase.getPhrase("could_not_create_player"));
 				}
 			}
 		} catch (SQLException e) {
