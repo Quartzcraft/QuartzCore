@@ -297,13 +297,26 @@ public abstract class QPlayer {
 		return lastSeen;
 	}
 	
-	public static String getValidationCode(Player player) {
+	public static boolean createValidationCode(Player player) {
 		String validationCode = null;
 		String playername = player.getDisplayName();
 		String hashedUsername = Obfuscate.obfuscate(playername);
-		
 		validationCode = Integer.toString(QPlayer.getUserID(player)) + "-" + hashedUsername;
-		return validationCode;
+		
+		try {
+			java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
+			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO validationCodes (user_id, code) VALUES (" + QPlayer.getUserID(player) +", '" + validationCode + "');");
+			if(s.executeUpdate() == 1) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	}
 
 }
