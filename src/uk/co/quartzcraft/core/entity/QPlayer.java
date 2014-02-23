@@ -317,6 +317,21 @@ public abstract class QPlayer {
 		}
 	}
 	
+	public static String getValidationCode(Player player) {
+		Statement s;
+		
+		try {
+			s = QuartzCore.MySQLcore.openConnection().createStatement();
+			ResultSet res = s.executeQuery("SELECT * FROM validationCodes WHERE user_id ='" + QPlayer.getUserID(player) + "';");
+	        if(res.next()) {
+	        	return res.getString("code");
+	        } else {
+	        	return null;
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
