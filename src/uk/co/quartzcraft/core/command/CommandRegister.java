@@ -14,8 +14,15 @@ public class CommandRegister implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		Player player = (Player) sender;
 		if(command.getName().equalsIgnoreCase("register")) {
-			sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is_X") + QPlayer.getValidationCode(player));
-			return true;
+			if(QPlayer.getValidationCode(player) != null) {
+				sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is_X") + QPlayer.getValidationCode(player));
+				return true;
+			} else if(QPlayer.createValidationCode(player)) {
+				sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is_X") + QPlayer.getValidationCode(player));
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
