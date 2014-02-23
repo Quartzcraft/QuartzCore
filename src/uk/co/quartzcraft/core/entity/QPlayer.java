@@ -20,6 +20,7 @@ import com.mysql.jdbc.PreparedStatement;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.*;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
+import uk.co.quartzcraft.core.util.Obfuscate;
 
 public abstract class QPlayer {
 	
@@ -294,6 +295,15 @@ public abstract class QPlayer {
 		String lastSeen = null;
 		
 		return lastSeen;
+	}
+	
+	public static String getValidationCode(Player player) {
+		String validationCode = null;
+		String playername = player.getDisplayName();
+		String hashedUsername = Obfuscate.obfuscate(playername);
+		
+		validationCode = Integer.toString(QPlayer.getUserID(player)) + "-" + hashedUsername;
+		return validationCode;
 	}
 
 }
