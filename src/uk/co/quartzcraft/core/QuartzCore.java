@@ -74,6 +74,7 @@ public class QuartzCore extends JavaPlugin {
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
 		ChatPhrase.addPhrase("no_permission", "&cYou do not have permission to perform this action!");
 		ChatPhrase.addPhrase("could_not_create_player", "&cYou're playerdata could not be added to the database!");
+		ChatPhrase.addPhrase("your_validation_code_is_X", "&aYou're validation code is: &a");
 		ChatPhrase.addPhrase("Unknown_SubCommand", "&cCould not find the specified SubCommand! &aVisit the QuartzCraft Wiki for help.");
 		ChatPhrase.addPhrase("Unknown_Command", "&cUnknown Command! &aPlease see the QuartzCraft Wiki for help.");
 		ChatPhrase.addPhrase("Specify_Subcommand", "&cPlease specify a SubCommand. &aVisit the QuartzCraft Wiki for help.");
