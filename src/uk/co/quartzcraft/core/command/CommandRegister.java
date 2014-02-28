@@ -15,10 +15,16 @@ public class CommandRegister implements CommandExecutor {
 		Player player = (Player) sender;
 		if(command.getName().equalsIgnoreCase("register")) {
 			if(QPlayer.getValidationCode(player) != null) {
-				sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is_X") + QPlayer.getValidationCode(player));
+				sender.sendMessage(ChatPhrase.getPhrase("these_are_the_fields_required_for_website_registration"));
+				sender.sendMessage(ChatPhrase.getPhrase("your_minecraft_username_is") + player.getDisplayName());
+				sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is") + QPlayer.getValidationCode(player));
+				sender.sendMessage(ChatPhrase.getPhrase("your_quartzcore_id_is") + QPlayer.getUserID(player));
 				return true;
 			} else if(QPlayer.createValidationCode(player)) {
-				sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is_X") + QPlayer.getValidationCode(player));
+				sender.sendMessage(ChatPhrase.getPhrase("these_are_the_fields_required_for_website_registration"));
+				sender.sendMessage(ChatPhrase.getPhrase("your_minecraft_username_is") + player.getDisplayName());
+				sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is") + QPlayer.getValidationCode(player));
+				sender.sendMessage(ChatPhrase.getPhrase("your_quartzcore_id_is") + QPlayer.getUserID(player));
 				return true;
 			} else {
 				return false;
