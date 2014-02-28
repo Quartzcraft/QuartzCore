@@ -72,9 +72,11 @@ public class QuartzCore extends JavaPlugin {
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
-		ChatPhrase.addPhrase("no_permission", "&cYou do not have permission to perform this action!");
+		
 		ChatPhrase.addPhrase("could_not_create_player", "&cYou're playerdata could not be added to the database!");
 		ChatPhrase.addPhrase("your_validation_code_is_X", "&aYou're validation code is: &a");
+		
+		ChatPhrase.addPhrase("no_permission", "&cYou do not have permission to perform this action!");
 		ChatPhrase.addPhrase("Unknown_SubCommand", "&cCould not find the specified SubCommand! &aVisit the QuartzCraft Wiki for help.");
 		ChatPhrase.addPhrase("Unknown_Command", "&cUnknown Command! &aPlease see the QuartzCraft Wiki for help.");
 		ChatPhrase.addPhrase("Specify_Subcommand", "&cPlease specify a SubCommand. &aVisit the QuartzCraft Wiki for help.");
@@ -82,13 +84,13 @@ public class QuartzCore extends JavaPlugin {
 		ChatPhrase.addPhrase("database_error", "&cA database error occured! ");
 		ChatPhrase.addPhrase("database_error_contact", "&cA database error occured! &aPlease contact an administrator on the QuartzCraft website immediately.");
 		ChatPhrase.addPhrase("player_use_only", "&4This command can only be used ingame by a player.");
-		ChatPhrase.addPhrase("Server_Full", "&cServer Full!\n &aIt appears that the server is full. Please try again later, or purchase a supporter rank at http://quartzcraft.co.uk");
-		ChatPhrase.addPhrase("Kick_Whitelist", "&cYou are not whitelisted");
 		ChatPhrase.addPhrase("specify_username", "&cPlease specify a user!");
+		
+		ChatPhrase.addPhrase("Server_Full", "&cServer Full!\n &aIt appears that the server is full. Please try again later, or purchase a supporter rank at http://quartzcraft.co.uk/index.php?upgrade");
+		ChatPhrase.addPhrase("Kick_Whitelist", "&cYou are not whitelisted");
+		
 		ChatPhrase.addPhrase("promoted_player_yes", "&aThe player was successfully moved groups!");
 		ChatPhrase.addPhrase("promoted_player_no", "&cThe player failed to move groups!");
-		
-		
 		
 		//Listeners
 		log.info("[QC][STARTUP]Registering listeners...");
