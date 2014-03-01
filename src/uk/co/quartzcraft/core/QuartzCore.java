@@ -54,9 +54,9 @@ public class QuartzCore extends JavaPlugin {
 		//Config files
 		log.info("[QC]Running plugin configuration");
 		this.saveDefaultConfig();
-		String DBConnect = this.getConfig().getString("database.settings.database-connect");
+		boolean DBConnect = true; //this.getConfig().getBoolean("database.settings.database-connect");
 		
-		if(DBConnect == "true") {
+		if(DBConnect) {
 			//Core Database
 			String SQLCoreHost = this.getConfig().getString("database.core.host");
 			String SQLCoreDatabase = this.getConfig().getString("database.core.database");
@@ -120,7 +120,7 @@ public class QuartzCore extends JavaPlugin {
 	   	//logger.info("[STARTUP]Registering chat channels...");
 	   	
 	   	//Database
-	  	if(DBConnect == "true") {
+	  	if(DBConnect) {
 	  		log.info("[QC][STARTUP]Connecting to Database");
 	  		DBCore = MySQLcore.openConnection();
 	  		DBWeb = MySQLweb.openConnection();
