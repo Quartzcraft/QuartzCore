@@ -65,10 +65,10 @@ public class QuartzCore extends JavaPlugin {
 			MySQLcore = new MySQL(plugin, SQLCoreHost, "3306", SQLCoreDatabase, SQLCoreUser, SQLCorePassword);
 			
 			//Website Database
-			String SQLWebHost = this.getConfig().getString("database.web.host");
-			String SQLWebDatabase = this.getConfig().getString("database.web.database");
-			String SQLWebUser = this.getConfig().getString("database.web.username");
-			String SQLWebPassword = this.getConfig().getString("database.web.password");
+			String SQLWebHost = this.getConfig().getString("database.website.host");
+			String SQLWebDatabase = this.getConfig().getString("database.website.database");
+			String SQLWebUser = this.getConfig().getString("database.website.username");
+			String SQLWebPassword = this.getConfig().getString("database.website.password");
 			MySQLweb = new MySQL(plugin, SQLWebHost, "3306", SQLWebDatabase, SQLWebUser, SQLWebPassword);
 		}
 		
