@@ -19,7 +19,7 @@ public abstract class Database {
 
     /**
      * Creates a new Database
-     * 
+     *
      * @param plugin
      *            Plugin instance
      */

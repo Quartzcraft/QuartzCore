@@ -25,7 +25,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class QuartzCore extends JavaPlugin {
 	
 	public static String version = "1.0.0";
-	public static String release = "VERSION";
+	public static String release = "RELEASE";
 	
 	public Plugin plugin = this.plugin;
 	public Server server = getServer();
