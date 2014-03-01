@@ -54,6 +54,12 @@ commands:
       permission: QCC.promo
       default: op
       permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
+   register:
+      description: Begins the website registration process.
+      usage: /register
+      permission: QCC.register
+      default: op
+      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
    qplayer:
       description: Player manipulation command
       usage: /qplayer
