@@ -54,20 +54,23 @@ public class QuartzCore extends JavaPlugin {
 		//Config files
 		log.info("[QC]Running plugin configuration");
 		this.saveDefaultConfig();
+		String DBConnect = this.getConfig().getString("database.settings.database-connect");
 		
-		//Core Database
-		String SQLCoreHost = this.getConfig().getString("database.core.host");
-		String SQLCoreDatabase = this.getConfig().getString("database.core.database");
-		String SQLCoreUser = this.getConfig().getString("database.core.username");
-		String SQLCorePassword = this.getConfig().getString("database.core.password");
-		MySQLcore = new MySQL(plugin, SQLCoreHost, "3306", SQLCoreDatabase, SQLCoreUser, SQLCorePassword);
-		
-		//Website Database
-		String SQLWebHost = this.getConfig().getString("database.web.host");
-		String SQLWebDatabase = this.getConfig().getString("database.web.database");
-		String SQLWebUser = this.getConfig().getString("database.web.username");
-		String SQLWebPassword = this.getConfig().getString("database.web.password");
-		MySQLweb = new MySQL(plugin, SQLWebHost, "3306", SQLWebDatabase, SQLWebUser, SQLWebPassword);
+		if(DBConnect == "true") {
+			//Core Database
+			String SQLCoreHost = this.getConfig().getString("database.core.host");
+			String SQLCoreDatabase = this.getConfig().getString("database.core.database");
+			String SQLCoreUser = this.getConfig().getString("database.core.username");
+			String SQLCorePassword = this.getConfig().getString("database.core.password");
+			MySQLcore = new MySQL(plugin, SQLCoreHost, "3306", SQLCoreDatabase, SQLCoreUser, SQLCorePassword);
+			
+			//Website Database
+			String SQLWebHost = this.getConfig().getString("database.web.host");
+			String SQLWebDatabase = this.getConfig().getString("database.web.database");
+			String SQLWebUser = this.getConfig().getString("database.web.username");
+			String SQLWebPassword = this.getConfig().getString("database.web.password");
+			MySQLweb = new MySQL(plugin, SQLWebHost, "3306", SQLWebDatabase, SQLWebUser, SQLWebPassword);
+		}
 		
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
@@ -116,9 +119,11 @@ public class QuartzCore extends JavaPlugin {
 	   	//logger.info("[STARTUP]Registering chat channels...");
 	   	
 	   	//Database
-	  	log.info("[QC][STARTUP]Connecting to Database");
-	  	DBCore = MySQLcore.openConnection();
-	  	DBWeb = MySQLweb.openConnection();
+	  	if(DBConnect == "true") {
+	  		log.info("[QC][STARTUP]Connecting to Database");
+	  		DBCore = MySQLcore.openConnection();
+	  		DBWeb = MySQLweb.openConnection();
+		}
 	  		
 	   	//Startup notice
 	  	log.info("[QC]The QuartzCore Plugin has been enabled!");

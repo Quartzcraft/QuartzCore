@@ -10,6 +10,7 @@ database:
       username:
       password:
 settings:
+   database-connect: false
    join-broadcast: false
    primary-promote-command: pex user <user> group set <group>
    primary-promote-command: pex user <user> group remove <group>
