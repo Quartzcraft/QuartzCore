@@ -13,7 +13,7 @@ public class CommandRegister implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		Player player = (Player) sender;
-		if(command.getName().equalsIgnoreCase("register")) {
+		if(command.getName().equalsIgnoreCase("register") && sender instanceof Player) {
 			if(QPlayer.getValidationCode(player) != null) {
 				sender.sendMessage(ChatPhrase.getPhrase("to_register_on_the_website_please_visit_web"));
 				sender.sendMessage(ChatPhrase.getPhrase("these_are_the_fields_required_for_website_registration"));
