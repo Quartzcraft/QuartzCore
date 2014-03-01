@@ -4,6 +4,8 @@
 *.jar
 *.war
 *.ear
+*.idea
+*.iml
 
 # OS generated files #
 ######################
