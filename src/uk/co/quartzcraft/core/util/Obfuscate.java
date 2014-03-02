@@ -6,7 +6,7 @@ public class Obfuscate {
 	static String target="Q9A8ZWS7XEDC6RFVT5GBY4HNU3J2MI1KO0LP";
 
 	public static String obfuscate(String s) {
-	    char[] result= new char[10];
+        char[] result= new char[s.length()];
 	    for (int i=0;i<s.length();i++) {
 	        char c=s.charAt(i);
 	        int index=source.indexOf(c);
@@ -17,7 +17,7 @@ public class Obfuscate {
 	}
 
 	public static String unobfuscate(String s) {
-	    char[] result= new char[10];
+        char[] result= new char[s.length()];
 	    for (int i=0;i<s.length();i++) {
 	        char c=s.charAt(i);
 	        int index=target.indexOf(c);
