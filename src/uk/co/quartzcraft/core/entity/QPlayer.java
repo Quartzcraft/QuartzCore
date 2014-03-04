@@ -139,7 +139,20 @@ public abstract class QPlayer {
 	 * @param conn Connection status 
 	 */
 	public static void setConnectionStatus(Player player, boolean conn) {
-		
+        long time = System.currentTimeMillis();
+        Date date = new Date(System.currentTimeMillis());
+		try {
+            java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
+            java.sql.PreparedStatement s = connection.prepareStatement("UPDATE PlayerData SET LastSeen=" + date + " WHERE id=" + getUserID(player) + ";");
+            s.setString(1, date.toString());
+            if(s.executeUpdate() == 1) {
+
+            } else {
+
+            }
+        } catch (SQLException e) {
+
+        }
 	}
 	
 	/**
