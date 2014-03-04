@@ -19,10 +19,13 @@ private static QuartzCore plugin;
 	public static String error = "The requested phrase could not be found!";
 	
 	public static String match(String phrase_to_match) {
-		boolean match = false; 
+		boolean match = false;
+        error = phrase_to_match;
+        /*
 		if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
 			String error = phrase_to_match;
 		}
+		*/
 		
 		for(String phrase_key : phrases.keySet()) {
 			if(phrase_key.equalsIgnoreCase(phrase_to_match)) {
@@ -58,7 +61,7 @@ private static QuartzCore plugin;
 		
 		String phrase_value = getValue(phrase_key);
 	
-		String final_phrase = ChatFormatParser.parseChatColour(phrase_value);
+		String final_phrase = ChatFormatParser.parseChat(phrase_value);
 		
 		return final_phrase;
 	}
