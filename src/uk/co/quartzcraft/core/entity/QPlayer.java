@@ -314,11 +314,11 @@ public abstract class QPlayer {
 		String validationCode = null;
 		String playername = player.getDisplayName();
         String UUID = validationCode = player.getUniqueId().toString();
-        String code = UUID.substring(0, 9);
+        String code = UUID.substring(0, 8);
 		//String hashedUsername = Obfuscate.obfuscate(playername);
 		//validationCode = Integer.toString(QPlayer.getUserID(player)) + "-" + hashedUsername;
         validationCode = Integer.toString(QPlayer.getUserID(player)) + "-" + code;
-		
+
 		try {
 			java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
 			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO validationCodes (user_id, code) VALUES (" + QPlayer.getUserID(player) +", '" + validationCode + "');");
