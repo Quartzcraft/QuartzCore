@@ -77,11 +77,11 @@ public class QuartzCore extends JavaPlugin {
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
 		
 		ChatPhrase.addPhrase("could_not_create_player", "&cYou're playerdata could not be added to the database!");
-		ChatPhrase.addPhrase("to_register_on_the_website_please_visit_web", "&aTo register on the QuartzCraft website, please visit http://quartzcraft.co.uk");
+		ChatPhrase.addPhrase("to_register_on_the_website_please_visit_web", "&aTo register on the QuartzCraft website, please visit &rhttp://quartzcraft.co.uk");
 		ChatPhrase.addPhrase("these_are_the_fields_required_for_website_registration", "&aThese are the values for the required website registration fields:");
-		ChatPhrase.addPhrase("your_minecraft_username_is", "&aYou're Minecraft username is: &r");
-		ChatPhrase.addPhrase("your_validation_code_is", "&aYou're validation code is: &r");
-		ChatPhrase.addPhrase("your_quartzcore_id_is", "&aYou're QuartzCore id is: &r");
+		ChatPhrase.addPhrase("your_minecraft_username_is", "&aYour Minecraft username is:&r ");
+		ChatPhrase.addPhrase("your_validation_code_is", "&aYour validation code is:&r ");
+		ChatPhrase.addPhrase("your_quartzcore_id_is", "&aYour QuartzCore id is:&r ");
 		
 		ChatPhrase.addPhrase("no_permission", "&cYou do not have permission to perform this action!");
 		ChatPhrase.addPhrase("Unknown_SubCommand", "&cCould not find the specified SubCommand! &aVisit the QuartzCraft Wiki for help.");
