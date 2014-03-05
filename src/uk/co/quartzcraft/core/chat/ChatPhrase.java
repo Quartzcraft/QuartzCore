@@ -21,11 +21,6 @@ private static QuartzCore plugin;
 	public static String match(String phrase_to_match) {
 		boolean match = false;
         error = phrase_to_match;
-        /*
-		if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
-			String error = phrase_to_match;
-		}
-		*/
 		
 		for(String phrase_key : phrases.keySet()) {
 			if(phrase_key.equalsIgnoreCase(phrase_to_match)) {

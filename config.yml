@@ -10,11 +10,9 @@ database:
       username:
       password:
 settings:
-   database-connect: false
    join-broadcast: false
    primary-promote-command: pex user <user> group set <group>
    primary-promote-command: pex user <user> group remove <group>
    secondary-promote-command: pex user <user> group add <group>
-   phrase-fallback: false #This doesn't actually change anything yet, just keep it at false.
 
    
