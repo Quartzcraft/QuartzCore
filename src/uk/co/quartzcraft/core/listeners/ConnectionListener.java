@@ -47,18 +47,14 @@ public class ConnectionListener implements Listener {
 			s1 = QuartzCore.MySQLcore.openConnection().createStatement();
 			ResultSet res1 = s1.executeQuery("SELECT * FROM PlayerData WHERE UUID='" + SUUID + "'");
 			if(res1.next()) {
-				String NSUUID = res1.getString("UUID").replaceAll("-", "");
-				if(NSUUID == SUUID) {
-					QPlayer.setConnectionStatus(player, true);
-					QPlayer.autoManageGroups(player);
-					plugin.log.info("[QC] Player, " + player.getDisplayName() + " sucessfully joined!");
-				} else {
-					plugin.log.info("[QC] Something went wrong!");
-				}
+				QPlayer.setConnectionStatus(player, true);
+				QPlayer.autoManageGroups(player);
+				plugin.log.info("[QC] Player, " + player.getDisplayName() + " successfully joined!");
 			} else {
 				if(QPlayer.createPlayer(player)) {
 					plugin.log.info("[QC] Player, " + player.getDisplayName() + " was created with UUID of " + SUUID);
 				} else {
+                    plugin.log.info("[QC] Could not create player!");
 					player.kickPlayer(ChatPhrase.getPhrase("database_error_contact") + "\n" + ChatPhrase.getPhrase("could_not_create_player"));
 				}
 			}
