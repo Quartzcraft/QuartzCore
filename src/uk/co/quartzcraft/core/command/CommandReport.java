@@ -20,8 +20,7 @@ public class CommandReport implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] arg0) {
 		
 		Player player = (Player) sender;
-        OfflinePlayer offlinePlayer = Bukkit.getServer().getOfflinePlayer("name");
-        Player player2 = (Player) offlinePlayer;
+        OfflinePlayer player2 = Bukkit.getServer().getOfflinePlayer("name");
 		
 		if(command.getName().equalsIgnoreCase("report")) {
 			if(!(player instanceof Player)){

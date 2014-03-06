@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -60,7 +61,33 @@ public abstract class QPlayer {
 		}
 		
 	}
-	
+
+    /**
+     * Gets a users id from the PlayerData database
+     *
+     * @param player
+     * @return id of the player
+     */
+    public static int getUserID(OfflinePlayer player) {
+        //String SUUID = player.getUniqueId().toString();
+        String playername = player.getName();
+
+        Statement s;
+        try {
+            s = QuartzCore.MySQLcore.openConnection().createStatement();
+            ResultSet res = s.executeQuery("SELECT FROM PlayerData WHERE DisplayName ='" + playername + "';");
+            if(res.next()) {
+                int id = res.getInt("id");
+                return id;
+            } else {
+                return 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 	/**
 	 * Gets a users id from the PlayerData database
 	 * 
