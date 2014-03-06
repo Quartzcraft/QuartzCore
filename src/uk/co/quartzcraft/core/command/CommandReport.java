@@ -1,10 +1,18 @@
 package uk.co.quartzcraft.core.command;
 
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.Bukkit;
+
+import uk.co.quartzcraft.core.entity.QPlayer;
+import uk.co.quartzcraft.core.QuartzCore;
+import uk.co.quartzcraft.core.chat.ChatPhrase;
+
+import java.sql.SQLException;
 
 public class CommandReport implements CommandExecutor {
 
@@ -12,20 +20,48 @@ public class CommandReport implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] arg0) {
 		
 		Player player = (Player) sender;
+        OfflinePlayer offlinePlayer = Bukkit.getServer().getOfflinePlayer("name");
+        Player player2 = (Player) offlinePlayer;
 		
 		if(command.getName().equalsIgnoreCase("report")) {
 			if(!(player instanceof Player)){
-	    		player.sendMessage(ChatColor.RED + "This command is for players only!");
+	    		sender.sendMessage(ChatPhrase.getPhrase("player_use_only"));
 	    	} else {
 	    		if(arg0.length == 0) {
-	    			player.sendMessage(ChatColor.RED + "Please specify a player to report");
+	    			player.sendMessage(ChatPhrase.getPhrase("please_specify_player_to_report"));
 	    		} else {
-	    			//stuffs
-	    			return true;
+                    try {
+                        java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
+                        java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (" + QPlayer.getUserID(player) + ", " + QPlayer.getUserID(player2) + ", " + getReportContent(arg0) + ");");
+                        if(s.executeUpdate() == 1) {
+                            player.sendMessage(ChatPhrase.getPhrase("thank_you_for_reporting_user"));
+                            return true;
+                        } else {
+                            player.sendMessage(ChatPhrase.getPhrase("error_submitting_report"));
+                            return false;
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        player.sendMessage(ChatPhrase.getPhrase("database_error_contact"));
+                        player.sendMessage(ChatPhrase.getPhrase("error_submitting_report"));
+                        return false;
+                    }
 	    		}
 	    	}
 		} 
 		return true;
 	}
+
+    public String getReportContent(String[] args) {
+        String finalString = null;
+        for (int i = 0; i < args.length; i++){
+            if (i == 0) {
+
+            } else {
+                finalString = finalString.concat(" " + args[i]);
+            }
+        }
+        return finalString;
+    }
 
 }
