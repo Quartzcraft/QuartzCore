@@ -52,15 +52,11 @@ public class CommandReport implements CommandExecutor {
 	}
 
     public String getReportContent(String[] args) {
-        String finalString = null;
-        for (int i = 0; i < args.length; i++){
-            if (i == 0) {
-
-            } else {
-                finalString = finalString.concat(" " + args[i]);
-            }
+        StringBuilder builder = new StringBuilder();
+        for(String s : args) {
+            builder.append(s + " ");
         }
-        return finalString;
+        return builder.toString();
     }
 
 }
