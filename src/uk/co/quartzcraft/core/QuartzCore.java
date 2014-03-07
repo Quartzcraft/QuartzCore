@@ -36,6 +36,8 @@ public class QuartzCore extends JavaPlugin {
     
 	public static MySQL MySQLcore = null;
 	public static MySQL MySQLweb = null;
+
+    public QCommand commandFramework;
 	
 	@Override
 	public void onDisable() {
@@ -108,11 +110,13 @@ public class QuartzCore extends JavaPlugin {
 		//getServer().getPluginManager().registerEvents(new ConnectionListener(this), this);
 		new ConnectionListener(this);
 		new ChatListener(this);
-		
+
 	    //Commands
 		log.info("[QC][STARTUP]Registering commands...");
+        commandFramework = new QCommand(this);
+        //commandFramework.registerCommands(new CommandTest(this));
 	   	getCommand("quartz").setExecutor(new CommandQuartz());
-	   	getCommand("test").setExecutor(new CommandTest());
+	   	//getCommand("test").setExecutor(new CommandTest());
 	   	getCommand("m").setExecutor(new CommandM());
 	   	getCommand("report").setExecutor(new CommandReport());
 	   	getCommand("promo").setExecutor(new CommandPromo());
