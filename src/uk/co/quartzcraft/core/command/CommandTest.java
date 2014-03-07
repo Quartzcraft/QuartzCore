@@ -21,6 +21,23 @@ import uk.co.quartzcraft.core.chat.Announce;
 import uk.co.quartzcraft.core.chat.ChatPhrase;
 import uk.co.quartzcraft.core.command.QCommand;
 
-public class CommandTest {
+public class CommandTest implements CommandExecutor {
 
+    private static QuartzCore plugin;
+
+    public CommandTest(QuartzCore plugin) {
+        this.plugin = plugin;
+    }
+
+    QCommand framework = new QCommand(plugin);
+
+    @Override
+    public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
+        return framework.handleCommand(sender, label, command, args);
+    }
+
+    @QCommand.Command(name = "test", aliases = { "testing" }, description = "This is a test command", usage = "This is how you use it")
+    public void test(QCommand.CommandArgs args) {
+        args.getSender().sendMessage("This is a test command");
+    }
 }
