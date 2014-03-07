@@ -19,21 +19,8 @@ import uk.co.quartzcraft.core.entity.QPlayer;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.Announce;
 import uk.co.quartzcraft.core.chat.ChatPhrase;
+import uk.co.quartzcraft.core.command.QCommand;
 
-public class CommandTest implements CommandExecutor {
-	
-	public Plugin plugin = this.plugin;
+public class CommandTest {
 
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		
-		if(command.getName().equalsIgnoreCase("test")){ 
-			
-			Player player = (Player)sender;
-			
-			Announce.announce("&4This is a test announcement!");
-			Announce.announceWithPrefix("QuartzCraft", "&a", "&6The test command has been run!");
-			sender.sendMessage(ChatPhrase.getPhrase("test_phrase"));
-		} 
-		return true;
-	}
 }
