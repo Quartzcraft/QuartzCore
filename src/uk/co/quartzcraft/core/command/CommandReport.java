@@ -31,7 +31,7 @@ public class CommandReport implements CommandExecutor {
 	    		} else {
                     try {
                         java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-                        java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (" + QPlayer.getUserID(player) + ", " + QPlayer.getUserID(player2) + ", " + getReportContent(arg0) + ");");
+                        java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (" + QPlayer.getUserID(player) + ", " + QPlayer.getUserID(player2) + ", '" + getReportContent(arg0) + "');");
                         if(s.executeUpdate() == 1) {
                             player.sendMessage(ChatPhrase.getPhrase("thank_you_for_reporting_user"));
                             return true;
