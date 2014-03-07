@@ -19,27 +19,19 @@ public abstract class QSubCommand {
 
         public boolean runCommand(CommandSender sender, Command cmd, String label, String[] args)
         {
-                if(!sender.hasPermission(getPermission()))
-                {
+                if(!sender.hasPermission(getPermission())) {
                         sender.sendMessage(ChatPhrase.getPhrase("Unknown_Command"));
-                }
-                else
-                {
-                        if(needsPlayer())
-                        {
-                                if(sender instanceof Player)
-                                {
-                                        onCommand(sender, cmd, label, args);
-                                } else {
-                                	sender.sendMessage(ChatPhrase.getPhrase("player_use_only"));
-                                }
-                        }
-                        else
-                        {
+                } else {
+                        if(needsPlayer()) {
+                            if(sender instanceof Player) {
                                 onCommand(sender, cmd, label, args);
+                            } else {
+                                sender.sendMessage(ChatPhrase.getPhrase("player_use_only"));
+                            }
+                        } else {
+                            onCommand(sender, cmd, label, args);
                         }
                 }
-                
                 return true;
         }       
 }

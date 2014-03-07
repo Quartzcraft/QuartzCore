@@ -75,7 +75,7 @@ public abstract class QPlayer {
         Statement s;
         try {
             s = QuartzCore.MySQLcore.openConnection().createStatement();
-            ResultSet res = s.executeQuery("SELECT FROM PlayerData WHERE DisplayName ='" + playername + "';");
+            ResultSet res = s.executeQuery("SELECT FROM PlayerData WHERE DisplayName='" + playername + "';");
             if(res.next()) {
                 int id = res.getInt("id");
                 return id;
