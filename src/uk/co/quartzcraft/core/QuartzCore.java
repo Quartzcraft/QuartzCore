@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import uk.co.quartzcraft.core.database.*;
 import uk.co.quartzcraft.core.chat.*;
 import uk.co.quartzcraft.core.command.*;
+import uk.co.quartzcraft.core.command.QCommand;
 import uk.co.quartzcraft.core.database.MySQL;
 import uk.co.quartzcraft.core.listeners.*; 
 
@@ -114,7 +115,8 @@ public class QuartzCore extends JavaPlugin {
 	    //Commands
 		log.info("[QC][STARTUP]Registering commands...");
         commandFramework = new QCommand(this);
-        commandFramework.registerCommands(new CommandTest(this));
+        //commandFramework.registerCommands(new CommandTest(this));
+        new CommandTest(this);
 	   	getCommand("quartz").setExecutor(new CommandQuartz());
 	   	//getCommand("test").setExecutor(new CommandTest());
 	   	getCommand("m").setExecutor(new CommandM());

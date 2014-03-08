@@ -26,6 +26,7 @@ public class CommandTest implements CommandExecutor {
     private static QuartzCore plugin;
 
     public CommandTest(QuartzCore plugin) {
+        framework.registerCommands(this);
         this.plugin = plugin;
     }
 
