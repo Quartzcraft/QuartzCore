@@ -40,7 +40,7 @@ public class QCommand {
      */
     public QCommand(Plugin plugin) {
         this.plugin = plugin;
-        if (plugin.getServer().getPluginManager() instanceof SimplePluginManager) {
+        if (this.plugin.getServer().getPluginManager() instanceof SimplePluginManager) {
             SimplePluginManager manager = (SimplePluginManager) plugin.getServer().getPluginManager();
             try {
                 Field field = SimplePluginManager.class.getDeclaredField("commandMap");

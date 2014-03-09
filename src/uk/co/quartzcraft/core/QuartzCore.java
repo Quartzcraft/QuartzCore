@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
+import org.bukkit.command.CommandSender;
 import uk.co.quartzcraft.core.database.*;
 import uk.co.quartzcraft.core.chat.*;
 import uk.co.quartzcraft.core.command.*;
@@ -115,8 +116,8 @@ public class QuartzCore extends JavaPlugin {
 	    //Commands
 		log.info("[QC][STARTUP]Registering commands...");
         commandFramework = new QCommand(this);
-        //commandFramework.registerCommands(new CommandTest(this));
         new CommandTest(this);
+        commandFramework.registerCommands(new CommandTest(this));
 	   	getCommand("quartz").setExecutor(new CommandQuartz());
 	   	//getCommand("test").setExecutor(new CommandTest());
 	   	getCommand("m").setExecutor(new CommandM());
@@ -140,6 +141,11 @@ public class QuartzCore extends JavaPlugin {
 	  	log.info("[QC]The QuartzCore Plugin has been enabled!");
 	  	log.info("[QC]QuartzCore Version " + release + " " + version);
 	}
+
+    @Override
+    public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
+        return commandFramework.handleCommand(sender, label, command, args);
+    }
 	
 	public static String displayReleaseVersion() {
 		String ReleaseVersion = release + version;
