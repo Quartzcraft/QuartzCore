@@ -98,7 +98,7 @@ public class QuartzCore extends JavaPlugin {
 		ChatPhrase.addPhrase("specify_username", "&cPlease specify a user!");
 
         ChatPhrase.addPhrase("please_specify_player_to_report", "&cYou must specify a player to report!");
-        ChatPhrase.addPhrase("thank_you_for_reporting_user", "&aThank you for submitting a report. It is unlikely that we will contact you and immediate action is unlikely.");
+        ChatPhrase.addPhrase("thank_you_for_reporting_user", "&aThank you for submitting a report. It is unlikely that we will need contact you.");
         ChatPhrase.addPhrase("error_submitting_report", "&cAn error occurred while submitting your report! Please try again or contact a QuartzCraft administrator.");
 		
 		ChatPhrase.addPhrase("Server_Full", "&cServer Full!\n &aIt appears that the server is full. Please try again later, or purchase a supporter rank at http://quartzcraft.co.uk/index.php?upgrade");
