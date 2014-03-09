@@ -116,10 +116,8 @@ public class QuartzCore extends JavaPlugin {
 	    //Commands
 		log.info("[QC][STARTUP]Registering commands...");
         commandFramework = new QCommand(this);
-        new CommandTest(this);
         commandFramework.registerCommands(new CommandTest(this));
 	   	getCommand("quartz").setExecutor(new CommandQuartz());
-	   	//getCommand("test").setExecutor(new CommandTest());
 	   	getCommand("m").setExecutor(new CommandM());
 	   	getCommand("report").setExecutor(new CommandReport());
 	   	getCommand("promo").setExecutor(new CommandPromo());
