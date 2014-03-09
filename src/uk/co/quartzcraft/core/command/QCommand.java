@@ -232,7 +232,7 @@ public class QCommand {
          *
          * @return
          */
-        public String noPerm() default "You do not have permission to perform that action";
+        public String noPerm() default "Unknown Command! Please see the QuartzCraft Wiki for help.";
 
         /**
          * A list of alternate names that the command is executed under. See
