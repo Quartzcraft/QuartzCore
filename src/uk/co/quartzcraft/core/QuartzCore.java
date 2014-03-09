@@ -122,8 +122,6 @@ public class QuartzCore extends JavaPlugin {
 	   	getCommand("report").setExecutor(new CommandReport());
 	   	getCommand("promo").setExecutor(new CommandPromo());
 	   	getCommand("register").setExecutor(new CommandRegister());
-	   	getCommand("qplayer").setExecutor(new CommandQPlayer());
-	   	CommandQPlayer.addCommand(Arrays.asList("role"), new QPlayerGroupSubCommand());
 	   	
 	   	//ChatChannels
 	   	//logger.info("[STARTUP]Registering chat channels...");

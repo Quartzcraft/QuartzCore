@@ -54,18 +54,11 @@ commands:
       permission: QCC.register
       default: op
       permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
-   qplayer:
-      description: Player manipulation command
-      usage: /qplayer
-      permission: QCC.admin.qplayer
-      default: op
-      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
 Permissions:
    QCC.*:
       description: Allows access to all QCC permissions.
       default: op
       children:
-         QCC.admin.qplayer: true
          QCC.promo: true
          QCC.report: true
          QCC.get: true
