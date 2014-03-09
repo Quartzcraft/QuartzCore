@@ -21,23 +21,18 @@ import uk.co.quartzcraft.core.chat.Announce;
 import uk.co.quartzcraft.core.chat.ChatPhrase;
 import uk.co.quartzcraft.core.command.QCommand;
 
-public class CommandTest implements CommandExecutor {
+public class CommandTest {
 
     private static QuartzCore plugin;
+    private static QCommand framework;
 
     public CommandTest(QuartzCore plugin) {
-        framework.registerCommands(this);
         this.plugin = plugin;
+        framework = new QCommand(this.plugin);
+        framework.registerCommands(this);
     }
 
-    QCommand framework = new QCommand(plugin);
-
-    @Override
-    public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
-        return framework.handleCommand(sender, label, command, args);
-    }
-
-    @QCommand.Command(name = "test", aliases = { "testing" }, description = "This is a test command", usage = "This is how you use it")
+    @QCommand.Command(name = "test", aliases = { "testing" }, permission = "QCC.test", description = "This is a test command", usage = "This is how you use it")
     public void test(QCommand.CommandArgs args) {
         args.getSender().sendMessage("This is a test command");
     }
