@@ -11,12 +11,6 @@ commands:
       permission: QCC.quartz
       default: op
       permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
-   test:
-      description: Test command, set to test whatever.
-      usage: /test
-      permission: QCC.dev.test
-      default: op
-      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
    m:
       description: Switches player gamemode between 0 and 1.
       usage: /m
@@ -98,3 +92,6 @@ Permissions:
    QCC.QPlayer.group:
       description: Allows user to set another users group.
       default: op
+   QCC.test:
+         description: Test permission.
+         default: op
