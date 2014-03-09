@@ -27,9 +27,10 @@ public abstract class QPlayer {
 	
 	private static QuartzCore plugin;
 	
-	public void QuartzKingdomsConfig(QuartzCore plugin) {
+	public void QuartzCoreConfig(QuartzCore plugin) {
 		this.plugin = plugin;
 	}
+
 	private static java.sql.Timestamp getCurrentTimeStamp() {
 	    java.util.Date today = new java.util.Date();
 	    return new java.sql.Timestamp(today.getTime());
