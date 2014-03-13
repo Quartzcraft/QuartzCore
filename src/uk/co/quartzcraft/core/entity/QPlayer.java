@@ -21,6 +21,7 @@ import com.mysql.jdbc.PreparedStatement;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.*;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
+import uk.co.quartzcraft.core.event.QPlayerLoginEvent;
 import uk.co.quartzcraft.core.util.Obfuscate;
 
 public abstract class QPlayer {
@@ -174,7 +175,7 @@ public abstract class QPlayer {
             java.sql.PreparedStatement s = connection.prepareStatement("UPDATE PlayerData SET LastSeen=" + date + " WHERE id=" + getUserID(player) + ";");
             s.setString(1, date.toString());
             if(s.executeUpdate() == 1) {
-
+                QPlayerLoginEvent event = new QPlayerLoginEvent(player);
             } else {
 
             }
