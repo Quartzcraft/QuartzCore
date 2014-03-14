@@ -226,7 +226,7 @@ public abstract class QPlayer {
 		String demoteCommand = plugin.getConfig().getString("settings.primary-demote-command");
 		promoteCommand.replaceAll("<group>", GroupName);
 		promoteCommand.replaceAll("<user>", playername);
-		demoteCommand.replaceAll("<group>", GroupName);
+		//demoteCommand.replaceAll("<group>", GroupName);
 		demoteCommand.replaceAll("<user>", playername);
 		boolean success = false;
 		
@@ -249,16 +249,27 @@ public abstract class QPlayer {
 	 * @param playername
 	 * @param GroupName
 	 */
-	public static boolean addSecondaryGroup(CommandSender sender, String playername, String GroupName) {
+	public static boolean addSecondaryGroup(CommandSender sender, String playername, String GroupName, boolean promote) {
 		String promoteCommand = plugin.getConfig().getString("settings.secondary-promote-command");
+        String demoteCommand = plugin.getConfig().getString("settings.secondary-demote-command");
 		promoteCommand.replaceAll("<group>", GroupName);
 		promoteCommand.replaceAll("<user>", playername);
-		
-		if(Bukkit.getServer().dispatchCommand(sender, promoteCommand)) {
-			return true;
-		} else {
-			return false;
-		}
+        demoteCommand.replaceAll("<group>", GroupName);
+        demoteCommand.replaceAll("<user>", playername);
+
+        if(promote) {
+            if(Bukkit.getServer().dispatchCommand(sender, promoteCommand)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if(Bukkit.getServer().dispatchCommand(sender, demoteCommand)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 	}
 	
 	/**
