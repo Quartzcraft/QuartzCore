@@ -301,30 +301,30 @@ public abstract class QPlayer {
 					String makeint = temp[current];
 					int forswitch = Integer.parseInt(makeint);
 					switch (forswitch) {
-					case 3:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Admin", true);
-						break;
-					case 4:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Moderator", true);
-						break;
-					case 15:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Diamond", true);
-						break;
-					case 14:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Gold", true);
-						break;
-					case 13:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Iron", true);
-						break;
-					case 9:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "SeniorStaff", true);
-						break;
-					case 5:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Owner", true);
-						break;
-					default:
-						setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Member", true);
-						break;
+                        case 3:
+                            setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Admin", true);
+                            break;
+                        case 4:
+                            setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Moderator", true);
+                            break;
+                        case 15:
+                            setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Diamond", true);
+                            break;
+                        case 14:
+                            setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Gold", true);
+                            break;
+                        case 13:
+                            setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Iron", true);
+                            break;
+                        case 9:
+                            setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "SeniorStaff", true);
+                            break;
+                        case 5:
+                            setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Owner", true);
+                            break;
+                        default:
+                            setPrimaryGroup(plugin.getServer().getConsoleSender(), playername, "Member", true);
+                            break;
 					}
 					current++;
 				}
