@@ -34,7 +34,7 @@ public class ConnectionListener implements Listener {
 	 * Manages the login stuff for QuartzCore.
 	 * @param login
 	 */
-	@EventHandler(priority = EventPriority.LOWEST)
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerLogin(PlayerLoginEvent login) {
 		Player player = login.getPlayer();
 		String splayer = player.toString();
