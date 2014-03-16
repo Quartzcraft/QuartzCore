@@ -20,6 +20,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import uk.co.quartzcraft.core.event.QPlayerLoginEvent;
 
 public class ConnectionListener implements Listener {
 	
@@ -94,6 +95,9 @@ public class ConnectionListener implements Listener {
 			
 			join.setJoinMessage(message);
 		}
+
+        QPlayerLoginEvent event = new QPlayerLoginEvent(player);
+        Bukkit.getServer().getPluginManager().callEvent(event);
 	}
 	
 	@EventHandler(priority = EventPriority.LOWEST)
