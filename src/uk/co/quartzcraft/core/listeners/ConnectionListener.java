@@ -59,7 +59,7 @@ public class ConnectionListener implements Listener {
 			ResultSet res1 = s1.executeQuery("SELECT * FROM PlayerData WHERE UUID='" + SUUID + "'");
 			if(res1.next()) {
 				QPlayer.setConnectionStatus(player, true);
-				QPlayer.autoManageGroups(player);
+				//QPlayer.autoManageGroups(player);
 				plugin.log.info("[QC] Player, " + player.getDisplayName() + " successfully joined!");
 			} else {
 				if(QPlayer.createPlayer(player)) {
