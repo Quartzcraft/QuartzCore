@@ -41,7 +41,17 @@ public class ConnectionListener implements Listener {
 		
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
-		
+
+        if(login.getResult() == PlayerLoginEvent.Result.KICK_WHITELIST){
+            String message = ChatPhrase.getPhrase("Kick_Whitelist");
+            login.setKickMessage(message);
+
+        } else if(login.getResult() == PlayerLoginEvent.Result.KICK_FULL){
+            String message = ChatPhrase.getPhrase("Server_Full");
+            login.setKickMessage(message);
+
+        }
+
 		Statement s1;
 		try {
 			s1 = QuartzCore.MySQLcore.openConnection().createStatement();
@@ -61,17 +71,6 @@ public class ConnectionListener implements Listener {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		if(login.getResult() == PlayerLoginEvent.Result.KICK_WHITELIST){
-			String message = ChatPhrase.getPhrase("Kick_Whitelist");
-            login.setKickMessage(message);
-            
-		} else if(login.getResult() == PlayerLoginEvent.Result.KICK_FULL){
-			String message = ChatPhrase.getPhrase("Server_Full");
-            login.setKickMessage(message);
-            
-		}
-		
 		
 		//get player data from database
 		//get player usergroup 
