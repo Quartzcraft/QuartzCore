@@ -10,7 +10,8 @@ import uk.co.quartzcraft.core.chat.*;
 import uk.co.quartzcraft.core.command.*;
 import uk.co.quartzcraft.core.command.QCommand;
 import uk.co.quartzcraft.core.database.MySQL;
-import uk.co.quartzcraft.core.listeners.*; 
+import uk.co.quartzcraft.core.entity.QPlayer;
+import uk.co.quartzcraft.core.listeners.*;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
@@ -75,7 +76,11 @@ public class QuartzCore extends JavaPlugin {
 			String SQLWebPassword = this.getConfig().getString("database.website.password");
 			MySQLweb = new MySQL(plugin, SQLWebHost, "3306", SQLWebDatabase, SQLWebUser, SQLWebPassword);
 		}
-		
+
+        //Extra Systems
+        log.info("[QC]Launching systems");
+        //QPlayer empty = new QPlayer(this);
+
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
