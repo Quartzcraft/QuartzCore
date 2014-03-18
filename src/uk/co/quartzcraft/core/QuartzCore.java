@@ -79,7 +79,7 @@ public class QuartzCore extends JavaPlugin {
 
         //Extra Systems
         log.info("[QC]Launching systems");
-        //new QPlayer(this);
+        new QPlayer(this);
 
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
