@@ -77,10 +77,6 @@ public class QuartzCore extends JavaPlugin {
 			MySQLweb = new MySQL(plugin, SQLWebHost, "3306", SQLWebDatabase, SQLWebUser, SQLWebPassword);
 		}
 
-        //Extra Systems
-        log.info("[QC]Launching systems");
-        //new QPlayer(this);
-
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
 		ChatPhrase.addPhrase("test_phrase", "&3This is a test of the phrases system.");
