@@ -298,8 +298,13 @@ public class QPlayer {
 				
 				//Set groups
 				for(String id : temp) {
-					String makeint = temp[current];
-					int forswitch = Integer.parseInt(makeint);
+                    int forswitch = 0;
+                    try {
+                        String makeint = temp[current];
+                        forswitch = Integer.parseInt(makeint);
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
 					switch (forswitch) {
                         case 3:
                             setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Admin", true, plugin);
