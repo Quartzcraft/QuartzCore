@@ -304,6 +304,7 @@ public class QPlayer {
                         forswitch = Integer.parseInt(makeint);
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
+                        return false;
                     }
 					switch (forswitch) {
                         case 3:
