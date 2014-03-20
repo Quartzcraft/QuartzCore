@@ -347,10 +347,10 @@ public class QPlayer {
 	/**
 	 * Gets the date the user was last seen
 	 * 
-	 * @param SUUID
+	 * @param player
 	 * @return String of the last seen date in format - X days ago
 	 */
-	public static String getLastSeen(String SUUID) {
+	public static String getLastSeen(OfflinePlayer player) {
 		String lastSeen = null;
 		
 		return lastSeen;
