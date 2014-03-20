@@ -355,6 +355,18 @@ public class QPlayer {
 		
 		return lastSeen;
 	}
+
+    /**
+     * Gets the date the user was last seen
+     *
+     * @param player
+     * @return String of the last seen date in X days/hours/minutes ago format.
+     */
+    public static String getLastSeen(Player player) {
+        String lastSeen = null;
+
+        return lastSeen;
+    }
 	
 	public static boolean createValidationCode(Player player) {
 		String validationCode = null;
