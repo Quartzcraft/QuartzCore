@@ -348,7 +348,7 @@ public class QPlayer {
 	 * Gets the date the user was last seen
 	 * 
 	 * @param player
-	 * @return String of the last seen date in format - X days ago
+	 * @return String of the last seen date in default bukkit format
 	 */
 	public static String getLastSeen(OfflinePlayer player) {
 		String lastSeen = null;
