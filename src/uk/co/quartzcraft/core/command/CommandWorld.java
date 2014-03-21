@@ -20,6 +20,6 @@ public class CommandWorld {
     public void kingdom(QCommand.CommandArgs args) {
         Player player = (Player) args.getSender();
         World world = player.getWorld();
-        player.sendMessage(ChatPhrase.getPhrase("you_are_currently_in_world") + ChatColor.WHITE + world.toString());
+        player.sendMessage(ChatPhrase.getPhrase("you_are_currently_in_world") + ChatColor.WHITE + world.getName());
     }
 }
