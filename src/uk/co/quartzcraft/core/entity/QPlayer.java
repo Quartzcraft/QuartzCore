@@ -303,6 +303,7 @@ public class QPlayer {
                         String makeint = temp[current];
                         forswitch = Integer.parseInt(makeint);
                     } catch (NumberFormatException e) {
+                        plugin.log.info("[QC] autoManageGroups failed!");
                         e.printStackTrace();
                         return false;
                     }

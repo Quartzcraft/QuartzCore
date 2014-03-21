@@ -71,6 +71,7 @@ public class ConnectionListener implements Listener {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+            plugin.log.info("[QC] An SQL exception occurred during connection!");
 		}
 		
 		//get player data from database
