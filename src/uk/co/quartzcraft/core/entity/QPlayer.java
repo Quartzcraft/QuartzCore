@@ -200,7 +200,7 @@ public class QPlayer {
 		
 		try {
 			java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getDisplayName() + "', ?, 9, 0);");
+			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getName() + "', ?, 9, 0);");
 			s.setString(1, date.toString());
 			if(s.executeUpdate() == 1) {
 				QPlayerCreationEvent event = new QPlayerCreationEvent(player);
