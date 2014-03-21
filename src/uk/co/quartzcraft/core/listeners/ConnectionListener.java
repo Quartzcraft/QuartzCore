@@ -90,7 +90,7 @@ public class ConnectionListener implements Listener {
 		String splayer = player.toString();
 		String playername = player.getDisplayName();
 		
-		if(plugin.getConfig().getString("settings.connection-broadcast") == "true") {
+		if(plugin.getConfig().getString("settings.join-broadcast") == "true") {
 			Long lastSeen = player.getLastPlayed();
 			String message = playername + ChatColor.YELLOW + " joined, last seen " + lastSeen;
 			
@@ -117,7 +117,7 @@ public class ConnectionListener implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent quit) {
 		Player player = quit.getPlayer();
 		
-		if(plugin.getConfig().getString("settings.connection-broadcast") == "true") {
+		if(plugin.getConfig().getString("settings.join-broadcast") == "true") {
 			String message = player.getDisplayName() + ChatColor.YELLOW + " disconnected.";
 			
 			quit.setQuitMessage(message);
