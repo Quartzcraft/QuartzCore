@@ -91,7 +91,8 @@ public class ConnectionListener implements Listener {
 		String playername = player.getDisplayName();
 		
 		if(plugin.getConfig().getString("settings.join-broadcast") == "true") {
-			Long lastSeen = player.getLastPlayed();
+            String lastSeen = null;
+			//Long lastSeen = player.getLastPlayed();
 			String message = playername + ChatColor.YELLOW + " joined, last seen " + lastSeen;
 			
 			join.setJoinMessage(message);
