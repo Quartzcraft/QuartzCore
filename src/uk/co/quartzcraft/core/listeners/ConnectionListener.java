@@ -81,8 +81,8 @@ public class ConnectionListener implements Listener {
 		
 	}
 	
-	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onPlayerJoinHigh(PlayerJoinEvent join) {
+	@EventHandler(priority = EventPriority.LOWEST)
+	public void onPlayerJoinLow(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
@@ -102,8 +102,8 @@ public class ConnectionListener implements Listener {
         Bukkit.getServer().getPluginManager().callEvent(event);
 	}
 	
-	@EventHandler(priority = EventPriority.LOWEST)
-	public void onPlayerJoinLow(PlayerJoinEvent join) {
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onPlayerJoinHigh(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
