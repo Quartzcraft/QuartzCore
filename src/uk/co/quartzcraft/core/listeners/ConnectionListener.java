@@ -91,7 +91,7 @@ public class ConnectionListener implements Listener {
 		String playername = player.getDisplayName();
 		
 		if(plugin.getConfig().getString("settings.connection-broadcast") == "true") {
-			String lastSeen = QPlayer.getLastSeen(SUUID);
+			Long lastSeen = player.getLastPlayed();
 			String message = playername + ChatColor.YELLOW + " joined, last seen " + lastSeen;
 			
 			join.setJoinMessage(message);
