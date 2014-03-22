@@ -19,14 +19,19 @@ public class CommandAnnounce {
     public void kingdom(QCommand.CommandArgs args) {
         Player player = (Player) args.getSender();
         String[] args0 = args.getArgs();
-        String announcement;
         if(args0.length >= 1) {
-            for(String arg : args0) {
-                announcement = announcement.concat(arg);
-            }
+            String announcement = getAnnouncementContent(args0);
             Announce.announce(announcement);
         } else {
             args.getSender().sendMessage(ChatPhrase.getPhrase("specify_arguments"));
         }
+    }
+
+    public String getAnnouncementContent(String[] args) {
+        StringBuilder builder = new StringBuilder();
+        for(String s : args) {
+            builder.append(s + " ");
+        }
+        return builder.toString();
     }
 }
