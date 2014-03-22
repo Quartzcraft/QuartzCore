@@ -17,11 +17,14 @@ public class CommandQCReload {
         framework.registerCommands(this);
     }
 
-    @QCommand.Command(name = "qcreload", aliases = { "qcr" }, permission = "QCC.reload", description = "Reloads the config", usage = "Use /qcreload")
-    public void kingdom(QCommand.CommandArgs args) {
+    @QCommand.Command(name = "qcreload", aliases = { "qcr" }, permission = "QCC.reload", description = "Reloads the plugin", usage = "Use /qcreload")
+    public void qcreload(QCommand.CommandArgs args) {
         CommandSender sender = args.getSender();
         plugin.getPluginLoader().disablePlugin(plugin);
         plugin.getPluginLoader().enablePlugin(plugin);
+        sender.sendMessage("[QC] Successfully reloaded plugin!");
+        this.plugin.getLogger().info("[QC] Successfully reloaded plugin!");
+    }
         sender.sendMessage("[QC] Successfully reloaded config!");
         this.plugin.getLogger().info("[QC] Successfully reloaded config!");
     }
