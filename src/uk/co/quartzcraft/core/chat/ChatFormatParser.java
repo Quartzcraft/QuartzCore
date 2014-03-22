@@ -7,7 +7,7 @@ public class ChatFormatParser {
 	/**
 	 * Parses the chat colours.
 	 * 
-	 * @author mba2012
+	 * @author mba2012, SoulPunisher
 	 * @param message
 	 * @return message
 	 */
