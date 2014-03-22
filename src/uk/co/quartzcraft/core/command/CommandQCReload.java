@@ -4,9 +4,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import uk.co.quartzcraft.core.QuartzCore;
 
-/**
- * Created by nicholasbassett on 22/03/2014.
- */
 public class CommandQCReload {
     private static QuartzCore plugin;
     private static QCommand framework;
