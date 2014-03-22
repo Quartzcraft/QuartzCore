@@ -290,7 +290,7 @@ public class QPlayer {
 				int primary_group_id = res.getInt("user_group_id");
 				String secondary_group_ids = res.getString("secondary_group_ids");
 				String[] temp;
-				temp = secondary_group_ids.split(", ", 25);
+				temp = secondary_group_ids.split(",", 25);
 				int current = 0;
 				
 				//Remove groups
