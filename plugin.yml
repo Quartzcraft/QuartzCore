@@ -88,3 +88,6 @@ Permissions:
    QCC.test:
          description: Test permission.
          default: op
+   QCC.reload:
+      description: Gives a player permission to perform the reload command.
+      default: op
