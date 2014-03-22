@@ -25,6 +25,11 @@ public class CommandQCReload {
         sender.sendMessage("[QC] Successfully reloaded plugin!");
         this.plugin.getLogger().info("[QC] Successfully reloaded plugin!");
     }
+
+    @QCommand.Command(name = "qcreload.config", aliases = { "qcr.config" }, permission = "QCC.reload", description = "Reloads the config", usage = "Use /qcreload config")
+    public void qcreloadConfig(QCommand.CommandArgs args) {
+        CommandSender sender = args.getSender();
+        plugin.reloadConfig();
         sender.sendMessage("[QC] Successfully reloaded config!");
         this.plugin.getLogger().info("[QC] Successfully reloaded config!");
     }
