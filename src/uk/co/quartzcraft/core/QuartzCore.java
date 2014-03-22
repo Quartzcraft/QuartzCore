@@ -97,6 +97,7 @@ public class QuartzCore extends JavaPlugin {
 		ChatPhrase.addPhrase("database_error_contact", "&cA database error occurred! &aPlease contact an administrator on the QuartzCraft website immediately.");
 		ChatPhrase.addPhrase("player_use_only", "&4This command can only be used ingame by a player.");
 		ChatPhrase.addPhrase("specify_username", "&cPlease specify a user!");
+        ChatPhrase.addPhrase("specify_arguments", "&cPlease specify some arguments!");
 
         ChatPhrase.addPhrase("please_specify_player_to_report", "&cYou must specify a player to report!");
         ChatPhrase.addPhrase("thank_you_for_reporting_user", "&aThank you for submitting a report. It is unlikely that we will need contact you.");
