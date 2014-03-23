@@ -18,6 +18,7 @@ import org.bukkit.event.Event;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
+import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.*;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
@@ -221,7 +222,7 @@ public class QPlayer {
 	 * @param playername
 	 * @param GroupName
 	 */
-	public static boolean setPrimaryGroup(CommandSender sender, String playername, String GroupName, boolean promote, QuartzCore plugin) {
+	public static boolean setPrimaryGroup(CommandSender sender, String playername, String GroupName, boolean promote, Plugin plugin) {
 		String promoteCommand = plugin.getConfig().getString("settings.primary-promote-command");
 		String demoteCommand = plugin.getConfig().getString("settings.primary-demote-command");
 		promoteCommand.replaceAll("<group>", GroupName);
@@ -249,7 +250,7 @@ public class QPlayer {
 	 * @param playername
 	 * @param GroupName
 	 */
-	public static boolean addSecondaryGroup(CommandSender sender, String playername, String GroupName, boolean promote, QuartzCore plugin) {
+	public static boolean addSecondaryGroup(CommandSender sender, String playername, String GroupName, boolean promote, Plugin plugin) {
 		String promoteCommand = plugin.getConfig().getString("settings.secondary-promote-command");
         String demoteCommand = plugin.getConfig().getString("settings.secondary-demote-command");
 		promoteCommand.replaceAll("<group>", GroupName);
