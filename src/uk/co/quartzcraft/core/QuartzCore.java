@@ -151,7 +151,7 @@ public class QuartzCore extends JavaPlugin {
     }
 	
 	public static String displayReleaseVersion() {
-		String ReleaseVersion = release + version;
+		String ReleaseVersion = release + " " + version;
 		return ReleaseVersion;
 	}
 }
