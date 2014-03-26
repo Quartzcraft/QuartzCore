@@ -59,7 +59,7 @@ public class QuartzCore extends JavaPlugin {
 		//Config files
 		log.info("[QC]Running plugin configuration");
 		this.saveDefaultConfig();
-		boolean DBConnect = true; //this.getConfig().getBoolean("database.settings.database-connect");
+		boolean DBConnect = true;
 		
 		if(DBConnect) {
 			//Core Database
