@@ -45,9 +45,6 @@ public class QuartzCore extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		
-		//Database
-		log.info("[QC][SHUTDOWN]Terminating connection to database");
-		
     	//Shutdown notice
 		log.info("[QC]The QuartzCore Plugin has been disabled!");
 	}
@@ -113,7 +110,6 @@ public class QuartzCore extends JavaPlugin {
 		
 		//Listeners
 		log.info("[QC][STARTUP]Registering listeners...");
-		//getServer().getPluginManager().registerEvents(new ConnectionListener(this), this);
 		new ConnectionListener(this);
 		new ChatListener(this);
 
@@ -129,9 +125,6 @@ public class QuartzCore extends JavaPlugin {
 	   	getCommand("report").setExecutor(new CommandReport());
 	   	getCommand("promo").setExecutor(new CommandPromo());
 	   	getCommand("register").setExecutor(new CommandRegister());
-	   	
-	   	//ChatChannels
-	   	//logger.info("[STARTUP]Registering chat channels...");
 	   	
 	   	//Database
 	  	if(DBConnect) {
