@@ -280,69 +280,58 @@ public class QPlayer {
 	 * @return boolean - true if was successful, false if otherwise.
 	 */
 	public static boolean autoManageGroups(Player player, QuartzCore plugin) {
+		//TODO Need API Key and JSON stuffs
 		String SUUID = player.getUniqueId().toString();
-		String playername = player.getDisplayName().toString();
-		try {
-			java.sql.Connection connection = QuartzCore.MySQLweb.openConnection();
-			java.sql.PreparedStatement secondary = connection.prepareStatement("SELECT user_group_id, secondary_group_ids FROM xf_user WHERE user_id = (SELECT user_id FROM xf_user_field_value WHERE field_id = 'Minecraft_Username' = ? LIMIT 1);");
-			secondary.setString(1, playername);
-			ResultSet res = secondary.executeQuery();
-			if(res.next()) {
-				int primary_group_id = res.getInt("user_group_id");
-				String secondary_group_ids = res.getString("secondary_group_ids");
-				String[] temp;
-				temp = secondary_group_ids.split(",", 25);
-				int current = 0;
+		String playername = player.getName().toString();
+		String apiAction = "http://quartzcraft.co.uk/api.php?action=getUser&value=" + playername + "&hash=API_KEY";
+		
+		int primary_group_id = res.getInt("user_group_id");
+		String secondary_group_ids = res.getString("secondary_group_ids");
+		String[] temp;
+		temp = secondary_group_ids.split(",", 25);
+		int current = 0;
 				
-				//Remove groups
-				setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Member", true, plugin);
-				
-				//Set groups
-				for(String id : temp) {
-                    int forswitch = 0;
-                    try {
-                        String makeint = temp[current];
-                        forswitch = Integer.parseInt(makeint);
-                    } catch (NumberFormatException e) {
-                        plugin.log.info("[QC] autoManageGroups failed!");
-                        e.printStackTrace();
-                        return false;
-                    }
-					switch (forswitch) {
-                        case 3:
-                            setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Admin", true, plugin);
-                            break;
-                        case 4:
-                            setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Moderator", true, plugin);
-                            break;
-                        case 15:
-                            setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Diamond", true, plugin);
-                            break;
-                        case 14:
-                            setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Gold", true, plugin);
-                            break;
-                        case 13:
-                            setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Iron", true, plugin);
-                            break;
-                        case 9:
-                            setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "SeniorStaff", true, plugin);
-                            break;
-                        case 5:
-                            setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Owner", true, plugin);
-                            break;
-                        default:
-                            setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Member", true, plugin);
-                            break;
-					}
-					current++;
-				}
-				return true;
-			} else {
-				return false;
+		//Remove groups
+		setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Member", true, plugin);
+		
+		//Set groups
+		for(String id : temp) {
+                	int forswitch = 0;
+	        	try {
+	                        String makeint = temp[current];
+	                        forswitch = Integer.parseInt(makeint);
+	               	} catch (NumberFormatException e) {
+	                        plugin.log.info("[QC] autoManageGroups failed!");
+	                        e.printStackTrace();
+	                        return false;
+	       		}
+			switch (forswitch) {
+	                case 3:
+		            	setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Admin", true, plugin);
+	                	 break;
+	                case 4:
+	                	setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Moderator", true, plugin);
+	                	break;
+	                case 15:
+	                	setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Diamond", true, plugin);
+	                        break;
+	                case 14:
+	                	setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Gold", true, plugin);
+	                        break;
+	                case 13:
+	                        setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Iron", true, plugin);
+	                        break;
+	                case 9:
+	                        setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "SeniorStaff", true, plugin);
+	                        break;
+	                case 5:
+	               		setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Owner", true, plugin);
+	                        break;
+	                default:
+	                        setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Member", true, plugin);
+	                        break;
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
+			current++;
 		}
 	}
 
