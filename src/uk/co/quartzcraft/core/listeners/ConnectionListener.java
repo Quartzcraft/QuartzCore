@@ -58,7 +58,7 @@ public class ConnectionListener implements Listener {
 			s1 = QuartzCore.MySQLcore.openConnection().createStatement();
 			ResultSet res1 = s1.executeQuery("SELECT * FROM PlayerData WHERE UUID='" + SUUID + "'");
 			if(res1.next()) {
-				QPlayer.setConnectionStatus(player, true);
+				//QPlayer.setConnectionStatus(player, true);
 				//QPlayer.autoManageGroups(player, this.plugin);
 				plugin.log.info("[QC] Player, " + player.getDisplayName() + " successfully joined!");
 			} else {
