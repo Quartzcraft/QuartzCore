@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import uk.co.quartzcraft.core.database.*;
 import uk.co.quartzcraft.core.chat.*;
 import uk.co.quartzcraft.core.command.*;
-import uk.co.quartzcraft.core.command.QCommand;
+import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.database.MySQL;
 import uk.co.quartzcraft.core.entity.QPlayer;
 import uk.co.quartzcraft.core.listeners.*;
@@ -40,7 +40,7 @@ public class QuartzCore extends JavaPlugin {
 	public static MySQL MySQLcore = null;
 	public static MySQL MySQLweb = null;
 
-    public QCommand commandFramework;
+    public QCommandFramework commandFramework;
 	
 	@Override
 	public void onDisable() {
@@ -115,7 +115,7 @@ public class QuartzCore extends JavaPlugin {
 
 	    //Commands
 		log.info("[QC][STARTUP]Registering commands...");
-        commandFramework = new QCommand(this);
+        commandFramework = new QCommandFramework(this);
         commandFramework.registerCommands(new CommandTest(this));
         commandFramework.registerCommands(new CommandWorld(this));
         commandFramework.registerCommands(new CommandQCReload(this));
