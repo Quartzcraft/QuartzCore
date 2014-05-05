@@ -19,21 +19,22 @@ import uk.co.quartzcraft.core.entity.QPlayer;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.Announce;
 import uk.co.quartzcraft.core.chat.ChatPhrase;
-import uk.co.quartzcraft.core.command.QCommand;
+import uk.co.quartzcraft.core.command.framework.QCommand;
+import uk.co.quartzcraft.core.command.framework.*;
 
 public class CommandTest {
 
     private static QuartzCore plugin;
-    private static QCommand framework;
+    private static QCommandFramework framework;
 
     public CommandTest(QuartzCore plugin) {
         this.plugin = plugin;
-        framework = new QCommand(this.plugin);
+        framework = new QCommandFramework(this.plugin);
         framework.registerCommands(this);
     }
 
-    @QCommand.Command(name = "test", aliases = { "testing" }, permission = "QCC.test", description = "This is a test command", usage = "This is how you use it")
-    public void test(QCommand.CommandArgs args) {
+    @QCommand(name = "test", aliases = { "testing" }, permission = "QCC.test", description = "This is a test command", usage = "This is how you use it")
+    public void test(CommandArgs args) {
         args.getSender().sendMessage("This is a test command");
     }
 }
