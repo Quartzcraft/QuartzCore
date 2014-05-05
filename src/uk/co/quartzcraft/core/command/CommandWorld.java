@@ -19,7 +19,7 @@ public class CommandWorld {
     }
 
     @QCommand(name = "world", aliases = { "w" }, permission = "QCC.world", description = "Displays the world you are currently in.", usage = "Use /world")
-    public void kingdom(CommandArgs args) {
+    public void world(CommandArgs args) {
         Player player = (Player) args.getSender();
         World world = player.getWorld();
         player.sendMessage(ChatPhrase.getPhrase("you_are_currently_in_world") + ChatColor.WHITE + world.getName());
