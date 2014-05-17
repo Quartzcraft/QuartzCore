@@ -18,6 +18,7 @@ import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import uk.co.quartzcraft.core.util.InventoryUI;
 
 /**
  * Core file for QuartzCore plugin.
