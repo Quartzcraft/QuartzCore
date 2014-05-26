@@ -108,6 +108,8 @@ public class QuartzCore extends JavaPlugin {
 		
 		ChatPhrase.addPhrase("promoted_player_yes", "&aThe player was successfully moved groups!");
 		ChatPhrase.addPhrase("promoted_player_no", "&cThe player failed to move groups!");
+
+        ChatPhrase.addPhrase("could_not_fit_item_dropped", "&cThe item could not fit in your inventory and was dropped on the ground!");
 		
 		//Listeners
 		log.info("[QC][STARTUP]Registering listeners...");
