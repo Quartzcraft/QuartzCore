@@ -1,10 +1,17 @@
 package uk.co.quartzcraft.core.features;
 
 import org.bukkit.inventory.ItemStack;
+import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.util.ItemUtil;
 
 public class FinalItems {
     public static final String FINAL_KEY = "__final";
+    private static QuartzCore plugin;
+
+    public FinalItems(QuartzCore plugin) {
+        //plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        this.plugin = plugin;
+    }
 
     public static ItemStack makeFinal(ItemStack item) {
         if (item == null) {

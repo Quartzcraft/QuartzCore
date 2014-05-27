@@ -11,6 +11,9 @@ import uk.co.quartzcraft.core.command.*;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.database.MySQL;
 import uk.co.quartzcraft.core.entity.QPlayer;
+import uk.co.quartzcraft.core.features.FinalItems;
+import uk.co.quartzcraft.core.features.SoulboundItems;
+import uk.co.quartzcraft.core.features.UnbreakableItems;
 import uk.co.quartzcraft.core.listeners.*;
 
 import org.bukkit.ChatColor;
@@ -115,6 +118,9 @@ public class QuartzCore extends JavaPlugin {
 		log.info("[QC][STARTUP]Registering listeners...");
 		new ConnectionListener(this);
 		new ChatListener(this);
+        new UnbreakableItems(this);
+        new SoulboundItems(this);
+        new FinalItems(this);
 
 	    //Commands
 		log.info("[QC][STARTUP]Registering commands...");

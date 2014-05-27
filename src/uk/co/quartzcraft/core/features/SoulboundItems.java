@@ -1,6 +1,7 @@
 package uk.co.quartzcraft.core.features;
 
 import org.bukkit.event.Listener;
+import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.util.ItemUtil;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -14,6 +15,12 @@ import java.util.List;
  */
 public class SoulboundItems implements Listener {
     public static final String SOULBOUND_KEY = "__soulbound";
+    private static QuartzCore plugin;
+
+    public SoulboundItems(QuartzCore plugin) {
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        this.plugin = plugin;
+    }
 
     public static ItemStack makeSoulbound(ItemStack item) {
         if (item == null) {
