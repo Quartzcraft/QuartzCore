@@ -34,7 +34,7 @@ public class SoulboundItems implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         final List<ItemStack> drops = event.getDrops();
-        final List<ItemStack> itemsToKeep = event.getItemsToKeep();
+        final List<ItemStack> itemsToKeep = null;//event.getItemsToKeep(); //TODO: FIX THIS!
         final Iterator<ItemStack> iterator = drops.iterator();
         while (iterator.hasNext()) {
             ItemStack item = iterator.next();
