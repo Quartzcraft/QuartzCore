@@ -37,7 +37,7 @@ public class TaskChain {
     boolean async;
     private final Plugin plugin;
     public TaskChain() {
-        this.plugin = MyPlugin; // TODO: Get plugin!
+        this.plugin = null; // TODO: Get plugin!
         this.async = !Bukkit.isPrimaryThread();
     }
     /**
