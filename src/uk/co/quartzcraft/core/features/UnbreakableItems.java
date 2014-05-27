@@ -21,13 +21,13 @@ public class UnbreakableItems implements Listener {
 
     public static final String UNBREAKING_KEY = "__unbreak";
 
-    public static ItemStack makeUnbreaking(ItemStack item) {
+    public static ItemStack makeUnbreakable(ItemStack item) {
         if (item == null) {
             throw new NullPointerException();
         }
-        return makeUnbreaking(ItemUtil.buildLore(item)).save();
+        return makeUnbreakable(ItemUtil.buildLore(item)).save();
     }
-    public static ItemUtil.LoreBuilder makeUnbreaking(ItemUtil.LoreBuilder builder) {
+    public static ItemUtil.LoreBuilder makeUnbreakable(ItemUtil.LoreBuilder builder) {
         return builder
                 .add(0, "&6&l&nUnbreaking&f (&oCan not be damaged)")
                 .setMeta(UNBREAKING_KEY, "1");
