@@ -1,14 +1,12 @@
 package uk.co.quartzcraft.core.command;
 
 import org.bukkit.*;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.ChatPhrase;
 import uk.co.quartzcraft.core.command.framework.*;
-import uk.co.quartzcraft.core.util.InventoryUI;
+import uk.co.quartzcraft.core.features.InventoryUI;
 
 public class CommandPromo {
 

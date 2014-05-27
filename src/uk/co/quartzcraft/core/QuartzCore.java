@@ -1,27 +1,21 @@
 package uk.co.quartzcraft.core;
 
 import java.sql.Connection;
-import java.util.Arrays;
 import java.util.logging.Logger;
 
 import org.bukkit.command.CommandSender;
-import uk.co.quartzcraft.core.database.*;
 import uk.co.quartzcraft.core.chat.*;
 import uk.co.quartzcraft.core.command.*;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.database.MySQL;
-import uk.co.quartzcraft.core.entity.QPlayer;
 import uk.co.quartzcraft.core.features.FinalItems;
 import uk.co.quartzcraft.core.features.SoulboundItems;
 import uk.co.quartzcraft.core.features.UnbreakableItems;
 import uk.co.quartzcraft.core.listeners.*;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import uk.co.quartzcraft.core.util.InventoryUI;
 
 /**
  * Core file for QuartzCore plugin.
