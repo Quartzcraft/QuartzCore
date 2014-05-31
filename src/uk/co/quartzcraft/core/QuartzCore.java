@@ -19,9 +19,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Core file for QuartzCore plugin.
- * 
- * @author mba2012
- * @author SoulPunisher
  */
 public class QuartzCore extends JavaPlugin {
 	

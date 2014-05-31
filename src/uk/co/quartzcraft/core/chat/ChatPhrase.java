@@ -45,8 +45,7 @@ private static QuartzCore plugin;
 	
 	/**
 	 * Gets the requested phrase.
-	 * 
-	 * @author mba2012
+	 *
 	 * @param requested_phrase_id
 	 * @return phrase
 	 */
@@ -63,8 +62,7 @@ private static QuartzCore plugin;
 	
 	/**
 	 * Adds a phrase to the phrase list.
-	 * 
-	 * @author mba2012
+	 *
 	 * @param phrase_id
 	 * @param phrase
 	 */

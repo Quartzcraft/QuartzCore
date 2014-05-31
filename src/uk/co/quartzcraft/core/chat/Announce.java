@@ -8,8 +8,7 @@ public class Announce {
 
 	/**
 	 * Makes a broadcast
-	 * 
-	 * @author SoulPunisher, mba2012
+	 *
 	 * @param message
 	 */
 	public static void announce(String message) {
@@ -21,8 +20,7 @@ public class Announce {
 	
 	/**
 	 * Makes a broadcast with a prefix. 
-	 * 
-	 * @author SoulPunisher, mba2012
+	 *
 	 * @param prefix
 	 * @param prefixColour
 	 * @param message

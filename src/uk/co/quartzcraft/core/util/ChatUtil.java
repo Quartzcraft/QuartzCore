@@ -7,7 +7,6 @@ public class ChatUtil {
     /**
      * Parses the chat colours.
      *
-     * @author mba2012, SoulPunisher
      * @param message
      * @return message
      */
@@ -37,7 +36,6 @@ public class ChatUtil {
     /**
      * Parses chat formatting.
      *
-     * @author mba2012
      * @param message
      * @return message
      */
@@ -57,7 +55,6 @@ public class ChatUtil {
     /**
      * Parses chat, using the format and colour parsers.
      *
-     * @author mba2012
      * @param message
      * @return message
      */
