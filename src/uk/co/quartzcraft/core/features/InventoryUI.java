@@ -12,6 +12,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
+import uk.co.quartzcraft.core.util.ItemUtil;
 
 import java.util.Arrays;
 
@@ -39,6 +40,12 @@ public class InventoryUI implements Listener {
     public InventoryUI setOption(int position, ItemStack icon, String name, String... info) {
         optionNames[position] = name;
         optionIcons[position] = setItemNameAndLore(icon, name, info);
+        return this;
+    }
+
+    public InventoryUI setOption(int position, ItemStack item) {
+        optionNames[position] = ItemUtil.getName(item);
+        optionIcons[position] = item;
         return this;
     }
 
