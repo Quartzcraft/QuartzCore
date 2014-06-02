@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,144 +12,68 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
-
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
 
 import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.chat.*;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 import uk.co.quartzcraft.core.event.QPlayerLoginEvent;
-import uk.co.quartzcraft.core.util.Obfuscate;
 
 public class QPlayer {
 	
 	private static QuartzCore plugin;
+
+    private static String name;
+    private static UUID uuid;
+    private static int id;
+    private static String lastSeen;
 	
-	public void QPlayer(QuartzCore plugin) {
-		this.plugin = plugin;
+	public QPlayer(QuartzCore plugin, UUID uuid) {
+        this.plugin = plugin;
+        this.uuid = uuid;
+
+        String SUUID = uuid.toString();
+        try {
+            Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
+            ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE UUID='" + SUUID + "';");
+            if(res.next()) {
+                if (res.getString("UUID").equals(uuid)) {
+                    this.id = res.getInt("id");
+                    this.name = res.getString("DisplayName");
+                } else {
+                    Logger.getLogger("Minecraft").log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
+                }
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
 	}
 
 	private static java.sql.Timestamp getCurrentTimeStamp() {
 	    java.util.Date today = new java.util.Date();
 	    return new java.sql.Timestamp(today.getTime());
 	}
-	
-	/**
-	 * Gets player data from QuartzCore PlayerData database table by using UUID.
-	 * 
-	 * @param UUID
-	 * @return a map of all the data
-	 */
-	public static HashMap getData(UUID UUID) {
-		
-		String SUUID = UUID.toString();
-		try {
-			Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
-	        ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE UUID ='" + SUUID + "';");
-	        res.next();
-	        
-	        if(res.getString("UUID") == SUUID) {
-	        	return null;
-	        } else {
-	        	return null;
-	        }
-	        
-		} catch(SQLException e) {
-			Logger.getLogger("Minecraft").log(Level.SEVERE, null, e);
-			return null;
-		}
-		
-	}
-
-    /**
-     * Gets a users id from the PlayerData database
-     *
-     * @param player
-     * @return id of the player
-     */
-    public static int getUserID(OfflinePlayer player) {
-        //String SUUID = player.getUniqueId().toString();
-        String playername = player.getName();
-
-        Statement s;
-        try {
-            s = QuartzCore.MySQLcore.openConnection().createStatement();
-            ResultSet res = s.executeQuery("SELECT FROM PlayerData WHERE DisplayName='" + playername + "';");
-            if(res.next()) {
-                int id = res.getInt("id");
-                return id;
-            } else {
-                return 0;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
 
 	/**
 	 * Gets a users id from the PlayerData database
-	 * 
-	 * @param player
+	 *
 	 * @return id of the player
 	 */
-	public static int getUserID(Player player) {
-		String SUUID = player.getUniqueId().toString();
-		
-		Statement s;
-		try {
-			s = QuartzCore.MySQLcore.openConnection().createStatement();
-			ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE UUID ='" + SUUID + "';");
-	        if(res.next()) {
-	        	int id = res.getInt("id");
-	        	return id;
-	        } else {
-	        	return 0;
-	        }
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return 0;
-		}
+	public int getID() {
+        return this.id;
 	}
 	
 	/**
 	 * Gets the display name of the player.
-	 * 
-	 * @param player
+	 *
 	 * @return The display name of the player as defined in the QuartzCore database
 	 */
-	public static String getDisplayName(Player player) {
+	public String getName() {
 		Statement s;
 		
 		try {
 			s = QuartzCore.MySQLcore.openConnection().createStatement();
-			ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE DisplayName ='" + player.getDisplayName().toString() + "';");
-	        if(res.next()) {
-	        	return res.getString(3);
-	        } else {
-	        	return null;
-	        }
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	/**
-	 * Gets the display name of the player.
-	 * 
-	 * @param id
-	 * @return The display name of the player as defined in the QuartzCore database
-	 */
-	public static String getName(int id) {
-		Statement s;
-		
-		try {
-			s = QuartzCore.MySQLcore.openConnection().createStatement();
-			ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE id ='" + id + "';");
+			ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE id ='" + this.id + "';");
 	        if(res.next()) {
 	        	return res.getString(3);
 	        } else {
@@ -164,19 +87,18 @@ public class QPlayer {
 	
 	/**
 	 * Updates the QuartzCraft PlayerData to set the connection status. 
-	 * 
-	 * @param player The player that is being updated
+	 *
 	 * @param conn Connection status 
 	 */
-	public static void setConnectionStatus(Player player, boolean conn) {
+	public void setConnectionStatus(boolean conn) {
         long time = System.currentTimeMillis();
         Date date = new Date(System.currentTimeMillis());
 		try {
             java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-            java.sql.PreparedStatement s = connection.prepareStatement("UPDATE PlayerData SET LastSeen=" + date + " WHERE id=" + getUserID(player) + ";");
+            java.sql.PreparedStatement s = connection.prepareStatement("UPDATE PlayerData SET LastSeen=" + date + " WHERE id=" + this.id + ";");
             s.setString(1, date.toString());
             if(s.executeUpdate() == 1) {
-                QPlayerLoginEvent event = new QPlayerLoginEvent(player);
+                //QPlayerLoginEvent event = new QPlayerLoginEvent(this);
             } else {
 
             }
@@ -218,17 +140,16 @@ public class QPlayer {
 
 	/**
 	 * Sets the users primary group
-	 * 
-	 * @param playername
+	 *
 	 * @param GroupName
 	 */
-	public static boolean setPrimaryGroup(CommandSender sender, String playername, String GroupName, boolean promote, Plugin plugin) {
+	public boolean setPrimaryGroup(CommandSender sender, String GroupName, boolean promote, Plugin plugin) {
 		String promoteCommand = plugin.getConfig().getString("settings.primary-promote-command");
 		String demoteCommand = plugin.getConfig().getString("settings.primary-demote-command");
 		promoteCommand.replaceAll("<group>", GroupName);
-		promoteCommand.replaceAll("<user>", playername);
+		promoteCommand.replaceAll("<user>", this.name);
 		//demoteCommand.replaceAll("<group>", GroupName);
-		demoteCommand.replaceAll("<user>", playername);
+		demoteCommand.replaceAll("<user>", this.name);
 		boolean success = false;
 		
 		if(promote) {
@@ -246,17 +167,16 @@ public class QPlayer {
 	
 	/**
 	 * Adds a secondary group for the user.
-	 * 
-	 * @param playername
+	 *
 	 * @param GroupName
 	 */
-	public static boolean addSecondaryGroup(CommandSender sender, String playername, String GroupName, boolean promote, Plugin plugin) {
+	public boolean addSecondaryGroup(CommandSender sender, String GroupName, boolean promote, Plugin plugin) {
 		String promoteCommand = plugin.getConfig().getString("settings.secondary-promote-command");
         String demoteCommand = plugin.getConfig().getString("settings.secondary-demote-command");
 		promoteCommand.replaceAll("<group>", GroupName);
-		promoteCommand.replaceAll("<user>", playername);
+		promoteCommand.replaceAll("<user>", this.name);
         demoteCommand.replaceAll("<group>", GroupName);
-        demoteCommand.replaceAll("<user>", playername);
+        demoteCommand.replaceAll("<user>", this.name);
 
         if(promote) {
             if(Bukkit.getServer().dispatchCommand(sender, promoteCommand)) {
@@ -275,14 +195,13 @@ public class QPlayer {
 	
 	/**
 	 * Automatically manages a users group depending on their groups on the website.
-	 * 
-	 * @param player
+	 *
 	 * @return boolean - true if was successful, false if otherwise.
 	 */
-	public static boolean autoManageGroups(Player player, QuartzCore plugin) {
+	public boolean autoManageGroups() {
 		//TODO Need API Key and JSON stuffs
-		String SUUID = player.getUniqueId().toString();
-		String playername = player.getName().toString();
+		String SUUID = this.uuid.toString();
+		String playername = this.name;
 		String apiAction = "http://quartzcraft.co.uk/api.php?action=getUser&value=" + playername + "&hash=API_KEY";
 
 		String secondary_group_ids = null;
@@ -341,7 +260,7 @@ public class QPlayer {
 	 * @param player
 	 * @return String of the last seen date in default bukkit format
 	 */
-	public static String getLastSeen(OfflinePlayer player) {
+	public String getLastSeen(OfflinePlayer player) {
 		String lastSeen = null;
 		
 		return lastSeen;
@@ -350,27 +269,24 @@ public class QPlayer {
     /**
      * Gets the date the user was last seen
      *
-     * @param player
      * @return String of the last seen date in X days/hours/minutes ago format.
      */
-    public static String getLastSeen(Player player) {
-        String lastSeen = null;
-
-        return lastSeen;
+    public String getLastSeen() {
+        return this.lastSeen;
     }
 	
-	public static boolean createValidationCode(Player player) {
-		String validationCode = null;
-		String playername = player.getDisplayName();
-        String UUID = validationCode = player.getUniqueId().toString();
+	public boolean createValidationCode() {
+		String validationCode;
+		String playername = this.name;
+        String UUID = this.uuid.toString();
         String code = UUID.substring(0, 8);
 		//String hashedUsername = Obfuscate.obfuscate(playername);
-		//validationCode = Integer.toString(QPlayer.getUserID(player)) + "-" + hashedUsername;
-        validationCode = Integer.toString(QPlayer.getUserID(player)) + "-" + code;
+		//validationCode = Integer.toString(QPlayer.getID(player)) + "-" + hashedUsername;
+        validationCode = Integer.toString(this.id) + "-" + code;
 
 		try {
 			java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO validationCodes (user_id, code) VALUES (" + QPlayer.getUserID(player) +", '" + validationCode + "');");
+			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO validationCodes (user_id, code) VALUES (" + this.id +", '" + validationCode + "');");
 			if(s.executeUpdate() == 1) {
 				return true;
 			} else {
@@ -382,12 +298,12 @@ public class QPlayer {
 		}
 	}
 	
-	public static String getValidationCode(Player player) {
+	public String getValidationCode() {
 		Statement s;
 		
 		try {
 			s = QuartzCore.MySQLcore.openConnection().createStatement();
-			ResultSet res = s.executeQuery("SELECT * FROM validationCodes WHERE user_id ='" + QPlayer.getUserID(player) + "';");
+			ResultSet res = s.executeQuery("SELECT * FROM validationCodes WHERE user_id ='" + this.id + "';");
 	        if(res.next()) {
 	        	return res.getString("code");
 	        } else {
