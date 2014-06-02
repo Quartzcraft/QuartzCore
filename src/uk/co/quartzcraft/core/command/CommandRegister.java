@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.ChatPhrase;
 import uk.co.quartzcraft.core.entity.QPlayer;
 
@@ -12,21 +13,21 @@ public class CommandRegister implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		Player player = (Player) sender;
+        QPlayer player = new QPlayer(new QuartzCore(), ((Player) sender).getUniqueId());
 		if(command.getName().equalsIgnoreCase("register") && sender instanceof Player) {
-			if(QPlayer.getValidationCode(player) != null) {
+			if(player.getValidationCode() != null) {
 				sender.sendMessage(ChatPhrase.getPhrase("to_register_on_the_website_please_visit_web"));
 				sender.sendMessage(ChatPhrase.getPhrase("these_are_the_fields_required_for_website_registration"));
 				sender.sendMessage(ChatPhrase.getPhrase("your_minecraft_username_is") + player.getName());
-				sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is") + QPlayer.getValidationCode(player));
-				sender.sendMessage(ChatPhrase.getPhrase("your_quartzcore_id_is") + QPlayer.getUserID(player));
+				sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is") + player.getValidationCode());
+				sender.sendMessage(ChatPhrase.getPhrase("your_quartzcore_id_is") + player.getID());
 				return true;
-			} else if(QPlayer.createValidationCode(player)) {
+			} else if(player.createValidationCode()) {
 				sender.sendMessage(ChatPhrase.getPhrase("to_register_on_the_website_please_visit_web"));
 				sender.sendMessage(ChatPhrase.getPhrase("these_are_the_fields_required_for_website_registration"));
 				sender.sendMessage(ChatPhrase.getPhrase("your_minecraft_username_is") + player.getName());
-				sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is") + QPlayer.getValidationCode(player));
-				sender.sendMessage(ChatPhrase.getPhrase("your_quartzcore_id_is") + QPlayer.getUserID(player));
+				sender.sendMessage(ChatPhrase.getPhrase("your_validation_code_is") + player.getValidationCode());
+				sender.sendMessage(ChatPhrase.getPhrase("your_quartzcore_id_is") + player.getID());
 				return true;
 			} else {
 				return false;
