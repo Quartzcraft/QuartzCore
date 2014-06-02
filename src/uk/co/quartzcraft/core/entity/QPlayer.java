@@ -202,6 +202,7 @@ public class QPlayer {
 		//TODO Need API Key and JSON stuffs
 		String SUUID = this.uuid.toString();
 		String playername = this.name;
+        QPlayer player = new QPlayer(this.plugin, this.uuid);
 		String apiAction = "http://quartzcraft.co.uk/api.php?action=getUser&value=" + playername + "&hash=API_KEY";
 
 		String secondary_group_ids = null;
@@ -210,7 +211,7 @@ public class QPlayer {
 		int current = 0;
 				
 		//Remove groups
-		setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Member", true, plugin);
+		player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Member", true, plugin);
 		
 		//Set groups
 		for(String id : temp) {
@@ -225,28 +226,28 @@ public class QPlayer {
 	       		}
 			switch (forswitch) {
 	                case 3:
-		            	setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Admin", true, plugin);
+                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Admin", true, plugin);
 	                	break;
 	                case 4:
-	                	setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Moderator", true, plugin);
+                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Moderator", true, plugin);
 	                	break;
 	                case 15:
-	                	setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Diamond", true, plugin);
+                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Diamond", true, plugin);
 	                    break;
 	                case 14:
-	                    setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Gold", true, plugin);
+                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Gold", true, plugin);
 	                    break;
 	                case 13:
-	                    setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Iron", true, plugin);
+                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Iron", true, plugin);
 	                    break;
 	                case 9:
-	                    setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "SeniorStaff", true, plugin);
+                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "SeniorStaff", true, plugin);
 	                    break;
 	                case 5:
-	               		setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Owner", true, plugin);
+                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Owner", true, plugin);
 	                    break;
 	                default:
-	                    setPrimaryGroup(Bukkit.getServer().getConsoleSender(), playername, "Member", true, plugin);
+                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Member", true, plugin);
 	                    break;
 			}
 			current++;
