@@ -64,7 +64,7 @@ public class QPlayer {
 	}
 	
 	/**
-	 * Gets the display name of the player.
+	 * Gets the name of the player.
 	 *
 	 * @return The display name of the player as defined in the QuartzCore database
 	 */
@@ -202,7 +202,7 @@ public class QPlayer {
 		//TODO Need API Key and JSON stuffs
 		String SUUID = this.uuid.toString();
 		String playername = this.name;
-        QPlayer player = new QPlayer(this.plugin, this.uuid);
+        QPlayer player = this;
 		String apiAction = "http://quartzcraft.co.uk/api.php?action=getUser&value=" + playername + "&hash=API_KEY";
 
 		String secondary_group_ids = null;
@@ -253,18 +253,6 @@ public class QPlayer {
 			current++;
 		}
         return false;
-	}
-
-	/**
-	 * Gets the date the user was last seen
-	 * 
-	 * @param player
-	 * @return String of the last seen date in default bukkit format
-	 */
-	public String getLastSeen(OfflinePlayer player) {
-		String lastSeen = null;
-		
-		return lastSeen;
 	}
 
     /**
