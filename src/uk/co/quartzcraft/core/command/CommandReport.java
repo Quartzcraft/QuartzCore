@@ -20,6 +20,8 @@ public class CommandReport implements CommandExecutor {
 		
 		Player player = (Player) sender;
         OfflinePlayer player2 = Bukkit.getServer().getOfflinePlayer("name");
+        QPlayer qplayer = new QPlayer(new QuartzCore(), player.getUniqueId());
+        //QPlayer qplayer2 = new QPlayer(new QuartzCore(), player2.getUniqueId()); //TODO Need latest 1.7 release
 		
 		if(command.getName().equalsIgnoreCase("report")) {
 			if(!(player instanceof Player)){
@@ -30,7 +32,7 @@ public class CommandReport implements CommandExecutor {
 	    		} else {
                     try {
                         java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-                        java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (" + QPlayer.getID(player2) + ", " + QPlayer.getID(player) + ", '" + getReportContent(arg0) + "');");
+                        java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (" + qplayer2.getID() + ", " + qplayer.getID() + ", '" + getReportContent(arg0) + "');");
                         if(s.executeUpdate() == 1) {
                             player.sendMessage(ChatPhrase.getPhrase("thank_you_for_reporting_user"));
                             return true;
