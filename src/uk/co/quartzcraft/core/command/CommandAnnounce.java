@@ -2,7 +2,6 @@ package uk.co.quartzcraft.core.command;
 
 import org.bukkit.entity.Player;
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.chat.Announce;
 import uk.co.quartzcraft.core.util.ChatPhrase;
 import uk.co.quartzcraft.core.command.framework.*;
 import uk.co.quartzcraft.core.command.framework.QCommand;
@@ -23,7 +22,7 @@ public class CommandAnnounce {
         String[] args0 = args.getArgs();
         if(args0.length >= 1) {
             String announcement = getAnnouncementContent(args0);
-            Announce.announce(announcement);
+            ChatUtil.announce(announcement);
         } else {
             args.getSender().sendMessage(ChatPhrase.getPhrase("specify_arguments"));
         }
