@@ -27,6 +27,7 @@ public class QPlayer {
     private static UUID uuid;
     private static int id;
     private static String lastSeen;
+    private static int tokens;
     private static Player player;
 	
 	public QPlayer(QuartzCore plugin, UUID uuid) {
@@ -41,6 +42,7 @@ public class QPlayer {
                 if (res.getString("UUID").equals(uuid)) {
                     this.id = res.getInt("id");
                     this.name = res.getString("DisplayName");
+                    this.tokens = res.getInt("Tokens");
                 } else {
                     Logger.getLogger("Minecraft").log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
                 }
@@ -87,6 +89,31 @@ public class QPlayer {
 			return null;
 		}
 	}
+    /**
+     * Gets the number of tokens a player has.
+     *
+     * @return The number of tokens.
+     */
+    public int getTokens() {
+        return this.tokens;
+    }
+
+    /**
+     * Adds the specified number of tokens.
+     *
+     */
+    public void addTokens(int num) {
+        this.tokens = this.tokens + num;
+    }
+
+    /**
+     * Takes the specified number of tokens.
+     *
+     */
+    public void takeTokens(int num) {
+        this.tokens = this.tokens - num;
+    }
+
     /**
      * Sends the player a message
      *
