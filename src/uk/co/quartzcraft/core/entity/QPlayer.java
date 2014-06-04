@@ -151,7 +151,8 @@ public class QPlayer {
 	 *
 	 * @param conn Connection status 
 	 */
-	public void setConnectionStatus(boolean conn) {
+    //TODO Finish up
+	public QPlayer setConnectionStatus(boolean conn) {
         long time = System.currentTimeMillis();
         Date date = new Date(System.currentTimeMillis());
 		try {
@@ -160,11 +161,12 @@ public class QPlayer {
             s.setString(1, date.toString());
             if(s.executeUpdate() == 1) {
                 //QPlayerLoginEvent event = new QPlayerLoginEvent(this);
+                return this;
             } else {
-
+                return this;
             }
         } catch (SQLException e) {
-
+            return this;
         }
 	}
 	
