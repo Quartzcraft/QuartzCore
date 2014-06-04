@@ -1,12 +1,8 @@
 package uk.co.quartzcraft.core.features;
 
 import org.bukkit.*;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.chat.ChatPhrase;
-import uk.co.quartzcraft.core.features.InventoryUI;
-import uk.co.quartzcraft.core.features.PromoItems;
 
 public class PromoMenus {
 

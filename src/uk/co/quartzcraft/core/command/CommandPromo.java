@@ -2,7 +2,6 @@ package uk.co.quartzcraft.core.command;
 
 import org.bukkit.entity.Player;
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.chat.ChatPhrase;
 import uk.co.quartzcraft.core.command.framework.*;
 import uk.co.quartzcraft.core.features.PromoMenus;
 

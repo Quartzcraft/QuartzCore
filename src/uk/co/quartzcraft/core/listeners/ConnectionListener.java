@@ -5,14 +5,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
 
-import uk.co.quartzcraft.*;
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.chat.ChatPhrase;
+import uk.co.quartzcraft.core.util.ChatPhrase;
 import uk.co.quartzcraft.core.entity.QPlayer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

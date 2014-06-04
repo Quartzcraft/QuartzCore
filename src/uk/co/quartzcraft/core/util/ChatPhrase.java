@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.core.chat;
+package uk.co.quartzcraft.core.util;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +7,7 @@ import com.sun.tools.javac.code.Attribute.Array;
 
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.command.QSubCommand;
+import uk.co.quartzcraft.core.util.ChatUtil;
 
 public class ChatPhrase {
 private static QuartzCore plugin;
@@ -55,7 +56,7 @@ private static QuartzCore plugin;
 		
 		String phrase_value = getValue(phrase_key);
 	
-		String final_phrase = ChatFormatParser.parseChat(phrase_value);
+		String final_phrase = ChatUtil.parse(phrase_value);
 		
 		return final_phrase;
 	}

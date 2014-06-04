@@ -4,7 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import uk.co.quartzcraft.core.chat.ChatPhrase;
+import uk.co.quartzcraft.core.util.ChatPhrase;
 
 public abstract class QSubCommand {
 	

@@ -1,16 +1,12 @@
 package uk.co.quartzcraft.core.command;
 
-import org.bukkit.OfflinePlayer;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
 
 import uk.co.quartzcraft.core.command.framework.*;
 import uk.co.quartzcraft.core.entity.QPlayer;
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.chat.ChatPhrase;
+import uk.co.quartzcraft.core.util.ChatPhrase;
 
 import java.sql.SQLException;
 
