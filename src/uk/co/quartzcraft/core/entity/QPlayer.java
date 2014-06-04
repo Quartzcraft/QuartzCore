@@ -89,6 +89,16 @@ public class QPlayer {
 			return null;
 		}
 	}
+
+    /**
+     * Gets the Minecraft UUID of a player
+     *
+     * @return The UUID of the player
+     */
+    public UUID getUniqueId() {
+        return this.uuid;
+    }
+
     /**
      * Gets the number of tokens a player has.
      *
