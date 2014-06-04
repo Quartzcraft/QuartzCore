@@ -7,50 +7,56 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
 
+import uk.co.quartzcraft.core.command.framework.*;
 import uk.co.quartzcraft.core.entity.QPlayer;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.chat.ChatPhrase;
 
 import java.sql.SQLException;
 
-public class CommandReport implements CommandExecutor {
+public class CommandReport {
 
-	@Override
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] arg0) {
-		
-		Player player = (Player) sender;
-        OfflinePlayer player2 = Bukkit.getServer().getOfflinePlayer("name");
+    private static QuartzCore plugin;
+    private static QCommandFramework framework;
+
+    public CommandReport(QuartzCore plugin) {
+        this.plugin = plugin;
+        framework = new QCommandFramework(this.plugin);
+        framework.registerCommands(this);
+    }
+
+    //TODO Rewrite sometime
+    @uk.co.quartzcraft.core.command.framework.QCommand(name = "report", permission = "QCC.report", description = "Reports the specifed player", usage = "/report [player] [reason]")
+    public void report(CommandArgs args) {
+
+        String[] args1 = args.getArgs();
+        Player player = (Player) args.getSender();
+        Player player2 = Bukkit.getPlayer(args1[0]);
         QPlayer qplayer = new QPlayer(new QuartzCore(), player.getUniqueId());
         QPlayer qplayer2 = new QPlayer(new QuartzCore(), player2.getUniqueId()); //TODO Need latest 1.7 release
-		
-		if(command.getName().equalsIgnoreCase("report")) {
-			if(!(player instanceof Player)){
-	    		sender.sendMessage(ChatPhrase.getPhrase("player_use_only"));
-	    	} else {
-	    		if(arg0.length == 0) {
-	    			player.sendMessage(ChatPhrase.getPhrase("please_specify_player_to_report"));
-	    		} else {
-                    try {
-                        java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-                        java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (" + qplayer2.getID() + ", " + qplayer.getID() + ", '" + getReportContent(arg0) + "');");
-                        if(s.executeUpdate() == 1) {
-                            player.sendMessage(ChatPhrase.getPhrase("thank_you_for_reporting_user"));
-                            return true;
-                        } else {
-                            player.sendMessage(ChatPhrase.getPhrase("error_submitting_report"));
-                            return false;
-                        }
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                        player.sendMessage(ChatPhrase.getPhrase("database_error_contact"));
+
+        if(!(player instanceof Player)){
+            player.sendMessage(ChatPhrase.getPhrase("player_use_only"));
+        } else {
+            if(args.getArgs().length == 0) {
+                player.sendMessage(ChatPhrase.getPhrase("please_specify_player_to_report"));
+            } else {
+                try {
+                    java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
+                    java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (" + qplayer2.getID() + ", " + qplayer.getID() + ", '" + getReportContent(args.getArgs()) + "');");
+                    if(s.executeUpdate() == 1) {
+                        player.sendMessage(ChatPhrase.getPhrase("thank_you_for_reporting_user"));
+                    } else {
                         player.sendMessage(ChatPhrase.getPhrase("error_submitting_report"));
-                        return false;
                     }
-	    		}
-	    	}
-		} 
-		return true;
-	}
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    player.sendMessage(ChatPhrase.getPhrase("database_error_contact"));
+                    player.sendMessage(ChatPhrase.getPhrase("error_submitting_report"));
+                }
+            }
+        }
+    }
 
     public String getReportContent(String[] args) {
         StringBuilder builder = new StringBuilder();
