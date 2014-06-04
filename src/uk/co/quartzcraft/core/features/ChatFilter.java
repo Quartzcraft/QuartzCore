@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.core.chat;
+package uk.co.quartzcraft.core.features;
 
 import java.util.List;
 import java.util.HashSet;
