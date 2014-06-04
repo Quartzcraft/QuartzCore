@@ -17,6 +17,7 @@ import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 import uk.co.quartzcraft.core.event.QPlayerLoginEvent;
+import uk.co.quartzcraft.core.util.ChatUtil;
 
 public class QPlayer {
 	
@@ -86,6 +87,13 @@ public class QPlayer {
 			return null;
 		}
 	}
+    /**
+     * Sends the player a message
+     *
+     */
+    public void sendMessage(String message) {
+        this.player.sendMessage(ChatUtil.colour(message));
+    }
 	
 	/**
 	 * Updates the QuartzCraft PlayerData to set the connection status. 
