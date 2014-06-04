@@ -125,6 +125,14 @@ public class QPlayer {
     }
 
     /**
+     * Returns the bukkit player object for the specified player.
+     *
+     */
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    /**
      * Sends the player a message
      *
      */
