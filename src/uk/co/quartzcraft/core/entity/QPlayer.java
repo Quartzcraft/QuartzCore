@@ -26,6 +26,7 @@ public class QPlayer {
     private static UUID uuid;
     private static int id;
     private static String lastSeen;
+    private static Player player;
 	
 	public QPlayer(QuartzCore plugin, UUID uuid) {
         this.plugin = plugin;
@@ -47,6 +48,7 @@ public class QPlayer {
         } catch(SQLException e) {
             e.printStackTrace();
         }
+        this.player = Bukkit.getPlayer(this.name);
 	}
 
 	private static java.sql.Timestamp getCurrentTimeStamp() {
