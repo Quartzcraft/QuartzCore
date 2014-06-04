@@ -111,17 +111,23 @@ public class QPlayer {
     /**
      * Adds the specified number of tokens.
      *
+     * @return The QPlayer object
      */
-    public void addTokens(int num) {
+    public QPlayer addTokens(int num) {
         this.tokens = this.tokens + num;
+        //TODO Update database token value
+        return this;
     }
 
     /**
      * Takes the specified number of tokens.
      *
+     * @return The QPlayer object
      */
-    public void takeTokens(int num) {
+    public QPlayer takeTokens(int num) {
         this.tokens = this.tokens - num;
+        //TODO Update database token value
+        return this;
     }
 
     /**
