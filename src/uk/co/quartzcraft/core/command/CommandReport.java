@@ -21,7 +21,7 @@ public class CommandReport implements CommandExecutor {
 		Player player = (Player) sender;
         OfflinePlayer player2 = Bukkit.getServer().getOfflinePlayer("name");
         QPlayer qplayer = new QPlayer(new QuartzCore(), player.getUniqueId());
-        //QPlayer qplayer2 = new QPlayer(new QuartzCore(), player2.getUniqueId()); //TODO Need latest 1.7 release
+        QPlayer qplayer2 = new QPlayer(new QuartzCore(), player2.getUniqueId()); //TODO Need latest 1.7 release
 		
 		if(command.getName().equalsIgnoreCase("report")) {
 			if(!(player instanceof Player)){
