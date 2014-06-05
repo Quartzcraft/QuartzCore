@@ -80,8 +80,11 @@ Permissions:
       description: Gives a player permission to perform the reload command.
       default: op
    QCC.report:
-         description: Gives a player permission to perform the report command.
-         default: op
+      description: Gives a player permission to perform the report command.
+      default: op
    QCC.promo:
-            description: Gives a player permission to perform the promo command.
-            default: op
+      description: Gives a player permission to perform the promo command.
+      default: op
+   QCC.pinfo:
+      description: Gives a player permission to perform the pinfo command.
+      default: op
