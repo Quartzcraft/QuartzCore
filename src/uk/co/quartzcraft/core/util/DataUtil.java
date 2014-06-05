@@ -5,6 +5,7 @@ import org.bukkit.plugin.Plugin;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
+//TODO Use taskchain to perform searches
 /**
  * Access the database using simple methods
  */
