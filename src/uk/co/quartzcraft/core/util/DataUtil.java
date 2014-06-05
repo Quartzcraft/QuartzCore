@@ -26,7 +26,7 @@ public class DataUtil {
      * @param where
      * @return
      */
-    public ResultSet select(String table, String where) {
+    public ResultSet selectWhere(String table, String where) {
         return null;
     }
 

@@ -80,7 +80,7 @@ public class QPlayer {
 			s = QuartzCore.MySQLcore.openConnection().createStatement();
 			ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE id ='" + this.id + "';");
 	        if(res.next()) {
-	        	return res.getString(3);
+	        	return res.getString("DisplayName");
 	        } else {
 	        	return null;
 	        }
