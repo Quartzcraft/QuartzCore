@@ -92,6 +92,10 @@ public class QuartzCore extends JavaPlugin {
         ChatPhrase.addPhrase("specify_online_username", "&cPlease specify an online user!");
         ChatPhrase.addPhrase("specify_arguments", "&cPlease specify some arguments!");
 
+        ChatPhrase.addPhrase("information_on_player_X", "&aInformation on player: &r");
+        ChatPhrase.addPhrase("first_join", "&aFirst joined: &r");
+        ChatPhrase.addPhrase("last_seen", "&aLast online: &r");
+
         ChatPhrase.addPhrase("please_specify_player_to_report", "&cYou must specify a player to report!");
         ChatPhrase.addPhrase("thank_you_for_reporting_user", "&aThank you for submitting a report. It is unlikely that we will need contact you.");
         ChatPhrase.addPhrase("error_submitting_report", "&cAn error occurred while submitting your report! Please try again or contact a QuartzCraft administrator.");
