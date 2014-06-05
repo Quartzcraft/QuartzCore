@@ -25,7 +25,7 @@ public class QuartzCore extends JavaPlugin {
 	public static String version = "1.0.3b";
 	public static String release = "RELEASE";
 	
-	public Plugin plugin = this.plugin;
+	public Plugin plugin = this;
 	public Server server = getServer();
 	public static final Logger log = Logger.getLogger("Minecraft");
 	
