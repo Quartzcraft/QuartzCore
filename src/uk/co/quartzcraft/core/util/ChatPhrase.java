@@ -1,13 +1,8 @@
 package uk.co.quartzcraft.core.util;
 
 import java.util.HashMap;
-import java.util.List;
-
-import com.sun.tools.javac.code.Attribute.Array;
 
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.command.QSubCommand;
-import uk.co.quartzcraft.core.util.ChatUtil;
 
 public class ChatPhrase {
 private static QuartzCore plugin;

@@ -1,13 +1,5 @@
 package uk.co.quartzcraft.core.features;
 
-import java.util.List;
-import java.util.HashSet;
-import java.util.HashMap;
-
-import org.bukkit.entity.Player;
-
-import uk.co.quartzcraft.core.command.QSubCommand;
-
 public class ChatFilter {
 
 	/**
