@@ -8,6 +8,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.minecraft.util.org.apache.commons.lang3.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
@@ -144,6 +145,18 @@ public class QPlayer {
      */
     public void sendMessage(String message) {
         this.player.sendMessage(ChatUtil.colour(message));
+    }
+
+    /**
+     * Gets the the time the player first joined.
+     */
+    public String getFirstJoin() {
+        Player targetPlayer = this.player;
+
+        long current = System.currentTimeMillis();
+        long firstJoin = targetPlayer.getPlayer().getFirstPlayed();
+
+        return DurationFormatUtils.formatPeriod(firstJoin, current, "d 'days' H 'hours'");
     }
 	
 	/**
