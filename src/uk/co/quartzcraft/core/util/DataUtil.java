@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//TODO Use taskchain to perform searches
+//TODO Use taskchain to perform actions
 /**
  * Access the database using simple methods
  */
@@ -40,7 +40,6 @@ public class DataUtil {
      * @return
      */
     public ResultSet select(String table) {
-        //TODO Add TaskChain
         Statement s;
         try {
             s = this.connection.createStatement();
