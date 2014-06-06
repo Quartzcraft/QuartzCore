@@ -47,7 +47,7 @@ public class DataUtil {
      * @param values
      * @return
      */
-    public boolean update(String table, String values) {
+    public boolean update(String table, String values, String where) {
         return false;
     }
 
