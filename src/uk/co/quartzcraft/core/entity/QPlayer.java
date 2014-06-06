@@ -19,10 +19,12 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 import uk.co.quartzcraft.core.event.QPlayerLoginEvent;
 import uk.co.quartzcraft.core.util.ChatUtil;
+import uk.co.quartzcraft.core.util.DataUtil;
 
 public class QPlayer {
 	
 	private static QuartzCore plugin;
+    private static DataUtil core;
 
     private static String name;
     private static UUID uuid;
@@ -34,6 +36,7 @@ public class QPlayer {
 	public QPlayer(QuartzCore plugin, UUID uuid) {
         this.plugin = plugin;
         this.uuid = uuid;
+        this.core = new DataUtil(this.plugin, QuartzCore.DBCore);
 
         String SUUID = uuid.toString();
         try {
@@ -117,6 +120,7 @@ public class QPlayer {
     public QPlayer addTokens(int num) {
         this.tokens = this.tokens + num;
         //TODO Update database token value
+        core.update("PlayerData", "(tokens) VALUES (" + this.tokens + ")", "id='" +  this.id + "'");
         return this;
     }
 
@@ -128,6 +132,7 @@ public class QPlayer {
     public QPlayer takeTokens(int num) {
         this.tokens = this.tokens - num;
         //TODO Update database token value
+        core.update("PlayerData", "(tokens) VALUES (" + this.tokens + ")", "id='" +  this.id + "'");
         return this;
     }
 
