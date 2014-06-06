@@ -1,9 +1,12 @@
 package uk.co.quartzcraft.core.util;
 
 import org.bukkit.plugin.Plugin;
+import uk.co.quartzcraft.core.QuartzCore;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 //TODO Use taskchain to perform searches
 /**
@@ -37,7 +40,20 @@ public class DataUtil {
      * @return
      */
     public ResultSet select(String table) {
-        return null;
+        //TODO Add TaskChain
+        Statement s;
+        try {
+            s = this.connection.createStatement();
+            ResultSet res = s.executeQuery("SELECT * FROM " + table + ";");
+            if(res.next()) {
+                return res;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
