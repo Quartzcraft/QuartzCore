@@ -58,6 +58,30 @@ public class QPlayer {
         this.player = Bukkit.getPlayer(this.name);
 	}
 
+    public QPlayer(QuartzCore plugin, int id) {
+        this.plugin = plugin;
+        this.id = id;
+        this.core = new DataUtil(this.plugin, QuartzCore.DBCore);
+
+        try {
+            Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
+            ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE id='" + id + "';");
+            if(res.next()) {
+                if (res.getInt("id") == id) {
+                    this.name = res.getString("DisplayName");
+                    this.tokens = res.getInt("Tokens");
+                } else {
+                    Logger.getLogger("Minecraft").log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
+                }
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        this.player = Bukkit.getPlayer(this.name);
+        this.uuid = this.player.getUniqueId();
+    }
+
 	private static java.sql.Timestamp getCurrentTimeStamp() {
 	    java.util.Date today = new java.util.Date();
 	    return new java.sql.Timestamp(today.getTime());
