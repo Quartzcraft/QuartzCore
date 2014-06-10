@@ -71,7 +71,7 @@ public class QPlayer {
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
                 } else {
-                    Logger.getLogger("Minecraft").log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
+                    Logger.getLogger("Minecraft").log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
                 }
             }
 
