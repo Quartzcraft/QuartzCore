@@ -3,6 +3,7 @@ package uk.co.quartzcraft.core;
 import java.sql.Connection;
 import java.util.logging.Logger;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import uk.co.quartzcraft.core.command.*;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
@@ -26,7 +27,7 @@ public class QuartzCore extends JavaPlugin {
 	public static String release = "RELEASE";
 	
 	public Plugin plugin = this;
-	public Server server = getServer();
+    public Server server = Bukkit.getServer();
 	public static final Logger log = Logger.getLogger("Minecraft");
 	
 	public static Connection DBCore = null;
