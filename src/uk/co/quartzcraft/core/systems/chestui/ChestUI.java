@@ -1,7 +1,7 @@
 package uk.co.quartzcraft.core.systems.chestui;
 
 
-import com.empireminecraft.util.BukkitUtil;
+import uk.co.quartzcraft.core.util.BukkitUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.InventoryAction;

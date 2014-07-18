@@ -1,7 +1,7 @@
 package uk.co.quartzcraft.core.systems.chestui;
 
-import com.empireminecraft.systems.EmpireChat;
-import com.empireminecraft.util.BukkitUtil;
+import uk.co.quartzcraft.core.systems.QCChat;
+import uk.co.quartzcraft.core.util.BukkitUtil;
 import uk.co.quartzcraft.core.util.ItemUtil;
 import com.google.common.base.Predicate;
 import org.bukkit.entity.Player;
@@ -40,7 +40,7 @@ public class ChestInterfaceItem extends ItemUtil.LoreBuilder {
         this.onClick = new Predicate<Player>() {
             @Override
             public boolean apply(@Nullable Player input) {
-                EmpireChat.performCommand(player, cmd);
+                QCChat.performCommand(player, cmd);
                 return true;
             }
         };
