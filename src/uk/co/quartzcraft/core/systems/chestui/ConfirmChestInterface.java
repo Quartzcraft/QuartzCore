@@ -37,7 +37,7 @@ public class ConfirmChestInterface extends ChestUIInterface {
 
     @Override
     public String getTitle() {
-        return ChatColor.stripColor(Util.color(confirmTitle));
+        return ChatColor.stripColor(Util.colour(confirmTitle));
     }
 
     @Override
