@@ -20,7 +20,7 @@ public class ItemUtil {
             throw new NullPointerException();
         }
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(name);//TODO Add better colour support com.empireminecraft.util.Util preferable
+        meta.setDisplayName(Util.colour(name));
         item.setItemMeta(meta);
         return item;
     }
@@ -163,7 +163,7 @@ public class ItemUtil {
         }
 
         public LoreBuilder setName(String name) {
-            meta.setDisplayName(name);//TODO fix colours
+            meta.setDisplayName(Util.colour(name));
             return this;
         }
 
@@ -256,7 +256,7 @@ public class ItemUtil {
                 return this;
             }
             ensure(i-1);
-            lore.add(i, line);//TODO fix colours
+            lore.add(i, Util.colour(line));
             index = i + 1;
 
             while (lore.size() > LOREMETA_INDEX && !lore.get(LOREMETA_INDEX).equals(LOREMETA_TAG)) {
@@ -275,7 +275,7 @@ public class ItemUtil {
         public LoreBuilder set(int i, String line) {
             ensure(i);
 
-            lore.set(i, line);//TODO fix colours
+            lore.set(i, Util.colour(line));
 
             index = i + 1;
             return this;

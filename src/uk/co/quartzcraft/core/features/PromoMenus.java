@@ -3,14 +3,15 @@ package uk.co.quartzcraft.core.features;
 import org.bukkit.*;
 import org.bukkit.inventory.ItemStack;
 import uk.co.quartzcraft.core.QuartzCore;
+import uk.co.quartzcraft.core.systems.ChestUI.ChestUI;
 
 public class PromoMenus {
 
     private static QuartzCore plugin = new QuartzCore();
 
-    public static InventoryUI menuLaunch = new InventoryUI("Current Promotion: QuartzCraft Launch", 9, new InventoryUI.OptionClickEventHandler() {
+    public static ChestUI menuLaunch = new ChestUI("Current Promotion: QuartzCraft Launch", 9, new ChestUI.OptionClickEventHandler() {
         @Override
-        public void onOptionClick(InventoryUI.OptionClickEvent event) {
+        public void onOptionClick(ChestUI.OptionClickEvent event) {
             event.getPlayer().sendMessage("You have claimed the " + event.getName() + " promo!");
             event.setWillClose(true);
         }

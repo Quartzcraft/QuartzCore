@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.core.features;
+package uk.co.quartzcraft.core.systems.ChestUI;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -16,7 +16,7 @@ import uk.co.quartzcraft.core.util.ItemUtil;
 
 import java.util.Arrays;
 
-public class InventoryUI implements Listener {
+public class ChestUI implements Listener {
 
     private String name;
     private int size;
@@ -27,7 +27,7 @@ public class InventoryUI implements Listener {
     private String[] optionNames;
     private ItemStack[] optionIcons;
 
-    public InventoryUI(String name, int size, OptionClickEventHandler handler, Plugin plugin) {
+    public ChestUI(String name, int size, OptionClickEventHandler handler, Plugin plugin) {
         this.name = name;
         this.size = size;
         this.handler = handler;
@@ -37,13 +37,13 @@ public class InventoryUI implements Listener {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
-    public InventoryUI setOption(int position, ItemStack icon, String name, String... info) {
+    public ChestUI setOption(int position, ItemStack icon, String name, String... info) {
         optionNames[position] = name;
         optionIcons[position] = setItemNameAndLore(icon, name, info);
         return this;
     }
 
-    public InventoryUI setOption(int position, ItemStack item) {
+    public ChestUI setOption(int position, ItemStack item) {
         optionNames[position] = ItemUtil.getName(item);
         optionIcons[position] = item;
         return this;
