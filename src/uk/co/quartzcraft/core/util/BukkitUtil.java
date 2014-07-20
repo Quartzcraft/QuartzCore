@@ -6,7 +6,7 @@ import uk.co.quartzcraft.core.QuartzCore;
 public class BukkitUtil {
 
     public static void runTaskNextTick(Runnable r) {
-        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(new QuartzCore(), new Runnable() { //TODO Fix actual instance
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(QuartzCore.plugin, new Runnable() { //TODO Fix actual instance
             public void run() {
                 // Your code goes here
             }

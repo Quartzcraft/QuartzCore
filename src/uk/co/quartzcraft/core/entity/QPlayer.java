@@ -23,7 +23,7 @@ import uk.co.quartzcraft.core.util.DataUtil;
 
 public class QPlayer {
 	
-	private static QuartzCore plugin;
+	private static Plugin plugin;
     private static DataUtil core;
 
     private static String name;
@@ -33,7 +33,7 @@ public class QPlayer {
     private static int tokens;
     private static Player player;
 	
-	public QPlayer(QuartzCore plugin, UUID uuid) {
+	public QPlayer(Plugin plugin, UUID uuid) {
         this.plugin = plugin;
         this.uuid = uuid;
         this.core = new DataUtil(this.plugin, QuartzCore.DBCore);
@@ -325,7 +325,7 @@ public class QPlayer {
 	                        String makeint = temp[current];
 	                        forswitch = Integer.parseInt(makeint);
 	               	} catch (NumberFormatException e) {
-	                        plugin.log.info("[QC] autoManageGroups failed!");
+	                        QuartzCore.log.info("[QC] autoManageGroups failed!");
 	                        e.printStackTrace();
 	                        return false;
 	       		}

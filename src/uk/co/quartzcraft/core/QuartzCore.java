@@ -25,8 +25,8 @@ public class QuartzCore extends JavaPlugin {
 	
 	public static String version = "1.0.3b";
 	public static String release = "RELEASE";
-	
-	public Plugin plugin = this;
+
+    public static Plugin plugin;
     public Server server = Bukkit.getServer();
 	public static final Logger log = Logger.getLogger("Minecraft");
 	
@@ -48,6 +48,8 @@ public class QuartzCore extends JavaPlugin {
 	public void onEnable() {
 		
 		log.info("[QC][STARTUP LOGGER]Console logger discovered");
+
+        plugin = this;
 		
 		//Config files
 		log.info("[QC]Running plugin configuration");

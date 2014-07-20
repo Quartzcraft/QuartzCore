@@ -28,8 +28,8 @@ public class CommandReport {
         String[] args1 = args.getArgs();
         Player player = (Player) args.getSender();
         Player player2 = Bukkit.getPlayer(args1[0]);
-        QPlayer qplayer = new QPlayer(new QuartzCore(), player.getUniqueId());
-        QPlayer qplayer2 = new QPlayer(new QuartzCore(), player2.getUniqueId()); //TODO Need latest 1.7 release
+        QPlayer qplayer = new QPlayer(QuartzCore.plugin, player.getUniqueId());
+        QPlayer qplayer2 = new QPlayer(QuartzCore.plugin, player2.getUniqueId()); //TODO Need latest 1.7 release
 
         if(!(player instanceof Player)){
             player.sendMessage(ChatPhrase.getPhrase("player_use_only"));

@@ -2,19 +2,16 @@ package uk.co.quartzcraft.core.features;
 
 import org.bukkit.*;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.systems.ChestUI.ChestUI;
 import uk.co.quartzcraft.core.systems.ChestUI.UnclaimableItem;
 
 public class PromoMenus {
 
-    private static QuartzCore plugin;
+    private static Plugin plugin = QuartzCore.plugin;
 
-    public PromoMenus(QuartzCore p) {
-        this.plugin = plugin;
-    }
-
-    public ChestUI menuLaunch = new ChestUI("Current Promotion: QuartzCraft Launch", 9, new ChestUI.OptionClickEventHandler() {
+    public static ChestUI menuLaunch = new ChestUI("Current Promotion: QuartzCraft Launch", 9, new ChestUI.OptionClickEventHandler() {
         @Override
         public void onOptionClick(ChestUI.OptionClickEvent event) {
             event.getPlayer().sendMessage("You have claimed the " + event.getName() + " promo!");

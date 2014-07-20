@@ -37,7 +37,7 @@ public class TaskChain {
     boolean async;
     private final Plugin plugin;
     public TaskChain() {
-        this.plugin = new QuartzCore();
+        this.plugin = QuartzCore.plugin;
         this.async = !Bukkit.isPrimaryThread();
     }
     /**
