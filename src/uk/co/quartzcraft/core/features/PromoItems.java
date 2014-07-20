@@ -22,7 +22,7 @@ public class PromoItems extends ItemStack {
                 .save();
     }};
 
-    public static final ItemStack MAGIC_DIRT = new ItemStack(Material.DIRT) {{
+    public static final ItemStack MAGIC_DIRT = new ItemStack(Material.PAPER) {{
         ItemUtil.buildLore(this).setName("&aMagic Dirt")
                 .add("&bThis is a magical item")
                 .add("&bdesigned to test /promo")
