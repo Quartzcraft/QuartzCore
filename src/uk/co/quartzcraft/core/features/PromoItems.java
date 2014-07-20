@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class PromoItems extends ItemStack {
 
-    public static final ItemStack PROMO_INSTRUCTIONS = new ItemStack(Material.DIRT) {{
+    public static final ItemStack PROMO_INSTRUCTIONS = new ItemStack(Material.PAPER) {{
         ItemUtil.buildLore(this).setName("&aMagic Dirt")
                 .makeUnclaimable()
                 .empty()
@@ -22,7 +22,7 @@ public class PromoItems extends ItemStack {
                 .save();
     }};
 
-    public static final ItemStack MAGIC_DIRT = new ItemStack(Material.PAPER) {{
+    public static final ItemStack MAGIC_DIRT = new ItemStack(Material.DIRT) {{
         ItemUtil.buildLore(this).setName("&aMagic Dirt")
                 .add("&bThis is a magical item")
                 .add("&bdesigned to test /promo")
