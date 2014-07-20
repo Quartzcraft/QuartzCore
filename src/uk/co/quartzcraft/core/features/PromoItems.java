@@ -12,6 +12,16 @@ import java.util.Random;
 
 public class PromoItems extends ItemStack {
 
+    public static final ItemStack PROMO_INSTRUCTIONS = new ItemStack(Material.DIRT) {{
+        ItemUtil.buildLore(this).setName("&aMagic Dirt")
+                .makeUnclaimable()
+                .empty()
+                .add("&bTo select what promo you want")
+                .add("&bclick on the item.")
+                .add("&bYou can not claim this item!")
+                .save();
+    }};
+
     public static final ItemStack MAGIC_DIRT = new ItemStack(Material.DIRT) {{
         ItemUtil.buildLore(this).setName("&aMagic Dirt")
                 .add("&bThis is a magical item")
