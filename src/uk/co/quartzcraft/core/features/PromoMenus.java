@@ -16,6 +16,7 @@ public class PromoMenus {
             event.getPlayer().sendMessage("You have claimed the " + event.getName() + " promo!");
             if(UnclaimableItem.isUnclaimable(event.getItem())) {
                 event.getPlayer().sendMessage("You can not claim this item!");
+                event.setCancelled(true);
             } else {
                 event.getPlayer().sendMessage("You have claimed the " + event.getName() + " promo!");
                 event.setWillClose(true);
