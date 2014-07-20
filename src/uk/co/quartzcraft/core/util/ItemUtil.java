@@ -6,6 +6,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import uk.co.quartzcraft.core.features.FinalItems;
 import uk.co.quartzcraft.core.features.SoulboundItems;
 import uk.co.quartzcraft.core.features.UnbreakableItems;
+import uk.co.quartzcraft.core.systems.ChestUI.UnclaimableItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -190,6 +191,13 @@ public class ItemUtil {
         public LoreBuilder makeUnbreakable() {
             int oldindex = index;
             UnbreakableItems.makeUnbreakable(this);
+            index = oldindex + 1;
+            return this;
+        }
+
+        public LoreBuilder makeUnclaimable() {
+            int oldindex = index;
+            UnclaimableItem.makeUnclaimable(this);
             index = oldindex + 1;
             return this;
         }

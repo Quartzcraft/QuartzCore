@@ -2,10 +2,7 @@ package uk.co.quartzcraft.core.systems.ChestUI;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
+import org.bukkit.event.*;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
@@ -106,7 +103,10 @@ public class ChestUI implements Listener {
         public void onOptionClick(OptionClickEvent event);
     }
 
-    public class OptionClickEvent {
+    public class OptionClickEvent extends Event implements Cancellable {
+        private final HandlerList handlers = new HandlerList();
+        private boolean cancelled;
+
         private Player player;
         private int position;
         private String name;
@@ -153,6 +153,18 @@ public class ChestUI implements Listener {
 
         public ItemStack getItem() {
             return item;
+        }
+
+        public void setCancelled(boolean c) {
+            cancelled = c;
+        }
+
+        public boolean isCancelled() {
+            return cancelled;
+        }
+
+        public HandlerList getHandlers() {
+            return handlers;
         }
     }
 
