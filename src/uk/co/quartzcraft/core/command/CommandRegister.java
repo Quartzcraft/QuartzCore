@@ -13,7 +13,7 @@ public class CommandRegister implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        QPlayer player = new QPlayer(new QuartzCore(), ((Player) sender).getUniqueId());
+        QPlayer player = new QPlayer(new QuartzCore(), ((Player) sender).getUniqueId()); //TODO Change the instance
 		if(command.getName().equalsIgnoreCase("register") && sender instanceof Player) {
 			if(player.getValidationCode() != null) {
 				sender.sendMessage(ChatPhrase.getPhrase("to_register_on_the_website_please_visit_web"));
