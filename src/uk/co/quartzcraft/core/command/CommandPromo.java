@@ -19,8 +19,7 @@ public class CommandPromo {
 
     @uk.co.quartzcraft.core.command.framework.QCommand(name = "promo", permission = "QCC.promo", description = "Lists the available promos.", usage = "Use /promo")
     public void promo(CommandArgs args) {
-        Player player = (Player) args.getSender();
-        PromoMenus.menuLaunch.open(player);
+        PromoMenus.menuLaunch.open((Player) args.getSender());
     }
 
 }

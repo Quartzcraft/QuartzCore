@@ -25,7 +25,7 @@ public class ChestUI implements Listener {
     private ItemStack[] optionIcons;
 
     public ChestUI(String name, int size, OptionClickEventHandler handler, Plugin plugin) {
-        this.name = name;
+        this.name = name.substring(0, Math.min(name.length(), 32)); 
         this.size = size;
         this.handler = handler;
         this.plugin = plugin;

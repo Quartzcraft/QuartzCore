@@ -11,14 +11,14 @@ public class PromoMenus {
 
     private static Plugin plugin = QuartzCore.plugin;
 
-    public static ChestUI menuLaunch = new ChestUI("Current Promotion: QuartzCraft Launch", 9, new ChestUI.OptionClickEventHandler() {
+    public static ChestUI menuLaunch = new ChestUI("Current Promo: Server Launch", 9, new ChestUI.OptionClickEventHandler() {
         @Override
         public void onOptionClick(ChestUI.OptionClickEvent event) {
-            event.getPlayer().sendMessage("You have claimed the " + event.getName() + " promo!");
             if(UnclaimableItem.isUnclaimable(event.getItem())) {
                 event.getPlayer().sendMessage("You can not claim this item!");
                 event.setCancelled(true);
             } else {
+                event.getPlayer().getInventory().addItem(PromoItems.MAGIC_DIRT);
                 event.getPlayer().sendMessage("You have claimed the " + event.getName() + " promo!");
                 event.setWillClose(true);
                 event.setWillDestroy(true);
