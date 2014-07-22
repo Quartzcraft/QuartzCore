@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.core.entity;
+package uk.co.quartzcraft.core.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,20 +10,18 @@ import java.util.logging.Logger;
 
 import net.minecraft.util.org.apache.commons.lang3.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
-import uk.co.quartzcraft.core.event.QPlayerLoginEvent;
 import uk.co.quartzcraft.core.util.ChatUtil;
 import uk.co.quartzcraft.core.util.DataUtil;
 
 public class QPlayer {
 	
-	private static QuartzCore plugin;
+	private static Plugin plugin;
     private static DataUtil core;
 
     private static String name;
@@ -33,7 +31,7 @@ public class QPlayer {
     private static int tokens;
     private static Player player;
 	
-	public QPlayer(QuartzCore plugin, UUID uuid) {
+	public QPlayer(Plugin plugin, UUID uuid) {
         this.plugin = plugin;
         this.uuid = uuid;
         this.core = new DataUtil(this.plugin, QuartzCore.DBCore);
@@ -58,7 +56,7 @@ public class QPlayer {
         this.player = Bukkit.getPlayer(this.name);
 	}
 
-    public QPlayer(QuartzCore plugin, int id) {
+    public QPlayer(Plugin plugin, int id) {
         this.plugin = plugin;
         this.id = id;
         this.core = new DataUtil(this.plugin, QuartzCore.DBCore);

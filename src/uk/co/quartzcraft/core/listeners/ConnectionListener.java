@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
-import uk.co.quartzcraft.core.entity.QPlayer;
+import uk.co.quartzcraft.core.data.QPlayer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

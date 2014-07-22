@@ -6,7 +6,7 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.command.framework.CommandArgs;
 import uk.co.quartzcraft.core.command.framework.QCommand;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
-import uk.co.quartzcraft.core.entity.QPlayer;
+import uk.co.quartzcraft.core.data.QPlayer;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 
 public class CommandPinfo {

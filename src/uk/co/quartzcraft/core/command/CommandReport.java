@@ -3,8 +3,9 @@ package uk.co.quartzcraft.core.command;
 import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
 
+import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.command.framework.*;
-import uk.co.quartzcraft.core.entity.QPlayer;
+import uk.co.quartzcraft.core.data.QPlayer;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 
@@ -12,10 +13,10 @@ import java.sql.SQLException;
 
 public class CommandReport {
 
-    private static QuartzCore plugin;
+    private static Plugin plugin;
     private static QCommandFramework framework;
 
-    public CommandReport(QuartzCore plugin) {
+    public CommandReport(Plugin plugin) {
         this.plugin = plugin;
         framework = new QCommandFramework(this.plugin);
         framework.registerCommands(this);

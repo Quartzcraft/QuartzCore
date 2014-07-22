@@ -5,9 +5,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
-import uk.co.quartzcraft.core.entity.QPlayer;
+import uk.co.quartzcraft.core.data.QPlayer;
 
 public class CommandRegister implements CommandExecutor {
 
