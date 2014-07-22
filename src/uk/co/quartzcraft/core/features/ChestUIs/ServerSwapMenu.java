@@ -23,7 +23,7 @@ public class ServerSwapMenu {
     public static ChestUI menuServerSwap = new ChestUI("Choose a server", 9, new ChestUI.OptionClickEventHandler() {
         @Override
         public void onOptionClick(ChestUI.OptionClickEvent event) {
-            event.getPlayer().sendMessage("You have picked the server " + event.getItem().getItemMeta().getDisplayName());
+            event.getPlayer().sendMessage("You have picked the server " + ItemUtil.getName(event.getItem()));
         }
     }, plugin)
             .setOption(0, SWAP_INSTRUCTIONS)
