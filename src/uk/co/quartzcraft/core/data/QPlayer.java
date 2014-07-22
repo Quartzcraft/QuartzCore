@@ -17,12 +17,10 @@ import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 import uk.co.quartzcraft.core.util.ChatUtil;
-import uk.co.quartzcraft.core.util.DataUtil;
 
 public class QPlayer {
 	
 	private static Plugin plugin;
-    private static DataUtil core;
 
     private static String name;
     private static UUID uuid;
@@ -34,7 +32,6 @@ public class QPlayer {
 	public QPlayer(Plugin plugin, UUID uuid) {
         this.plugin = plugin;
         this.uuid = uuid;
-        this.core = new DataUtil(this.plugin, QuartzCore.DBCore);
 
         String SUUID = uuid.toString();
         try {
@@ -59,7 +56,6 @@ public class QPlayer {
     public QPlayer(Plugin plugin, int id) {
         this.plugin = plugin;
         this.id = id;
-        this.core = new DataUtil(this.plugin, QuartzCore.DBCore);
 
         try {
             Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
@@ -142,7 +138,7 @@ public class QPlayer {
     public QPlayer addTokens(int num) {
         this.tokens = this.tokens + num;
         //TODO Update database token value
-        core.update("PlayerData", "(tokens) VALUES (" + this.tokens + ")", "id='" +  this.id + "'");
+        //core.update("PlayerData", "(tokens) VALUES (" + this.tokens + ")", "id='" +  this.id + "'");
         return this;
     }
 
@@ -154,7 +150,7 @@ public class QPlayer {
     public QPlayer takeTokens(int num) {
         this.tokens = this.tokens - num;
         //TODO Update database token value
-        core.update("PlayerData", "(tokens) VALUES (" + this.tokens + ")", "id='" +  this.id + "'");
+        //core.update("PlayerData", "(tokens) VALUES (" + this.tokens + ")", "id='" +  this.id + "'");
         return this;
     }
 
