@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 import uk.co.quartzcraft.core.command.framework.*;
 import uk.co.quartzcraft.core.entity.QPlayer;
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.util.ChatPhrase;
+import uk.co.quartzcraft.core.systems.chat.QCChat;
 
 import java.sql.SQLException;
 
@@ -32,23 +32,23 @@ public class CommandReport {
         QPlayer qplayer2 = new QPlayer(QuartzCore.plugin, player2.getUniqueId()); //TODO Need latest 1.7 release
 
         if(!(player instanceof Player)){
-            player.sendMessage(ChatPhrase.getPhrase("player_use_only"));
+            player.sendMessage(QCChat.getPhrase("player_use_only"));
         } else {
             if(args.getArgs().length == 0) {
-                player.sendMessage(ChatPhrase.getPhrase("please_specify_player_to_report"));
+                player.sendMessage(QCChat.getPhrase("please_specify_player_to_report"));
             } else {
                 try {
                     java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
                     java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (" + qplayer2.getID() + ", " + qplayer.getID() + ", '" + getReportContent(args.getArgs()) + "');");
                     if(s.executeUpdate() == 1) {
-                        player.sendMessage(ChatPhrase.getPhrase("thank_you_for_reporting_user"));
+                        player.sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));
                     } else {
-                        player.sendMessage(ChatPhrase.getPhrase("error_submitting_report"));
+                        player.sendMessage(QCChat.getPhrase("error_submitting_report"));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
-                    player.sendMessage(ChatPhrase.getPhrase("database_error_contact"));
-                    player.sendMessage(ChatPhrase.getPhrase("error_submitting_report"));
+                    player.sendMessage(QCChat.getPhrase("database_error_contact"));
+                    player.sendMessage(QCChat.getPhrase("error_submitting_report"));
                 }
             }
         }

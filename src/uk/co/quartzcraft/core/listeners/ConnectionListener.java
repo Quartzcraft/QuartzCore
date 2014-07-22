@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.UUID;
 
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.util.ChatPhrase;
+import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.entity.QPlayer;
 
 import org.bukkit.Bukkit;
@@ -42,11 +42,11 @@ public class ConnectionListener implements Listener {
 		String SUUID = UUID.toString();
 
         if(login.getResult() == PlayerLoginEvent.Result.KICK_WHITELIST){
-            String message = ChatPhrase.getPhrase("Kick_Whitelist");
+            String message = QCChat.getPhrase("Kick_Whitelist");
             login.setKickMessage(message);
 
         } else if(login.getResult() == PlayerLoginEvent.Result.KICK_FULL){
-            String message = ChatPhrase.getPhrase("Server_Full");
+            String message = QCChat.getPhrase("Server_Full");
             login.setKickMessage(message);
 
         }
@@ -64,7 +64,7 @@ public class ConnectionListener implements Listener {
 					plugin.log.info("[QC] Player, " + player.getDisplayName() + " was created with UUID of " + SUUID);
 				} else {
                     plugin.log.info("[QC] Could not create player!");
-					player.kickPlayer(ChatPhrase.getPhrase("database_error_contact") + "\n" + ChatPhrase.getPhrase("could_not_create_player"));
+					player.kickPlayer(QCChat.getPhrase("database_error_contact") + "\n" + QCChat.getPhrase("could_not_create_player"));
 				}
 			}
 		} catch (SQLException e) {

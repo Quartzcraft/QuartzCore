@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.util.ChatPhrase;
+import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.command.framework.QCommand;
 import uk.co.quartzcraft.core.command.framework.*;
 
@@ -22,6 +22,6 @@ public class CommandWorld {
     public void world(CommandArgs args) {
         Player player = (Player) args.getSender();
         World world = player.getWorld();
-        player.sendMessage(ChatPhrase.getPhrase("you_are_currently_in_world") + ChatColor.WHITE + world.getName());
+        player.sendMessage(QCChat.getPhrase("you_are_currently_in_world") + ChatColor.WHITE + world.getName());
     }
 }
