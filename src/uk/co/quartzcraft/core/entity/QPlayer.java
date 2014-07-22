@@ -23,7 +23,7 @@ import uk.co.quartzcraft.core.util.DataUtil;
 
 public class QPlayer {
 	
-	private static Plugin plugin;
+	private static QuartzCore plugin;
     private static DataUtil core;
 
     private static String name;
@@ -33,7 +33,7 @@ public class QPlayer {
     private static int tokens;
     private static Player player;
 	
-	public QPlayer(Plugin plugin, UUID uuid) {
+	public QPlayer(QuartzCore plugin, UUID uuid) {
         this.plugin = plugin;
         this.uuid = uuid;
         this.core = new DataUtil(this.plugin, QuartzCore.DBCore);
