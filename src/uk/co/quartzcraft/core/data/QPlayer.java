@@ -76,10 +76,58 @@ public class QPlayer {
         this.uuid = this.player.getUniqueId();
     }
 
-	private static java.sql.Timestamp getCurrentTimeStamp() {
-	    java.util.Date today = new java.util.Date();
-	    return new java.sql.Timestamp(today.getTime());
-	}
+    /**
+     * Creates a player in the QuartzCore PlayerData database.
+     *
+     * @param player
+     * @return boolean - true if player was created, false if otherwise
+     */
+    public static boolean createPlayer(Player player) {
+        long time = System.currentTimeMillis();
+        //java.sql.Date date = new java.sql.Date(time);
+        Date date = new Date(System.currentTimeMillis());
+
+        UUID UUID = player.getUniqueId();
+        String SUUID = UUID.toString();
+
+        try {
+            java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
+            java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getName() + "', ?, 9, 0);");
+            s.setString(1, date.toString());
+            if(s.executeUpdate() == 1) {
+                QPlayerCreationEvent event = new QPlayerCreationEvent(player);
+                Bukkit.getServer().getPluginManager().callEvent(event);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Find out whether the player already exisits in the database.
+     *
+     * @param uuid
+     * @return true if exisits false if not.
+     */
+    public static boolean exisits(UUID uuid) {
+        try {
+            Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
+            ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE UUID='" + uuid + "';");
+            if(res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 	/**
 	 * Gets a users id from the PlayerData database
@@ -204,37 +252,6 @@ public class QPlayer {
         } catch (SQLException e) {
             return this;
         }
-	}
-	
-	/**
-	 * Creates a player in the QuartzCore PlayerData database.
-	 * 
-	 * @param player
-	 * @return boolean - true if player was created, false if otherwise
-	 */
-	public static boolean createPlayer(Player player) {
-		long time = System.currentTimeMillis();
-		//java.sql.Date date = new java.sql.Date(time);
-		Date date = new Date(System.currentTimeMillis());
-		
-		UUID UUID = player.getUniqueId();
-		String SUUID = UUID.toString();
-		
-		try {
-			java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getName() + "', ?, 9, 0);");
-			s.setString(1, date.toString());
-			if(s.executeUpdate() == 1) {
-				QPlayerCreationEvent event = new QPlayerCreationEvent(player);
-				Bukkit.getServer().getPluginManager().callEvent(event);
-				return true;
-			} else {
-				return false;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
 	}
 
 	/**

@@ -51,26 +51,16 @@ public class ConnectionListener implements Listener {
 
         }
 
-		Statement s1;
-		try {
-			s1 = QuartzCore.MySQLcore.openConnection().createStatement();
-			ResultSet res1 = s1.executeQuery("SELECT * FROM PlayerData WHERE UUID='" + SUUID + "'");
-			if(res1.next()) {
-				//QPlayer.setConnectionStatus(player, true);
-				//QPlayer.autoManageGroups(player, this.plugin);
-				plugin.log.info("[QC] Player, " + player.getDisplayName() + " successfully joined!");
-			} else {
-				if(QPlayer.createPlayer(player)) {
-					plugin.log.info("[QC] Player, " + player.getDisplayName() + " was created with UUID of " + SUUID);
-				} else {
-                    plugin.log.info("[QC] Could not create player!");
-					player.kickPlayer(QCChat.getPhrase("database_error_contact") + "\n" + QCChat.getPhrase("could_not_create_player"));
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-            plugin.log.info("[QC] An SQL exception occurred during connection!");
-		}
+        if(QPlayer.exisits(player.getUniqueId())) {
+            plugin.log.info("[QC] Player, " + player.getDisplayName() + " successfully joined!");
+        } else {
+            if(QPlayer.createPlayer(player)) {
+                plugin.log.info("[QC] Player, " + player.getDisplayName() + " was created with UUID of " + SUUID);
+            } else {
+                plugin.log.info("[QC] Could not create player!");
+                player.kickPlayer(QCChat.getPhrase("database_error_contact") + "\n" + QCChat.getPhrase("could_not_create_player"));
+            }
+        }
 		
 		//get player data from database
 		//get player usergroup 
