@@ -28,4 +28,11 @@ public class PromoItems extends ItemStack {
                 .add("&bdesigned to test /promo")
                 .save();
     }};
+
+    public static final ItemStack JAKE_CAKE = new ItemStack(Material.CAKE) {{
+        ItemUtil.buildLore(this).setName("&6Jake's Birthday Cake")
+                .add("&bTest promo for")
+                .add("&bJake's birthday! :D")
+                .save();
+    }};
 }

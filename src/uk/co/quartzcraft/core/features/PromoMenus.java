@@ -12,7 +12,7 @@ public class PromoMenus {
 
     private static Plugin plugin = QuartzCore.plugin;
 
-    public static ChestUI menuLaunch = new ChestUI("Current Promo: Server Launch", 9, new ChestUI.OptionClickEventHandler() {
+    public static ChestUI menuTest = new ChestUI("Current Promo: Test", 9, new ChestUI.OptionClickEventHandler() {
         @Override
         public void onOptionClick(ChestUI.OptionClickEvent event) {
             if(UnclaimableItem.isUnclaimable(event.getItem())) {
@@ -27,5 +27,6 @@ public class PromoMenus {
         }
     }, plugin)
             .setOption(1, PromoItems.PROMO_INSTRUCTIONS)
-            .setOption(3, PromoItems.MAGIC_DIRT);
+            .setOption(3, PromoItems.MAGIC_DIRT)
+            .setOption(4, PromoItems.JAKE_CAKE);
 }
