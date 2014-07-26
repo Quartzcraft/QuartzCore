@@ -35,15 +35,14 @@ public class QPlayer {
 
         String SUUID = uuid.toString();
         try {
-            Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
-            ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE UUID='" + SUUID + "';");
+            ResultSet res = QuartzCore.DBCore.createStatement().executeQuery("SELECT * FROM PlayerData WHERE UUID='" + SUUID + "';");
             if(res.next()) {
                 if (res.getString("UUID").equals(uuid)) {
                     this.id = res.getInt("id");
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
                 } else {
-                    Logger.getLogger("Minecraft").log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
+                    QuartzCore.log.log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
                 }
             }
 
@@ -58,14 +57,13 @@ public class QPlayer {
         this.id = id;
 
         try {
-            Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
-            ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE id='" + id + "';");
+            ResultSet res = QuartzCore.DBCore.createStatement().executeQuery("SELECT * FROM PlayerData WHERE id='" + id + "';");
             if(res.next()) {
                 if (res.getInt("id") == id) {
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
                 } else {
-                    Logger.getLogger("Minecraft").log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
+                    QuartzCore.log.log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
                 }
             }
 
@@ -91,8 +89,7 @@ public class QPlayer {
         String SUUID = UUID.toString();
 
         try {
-            java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-            java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID +"', '" + player.getName() + "', ?, 9, 0);");
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID + "', '" + player.getName() + "', ?, 9, 0);");
             s.setString(1, date.toString());
             if(s.executeUpdate() == 1) {
                 QPlayerCreationEvent event = new QPlayerCreationEvent(player);
@@ -115,8 +112,7 @@ public class QPlayer {
      */
     public static boolean exisits(UUID uuid) {
         try {
-            Statement s = QuartzCore.MySQLcore.openConnection().createStatement();
-            ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE UUID='" + uuid + "';");
+            ResultSet res = QuartzCore.DBCore.createStatement().executeQuery("SELECT * FROM PlayerData WHERE UUID='" + uuid + "';");
             if(res.next()) {
                 return true;
             } else {
@@ -144,20 +140,7 @@ public class QPlayer {
 	 * @return The display name of the player as defined in the QuartzCore database
 	 */
 	public String getName() {
-		Statement s;
-		
-		try {
-			s = QuartzCore.MySQLcore.openConnection().createStatement();
-			ResultSet res = s.executeQuery("SELECT * FROM PlayerData WHERE id ='" + this.id + "';");
-	        if(res.next()) {
-	        	return res.getString("DisplayName");
-	        } else {
-	        	return null;
-	        }
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
+		return this.name;
 	}
 
     /**
@@ -184,10 +167,20 @@ public class QPlayer {
      * @return The QPlayer object
      */
     public QPlayer addTokens(int num) {
-        this.tokens = this.tokens + num;
-        //TODO Update database token value
-        //core.update("PlayerData", "(tokens) VALUES (" + this.tokens + ")", "id='" +  this.id + "'");
-        return this;
+        int ntok = this.tokens + num;
+        try {
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET tokens=? WHERE id=?;");
+            s.setInt(1, ntok);
+            s.setInt(2, this.id);
+            if(s.executeUpdate() == 1) {
+                this.tokens = ntok;
+                return this;
+            } else {
+                return this;
+            }
+        } catch(SQLException e) {
+            return this;
+        }
     }
 
     /**
@@ -196,10 +189,20 @@ public class QPlayer {
      * @return The QPlayer object
      */
     public QPlayer takeTokens(int num) {
-        this.tokens = this.tokens - num;
-        //TODO Update database token value
-        //core.update("PlayerData", "(tokens) VALUES (" + this.tokens + ")", "id='" +  this.id + "'");
-        return this;
+        int ntok = this.tokens - num;
+        try {
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET tokens=? WHERE id=?;");
+            s.setInt(1, ntok);
+            s.setInt(2, this.id);
+            if(s.executeUpdate() == 1) {
+                this.tokens = ntok;
+                return this;
+            } else {
+                return this;
+            }
+        } catch(SQLException e) {
+            return this;
+        }
     }
 
     /**
@@ -240,9 +243,9 @@ public class QPlayer {
         long time = System.currentTimeMillis();
         Date date = new Date(System.currentTimeMillis());
 		try {
-            java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-            java.sql.PreparedStatement s = connection.prepareStatement("UPDATE PlayerData SET LastSeen=" + date + " WHERE id=" + this.id + ";");
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET LastSeen=? WHERE id=?;");
             s.setString(1, date.toString());
+            s.setInt(2, this.id);
             if(s.executeUpdate() == 1) {
                 //QPlayerLoginEvent event = new QPlayerLoginEvent(this);
                 return this;
@@ -390,8 +393,7 @@ public class QPlayer {
         validationCode = Integer.toString(this.id) + "-" + code;
 
 		try {
-			java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-			java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO validationCodes (user_id, code) VALUES (" + this.id +", '" + validationCode + "');");
+			java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("INSERT INTO validationCodes (user_id, code) VALUES (" + this.id +", '" + validationCode + "');");
 			if(s.executeUpdate() == 1) {
 				return true;
 			} else {
@@ -404,11 +406,8 @@ public class QPlayer {
 	}
 	
 	public String getValidationCode() {
-		Statement s;
-		
 		try {
-			s = QuartzCore.MySQLcore.openConnection().createStatement();
-			ResultSet res = s.executeQuery("SELECT * FROM validationCodes WHERE user_id ='" + this.id + "';");
+			ResultSet res = QuartzCore.DBCore.createStatement().executeQuery("SELECT * FROM validationCodes WHERE user_id ='" + this.id + "';");
 	        if(res.next()) {
 	        	return res.getString("code");
 	        } else {

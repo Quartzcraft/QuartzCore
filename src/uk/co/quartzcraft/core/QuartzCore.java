@@ -1,6 +1,8 @@
 package uk.co.quartzcraft.core;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
@@ -40,7 +42,19 @@ public class QuartzCore extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		
+
+        //Close database
+        log.info("[QC]Closing database connections");
+        MySQLcore.closeConnection();
+        MySQLweb.closeConnection();
+        try {
+            DBCore.close();
+            DBWeb.close();
+            log.info("[QC]Successfully closes database connections");
+        } catch(SQLException e) {
+            log.log(Level.SEVERE,"[QC]Failed to close database connections!");
+        }
+
     	//Shutdown notice
 		log.info("[QC]The QuartzCore Plugin has been disabled!");
 	}
