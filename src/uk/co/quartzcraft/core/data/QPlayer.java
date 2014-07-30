@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
+import uk.co.quartzcraft.core.systems.perms.Permissions;
 import uk.co.quartzcraft.core.util.ChatUtil;
 
 public class QPlayer {
@@ -270,6 +271,7 @@ public class QPlayer {
 	 * Sets the users primary group.
 	 *
 	 * @param groupId
+     * @deprecated Don't use this for now.
 	 */
 	public QPlayer setPrimaryGroup(int groupId) {
 
@@ -280,6 +282,7 @@ public class QPlayer {
 	 * Adds a secondary group for the user.
 	 *
 	 * @param groupId
+     * @deprecated Don't use this for now.
 	 */
 	public QPlayer addSecondaryGroup(int groupId) {
 
