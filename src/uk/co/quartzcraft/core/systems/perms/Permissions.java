@@ -43,56 +43,56 @@ public class Permissions {
         if (permissions.containsKey(player.getName())) {
             unregisterPlayerPerms(player);
         }
-        PermissionAttachment attachment = player.addAttachment(QuartzCore.plugin);
+        PermissionAttachment attachmentPrimary = player.addAttachment(QuartzCore.plugin);
 
-        attachment.setPermission("empire.everyone", true);
+        attachmentPrimary.setPermission("empire.everyone", true);
 
         // everyone (not including guests)
         if (group > 0) {
-            attachment.setPermission("empire.normal", true);
+            attachmentPrimary.setPermission("empire.normal", true);
         }
 
         //Iron supporters and above
         if (group > 1) {
-            attachment.setPermission("empire.supporter.iron", true);
+            attachmentPrimary.setPermission("empire.supporter.iron", true);
         }
 
         //Gold supporters and above
         if (group > 2) {
-            attachment.setPermission("empire.supporter.gold", true);
+            attachmentPrimary.setPermission("empire.supporter.gold", true);
         }
 
         //Diamond supporters and above
         if (group > 3) {
-            attachment.setPermission("empire.supporter.diamond", true);
+            attachmentPrimary.setPermission("empire.supporter.diamond", true);
         }
 
         //staff and above
         if (group > 5) {
-            attachment.setPermission("empire.staff", true);
+            attachmentPrimary.setPermission("empire.staff", true);
             /*
             if (Empire.serverId.equals(100)) {
                 attachment.setPermission("empire.mode", true);
             }
             */
-            attachment.setPermission("empire.staff.mod", true);
+            attachmentPrimary.setPermission("empire.staff.mod", true);
         }
 
         //senior moderators and above
         if (group > 7) {
-            attachment.setPermission("empire.staff.srstaff", true);
+            attachmentPrimary.setPermission("empire.staff.srstaff", true);
         }
 
         //admin and superadmin
         if (group > 8) {
-            attachment.setPermission("empire.staff.admin", true);
+            attachmentPrimary.setPermission("empire.staff.admin", true);
         }
 
         registerExtraPerms(qplayer, extraPerms);
 
-        attachment.setPermission("empire.user." + player.getName(), true);
+        attachmentPrimary.setPermission("empire.user." + player.getName(), true);
         //attachment.setPermission("empire.server." + QuartzCore.serverName(QuartzCore.serverId), true);
-        permissions.put(player.getName(), attachment);
+        permissions.put(player.getName(), attachmentPrimary);
     }
 
     public static void unregisterPlayerPerms(Player player) {
@@ -112,12 +112,26 @@ public class Permissions {
             return;
         }
 
-        PermissionAttachment attachment = player.addAttachment(QuartzCore.plugin);
+        PermissionAttachment attachmentExtras = player.addAttachment(QuartzCore.plugin);
 
         for(String perm : perms) {
-            attachment.setPermission(perm, true);
+            attachmentExtras.setPermission(perm, true);
         }
 
-        permissions.put(player.getName(), attachment);
+        permissions.put(player.getName(), attachmentExtras);
+    }
+
+    public static void registerExtraPerm(QPlayer qplayer, String perm) {
+        Player player = qplayer.getPlayer();
+
+        if(perm == null) {
+            return;
+        }
+
+        PermissionAttachment attachmentExtra = player.addAttachment(QuartzCore.plugin);
+
+        attachmentExtra.setPermission(perm, true);
+
+        permissions.put(player.getName(), attachmentExtra);
     }
 }
