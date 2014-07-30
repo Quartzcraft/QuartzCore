@@ -28,6 +28,7 @@ public class QPlayer {
     private static String lastSeen;
     private static int tokens;
     private static Player player;
+    private static int group;
 	
 	public QPlayer(Plugin plugin, UUID uuid) {
         this.plugin = plugin;
@@ -41,6 +42,7 @@ public class QPlayer {
                     this.id = res.getInt("id");
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
+                    this.group = res.getInt("PrimaryGroupId");
                 } else {
                     QuartzCore.log.log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
                 }
@@ -232,6 +234,13 @@ public class QPlayer {
 
         return DurationFormatUtils.formatPeriod(firstJoin, current, "d 'days' H 'hours'");
     }
+
+    /**
+     * Gets the users primary group.
+     */
+    public int getGroup() {
+        return this.group;
+    }
 	
 	/**
 	 * Updates the QuartzCraft PlayerData to set the connection status. 
@@ -258,120 +267,23 @@ public class QPlayer {
 	}
 
 	/**
-	 * Sets the users primary group
+	 * Sets the users primary group.
 	 *
-	 * @param GroupName
+	 * @param groupId
 	 */
-	public boolean setPrimaryGroup(CommandSender sender, String GroupName, boolean promote, Plugin plugin) {
-		String promoteCommand = plugin.getConfig().getString("settings.primary-promote-command");
-		String demoteCommand = plugin.getConfig().getString("settings.primary-demote-command");
-		promoteCommand.replaceAll("<group>", GroupName);
-		promoteCommand.replaceAll("<user>", this.name);
-		//demoteCommand.replaceAll("<group>", GroupName);
-		demoteCommand.replaceAll("<user>", this.name);
-		boolean success = false;
-		
-		if(promote) {
-			success = Bukkit.getServer().dispatchCommand(sender, promoteCommand);
-		} else {
-			success = Bukkit.getServer().dispatchCommand(sender, demoteCommand);
-		}
-		
-		if(success) {
-			return true;
-		} else {
-			return false;
-		}
+	public QPlayer setPrimaryGroup(int groupId) {
+
+        return this;
 	}
 	
 	/**
 	 * Adds a secondary group for the user.
 	 *
-	 * @param GroupName
+	 * @param groupId
 	 */
-	public boolean addSecondaryGroup(CommandSender sender, String GroupName, boolean promote, Plugin plugin) {
-		String promoteCommand = plugin.getConfig().getString("settings.secondary-promote-command");
-        String demoteCommand = plugin.getConfig().getString("settings.secondary-demote-command");
-		promoteCommand.replaceAll("<group>", GroupName);
-		promoteCommand.replaceAll("<user>", this.name);
-        demoteCommand.replaceAll("<group>", GroupName);
-        demoteCommand.replaceAll("<user>", this.name);
+	public QPlayer addSecondaryGroup(int groupId) {
 
-        if(promote) {
-            if(Bukkit.getServer().dispatchCommand(sender, promoteCommand)) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            if(Bukkit.getServer().dispatchCommand(sender, demoteCommand)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-	}
-	
-	/**
-	 * Automatically manages a users group depending on their groups on the website.
-	 *
-	 * @return boolean - true if was successful, false if otherwise.
-	 */
-	public boolean autoManageGroups() {
-		//TODO Need API Key and JSON stuffs
-		String SUUID = this.uuid.toString();
-		String playername = this.name;
-        QPlayer player = this;
-		String apiAction = "http://quartzcraft.co.uk/api.php?action=getUser&value=" + playername + "&hash=API_KEY";
-
-		String secondary_group_ids = null;
-		String[] temp;
-		temp = secondary_group_ids.split(",", 25);
-		int current = 0;
-				
-		//Remove groups
-		player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Member", true, plugin);
-		
-		//Set groups
-		for(String id : temp) {
-                	int forswitch = 0;
-	        	try {
-	                        String makeint = temp[current];
-	                        forswitch = Integer.parseInt(makeint);
-	               	} catch (NumberFormatException e) {
-	                        QuartzCore.log.info("[QC] autoManageGroups failed!");
-	                        e.printStackTrace();
-	                        return false;
-	       		}
-			switch (forswitch) {
-	                case 3:
-                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Admin", true, plugin);
-	                	break;
-	                case 4:
-                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Moderator", true, plugin);
-	                	break;
-	                case 15:
-                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Diamond", true, plugin);
-	                    break;
-	                case 14:
-                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Gold", true, plugin);
-	                    break;
-	                case 13:
-                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Iron", true, plugin);
-	                    break;
-	                case 9:
-                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "SeniorStaff", true, plugin);
-	                    break;
-	                case 5:
-                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Owner", true, plugin);
-	                    break;
-	                default:
-                        player.setPrimaryGroup(Bukkit.getServer().getConsoleSender(), "Member", true, plugin);
-	                    break;
-			}
-			current++;
-		}
-        return false;
+		return this;
 	}
 
     /**
