@@ -1,5 +1,11 @@
 package uk.co.quartzcraft.core.util;
 
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import uk.co.quartzcraft.core.systems.chat.ChatPhrase;
+import uk.co.quartzcraft.core.systems.chat.QCChat;
+
 import java.util.Date;
 import java.sql.Timestamp;
 
@@ -18,5 +24,21 @@ public class Util {
         Timestamp ts1 = new Timestamp(date.getTime());
         long tsTime1 = ts1.getTime();
         return tsTime1;
+    }
+
+    public static void sendMsg(Player player, String msg) {
+        String finalmsg = Util.colour(msg);
+        player.sendMessage(finalmsg);
+    }
+
+    public static void sendPhrase(Player player, String phrase) {
+        String finalmsg = QCChat.getPhrase(phrase);
+        player.sendMessage(finalmsg);
+    }
+
+    public static void performCommand(Player player, String cmd) {
+        CommandSender exc = player;
+
+        Bukkit.getServer().dispatchCommand(exc, cmd);
     }
 }

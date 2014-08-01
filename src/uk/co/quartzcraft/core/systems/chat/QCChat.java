@@ -36,10 +36,4 @@ public class QCChat {
 	public static void addPhrase(String phrase_id, String phrase) {
         ChatPhrase.phrases.put(phrase_id, phrase);
 	}
-
-    public static void performCommand(Player player, String cmd) {
-        CommandSender exc = player;
-
-        Bukkit.getServer().dispatchCommand(exc, cmd);
-    }
 }
