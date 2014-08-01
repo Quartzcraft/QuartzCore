@@ -88,7 +88,9 @@ public class Permissions {
             attachmentPrimary.setPermission("empire.staff.admin", true);
         }
 
-        registerExtraPerms(qplayer, extraPerms);
+        if(extraPerms != null) {
+            registerExtraPerms(qplayer, extraPerms);
+        }
 
         attachmentPrimary.setPermission("empire.user." + player.getName(), true);
         //attachment.setPermission("empire.server." + QuartzCore.serverName(QuartzCore.serverId), true);
