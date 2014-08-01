@@ -21,7 +21,7 @@ import uk.co.quartzcraft.core.util.ChatUtil;
 
 public class QPlayer {
 	
-	private static Plugin plugin;
+	private static Plugin plugin = QuartzCore.plugin;
 
     private static String name;
     private static UUID uuid;
@@ -31,9 +31,8 @@ public class QPlayer {
     private static Player player;
     private static int group;
 	
-	public QPlayer(Plugin plugin, UUID uuid) {
-        this.plugin = plugin;
-        this.uuid = uuid;
+	public QPlayer(Player player) {
+        this.uuid = player.getUniqueId();
 
         String SUUID = uuid.toString();
         try {
@@ -55,8 +54,7 @@ public class QPlayer {
         this.player = Bukkit.getPlayer(this.name);
 	}
 
-    public QPlayer(Plugin plugin, int id) {
-        this.plugin = plugin;
+    public QPlayer(int id) {
         this.id = id;
 
         try {
