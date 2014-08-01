@@ -109,9 +109,9 @@ public class QPlayer {
      * Find out whether the player already exisits in the database.
      *
      * @param uuid
-     * @return true if exisits false if not.
+     * @return true if exists false if not.
      */
-    public static boolean exisits(UUID uuid) {
+    public static boolean exists(UUID uuid) {
         try {
             ResultSet res = QuartzCore.DBCore.createStatement().executeQuery("SELECT * FROM PlayerData WHERE UUID='" + uuid + "';");
             if(res.next()) {

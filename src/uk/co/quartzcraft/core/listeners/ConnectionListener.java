@@ -52,7 +52,7 @@ public class ConnectionListener implements Listener {
 
         }
 
-        if(QPlayer.exisits(player.getUniqueId())) {
+        if(QPlayer.exists(player.getUniqueId())) {
             plugin.log.info("[QC] Player, " + player.getDisplayName() + " successfully joined!");
         } else {
             if(QPlayer.createPlayer(player)) {
