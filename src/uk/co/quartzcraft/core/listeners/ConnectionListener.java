@@ -19,6 +19,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import uk.co.quartzcraft.core.event.QPlayerLoginEvent;
+import uk.co.quartzcraft.core.systems.perms.Permissions;
 
 public class ConnectionListener implements Listener {
 	
@@ -72,34 +73,38 @@ public class ConnectionListener implements Listener {
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerJoinLow(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
+        QPlayer qplayer = new QPlayer(player);
 		UUID UUID = player.getUniqueId();
-		String SUUID = UUID.toString();
-		
-		String splayer = player.toString();
-		String playername = player.getDisplayName();
+
+        Permissions.registerPlayerPerms(qplayer, null);
+
+        player.setDisplayName(player.getName());
+
+        //TODO complete
+        if(player.hasPermission("QCC.chat.nameRED")) {
+            player.setDisplayName(ChatColor.RED + player.getDisplayName());
+        }
 		
 		if(plugin.getConfig().getString("settings.join-broadcast").equals("true")) {
             String lastSeen = null;
 			//Long lastSeen = player.getLastPlayed();
-			String message = playername + ChatColor.YELLOW + " joined, last seen " + lastSeen;
+			String message = player.getDisplayName() + ChatColor.YELLOW + " joined, last seen " + lastSeen;
 			
 			join.setJoinMessage(message);
 		}
 
-        QPlayerLoginEvent event = new QPlayerLoginEvent(player);
-        Bukkit.getServer().getPluginManager().callEvent(event);
+        QPlayerLoginEvent loginEvent = new QPlayerLoginEvent(player);
+        Bukkit.getServer().getPluginManager().callEvent(loginEvent);
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoinHigh(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
+        QPlayer qplayer = new QPlayer(player);
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
 		
-		String splayer = player.toString();
-		String playername = player.getDisplayName();
-		
-		player.sendMessage("Welcome back, " + playername + "!");
+		player.sendMessage("Welcome back, " + player.getDisplayName() + "!");
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
