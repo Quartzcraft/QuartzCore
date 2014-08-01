@@ -25,7 +25,7 @@ public class CommandPinfo {
         if(args.getArgs().length >= 1) {
             String[] arg1 = args.getArgs();
             Player pplayer = Bukkit.getPlayer(arg1[0]);
-            QPlayer player = new QPlayer(this.plugin, pplayer.getUniqueId());
+            QPlayer player = new QPlayer(pplayer);
 
             args.getSender().sendMessage(QCChat.getPhrase("information_on_player_X") + arg1[0]);
             args.getSender().sendMessage(QCChat.getPhrase("first_join") + player.getFirstJoin());
