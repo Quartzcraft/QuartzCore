@@ -23,14 +23,14 @@ public class CommandReport {
     }
 
     //TODO Rewrite sometime
-    @uk.co.quartzcraft.core.command.framework.QCommand(name = "report", permission = "QCC.report", description = "Reports the specifed player", usage = "/report [player] [reason]")
+    @QCommand(name = "report", permission = "QCC.report", description = "Reports the specifed player", usage = "/report [player] [reason]")
     public void report(CommandArgs args) {
 
         String[] args1 = args.getArgs();
         Player player = (Player) args.getSender();
         Player player2 = Bukkit.getPlayer(args1[0]);
         QPlayer qplayer = new QPlayer(player);
-        QPlayer qplayer2 = new QPlayer(player2); //TODO Need latest 1.7 release
+        QPlayer qplayer2 = new QPlayer(player2);
 
         if(!(player instanceof Player)){
             player.sendMessage(QCChat.getPhrase("player_use_only"));
