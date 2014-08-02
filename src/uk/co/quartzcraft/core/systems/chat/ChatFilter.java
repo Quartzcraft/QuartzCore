@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.core.features;
+package uk.co.quartzcraft.core.systems.chat;
 
 public class ChatFilter {
 
