@@ -23,7 +23,7 @@ public class CommandReport {
     }
 
     //TODO Rewrite sometime
-    @QCommand(name = "report", permission = "QCC.report", description = "Reports the specifed player", usage = "/report [player] [reason]")
+    @QCommand(name = "report", permission = "QCC.report", description = "Reports the specified player", usage = "/report [player] [reason]")
     public void report(CommandArgs args) {
 
         String[] args1 = args.getArgs();
