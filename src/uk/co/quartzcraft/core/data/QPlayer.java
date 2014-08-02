@@ -18,6 +18,7 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 import uk.co.quartzcraft.core.systems.perms.Permissions;
 import uk.co.quartzcraft.core.util.ChatUtil;
+import uk.co.quartzcraft.core.util.Util;
 
 public class QPlayer {
 	
@@ -219,7 +220,7 @@ public class QPlayer {
      *
      */
     public void sendMessage(String message) {
-        this.player.sendMessage(ChatUtil.colour(message));
+       Util.sendMsg(this.player, message);
     }
 
     /**
