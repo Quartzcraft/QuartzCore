@@ -8,7 +8,7 @@ public class ChatFilter {
 	 * @param message The message to be filtered
 	 * @return boolean
 	 */
-	public boolean filterChatFind(String message) {
+	public static boolean filterChatFind(String message) {
 		
 		String[] wordsToFilter = null;
 		

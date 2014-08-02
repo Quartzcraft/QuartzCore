@@ -125,6 +125,8 @@ public class QuartzCore extends JavaPlugin {
 		QCChat.addPhrase("promoted_player_no", "&cThe player failed to move groups!");
 
         QCChat.addPhrase("could_not_fit_item_dropped", "&cThe item could not fit in your inventory and was dropped on the ground!");
+
+        QCChat.addPhrase("chat_contained_bad_words_blocked", "&cThe chat message you attempted to send contained inappropriate words and was blocked!");
 		
 		//Listeners
 		log.info("[QC][STARTUP]Registering listeners...");
