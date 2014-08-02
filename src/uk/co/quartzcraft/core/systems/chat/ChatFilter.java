@@ -5,11 +5,10 @@ public class ChatFilter {
 	/**
 	 * Filters the chat to find any bad words, responds with either true or false
 	 *
-	 * @param msg
+	 * @param message The message to be filtered
 	 * @return boolean
 	 */
-
-	public boolean filterChatFind(String msg) {
+	public boolean filterChatFind(String message) {
 		
 		String[] wordsToFilter = null;
 		
@@ -26,7 +25,7 @@ public class ChatFilter {
 		wordsToFilter[10] = "dickhead";
 		
 		for(String s : wordsToFilter) {
-			if(msg.equalsIgnoreCase(s)) {
+			if(message.toLowerCase().contains(s)) {
 				return true;
 			} else {
 				return false;
