@@ -2,23 +2,18 @@ package uk.co.quartzcraft.core.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import net.minecraft.util.org.apache.commons.lang3.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
-import uk.co.quartzcraft.core.systems.perms.Permissions;
-import uk.co.quartzcraft.core.util.ChatUtil;
 import uk.co.quartzcraft.core.util.Util;
 
 public class QPlayer {

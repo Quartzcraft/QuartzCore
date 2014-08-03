@@ -1,13 +1,5 @@
 package uk.co.quartzcraft.core.systems.chat;
 
-import java.util.HashMap;
-
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.util.ChatUtil;
-
 public class QCChat {
 	
 	/**
@@ -22,7 +14,7 @@ public class QCChat {
 		
 		String phrase_value = ChatPhrase.getValue(phrase_key);
 	
-		String final_phrase = ChatUtil.parse(phrase_value);
+		String final_phrase = ChatFormat.parse(phrase_value);
 		
 		return final_phrase;
 	}
