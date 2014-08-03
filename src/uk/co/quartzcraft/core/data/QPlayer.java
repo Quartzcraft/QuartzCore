@@ -45,12 +45,12 @@ public class QPlayer {
                     this.tokens = res.getInt("Tokens");
                     this.group = res.getInt("PrimaryGroupId");
                 } else {
-                    QuartzCore.log.log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
+                    Util.log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
                 }
             }
 
         } catch(SQLException e) {
-            e.printStackTrace();
+            Util.printException("Failed to retrieve QPlayer from database", e);
         }
         this.player = Bukkit.getPlayer(this.name);
 	}
@@ -65,12 +65,12 @@ public class QPlayer {
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
                 } else {
-                    QuartzCore.log.log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
+                    Util.log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
                 }
             }
 
         } catch(SQLException e) {
-            e.printStackTrace();
+            Util.printException("Failed to retrieve QPlayer from database", e);
         }
         this.player = Bukkit.getPlayer(this.name);
         this.uuid = this.player.getUniqueId();
@@ -101,7 +101,7 @@ public class QPlayer {
                 return false;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Util.printException("Failed to insert QPlayer into database", e);
             return false;
         }
     }
@@ -122,7 +122,7 @@ public class QPlayer {
             }
 
         } catch(SQLException e) {
-            e.printStackTrace();
+            Util.printException("Failed to retrieve QPlayer data from database", e);
             return false;
         }
     }
@@ -181,6 +181,7 @@ public class QPlayer {
                 return this;
             }
         } catch(SQLException e) {
+            Util.printException("Failed to retrieve QPlayer data from database", e);
             return this;
         }
     }
@@ -203,6 +204,7 @@ public class QPlayer {
                 return this;
             }
         } catch(SQLException e) {
+            Util.printException("Failed to retrieve QPlayer data from database", e);
             return this;
         }
     }
@@ -262,6 +264,7 @@ public class QPlayer {
                 return this;
             }
         } catch (SQLException e) {
+            Util.printException("Failed to retrieve QPlayer data from database", e);
             return this;
         }
 	}
@@ -314,7 +317,7 @@ public class QPlayer {
 				return false;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+            Util.printException("Failed to retrieve QPlayer data from database", e);
 			return false;
 		}
 	}
@@ -328,7 +331,7 @@ public class QPlayer {
 	        	return null;
 	        }
 		} catch (SQLException e) {
-			e.printStackTrace();
+            Util.printException("Failed to retrieve QPlayer data from database", e);
 			return null;
 		}
 	}
