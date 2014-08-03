@@ -38,19 +38,12 @@ public class CommandReport {
             if(args.getArgs().length == 0) {
                 player.sendMessage(QCChat.getPhrase("please_specify_player_to_report"));
             } else {
-                try {
-                    java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-                    java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (" + qplayer2.getID() + ", " + qplayer.getID() + ", '" + getReportContent(args.getArgs()) + "');");
-                    if(s.executeUpdate() == 1) {
-                        player.sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));
-                    } else {
-                        player.sendMessage(QCChat.getPhrase("error_submitting_report"));
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    player.sendMessage(QCChat.getPhrase("database_error_contact"));
-                    player.sendMessage(QCChat.getPhrase("error_submitting_report"));
+                if(qplayer2.report(qplayer, getReportContent(args1))) {
+                    qplayer.sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));
+                } else {
+                    qplayer.sendMessage(QCChat.getPhrase("error_submitting_report"));
                 }
+
             }
         }
     }

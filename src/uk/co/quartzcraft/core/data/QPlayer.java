@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
+import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.systems.perms.Permissions;
 import uk.co.quartzcraft.core.util.ChatUtil;
 import uk.co.quartzcraft.core.util.Util;
@@ -290,6 +291,25 @@ public class QPlayer {
 
 		return this;
 	}
+
+    public boolean report(QPlayer rep, String reason) {
+        try {
+            java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
+            java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (?, ?, ?);");
+            s.setInt(1, this.id);
+            s.setInt(2, rep.getID());
+            s.setString(3, reason);
+            if(s.executeUpdate() == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            Util.printException("Failed to insert report into database", e);
+            this.sendMessage(QCChat.getPhrase("database_error_contact"));
+            return false;
+        }
+    }
 
     /**
      * Gets the date the user was last seen
