@@ -8,6 +8,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.systems.chat.ChatFilter;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.systems.log.ChatLogger;
 import uk.co.quartzcraft.core.util.Util;
 
 
@@ -29,4 +30,15 @@ public class ChatListener implements Listener {
         }
 		
 	}
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onChatEventLog(AsyncPlayerChatEvent chat) {
+        String msg = chat.getMessage();
+
+        if(!chat.isCancelled()) {
+            ChatLogger.log(chat.getPlayer(), msg);
+        }
+        //TODO logging
+
+    }
 }
