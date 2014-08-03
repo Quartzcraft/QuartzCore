@@ -5,7 +5,7 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.command.framework.*;
 import uk.co.quartzcraft.core.command.framework.QCommand;
-import uk.co.quartzcraft.core.util.ChatUtil;
+import uk.co.quartzcraft.core.systems.chat.Announce;
 
 public class CommandAnnounce {
     private static QuartzCore plugin;
@@ -23,7 +23,7 @@ public class CommandAnnounce {
         String[] args0 = args.getArgs();
         if(args0.length >= 1) {
             String announcement = getAnnouncementContent(args0);
-            ChatUtil.announce(announcement);
+            Announce.announce(announcement);
         } else {
             args.getSender().sendMessage(QCChat.getPhrase("specify_arguments"));
         }
