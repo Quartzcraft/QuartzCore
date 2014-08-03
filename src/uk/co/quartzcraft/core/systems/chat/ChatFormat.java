@@ -1,42 +1,9 @@
-package uk.co.quartzcraft.core.util;
+package uk.co.quartzcraft.core.systems.chat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
-public class ChatUtil {
-
-    /**
-     * Makes a broadcast
-     *
-     * @param message
-     */
-    public static void announce(String message) {
-
-        message = parse(message);
-
-        Bukkit.getServer().broadcastMessage(message);
-    }
-
-    /**
-     * Makes a broadcast with a prefix.
-     *
-     * @param prefix
-     * @param prefixColour
-     * @param message
-     */
-    public static void announceWithPrefix(String prefix, String prefixColour, String message) {
-
-        //Parse Message
-        message = parse(message);
-
-        //Parse Prefix
-        prefix = parse(prefix);
-
-        //Parse Prefix Colour
-        prefixColour = parse(prefixColour);
-
-        Bukkit.getServer().broadcastMessage(prefixColour + "[" + prefix + prefixColour + "] " + ChatColor.RESET + message);
-    }
+public class ChatFormat {
 
     /**
      * Parses the chat colours.
