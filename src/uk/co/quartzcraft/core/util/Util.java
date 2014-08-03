@@ -18,6 +18,10 @@ public class Util {
         e.printStackTrace();
     }
 
+    public static void log(Level level, String message) {
+        QuartzCore.log.log(level, message);
+    }
+
     public static String colour(String s) {
         return ChatUtil.parse(s);
     }
