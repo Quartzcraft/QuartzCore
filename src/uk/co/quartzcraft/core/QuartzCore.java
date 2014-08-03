@@ -33,9 +33,11 @@ public class QuartzCore extends JavaPlugin {
 	public static final Logger log = Logger.getLogger("Minecraft");
 	
 	public static Connection DBCore = null;
+    public static Connection DBLog = null;
 	public static Connection DBWeb = null;
     
 	public static MySQL MySQLcore = null;
+    public static MySQL MySQLlog = null;
 	public static MySQL MySQLweb = null;
 
     public QCommandFramework commandFramework;
@@ -46,9 +48,11 @@ public class QuartzCore extends JavaPlugin {
         //Close database
         log.info("[QC]Closing database connections");
         MySQLcore.closeConnection();
+        MySQLlog.closeConnection();
         MySQLweb.closeConnection();
         try {
             DBCore.close();
+            DBLog.close();
             DBWeb.close();
             log.info("[QC]Successfully closes database connections");
         } catch(SQLException e) {
@@ -77,6 +81,13 @@ public class QuartzCore extends JavaPlugin {
 			String SQLCoreUser = this.getConfig().getString("database.core.username");
 			String SQLCorePassword = this.getConfig().getString("database.core.password");
 			MySQLcore = new MySQL(plugin, SQLCoreHost, "3306", SQLCoreDatabase, SQLCoreUser, SQLCorePassword);
+
+            //Logging Database
+            String SQLLogHost = this.getConfig().getString("database.log.host");
+            String SQLLogDatabase = this.getConfig().getString("database.log.database");
+            String SQLLogUser = this.getConfig().getString("database.log.username");
+            String SQLLogPassword = this.getConfig().getString("database.log.password");
+            MySQLlog = new MySQL(plugin, SQLLogHost, "3306", SQLLogDatabase, SQLLogUser, SQLLogPassword);
 			
 			//Website Database
 			String SQLWebHost = this.getConfig().getString("database.website.host");
@@ -154,6 +165,7 @@ public class QuartzCore extends JavaPlugin {
 	  	if(DBConnect) {
 	  		log.info("[QC][STARTUP]Connecting to Database");
 	  		DBCore = MySQLcore.openConnection();
+            DBLog = MySQLlog.openConnection();
 	  		DBWeb = MySQLweb.openConnection();
 		}
 	  		
