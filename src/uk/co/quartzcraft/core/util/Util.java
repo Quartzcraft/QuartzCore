@@ -14,7 +14,7 @@ import java.util.logging.Level;
 public class Util {
 
     public static void printException(String message, Exception e) {
-        QuartzCore.log.log(Level.WARNING, message);
+        QuartzCore.log.log(Level.WARNING, "[QC]" + message);
         e.printStackTrace();
     }
 
