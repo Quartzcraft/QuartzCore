@@ -25,6 +25,7 @@ public class ChatLogger {
             s.setTimestamp(1, timestamp);
             s.setInt(2, player.getID());
             s.setString(3, message);
+            s.executeUpdate();
         } catch(SQLException e) {
             Util.printException("Failed to log chat using QPlayer", e);
         }
@@ -44,6 +45,7 @@ public class ChatLogger {
             s.setTimestamp(1, timestamp);
             s.setInt(2, qPlayer.getID());
             s.setString(3, message);
+            s.executeUpdate();
         } catch(SQLException e) {
             Util.printException("Failed to log chat using QPlayer", e);
         }
