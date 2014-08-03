@@ -3,16 +3,19 @@ package uk.co.quartzcraft.core.util;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.systems.chat.ChatPhrase;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 
 import java.util.Date;
 import java.sql.Timestamp;
+import java.util.logging.Level;
 
 public class Util {
 
     public static void printException(String message, Exception e) {
-
+        QuartzCore.log.log(Level.WARNING, message);
+        e.printStackTrace();
     }
 
     public static String colour(String s) {
