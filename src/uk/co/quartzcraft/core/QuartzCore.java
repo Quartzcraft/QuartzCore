@@ -54,7 +54,7 @@ public class QuartzCore extends JavaPlugin {
             DBCore.close();
             DBLog.close();
             DBWeb.close();
-            log.info("[QC]Successfully closes database connections");
+            log.info("[QC]Successfully closed database connections");
         } catch(SQLException e) {
             log.log(Level.SEVERE,"[QC]Failed to close database connections!");
         }
