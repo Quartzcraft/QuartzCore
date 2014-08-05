@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
 import uk.co.quartzcraft.core.database.*;
@@ -59,8 +60,10 @@ public class MySQL extends Database {
             connection = DriverManager.getConnection("jdbc:mysql://" + this.hostname + ":" + this.port + "/" + this.database, this.user, this.password);
         } catch (SQLException e) {
             plugin.getLogger().log(Level.SEVERE, "Could not connect to MySQL server! because: " + e.getMessage());
+            Bukkit.getServer().shutdown();
         } catch (ClassNotFoundException e) {
             plugin.getLogger().log(Level.SEVERE, "JDBC Driver not found!");
+            Bukkit.getServer().shutdown();
         }
         return connection;
     }
