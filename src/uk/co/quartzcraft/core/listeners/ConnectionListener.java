@@ -81,11 +81,21 @@ public class ConnectionListener implements Listener {
         player.setDisplayName(player.getName());
 
         //TODO complete
-        if(player.hasPermission("QCC.chat.nameRED")) {
-            player.setDisplayName(ChatColor.RED + player.getDisplayName());
+        if(player.hasPermission("QCC.namecolour.white")) {
+            player.setDisplayName(ChatColor.WHITE + player.getName());
+        } else if(player.hasPermission("QCC.namecolour.pink")) {
+            player.setDisplayName(ChatColor.LIGHT_PURPLE + player.getName());
+        } else if(player.hasPermission("QCC.namecolour.green")) {
+            player.setDisplayName(ChatColor.DARK_GREEN + player.getName());
+        } else if(player.hasPermission("QCC.namecolour.lime")) {
+            player.setDisplayName(ChatColor.GREEN + player.getName());
+        } else if(player.hasPermission("QCC.namecolour.red")) {
+            player.setDisplayName(ChatColor.RED + player.getName());
+        } else if(player.hasPermission("QCC.namecolour.purple")) {
+            player.setDisplayName(ChatColor.DARK_PURPLE + player.getName());
         }
-		
-		if(plugin.getConfig().getString("settings.join-broadcast").equals("true")) {
+
+        if(plugin.getConfig().getString("settings.join-broadcast").equals("true")) {
             String lastSeen = null;
 			//Long lastSeen = player.getLastPlayed();
 			String message = player.getDisplayName() + ChatColor.YELLOW + " joined, last seen " + lastSeen;
