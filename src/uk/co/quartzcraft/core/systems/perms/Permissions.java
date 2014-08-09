@@ -45,55 +45,60 @@ public class Permissions {
         }
         PermissionAttachment attachmentPrimary = player.addAttachment(QuartzCore.plugin);
 
-        attachmentPrimary.setPermission("empire.everyone", true);
+        attachmentPrimary.setPermission("QCC.everyone", true);
 
         // everyone (not including guests)
-        if (group > 0) {
-            attachmentPrimary.setPermission("empire.normal", true);
+        if (group >= 1) {
+            attachmentPrimary.setPermission("QCC.normal", true);
         }
 
         //Iron supporters and above
-        if (group > 1) {
-            attachmentPrimary.setPermission("empire.supporter.iron", true);
+        if (group >= 2) {
+            attachmentPrimary.setPermission("QCC.premium.beta", true);
         }
 
         //Gold supporters and above
-        if (group > 2) {
-            attachmentPrimary.setPermission("empire.supporter.gold", true);
+        if (group >= 3) {
+            attachmentPrimary.setPermission("QCC.premium.one", true);
         }
 
         //Diamond supporters and above
-        if (group > 3) {
-            attachmentPrimary.setPermission("empire.supporter.diamond", true);
+        if (group >= 4) {
+            attachmentPrimary.setPermission("QCC.premium.two", true);
         }
 
         //staff and above
-        if (group > 5) {
-            attachmentPrimary.setPermission("empire.staff", true);
-            /*
-            if (Empire.serverId.equals(100)) {
-                attachment.setPermission("empire.mode", true);
-            }
-            */
-            attachmentPrimary.setPermission("empire.staff.mod", true);
+        if (group >= 90) {
+            attachmentPrimary.setPermission("QCC.staff", true);
+        }
+
+        //moderators and above
+        if(group >= 95) {
+            attachmentPrimary.setPermission("QCC.staff.mod", true);
         }
 
         //senior moderators and above
-        if (group > 7) {
-            attachmentPrimary.setPermission("empire.staff.srstaff", true);
+        if (group >= 97) {
+            attachmentPrimary.setPermission("QCC.staff.srstaff", true);
         }
 
-        //admin and superadmin
-        if (group > 8) {
-            attachmentPrimary.setPermission("empire.staff.admin", true);
+        //admin
+        if (group >= 99) {
+            attachmentPrimary.setPermission("QCC.staff.admin", true);
+        }
+
+        //owner
+        if (group >= 100) {
+            attachmentPrimary.setPermission("QCC.staff.owner", true);
         }
 
         if(extraPerms != null) {
             registerExtraPerms(qplayer, extraPerms);
         }
 
-        attachmentPrimary.setPermission("empire.user." + player.getName(), true);
-        //attachment.setPermission("empire.server." + QuartzCore.serverName(QuartzCore.serverId), true);
+        registerNameColourPerm(qplayer);
+
+
         permissions.put(player.getName(), attachmentPrimary);
     }
 
@@ -135,5 +140,39 @@ public class Permissions {
         attachmentExtra.setPermission(perm, true);
 
         permissions.put(player.getName(), attachmentExtra);
+    }
+
+    public static void registerNameColourPerm(QPlayer qplayer) {
+        Player player = qplayer.getPlayer();
+
+        PermissionAttachment attachmentColour = player.addAttachment(QuartzCore.plugin);
+
+        switch(qplayer.getGroup()) {
+            default:
+                attachmentColour.setPermission("QCC.namecolour.white", true);
+
+            case 2:
+                attachmentColour.setPermission("QCC.namecolour.pink", true);
+
+            case 3:
+                attachmentColour.setPermission("QCC.namecolour.pink", true);
+
+            case 4:
+                attachmentColour.setPermission("QCC.namecolour.pink", true);
+
+            case 95:
+                attachmentColour.setPermission("QCC.namecolour.green", true);
+
+            case 97:
+                attachmentColour.setPermission("QCC.namecolour.lime", true);
+
+            case 99:
+                attachmentColour.setPermission("QCC.namecolour.red", true);
+
+            case 100:
+                attachmentColour.setPermission("QCC.namecolour.purple", true);
+        }
+
+        permissions.put(player.getName(), attachmentColour);
     }
 }
