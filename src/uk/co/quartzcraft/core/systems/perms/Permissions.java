@@ -97,6 +97,7 @@ public class Permissions {
         }
 
         registerNameColourPerm(qplayer);
+        registerNamePrefixPerm(qplayer);
 
 
         permissions.put(player.getName(), attachmentPrimary);
@@ -171,6 +172,22 @@ public class Permissions {
 
             case 100:
                 attachmentColour.setPermission("QCC.namecolour.purple", true);
+        }
+
+        permissions.put(player.getName(), attachmentColour);
+    }
+
+    public static void registerNamePrefixPerm(QPlayer qplayer) {
+        Player player = qplayer.getPlayer();
+
+        PermissionAttachment attachmentColour = player.addAttachment(QuartzCore.plugin);
+
+        switch(qplayer.getGroup()) {
+            default:
+                attachmentColour.setPermission("QCC.nameprefix.null", true);
+
+            case 91:
+                attachmentColour.setPermission("QCC.namecolour.B", true);
         }
 
         permissions.put(player.getName(), attachmentColour);

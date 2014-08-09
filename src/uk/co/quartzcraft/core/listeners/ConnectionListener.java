@@ -80,7 +80,7 @@ public class ConnectionListener implements Listener {
 
         player.setDisplayName(player.getName());
 
-        //TODO complete
+        //Username colouring
         if(player.hasPermission("QCC.namecolour.white")) {
             player.setDisplayName(ChatColor.WHITE + player.getName());
         } else if(player.hasPermission("QCC.namecolour.pink")) {
@@ -93,6 +93,14 @@ public class ConnectionListener implements Listener {
             player.setDisplayName(ChatColor.RED + player.getName());
         } else if(player.hasPermission("QCC.namecolour.purple")) {
             player.setDisplayName(ChatColor.DARK_PURPLE + player.getName());
+        }
+
+        //Username prefixing
+        if(player.hasPermission("QCC.nameprefix.null")) {
+            //Do nothing
+        } else if(player.hasPermission("QCC.nameprefix.b")) {
+            String name = ChatColor.YELLOW + "[B]" + player.getDisplayName();
+            player.setDisplayName(name);
         }
 
         if(plugin.getConfig().getString("settings.join-broadcast").equals("true")) {
