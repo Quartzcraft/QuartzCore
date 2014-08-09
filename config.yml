@@ -16,9 +16,5 @@ database:
       password:
 settings:
    join-broadcast: false
-   primary-promote-command: pex user <user> group set <group>
-   primary-demote-command: pex user <user> group set member
-   secondary-demote-command: pex user <user> group remove <group>
-   secondary-promote-command: pex user <user> group add <group>
 
    
