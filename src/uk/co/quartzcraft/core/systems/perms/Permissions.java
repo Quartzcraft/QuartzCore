@@ -72,6 +72,11 @@ public class Permissions {
             attachmentPrimary.setPermission("QCC.staff", true);
         }
 
+        //builders and above
+        if (group >= 92) {
+            attachmentPrimary.setPermission("QCC.staff.builder", true);
+        }
+
         //moderators and above
         if(group >= 95) {
             attachmentPrimary.setPermission("QCC.staff.mod", true);
@@ -186,7 +191,7 @@ public class Permissions {
             default:
                 attachmentColour.setPermission("QCC.nameprefix.null", true);
 
-            case 91:
+            case 92:
                 attachmentColour.setPermission("QCC.namecolour.B", true);
         }
 
