@@ -20,13 +20,13 @@ commands:
    go:
       description: Teleports you to a player.
       usage: /go
-      permission: QCC.go
+      permission: QCC.tp.gp
       default: op
       permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
    get:
       description: Teleports a player to you.
       usage: /get
-      permission: QCC.get
+      permission: QCC.tp.get
       default: op
       permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
    chat:
@@ -67,15 +67,9 @@ Permissions:
    QCC.chat.filterBypass:
       description: Allows bypass of the chat filter.
       default: op
-   QCC.group.*:
-      description: Allows access to all QPlayer commands.
-      default: op
-   QCC.QPlayer.group:
-      description: Allows user to set another users group.
-      default: op
    QCC.test:
-         description: Test permission.
-         default: op
+      description: Test permission.
+      default: op
    QCC.reload:
       description: Gives a player permission to perform the reload command.
       default: op
