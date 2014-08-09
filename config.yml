@@ -9,6 +9,11 @@ database:
       database: 
       username:
       password:
+   log:
+      host:
+      database:
+      username:
+      password:
 settings:
    join-broadcast: false
    primary-promote-command: pex user <user> group set <group>
