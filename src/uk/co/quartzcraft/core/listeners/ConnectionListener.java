@@ -104,7 +104,7 @@ public class ConnectionListener implements Listener {
         }
 
         if(plugin.getConfig().getString("settings.join-broadcast").equals("true")) {
-            String lastSeen = null;
+            String lastSeen = qplayer.getLastSeen();
 			//Long lastSeen = player.getLastPlayed();
 			String message = player.getDisplayName() + ChatColor.YELLOW + " joined, last seen " + lastSeen;
 			

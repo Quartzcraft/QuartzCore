@@ -60,6 +60,7 @@ public class QPlayer {
                 if (res.getInt("id") == id) {
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
+                    this.group = res.getInt("PrimaryGroupId");
                 } else {
                     Util.log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
                 }
@@ -103,7 +104,7 @@ public class QPlayer {
     }
 
     /**
-     * Find out whether the player already exisits in the database.
+     * Find out whether the player already exists in the database.
      *
      * @param uuid
      * @return true if exists false if not.
