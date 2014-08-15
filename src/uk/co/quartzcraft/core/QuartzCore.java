@@ -19,6 +19,8 @@ import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.systems.websync.UpdateGroups;
+import uk.co.quartzcraft.core.systems.websync.Websync;
 
 /**
  * Core file for QuartzCore plugin.
@@ -96,6 +98,12 @@ public class QuartzCore extends JavaPlugin {
 			String SQLWebPassword = this.getConfig().getString("database.website.password");
 			MySQLweb = new MySQL(plugin, SQLWebHost, "3306", SQLWebDatabase, SQLWebUser, SQLWebPassword);
 		}
+
+        //Websync
+        log.info("[QC][STARTUP]Initializing Websync");
+        Websync.init();
+        log.info("[QC][STARTUP]Performing websync operations");
+        UpdateGroups.update();
 
         //Database
         if(DBConnect) {
