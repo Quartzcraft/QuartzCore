@@ -97,6 +97,14 @@ public class QuartzCore extends JavaPlugin {
 			MySQLweb = new MySQL(plugin, SQLWebHost, "3306", SQLWebDatabase, SQLWebUser, SQLWebPassword);
 		}
 
+        //Database
+        if(DBConnect) {
+            log.info("[QC][STARTUP]Connecting to Database");
+            DBCore = MySQLcore.openConnection();
+            DBLog = MySQLlog.openConnection();
+            DBWeb = MySQLweb.openConnection();
+        }
+
 		//Phrases
 		log.info("[QC][STARTUP]Creating Phrases");
 		QCChat.addPhrase("test_phrase", "&3This is a test of the phrases system.");
@@ -161,14 +169,6 @@ public class QuartzCore extends JavaPlugin {
 	   	getCommand("quartz").setExecutor(new CommandQuartz());
 	   	getCommand("m").setExecutor(new CommandM());
 	   	getCommand("register").setExecutor(new CommandRegister());
-	   	
-	   	//Database
-	  	if(DBConnect) {
-	  		log.info("[QC][STARTUP]Connecting to Database");
-	  		DBCore = MySQLcore.openConnection();
-            DBLog = MySQLlog.openConnection();
-	  		DBWeb = MySQLweb.openConnection();
-		}
 	  		
 	   	//Startup notice
 	  	log.info("[QC]The QuartzCore Plugin has been enabled!");
