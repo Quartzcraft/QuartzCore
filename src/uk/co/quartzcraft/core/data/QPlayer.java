@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
+import uk.co.quartzcraft.core.event.QPlayerGroupChangeEvent;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.util.Util;
 
@@ -277,7 +278,7 @@ public class QPlayer {
             s.setInt(1, groupId);
             s.setInt(2, this.id);
             if(s.executeUpdate() == 1) {
-                //QPlayerLoginEvent event = new QPlayerLoginEvent(this);
+                QPlayerGroupChangeEvent event = new QPlayerGroupChangeEvent(this);
                 this.group = groupId;
                 return this;
             } else {

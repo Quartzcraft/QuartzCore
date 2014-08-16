@@ -71,6 +71,7 @@ public class Groups {
                 }
             }
         }
+        new NoValidGroupException();
         return 0;
     }
 }
