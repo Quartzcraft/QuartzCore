@@ -15,11 +15,13 @@ import java.net.URLEncoder;
 
 public class Websync {
     public static String url;
+    public static String key;
 
     public static void init() {
         QCConfig config = new QCConfig(QuartzCore.plugin);
 
-        Websync.url = config.getString("setting.apiurl");
+        Websync.url = config.getString("settings.websync.url");
+        Websync.key = config.getString("settings.websync.key");
     }
 
     public static void getUser(int qcid) throws WebsyncException {
