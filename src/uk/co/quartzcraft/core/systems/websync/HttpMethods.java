@@ -9,8 +9,8 @@ import java.net.URLEncoder;
 
 public class HttpMethods {
 
-    private static String httpGet(String urlStr) throws IOException {
-        URL url = new URL(urlStr);
+    public static String httpGet(String actionStr) throws IOException {
+        URL url = new URL(Websync.url + "?" + actionStr);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
         if (conn.getResponseCode() != 200) {
