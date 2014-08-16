@@ -15,6 +15,7 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 import uk.co.quartzcraft.core.event.QPlayerGroupChangeEvent;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.util.TaskChain;
 import uk.co.quartzcraft.core.util.Util;
 
 public class QPlayer {
@@ -301,23 +302,26 @@ public class QPlayer {
 		return this;
 	}
 
-    public boolean report(QPlayer rep, String reason) {
-        try {
-            java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-            java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (?, ?, ?);");
-            s.setInt(1, this.id);
-            s.setInt(2, rep.getID());
-            s.setString(3, reason);
-            if(s.executeUpdate() == 1) {
-                return true;
-            } else {
-                return false;
+    public void report(QPlayer rep, String reason) {
+        final QPlayer reported_user = this;
+        final QPlayer reporting_user = rep;
+        final String freason = reason;
+
+        TaskChain.newChain().add(new TaskChain.AsyncGenericTask() {
+            @Override
+            protected void run() {
+                try {
+                    java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
+                    java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (?, ?, ?);");
+                    s.setInt(1, reported_user.getID());
+                    s.setInt(2, reporting_user.getID());
+                    s.setString(3, freason);
+                } catch (SQLException e) {
+                    Util.printException("Failed to insert report into database", e);
+                    reported_user.sendMessage(QCChat.getPhrase("database_error_contact"));
+                }
             }
-        } catch (SQLException e) {
-            Util.printException("Failed to insert report into database", e);
-            this.sendMessage(QCChat.getPhrase("database_error_contact"));
-            return false;
-        }
+        }).execute();
     }
 
     /**
