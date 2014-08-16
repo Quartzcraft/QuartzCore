@@ -1,5 +1,6 @@
 package uk.co.quartzcraft.core.systems.websync;
 
+import net.minecraft.util.io.netty.handler.codec.http.HttpMethod;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.exception.WebsyncException;
 import uk.co.quartzcraft.core.systems.config.QCConfig;
@@ -24,8 +25,13 @@ public class Websync {
         Websync.key = config.getString("settings.websync.key");
     }
 
-    public static void getUser(int qcid) throws WebsyncException {
-        
+    public static void createAlert(String alertUserId, String causeUserId, String contentType, String contentId, String action, String[] extraData) throws WebsyncException {
+        String url = "action=createAlert&user=" + alertUserId + "&cause_user=" + causeUserId + "&content_type=" + contentType + "&content_id=" + contentId + "&alert_action=" + action + "&hash=" + Websync.key;
+        try {
+            HttpMethods.httpGet(url);
+        } catch(IOException e) {
+            Util.printException("Failed to create alert", e);
+        }
     }
 
 }
