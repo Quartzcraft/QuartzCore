@@ -34,4 +34,16 @@ public class Websync {
         }
     }
 
+    public static String getUser(String userName) {
+        String url = "action=getUser&value=" + userName + "&hash=" + Websync.key;
+        String result = null;
+        try {
+            result = HttpMethods.httpGet(url);
+        } catch(IOException e) {
+            Util.printException("Failed to get user", e);
+        }
+
+        return result;
+    }
+
 }

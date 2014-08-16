@@ -270,11 +270,23 @@ public class QPlayer {
 	 * Sets the users primary group.
 	 *
 	 * @param groupId
-     * @deprecated Don't use this for now.
 	 */
 	public QPlayer setPrimaryGroup(int groupId) {
-
-        return this;
+        try {
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET PrimaryGroupId=? WHERE id=?;");
+            s.setInt(1, groupId);
+            s.setInt(2, this.id);
+            if(s.executeUpdate() == 1) {
+                //QPlayerLoginEvent event = new QPlayerLoginEvent(this);
+                this.group = groupId;
+                return this;
+            } else {
+                return this;
+            }
+        } catch (SQLException e) {
+            Util.printException("Failed to set users primary user group", e);
+            return this;
+        }
 	}
 	
 	/**
