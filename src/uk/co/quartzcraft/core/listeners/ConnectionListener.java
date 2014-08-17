@@ -83,8 +83,8 @@ public class ConnectionListener implements Listener {
         //Username colouring
         if(player.hasPermission("QCC.namecolour.white")) {
             player.setDisplayName(ChatColor.WHITE + player.getName());
-        } else if(player.hasPermission("QCC.namecolour.pink")) {
-            player.setDisplayName(ChatColor.LIGHT_PURPLE + player.getName());
+        } else if(player.hasPermission("QCC.namecolour.cyan")) {
+            player.setDisplayName(ChatColor.BLUE + player.getName());
         } else if(player.hasPermission("QCC.namecolour.green")) {
             player.setDisplayName(ChatColor.DARK_GREEN + player.getName());
         } else if(player.hasPermission("QCC.namecolour.lime")) {
