@@ -164,7 +164,7 @@ public class Permissions {
                 attachmentColour.setPermission("QCC.namecolour.pink", true);
 
             case 4:
-                attachmentColour.setPermission("QCC.namecolour.cyan", true);
+                attachmentColour.setPermission("QCC.namecolour.light-purple", true);
 
             case 95:
                 attachmentColour.setPermission("QCC.namecolour.green", true);
