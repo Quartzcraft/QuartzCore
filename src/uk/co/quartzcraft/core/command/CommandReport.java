@@ -38,12 +38,8 @@ public class CommandReport {
             if(args.getArgs().length == 0) {
                 player.sendMessage(QCChat.getPhrase("please_specify_player_to_report"));
             } else {
-                if(qplayer2.report(qplayer, getReportContent(args1))) {
-                    qplayer.sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));
-                } else {
-                    qplayer.sendMessage(QCChat.getPhrase("error_submitting_report"));
-                }
-
+                qplayer2.report(qplayer, getReportContent(args1));
+                qplayer.sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));
             }
         }
     }
