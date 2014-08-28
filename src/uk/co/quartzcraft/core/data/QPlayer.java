@@ -29,7 +29,12 @@ public class QPlayer {
     private static int tokens;
     private static Player player;
     private static int group;
-	
+
+    /**
+     * Creates a QPlayer object using the specified player
+     *
+     * @param player
+     */
 	public QPlayer(Player player) {
         this.uuid = player.getUniqueId();
 
@@ -53,6 +58,11 @@ public class QPlayer {
         this.player = Bukkit.getPlayer(this.name);
 	}
 
+    /**
+     * Creates a QPlayer object using the specified id
+     * 
+     * @param id
+     */
     public QPlayer(int id) {
         this.id = id;
 
