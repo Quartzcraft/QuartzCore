@@ -123,6 +123,9 @@ public class QuartzCore extends JavaPlugin {
 		QCChat.addPhrase("your_minecraft_username_is", "&aYour Minecraft username is:&r ");
 		QCChat.addPhrase("your_validation_code_is", "&aYour validation code is:&r ");
 		QCChat.addPhrase("your_quartzcore_id_is", "&aYour QuartzCore id is:&r ");
+
+        QCChat.addPhrase("teleported_you_to_player_X", "&aYou have been teleported to &r ");
+        QCChat.addPhrase("X_has_been_teleported_to_you", " &ahas been teleported to you");
 		
 		QCChat.addPhrase("no_permission", "&cYou do not have permission to perform this action!");
 		QCChat.addPhrase("Unknown_SubCommand", "&cCould not find the specified SubCommand! &aVisit the QuartzCraft Wiki for help.");
@@ -131,9 +134,9 @@ public class QuartzCore extends JavaPlugin {
 		QCChat.addPhrase("feature_unavalible", "&cThis feature is currently unavalible &aVisit the QuartzCraft Website for information on new features.");
 		QCChat.addPhrase("database_error", "&cA database error occurred! ");
 		QCChat.addPhrase("database_error_contact", "&cA database error occurred! &aPlease contact an administrator on the QuartzCraft website immediately.");
-		QCChat.addPhrase("player_use_only", "&4This command can only be used ingame by a player.");
-        QCChat.addPhrase("specify_username", "&cPlease specify a user!");
-        QCChat.addPhrase("specify_online_username", "&cPlease specify an online user!");
+		QCChat.addPhrase("player_use_only", "&4This command can only be used in game by a player.");
+        QCChat.addPhrase("specify_username", "&cPlease specify a player!");
+        QCChat.addPhrase("specify_online_username", "&cPlease specify an online player!");
         QCChat.addPhrase("specify_arguments", "&cPlease specify some arguments!");
 
         QCChat.addPhrase("information_on_player_X", "&aInformation on player: &r");
