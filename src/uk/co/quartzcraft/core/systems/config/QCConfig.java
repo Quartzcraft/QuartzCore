@@ -12,7 +12,15 @@ public class QCConfig {
         this.config = this.plugin.getConfig();
     }
 
+    public Object get(String path) {
+        return this.config.get(path);
+    }
+
     public String getString(String path) {
         return this.config.getString(path);
+    }
+
+    public int getInt(String path) {
+        return this.config.getInt(path);
     }
 }
