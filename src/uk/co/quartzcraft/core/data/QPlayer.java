@@ -60,7 +60,7 @@ public class QPlayer {
 
     /**
      * Creates a QPlayer object using the specified id
-     * 
+     *
      * @param id
      */
     public QPlayer(int id) {
