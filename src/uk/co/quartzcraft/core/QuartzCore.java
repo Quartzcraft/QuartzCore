@@ -19,6 +19,7 @@ import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.systems.config.QCConfig;
 import uk.co.quartzcraft.core.systems.websync.UpdateGroups;
 import uk.co.quartzcraft.core.systems.websync.Websync;
 
@@ -29,6 +30,8 @@ public class QuartzCore extends JavaPlugin {
 	
 	public static String version = "1.0.3b";
 	public static String release = "RELEASE";
+
+    public static QCConfig config;
 
     public static Plugin plugin;
     public Server server = Bukkit.getServer();
@@ -69,7 +72,8 @@ public class QuartzCore extends JavaPlugin {
 		
 		log.info("[QC][STARTUP LOGGER]Console logger discovered");
 
-        plugin = this;
+        this.plugin = this;
+        this.config = new QCConfig(this.plugin);
 		
 		//Config files
 		log.info("[QC]Running plugin configuration");
