@@ -105,7 +105,7 @@ public class QPlayer {
             s.setString(2, player.getName());
             s.setString(3, date.toString());
             if(s.executeUpdate() == 1) {
-                QPlayerCreationEvent event = new QPlayerCreationEvent(player);
+                QPlayerCreationEvent event = new QPlayerCreationEvent(new QPlayer(player));
                 Bukkit.getServer().getPluginManager().callEvent(event);
                 return true;
             } else {
