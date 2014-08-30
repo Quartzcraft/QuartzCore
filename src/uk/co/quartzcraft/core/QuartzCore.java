@@ -39,11 +39,9 @@ public class QuartzCore extends JavaPlugin {
 	
 	public static Connection DBCore = null;
     public static Connection DBLog = null;
-	public static Connection DBWeb = null;
     
 	public static MySQL MySQLcore = null;
     public static MySQL MySQLlog = null;
-	public static MySQL MySQLweb = null;
 
     public QCommandFramework commandFramework;
 	
@@ -54,11 +52,9 @@ public class QuartzCore extends JavaPlugin {
         log.info("[QC]Closing database connections");
         MySQLcore.closeConnection();
         MySQLlog.closeConnection();
-        MySQLweb.closeConnection();
         try {
             DBCore.close();
             DBLog.close();
-            DBWeb.close();
             log.info("[QC]Successfully closed database connections");
         } catch(SQLException e) {
             log.log(Level.SEVERE,"[QC]Failed to close database connections!");
@@ -94,13 +90,6 @@ public class QuartzCore extends JavaPlugin {
             String SQLLogUser = this.getConfig().getString("database.log.username");
             String SQLLogPassword = this.getConfig().getString("database.log.password");
             MySQLlog = new MySQL(plugin, SQLLogHost, "3306", SQLLogDatabase, SQLLogUser, SQLLogPassword);
-			
-			//Website Database
-			String SQLWebHost = this.getConfig().getString("database.website.host");
-			String SQLWebDatabase = this.getConfig().getString("database.website.database");
-			String SQLWebUser = this.getConfig().getString("database.website.username");
-			String SQLWebPassword = this.getConfig().getString("database.website.password");
-			MySQLweb = new MySQL(plugin, SQLWebHost, "3306", SQLWebDatabase, SQLWebUser, SQLWebPassword);
 		}
 
         //Websync
@@ -114,7 +103,6 @@ public class QuartzCore extends JavaPlugin {
             log.info("[QC][STARTUP]Connecting to Database");
             DBCore = MySQLcore.openConnection();
             DBLog = MySQLlog.openConnection();
-            DBWeb = MySQLweb.openConnection();
         }
 
 		//Phrases
