@@ -100,8 +100,10 @@ public class QPlayer {
         String SUUID = UUID.toString();
 
         try {
-            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate, PrimaryGroupID, PassedTutorial) VALUES ('" + SUUID + "', '" + player.getName() + "', ?, 9, 0);");
-            s.setString(1, date.toString());
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate) VALUES (?, ?, ?);");
+            s.setString(1, SUUID);
+            s.setString(2, player.getName());
+            s.setString(3, date.toString());
             if(s.executeUpdate() == 1) {
                 QPlayerCreationEvent event = new QPlayerCreationEvent(player);
                 Bukkit.getServer().getPluginManager().callEvent(event);
