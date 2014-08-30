@@ -29,11 +29,7 @@ public class ConnectionListener implements Listener {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
         this.plugin = plugin;
     }
-	
-	/**
-	 * Manages the login stuff for QuartzCore.
-	 * @param login
-	 */
+
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerLogin(PlayerLoginEvent login) {
 		Player player = login.getPlayer();
@@ -63,11 +59,6 @@ public class ConnectionListener implements Listener {
             }
         }
 		
-		//get player data from database
-		//get player usergroup 
-		//set player usergroup
-		//other stuff
-		
 	}
 	
 	@EventHandler(priority = EventPriority.LOWEST)
@@ -80,6 +71,7 @@ public class ConnectionListener implements Listener {
 
         player.setDisplayName(player.getName());
 
+        //TODO Move to another class
         //Username colouring
         if(player.hasPermission("QCC.namecolour.white")) {
             player.setDisplayName(ChatColor.WHITE + player.getName());
@@ -95,6 +87,7 @@ public class ConnectionListener implements Listener {
             player.setDisplayName(ChatColor.DARK_PURPLE + player.getName());
         }
 
+        //TODO Move to another class
         //Username prefixing
         if(player.hasPermission("QCC.nameprefix.null")) {
             //Do nothing
@@ -111,7 +104,7 @@ public class ConnectionListener implements Listener {
 			join.setJoinMessage(message);
 		}
 
-        QPlayerLoginEvent loginEvent = new QPlayerLoginEvent(player);
+        QPlayerLoginEvent loginEvent = new QPlayerLoginEvent(qplayer);
         Bukkit.getServer().getPluginManager().callEvent(loginEvent);
 	}
 	
