@@ -5,17 +5,17 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import uk.co.quartzcraft.core.data.QPlayer;
 
-public class QPlayerLoginEvent extends Event {
+public class QPlayerJoinEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
     private Player player;
     private QPlayer qPlayer;
 
-    public QPlayerLoginEvent(Player arg) {
+    public QPlayerJoinEvent(Player arg) {
         player = arg;
         qPlayer = new QPlayer(arg);
     }
 
-    public QPlayerLoginEvent(QPlayer arg) {
+    public QPlayerJoinEvent(QPlayer arg) {
         qPlayer = arg;
         player = arg.getPlayer();
     }

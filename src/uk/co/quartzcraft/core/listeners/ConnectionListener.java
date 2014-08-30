@@ -1,11 +1,9 @@
 package uk.co.quartzcraft.core.listeners;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.UUID;
 
 import uk.co.quartzcraft.core.QuartzCore;
+import uk.co.quartzcraft.core.event.QPlayerJoinEvent;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.data.QPlayer;
 
@@ -18,7 +16,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import uk.co.quartzcraft.core.event.QPlayerLoginEvent;
 import uk.co.quartzcraft.core.systems.perms.Permissions;
 
 public class ConnectionListener implements Listener {
@@ -104,7 +101,7 @@ public class ConnectionListener implements Listener {
 			join.setJoinMessage(message);
 		}
 
-        QPlayerLoginEvent loginEvent = new QPlayerLoginEvent(qplayer);
+        QPlayerJoinEvent loginEvent = new QPlayerJoinEvent(qplayer);
         Bukkit.getServer().getPluginManager().callEvent(loginEvent);
 	}
 	
