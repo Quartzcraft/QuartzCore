@@ -20,7 +20,7 @@ public class CommandQuartz implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		if(cmd.getName().equalsIgnoreCase("quartz")){ // If the player typed /quartz then do the following...
-			sender.sendMessage(ChatColor.GOLD + "QuartzCore version " + ChatColor.GREEN + QuartzCore.release + " " + QuartzCore.version + ChatColor.GOLD + " for Minecraft 1.7.4");
+			sender.sendMessage(ChatColor.GOLD + "QuartzCore version " + ChatColor.GREEN + QuartzCore.version + ChatColor.GOLD + " for Minecraft 1.7.10");
 			return true;
 		} else {
 			return false;
