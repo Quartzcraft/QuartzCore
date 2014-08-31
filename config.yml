@@ -10,6 +10,7 @@ database:
       username:
       password:
 settings:
+   server-id:
    join-broadcast: false
    websync:
       url: http://quartzcraft.co.uk/api.php

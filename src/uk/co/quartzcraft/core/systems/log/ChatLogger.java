@@ -21,10 +21,11 @@ public class ChatLogger {
     public static void log(QPlayer player, String message) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         try{
-            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("INSERT INTO ChatLog (timestamp, player_id, message) VALUES (?, ?, ?);");
-            s.setTimestamp(1, timestamp);
-            s.setInt(2, player.getID());
-            s.setString(3, message);
+            java.sql.PreparedStatement s = QuartzCore.DBLog.prepareStatement("INSERT INTO ChatLog (server_id, timestamp, player_id, message) VALUES (?, ?, ?, ?);");
+            s.setInt(1, QuartzCore.server);
+            s.setTimestamp(2, timestamp);
+            s.setInt(3, player.getID());
+            s.setString(4, message);
             s.executeUpdate();
         } catch(SQLException e) {
             Util.printException("Failed to log chat using QPlayer", e);
@@ -41,13 +42,14 @@ public class ChatLogger {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         QPlayer qPlayer = new QPlayer(player);
         try{
-            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("INSERT INTO ChatLog (timestamp, player_id, message) VALUES (?, ?, ?);");
-            s.setTimestamp(1, timestamp);
-            s.setInt(2, qPlayer.getID());
-            s.setString(3, message);
+            java.sql.PreparedStatement s = QuartzCore.DBLog.prepareStatement("INSERT INTO ChatLog (server_id, timestamp, player_id, message) VALUES (?, ?, ?, ?);");
+            s.setInt(1, QuartzCore.server);
+            s.setTimestamp(2, timestamp);
+            s.setInt(3, qPlayer.getID());
+            s.setString(4, message);
             s.executeUpdate();
         } catch(SQLException e) {
-            Util.printException("Failed to log chat using QPlayer", e);
+            Util.printException("Failed to log chat using Player", e);
         }
     }
 }

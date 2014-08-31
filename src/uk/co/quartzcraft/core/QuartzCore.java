@@ -33,7 +33,7 @@ public class QuartzCore extends JavaPlugin {
     public static QCConfig config;
 
     public static Plugin plugin;
-    public Server server = Bukkit.getServer();
+    public static int server;
 	public static final Logger log = Logger.getLogger("Minecraft");
 	
 	public static Connection DBCore = null;
@@ -67,6 +67,7 @@ public class QuartzCore extends JavaPlugin {
 		
 		log.info("[QC][STARTUP LOGGER]Console logger discovered");
 
+        this.server = this.getConfig().getInt("settings.server-id");
         this.plugin = this;
         this.config = new QCConfig(this.plugin);
 		
