@@ -28,8 +28,7 @@ import uk.co.quartzcraft.core.systems.websync.Websync;
  */
 public class QuartzCore extends JavaPlugin {
 	
-	public static String version = "1.0.3b";
-	public static String release = "RELEASE";
+	public static String version = "1.0.0";
 
     public static QCConfig config;
 
@@ -176,16 +175,16 @@ public class QuartzCore extends JavaPlugin {
 	  		
 	   	//Startup notice
 	  	log.info("[QC]The QuartzCore Plugin has been enabled!");
-	  	log.info("[QC]QuartzCore Version " + release + " " + version);
+	  	log.info("[QC]QuartzCore Version " + version);
 	}
 
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         return commandFramework.handleCommand(sender, label, command, args);
     }
-	
+
 	public static String displayReleaseVersion() {
-		String ReleaseVersion = release + " " + version;
+		String ReleaseVersion = version;
 		return ReleaseVersion;
 	}
 }
