@@ -32,8 +32,8 @@ public class CommandReport {
         QPlayer qplayer = new QPlayer(player);
         QPlayer qplayer2 = new QPlayer(player2);
 
-        if(!(player instanceof Player)){
-            player.sendMessage(QCChat.getPhrase("player_use_only"));
+        if(!(args.getSender() instanceof Player)){
+            args.getSender().sendMessage(QCChat.getPhrase("player_use_only"));
         } else {
             if(args.getArgs().length == 0) {
                 player.sendMessage(QCChat.getPhrase("please_specify_player_to_report"));
