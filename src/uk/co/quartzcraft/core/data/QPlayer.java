@@ -1,5 +1,6 @@
 package uk.co.quartzcraft.core.data;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -40,7 +41,9 @@ public class QPlayer {
 
         String SUUID = uuid.toString();
         try {
-            ResultSet res = QuartzCore.DBCore.createStatement().executeQuery("SELECT * FROM PlayerData WHERE UUID='" + SUUID + "';");
+            PreparedStatement s = QuartzCore.DBCore.prepareStatement("SELECT * FROM PlayerData WHERE UUID=?;");
+            s.setString(1, SUUID);
+            ResultSet res = s.executeQuery();
             if(res.next()) {
                 if (res.getString("UUID").equals(uuid)) {
                     this.id = res.getInt("id");
@@ -67,7 +70,9 @@ public class QPlayer {
         this.id = id;
 
         try {
-            ResultSet res = QuartzCore.DBCore.createStatement().executeQuery("SELECT * FROM PlayerData WHERE id='" + id + "';");
+            PreparedStatement s = QuartzCore.DBCore.prepareStatement("SELECT * FROM PlayerData WHERE id=?;");
+            s.setInt(1, id);
+            ResultSet res = s.executeQuery();
             if(res.next()) {
                 if (res.getInt("id") == id) {
                     this.name = res.getString("DisplayName");
