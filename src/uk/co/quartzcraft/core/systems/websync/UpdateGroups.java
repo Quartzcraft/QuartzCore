@@ -20,9 +20,10 @@ public class UpdateGroups {
                 QPlayer[] players = null;
                 try {
                     ResultSet res = QuartzCore.DBCore.createStatement().executeQuery("SELECT * FROM PlayerData;");
-                    players[0] = null;
+                    int i = 0;
                     while (res.next()) {
-                        players[res.getRow()] = new QPlayer(res.getInt("id"));
+                        players[i] = new QPlayer(res.getInt("id"));
+                        i++;
                     }
                 } catch (SQLException e) {
                     Util.printException("Failed to retrieve QPlayer from database", e);
