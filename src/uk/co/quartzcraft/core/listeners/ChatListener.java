@@ -36,7 +36,7 @@ public class ChatListener implements Listener {
         String msg = chat.getMessage();
 
         if(!chat.isCancelled()) {
-            ChatLogger.log(chat.getPlayer(), msg);
+            //ChatLogger.log(chat.getPlayer(), msg);
         }
         //TODO logging
 
