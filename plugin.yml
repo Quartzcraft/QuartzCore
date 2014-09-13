@@ -17,25 +17,6 @@ commands:
       permission: QCC.admin.m
       default: op
       permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
-   go:
-      description: Teleports you to a player.
-      usage: /go
-      permission: QCC.tp.gp
-      default: op
-      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
-   get:
-      description: Teleports a player to you.
-      usage: /get
-      permission: QCC.tp.get
-      default: op
-      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
-   chat:
-      description: Basic chat command
-      usage: /chat
-      permission: QCC.chat
-      default: op
-      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
-      alias: ch
    register:
       description: Begins the website registration process.
       usage: /register
