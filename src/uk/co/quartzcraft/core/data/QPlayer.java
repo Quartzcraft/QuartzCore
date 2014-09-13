@@ -78,13 +78,7 @@ public class QPlayer {
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
                     this.group = res.getInt("PrimaryGroupId");
-                    Player player1 = Bukkit.getServer().getPlayer(this.name);
-                    this.player = player1;
-                    if(player1.isOnline()) {
-                        this.uuid = player1.getUniqueId();
-                    } else {
-                        this.uuid = UUID.fromString(res.getString("UUID"));
-                    }
+                    this.uuid = UUID.fromString(res.getString("UUID"));
                 } else {
                     Util.log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
                 }
@@ -94,6 +88,8 @@ public class QPlayer {
             Util.printException("Failed to retrieve QPlayer from database", e);
         }
 
+        Player player1 = Bukkit.getServer().getPlayer(this.uuid);
+        this.player = player1;
     }
 
     /**
