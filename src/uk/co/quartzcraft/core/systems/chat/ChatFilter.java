@@ -10,7 +10,7 @@ public class ChatFilter {
 	 */
 	public static boolean filterChatFind(String message) {
 		
-		String[] wordsToFilter = null;
+		String[] wordsToFilter = new String[15];
 		
 		wordsToFilter[0] = "fuck";
 		wordsToFilter[1] = "shit";
