@@ -113,6 +113,7 @@ public class Permissions {
             try {
                 player.removeAttachment(permissions.get(player.getName()));
             } catch (IllegalArgumentException ex) {
+                Util.printException("Failed to unregister permissions", ex);
             }
             permissions.remove(player.getName());
         }
