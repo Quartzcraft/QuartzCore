@@ -21,7 +21,7 @@ import uk.co.quartzcraft.core.util.Util;
 
 public class QPlayer {
 	
-	private static Plugin plugin = QuartzCore.plugin;
+	private Plugin plugin = QuartzCore.plugin;
 
     private String name;
     private UUID uuid;
