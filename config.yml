@@ -13,6 +13,7 @@ settings:
    server-id:
    join-broadcast: false
    websync:
+      active: false
       url: http://quartzcraft.co.uk/api.php
       key: API_Key
 
