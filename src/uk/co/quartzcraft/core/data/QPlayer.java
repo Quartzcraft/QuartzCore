@@ -23,13 +23,13 @@ public class QPlayer {
 	
 	private static Plugin plugin = QuartzCore.plugin;
 
-    private static String name;
-    private static UUID uuid;
-    private static int id;
-    private static String lastSeen;
-    private static int tokens;
-    private static Player player;
-    private static int group;
+    private String name;
+    private UUID uuid;
+    private int id;
+    private String lastSeen;
+    private int tokens;
+    private Player player;
+    private int group;
 
     /**
      * Creates a QPlayer object using the specified player
@@ -45,7 +45,7 @@ public class QPlayer {
             s.setString(1, SUUID);
             ResultSet res = s.executeQuery();
             if(res.next()) {
-                if (res.getString("UUID").equals(uuid)) {
+                if (res.getString("UUID").equals(uuid.toString())) {
                     this.id = res.getInt("id");
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
@@ -78,6 +78,13 @@ public class QPlayer {
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
                     this.group = res.getInt("PrimaryGroupId");
+                    Player player1 = Bukkit.getServer().getPlayer(this.name);
+                    this.player = player1;
+                    if(player1.isOnline()) {
+                        this.uuid = player1.getUniqueId();
+                    } else {
+                        this.uuid = UUID.fromString(res.getString("UUID"));
+                    }
                 } else {
                     Util.log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
                 }
@@ -86,8 +93,7 @@ public class QPlayer {
         } catch(SQLException e) {
             Util.printException("Failed to retrieve QPlayer from database", e);
         }
-        this.player = Bukkit.getPlayer(this.name);
-        this.uuid = this.player.getUniqueId();
+
     }
 
     /**
