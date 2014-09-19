@@ -331,10 +331,11 @@ public class QPlayer {
             protected void run() {
                 try {
                     java.sql.Connection connection = QuartzCore.MySQLcore.openConnection();
-                    java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content) VALUES (?, ?, ?);");
+                    java.sql.PreparedStatement s = connection.prepareStatement("INSERT INTO Reports (reported_user_id, reporting_user_id, report_content, location) VALUES (?, ?, ?, ?);");
                     s.setInt(1, reported_user.getID());
                     s.setInt(2, reporting_user.getID());
                     s.setString(3, freason);
+                    s.setString(4, reported_user.getPlayer().getLocation().toString());
                 } catch (SQLException e) {
                     Util.printException("Failed to insert report into database", e);
                     reported_user.sendMessage(QCChat.getPhrase("database_error_contact"));
