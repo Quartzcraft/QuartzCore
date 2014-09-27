@@ -68,6 +68,7 @@ public class ConnectionListener implements Listener {
 
         player.setDisplayName(player.getName());
         player.setDisplayName(qplayer.getGroup().getPrefix() + qplayer.getGroup().getColour() + player.getName());
+        player.setPlayerListName(player.getDisplayName());
 
         if(plugin.getConfig().getString("settings.join-broadcast").equals("true")) {
             String lastSeen = qplayer.getLastSeen();
