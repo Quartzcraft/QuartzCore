@@ -96,7 +96,7 @@ public class ConnectionListener implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent quit) {
 		Player player = quit.getPlayer();
 		
-		if(plugin.getConfig().getString("settings.join-broadcast").equals("true")) {
+		if(plugin.getConfig().getBoolean("settings.join-broadcast")) {
 			String message = player.getDisplayName() + ChatColor.YELLOW + " disconnected.";
 			
 			quit.setQuitMessage(message);
