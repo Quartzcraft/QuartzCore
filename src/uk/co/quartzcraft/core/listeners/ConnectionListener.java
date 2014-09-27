@@ -70,7 +70,7 @@ public class ConnectionListener implements Listener {
         player.setDisplayName(qplayer.getGroup().getPrefix() + qplayer.getGroup().getColour() + player.getName());
         player.setPlayerListName(player.getDisplayName());
 
-        if(plugin.getConfig().getString("settings.join-broadcast").equals("true")) {
+        if(plugin.getConfig().getBoolean("settings.join-broadcast")) {
             String lastSeen = qplayer.getLastSeen();
 			//Long lastSeen = player.getLastPlayed();
 			String message = player.getDisplayName() + ChatColor.YELLOW + " joined, last seen " + lastSeen;
