@@ -134,6 +134,7 @@ public class QuartzCore extends JavaPlugin {
         QCChat.addPhrase("specify_arguments", "&cPlease specify some arguments!");
 
         QCChat.addPhrase("information_on_player_X", "&aInformation on player: &r");
+        QCChat.addPhrase("group", "&aGroup: &r");
         QCChat.addPhrase("first_join", "&aFirst joined: &r");
         QCChat.addPhrase("last_seen", "&aLast online: &r");
 
