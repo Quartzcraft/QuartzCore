@@ -67,31 +67,7 @@ public class ConnectionListener implements Listener {
         Permissions.registerPlayerPerms(qplayer, null);
 
         player.setDisplayName(player.getName());
-
-        //TODO Move to another class
-        //Username colouring
-        if(player.hasPermission("QCC.namecolour.white")) {
-            player.setDisplayName(ChatColor.WHITE + player.getName());
-        } else if(player.hasPermission("QCC.namecolour.light-purple")) {
-            player.setDisplayName(ChatColor.LIGHT_PURPLE + player.getName());
-        } else if(player.hasPermission("QCC.namecolour.green")) {
-            player.setDisplayName(ChatColor.DARK_GREEN + player.getName());
-        } else if(player.hasPermission("QCC.namecolour.lime")) {
-            player.setDisplayName(ChatColor.GREEN + player.getName());
-        } else if(player.hasPermission("QCC.namecolour.red")) {
-            player.setDisplayName(ChatColor.RED + player.getName());
-        } else if(player.hasPermission("QCC.namecolour.purple")) {
-            player.setDisplayName(ChatColor.DARK_PURPLE + player.getName());
-        }
-
-        //TODO Move to another class
-        //Username prefixing
-        if(player.hasPermission("QCC.nameprefix.null")) {
-            //Do nothing
-        } else if(player.hasPermission("QCC.nameprefix.b")) {
-            String name = ChatColor.YELLOW + "[B]" + player.getDisplayName();
-            player.setDisplayName(name);
-        }
+        player.setDisplayName(qplayer.getGroup().getPrefix() + qplayer.getGroup().getColour() + player.getName());
 
         if(plugin.getConfig().getString("settings.join-broadcast").equals("true")) {
             String lastSeen = qplayer.getLastSeen();

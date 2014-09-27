@@ -16,6 +16,7 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 import uk.co.quartzcraft.core.event.QPlayerGroupChangeEvent;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.systems.perms.Group;
 import uk.co.quartzcraft.core.util.TaskChain;
 import uk.co.quartzcraft.core.util.Util;
 
@@ -29,7 +30,7 @@ public class QPlayer {
     private String lastSeen;
     private int tokens;
     private Player player;
-    private int group;
+    private Group group;
 
     /**
      * Creates a QPlayer object using the specified player
@@ -49,7 +50,7 @@ public class QPlayer {
                     this.id = res.getInt("id");
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
-                    this.group = res.getInt("PrimaryGroupId");
+                    this.group = new Group(res.getInt("PrimaryGroupId"));
                 } else {
                     Util.log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
                 }
@@ -77,7 +78,7 @@ public class QPlayer {
                 if (res.getInt("id") == id) {
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
-                    this.group = res.getInt("PrimaryGroupId");
+                    this.group = new Group(res.getInt("PrimaryGroupId"));
                     this.uuid = UUID.fromString(res.getString("UUID"));
                 } else {
                     Util.log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
@@ -258,7 +259,7 @@ public class QPlayer {
     /**
      * Gets the users primary group.
      */
-    public int getGroup() {
+    public Group getGroup() {
         return this.group;
     }
 	
@@ -299,7 +300,7 @@ public class QPlayer {
             s.setInt(2, this.id);
             if(s.executeUpdate() == 1) {
                 QPlayerGroupChangeEvent event = new QPlayerGroupChangeEvent(this);
-                this.group = groupId;
+                this.group = new Group(groupId);
                 return this;
             } else {
                 return this;

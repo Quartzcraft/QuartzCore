@@ -20,7 +20,7 @@ public class CommandPinfo {
     }
 
     //TODO Finish/fix up
-    @QCommand(name = "pinfo", aliases = { "p" }, permission = "QCC.pinfo", description = "Displays info on the specifed player", usage = "Use /pinfo [playername]")
+    @QCommand(name = "pinfo", aliases = { "p" }, permission = "QCC.pinfo", description = "Displays info on the specified player", usage = "Use /pinfo [playername]")
     public void pinfo(CommandArgs args) {
         if(args.getArgs().length >= 1) {
             String[] arg1 = args.getArgs();
@@ -28,6 +28,7 @@ public class CommandPinfo {
             QPlayer player = new QPlayer(pplayer);
 
             args.getSender().sendMessage(QCChat.getPhrase("information_on_player_X") + arg1[0]);
+            args.getSender().sendMessage(QCChat.getPhrase("group") + player.getGroup().getFancyName());
             args.getSender().sendMessage(QCChat.getPhrase("first_join") + player.getFirstJoin());
             args.getSender().sendMessage(QCChat.getPhrase("last_seen") + player.getLastSeen());
         } else {
