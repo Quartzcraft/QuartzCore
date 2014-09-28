@@ -28,7 +28,7 @@ import uk.co.quartzcraft.core.systems.websync.Websync;
  */
 public class QuartzCore extends JavaPlugin {
 	
-	public static String version = "1.0.0";
+	public static String version;
 
     public static QCConfig config;
 
@@ -67,9 +67,10 @@ public class QuartzCore extends JavaPlugin {
 		
 		log.info("[QC][STARTUP LOGGER]Console logger discovered");
 
-        this.server = this.getConfig().getInt("settings.server-id");
-        this.plugin = this;
-        this.config = new QCConfig(this.plugin);
+        server = this.getConfig().getInt("settings.server-id");
+        plugin = this;
+        config = new QCConfig(this.plugin);
+        version = plugin.getDescription().getVersion();
 		
 		//Config files
 		log.info("[QC]Running plugin configuration");
