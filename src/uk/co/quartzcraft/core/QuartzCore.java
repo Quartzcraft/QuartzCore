@@ -96,9 +96,10 @@ public class QuartzCore extends JavaPlugin {
         log.info("[QC][STARTUP]Initializing Websync");
         if(this.getConfig().getBoolean("settings.websync.active")) {
             Websync.init();
+
+            log.info("[QC][STARTUP]Performing websync operations");
+            UpdateGroups.update();
         }
-        log.info("[QC][STARTUP]Performing websync operations");
-        UpdateGroups.update();
 
         //Database
         if(DBConnect) {
