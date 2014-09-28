@@ -67,7 +67,7 @@ public class ConnectionListener implements Listener {
         Permissions.registerPlayerPerms(qplayer, null);
 
         player.setDisplayName(player.getName());
-        player.setDisplayName(qplayer.getGroup().getPrefix() + qplayer.getGroup().getColour() + player.getName());
+        player.setDisplayName(qplayer.getGroup().getStyleForName() + player.getName() + ChatColor.RESET);
         player.setPlayerListName(player.getDisplayName());
 
         if(plugin.getConfig().getBoolean("settings.join-broadcast")) {
