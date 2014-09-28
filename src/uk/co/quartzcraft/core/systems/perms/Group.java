@@ -90,6 +90,16 @@ public class Group {
     }
 
     public String getFancyName() {
-        return this.colour + this.fullName;
+        if(this.prefix == null) {
+            return this.colour + this.fullName + ChatColor.RESET;
+        }
+        return "[" + this.prefix + "]" + this.colour + this.fullName + ChatColor.RESET;
+    }
+
+    public String getStyleForName() {
+        if(this.prefix == null) {
+            return this.colour + "";
+        }
+        return "[" + this.prefix + "]" + this.colour;
     }
 }
