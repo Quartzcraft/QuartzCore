@@ -60,7 +60,7 @@ public class Group {
                     this.prefix = res.getString("group_prefix");
                     this.colour = ChatColor.getByChar("&" + res.getString("group_colour"));
                 } else {
-                    Util.log(Level.SEVERE, "Group id not equal");
+                    Util.log(Level.SEVERE, "Group names not equal");
                 }
             }
 
