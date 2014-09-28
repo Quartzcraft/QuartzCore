@@ -17,25 +17,6 @@ import java.util.Map;
 public class Permissions {
     public static HashMap<String, PermissionAttachment> permissions = new HashMap<>();
 
-    public static void initialize() {
-        try {
-            final ResultSet res = QuartzCore.DBCore.createStatement().executeQuery("SELECT * FROM permission_type ORDER BY id");
-            while(res.next()) {
-                Integer id = res.getInt("id");
-                PermType type = PermType.getById(id);
-                if (type == null) {
-                    throw new IllegalStateException("Could not find a type for ID " + id);
-                }
-                type.name = res.getString("name");
-                type.desc = res.getString("desc");
-                type.maxLevel = res.getLong("max_level");
-            }
-        } catch (Exception e) {
-            Util.printException("Could not get permissions from database", e);
-            Bukkit.getServer().shutdown();
-        }
-    }
-
     public static void registerPlayerPerms(QPlayer qplayer, String[] extraPerms) {
         Player player = qplayer.getPlayer();
 
