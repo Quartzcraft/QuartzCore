@@ -33,7 +33,7 @@ public class CommandTP {
         }
     }
 
-    @QCommand(name = "go", permission = "QCC.tp.get", description = "Teleports the specified player to you", usage = "/get [player]")
+    @QCommand(name = "get", permission = "QCC.tp.get", description = "Teleports the specified player to you", usage = "/get [player]")
     public void get(CommandArgs args) {
         String args0[] = args.getArgs();
         Player bukkitPlayer = (Player) args.getSender();
