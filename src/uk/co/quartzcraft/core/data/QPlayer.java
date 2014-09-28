@@ -9,6 +9,7 @@ import java.util.logging.Level;
 
 import net.minecraft.util.org.apache.commons.lang3.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import org.bukkit.plugin.Plugin;
@@ -27,7 +28,7 @@ public class QPlayer {
     private String name;
     private UUID uuid;
     private int id;
-    private String lastSeen;
+    private String lastSeen = null;
     private int tokens;
     private Player player;
     private Group group;
@@ -39,7 +40,6 @@ public class QPlayer {
      */
 	public QPlayer(Player player) {
         this.uuid = player.getUniqueId();
-
         String SUUID = uuid.toString();
         try {
             PreparedStatement s = QuartzCore.DBCore.prepareStatement("SELECT * FROM PlayerData WHERE UUID=?;");
@@ -61,6 +61,30 @@ public class QPlayer {
         }
         this.player = Bukkit.getPlayer(this.name);
 	}
+
+    /**
+     * Creates a QPlayer object using the specified player name. <b>Only use this if the player is not online.</b>
+     *
+     * @param name
+     */
+    public QPlayer(String name) {
+        try {
+            PreparedStatement s = QuartzCore.DBCore.prepareStatement("SELECT * FROM PlayerData WHERE DisplayName=?;");
+            s.setString(1, name);
+            ResultSet res = s.executeQuery();
+            if(res.next()) {
+                this.id = res.getInt("id");
+                this.name = res.getString("DisplayName");
+                this.tokens = res.getInt("Tokens");
+                this.group = new Group(res.getInt("PrimaryGroupId"));
+                this.uuid = UUID.fromString(res.getString("UUID"));
+            }
+
+        } catch(SQLException e) {
+            Util.printException("Failed to retrieve QPlayer from database", e);
+        }
+        this.player = null;
+    }
 
     /**
      * Creates a QPlayer object using the specified id
