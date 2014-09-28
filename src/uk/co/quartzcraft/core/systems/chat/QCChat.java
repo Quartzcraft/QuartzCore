@@ -1,5 +1,7 @@
 package uk.co.quartzcraft.core.systems.chat;
 
+import java.util.Map;
+
 public class QCChat {
 	
 	/**
@@ -10,14 +12,30 @@ public class QCChat {
 	 */
 	public static String getPhrase(String requested_phrase_id) {
 		
-		String phrase_key = ChatPhrase.match(requested_phrase_id);
-		
-		String phrase_value = ChatPhrase.getValue(phrase_key);
-	
-		String final_phrase = ChatFormat.parse(phrase_value);
-		
-		return final_phrase;
+		if(ChatPhrase.match(requested_phrase_id)) {
+            String phrase_value = ChatPhrase.getValue(requested_phrase_id);
+
+            return ChatFormat.parse(phrase_value);
+        }
+		return requested_phrase_id;
 	}
+
+    /**
+     * Gets the requested phrase. Has input for variables.
+     *
+     * @param requested_phrase_id
+     * @return phrase
+     */
+    public static String getPhrase(String requested_phrase_id, Map map_of_variables) {
+
+        if(ChatPhrase.match(requested_phrase_id)) {
+            String phrase_value = ChatPhrase.getValue(requested_phrase_id);
+            String final_value = ChatPhrase.replaceVariables(phrase_value, map_of_variables);
+
+            return ChatFormat.parse(phrase_value);
+        }
+        return requested_phrase_id;
+    }
 	
 	/**
 	 * Adds a phrase to the phrase list.
