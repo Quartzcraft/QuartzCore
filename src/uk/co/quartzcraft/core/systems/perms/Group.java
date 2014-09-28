@@ -34,7 +34,7 @@ public class Group {
                     this.fullName = res.getString("full_group_name");
                     this.site_id = res.getInt("site_group_id");
                     this.prefix = res.getString("group_prefix");
-                    this.colour = ChatColor.getByChar("&" + res.getString("group_colour"));
+                    this.colour = ChatColor.getByChar(res.getString("group_colour"));
                 } else {
                     Util.log(Level.SEVERE, "Group id not equal");
                 }
