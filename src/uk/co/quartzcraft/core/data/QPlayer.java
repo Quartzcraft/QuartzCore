@@ -125,9 +125,8 @@ public class QPlayer {
      * @return boolean - true if player was created, false if otherwise
      */
     public static boolean createPlayer(Player player) {
-        long time = System.currentTimeMillis();
-        //java.sql.Date date = new java.sql.Date(time);
-        Date date = new Date(System.currentTimeMillis());
+        Long time = System.currentTimeMillis();
+        Timestamp timestamp = new Timestamp(time);
 
         UUID UUID = player.getUniqueId();
         String SUUID = UUID.toString();
@@ -136,7 +135,7 @@ public class QPlayer {
             java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("INSERT INTO PlayerData (UUID, DisplayName, JoinDate) VALUES (?, ?, ?);");
             s.setString(1, SUUID);
             s.setString(2, player.getName());
-            s.setString(3, date.toString());
+            s.setTimestamp(3, timestamp);
             if(s.executeUpdate() == 1) {
                 QPlayerCreationEvent event = new QPlayerCreationEvent(new QPlayer(player));
                 Bukkit.getServer().getPluginManager().callEvent(event);
