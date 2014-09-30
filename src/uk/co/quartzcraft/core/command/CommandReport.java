@@ -28,18 +28,17 @@ public class CommandReport {
 
         String[] args1 = args.getArgs();
         Player player = (Player) args.getSender();
-        Player player2 = Bukkit.getPlayer(args1[0]);
         QPlayer qplayer = new QPlayer(player);
-        QPlayer qplayer2 = new QPlayer(player2);
+        QPlayer target = new QPlayer(args1[0]);
 
         if(!(args.getSender() instanceof Player)){
             args.getSender().sendMessage(QCChat.getPhrase("player_use_only"));
         } else {
             if(args.getArgs().length == 0) {
-                player.sendMessage(QCChat.getPhrase("please_specify_player_to_report"));
+                args.getSender().sendMessage(QCChat.getPhrase("please_specify_player_to_report"));
             } else {
-                qplayer2.report(qplayer, getReportContent(args1));
-                qplayer.sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));
+                target.report(qplayer, getReportContent(args1));
+                args.getSender().sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));
             }
         }
     }

@@ -60,7 +60,7 @@ public class QPlayer {
         } catch(SQLException e) {
             Util.printException("Failed to retrieve QPlayer from database", e);
         }
-        this.player = Bukkit.getPlayer(this.name);
+        this.player = player;
 	}
 
     /**
