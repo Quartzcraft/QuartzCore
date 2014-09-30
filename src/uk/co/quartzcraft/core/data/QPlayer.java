@@ -3,6 +3,7 @@ package uk.co.quartzcraft.core.data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -272,12 +273,20 @@ public class QPlayer {
      * Gets the the time the player first joined.
      */
     public String getFirstJoin() {
-        Player targetPlayer = this.player;
-
-        long current = System.currentTimeMillis();
-        long firstJoin = targetPlayer.getPlayer().getFirstPlayed();
-
-        return DurationFormatUtils.formatPeriod(firstJoin, current, "d 'days' H 'hours'");
+        try {
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("SELECT * FROM PlayerData WHERE id=?;");
+            s.setInt(1, this.id);
+            ResultSet res = s.executeQuery();
+            if(res.next()) {
+                long firstJoin = res.getTimestamp("JoinDate").getTime();
+                long current = System.currentTimeMillis();
+                return DurationFormatUtils.formatPeriod(firstJoin, current, "d 'days' H 'hours'");
+            }
+        } catch (SQLException e) {
+            Util.printException("Failed to retrieve QPlayer data from database", e);
+            return null;
+        }
+        return null;
     }
 
     /**
