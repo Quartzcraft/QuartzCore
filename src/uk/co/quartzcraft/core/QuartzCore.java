@@ -30,7 +30,6 @@ public class QuartzCore extends JavaPlugin {
 	
 	public static String version;
 
-    public static QCConfig config;
 
     public static Plugin plugin;
     public static int server;
@@ -69,7 +68,6 @@ public class QuartzCore extends JavaPlugin {
 
         server = this.getConfig().getInt("settings.server-id");
         plugin = this;
-        config = new QCConfig(this.plugin);
         version = plugin.getDescription().getVersion();
 		
 		//Config files
