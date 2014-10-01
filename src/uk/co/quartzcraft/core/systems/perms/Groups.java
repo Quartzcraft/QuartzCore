@@ -23,6 +23,9 @@ public class Groups {
                     List<String> valSet = new ArrayList<String>();
                     valSet.add(res.getString("group_name"));
                     valSet.add(res.getString("site_group_id"));
+                    valSet.add(res.getString("full_group_name"));
+                    valSet.add(res.getString("group_colour"));
+                    valSet.add(res.getString("group_prefix"));
                     groups.put(res.getInt("id"), valSet);
                 }
             }
