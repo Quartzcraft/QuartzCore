@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.core.features;
+package uk.co.quartzcraft.core.features.items;
 
 import org.bukkit.inventory.ItemStack;
 import uk.co.quartzcraft.core.QuartzCore;

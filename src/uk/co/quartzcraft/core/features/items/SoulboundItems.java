@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.core.features;
+package uk.co.quartzcraft.core.features.items;
 
 import org.bukkit.event.Listener;
 import uk.co.quartzcraft.core.QuartzCore;
