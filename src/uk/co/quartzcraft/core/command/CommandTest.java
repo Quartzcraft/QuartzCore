@@ -5,6 +5,7 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.command.framework.QCommand;
 import uk.co.quartzcraft.core.command.framework.*;
 import uk.co.quartzcraft.core.features.ActionBar;
+import uk.co.quartzcraft.core.features.FancyMessages;
 import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 
 public class CommandTest {
@@ -21,6 +22,7 @@ public class CommandTest {
     @QCommand(name = "test", aliases = { "testing" }, permission = "QCC.test", description = "This is a test command", usage = "This is how you use it")
     public void test(CommandArgs args) {
         args.getSender().sendMessage("This is a test command");
+        args.getSender().sendMessage(FancyMessages.gui(args.getSender().getName(), 5));
         ActionBar.displayBar((Player) args.getSender(), new FancyMessage("This is a test ActionBar thingy! :D").toJSONString());
     }
 }
