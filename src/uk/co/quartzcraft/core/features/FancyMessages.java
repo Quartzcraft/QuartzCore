@@ -1,24 +1,26 @@
 package uk.co.quartzcraft.core.features;
 
 import static org.bukkit.ChatColor.*;
+
+import org.bukkit.entity.Player;
 import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 
 public class FancyMessages {
 
-    public static String welcome(String playername) {
-        return new FancyMessage("Hello, ")
+    public static void welcome(Player player) {
+        new FancyMessage("Hello, ")
                 .color(YELLOW)
-                .then(playername)
+                .then(player.getName())
                 .color(LIGHT_PURPLE)
                 .style(ITALIC, UNDERLINE)
                 .then("!")
                 .color(YELLOW)
                 .style(ITALIC)
-                .toJSONString();
+                .send(player);
     }
 
-    public static String advertisement() {
-        return new FancyMessage("Visit ")
+    public static void advertisement(Player player) {
+        new FancyMessage("Visit ")
                 .color(GREEN)
                 .then("our website")
                 .color(YELLOW)
@@ -31,13 +33,13 @@ public class FancyMessages {
                 .color(AQUA)
                 .style(BOLD)
                 .tooltip("Terms and conditions may apply. Offer not valid in Sweden.")
-                .toJSONString();
+                .send(player);
     }
 
-    public static String gui(String playername, int blocksEdited) {
-        return new FancyMessage("Player ")
+    public static void gui(Player player, int blocksEdited) {
+        new FancyMessage("Player ")
                 .color(DARK_RED)
-                .then(playername)
+                .then(player.getName())
                 .color(RED)
                 .style(ITALIC)
                 .then(" changed ").color(DARK_RED)
@@ -46,15 +48,15 @@ public class FancyMessages {
                 .then("Roll back?")
                 .color(GOLD)
                 .style(UNDERLINE)
-                .suggest("/rollenbacken " + playername)
+                .suggest("/rollenbacken " + player.getName())
                 .tooltip("Be careful, this might undo legitimate edits!")
                 .then(" ")
                 .then("Ban?")
                 .color(RED)
                 .style(UNDERLINE)
-                .suggest("/banhammer " + playername)
+                .suggest("/banhammer " + player.getName())
                 .tooltip("Remember: only ban if you have photographic evidence of grief.")
-                .toJSONString();
+                .send(player);
     }
 
 }
