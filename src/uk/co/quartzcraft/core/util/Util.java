@@ -3,6 +3,7 @@ package uk.co.quartzcraft.core.util;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.systems.chat.ChatFormat;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
@@ -51,5 +52,12 @@ public class Util {
         CommandSender exc = player;
 
         Bukkit.getServer().dispatchCommand(exc, cmd);
+    }
+
+    public static boolean givePlayerItem(Player player, ItemStack itemStack) {
+        if(player.getInventory().addItem(itemStack).equals(null)) {
+            return true;
+        }
+        return false;
     }
 }
