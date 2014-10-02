@@ -4,9 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
-import uk.co.quartzcraft.core.features.PromoItems;
 import uk.co.quartzcraft.core.systems.ChestUI.ChestUI;
-import uk.co.quartzcraft.core.systems.ChestUI.UnclaimableItem;
 import uk.co.quartzcraft.core.util.ItemUtil;
 
 public class ServerSwapMenu {

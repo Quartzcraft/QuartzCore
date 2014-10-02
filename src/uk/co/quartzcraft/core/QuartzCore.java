@@ -5,21 +5,18 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import uk.co.quartzcraft.core.command.*;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.database.MySQL;
-import uk.co.quartzcraft.core.features.FinalItems;
-import uk.co.quartzcraft.core.features.SoulboundItems;
-import uk.co.quartzcraft.core.features.UnbreakableItems;
+import uk.co.quartzcraft.core.features.items.FinalItems;
+import uk.co.quartzcraft.core.features.items.SoulboundItems;
+import uk.co.quartzcraft.core.features.items.UnbreakableItems;
 import uk.co.quartzcraft.core.listeners.*;
 
-import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
-import uk.co.quartzcraft.core.systems.config.QCConfig;
 import uk.co.quartzcraft.core.systems.websync.UpdateGroups;
 import uk.co.quartzcraft.core.systems.websync.Websync;
 
