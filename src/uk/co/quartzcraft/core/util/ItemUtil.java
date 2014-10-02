@@ -1,12 +1,13 @@
 package uk.co.quartzcraft.core.util;
 
+import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.features.items.FinalItems;
+import uk.co.quartzcraft.core.features.items.SoulboundItems;
+import uk.co.quartzcraft.core.features.items.UnbreakableItems;
+import uk.co.quartzcraft.core.systems.ChestUI.UnclaimableItem;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import uk.co.quartzcraft.core.features.FinalItems;
-import uk.co.quartzcraft.core.features.SoulboundItems;
-import uk.co.quartzcraft.core.features.UnbreakableItems;
-import uk.co.quartzcraft.core.systems.ChestUI.UnclaimableItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +28,13 @@ public class ItemUtil {
     }
 
     public static String getName(ItemStack item) {
-        return item != null ? item.getItemMeta().getDisplayName() : null;
+        if (item == null) {
+            return null;
+        }
+        if(!item.getItemMeta().equals(null) && item.getItemMeta().hasDisplayName()) {
+            return item.getItemMeta().getDisplayName();
+        }
+        return null;
     }
 
     public static LoreBuilder buildLore(ItemStack item) {
@@ -42,7 +49,7 @@ public class ItemUtil {
             return null;
         }
         ItemMeta meta = item.getItemMeta();
-        if (meta.hasLore()) {
+        if (meta != null && meta.hasLore()) {
             if (index < meta.getLore().size()) {
                 return meta.getLore().get(index);
             }
@@ -74,9 +81,15 @@ public class ItemUtil {
                     protected void run() {
                         boolean dropped = false;
                         for (ItemStack itemStack : items) {
-                            ItemStack[] items = {itemStack};
-                            player.getInventory().addItem(items);
+                            if (!Util.givePlayerItem(player, itemStack)) {
+                                dropped = true;
+                            }
                         }
+
+                        if (dropped) {
+                            Util.sendMsg(player, QCChat.getPhrase("could_not_fit_item_dropped"));
+                        }
+                        player.updateInventory();
                     }
                 }).execute();
     }
