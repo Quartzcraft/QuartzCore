@@ -10,8 +10,7 @@ public class ActionBar {
 
     public static void displayBar(Player p, String message) {
         IChatBaseComponent barmsg = ChatSerializer.a(message);
-        PacketPlayOutChat bar = new PacketPlayOutChat(barmsg, true);
-        //PacketPlayOutChat bar = new PacketPlayOutChat(barmsg, 2);
+        PacketPlayOutChat bar = new PacketPlayOutChat(barmsg, 2);
 
         ((CraftPlayer) p).getHandle().playerConnection.sendPacket(bar);
     }
