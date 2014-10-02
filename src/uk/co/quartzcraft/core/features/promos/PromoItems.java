@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.core.features;
+package uk.co.quartzcraft.core.features.promos;
 
 import uk.co.quartzcraft.core.util.ItemUtil;
 import org.bukkit.Material;

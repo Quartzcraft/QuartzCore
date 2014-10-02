@@ -1,9 +1,8 @@
-package uk.co.quartzcraft.core.features;
+package uk.co.quartzcraft.core.features.promos;
 
-import org.bukkit.*;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.QuartzCore;
+import uk.co.quartzcraft.core.features.promos.PromoItems;
 import uk.co.quartzcraft.core.systems.ChestUI.ChestUI;
 import uk.co.quartzcraft.core.systems.ChestUI.UnclaimableItem;
 import uk.co.quartzcraft.core.util.ItemUtil;
