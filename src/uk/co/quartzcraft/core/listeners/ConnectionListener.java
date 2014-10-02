@@ -73,7 +73,7 @@ public class ConnectionListener implements Listener {
         if(plugin.getConfig().getBoolean("settings.join-broadcast")) {
             String lastSeen = qplayer.getLastSeen();
 			//Long lastSeen = player.getLastPlayed();
-			String message = player.getDisplayName() + ChatColor.YELLOW + " joined, last seen " + lastSeen;
+			String message = player.getDisplayName() + ChatColor.YELLOW + " joined, last seen " + lastSeen + " ago";
 			
 			join.setJoinMessage(message);
 		}
@@ -85,9 +85,6 @@ public class ConnectionListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoinHigh(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
-        QPlayer qplayer = new QPlayer(player);
-		UUID UUID = player.getUniqueId();
-		String SUUID = UUID.toString();
 		
 		player.sendMessage("Welcome back, " + player.getDisplayName() + "!");
 	}

@@ -29,7 +29,7 @@ public class QPlayer {
     private String name;
     private UUID uuid;
     private int id;
-    private String lastSeen = null;
+    private Timestamp lastSeen;
     private int tokens;
     private Player player;
     private Group group;
@@ -52,6 +52,7 @@ public class QPlayer {
                     this.name = res.getString("DisplayName");
                     this.tokens = res.getInt("Tokens");
                     this.group = new Group(res.getInt("PrimaryGroupId"));
+                    this.lastSeen = res.getTimestamp("LastSeen");
                 } else {
                     Util.log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
                 }
@@ -79,6 +80,7 @@ public class QPlayer {
                 this.tokens = res.getInt("Tokens");
                 this.group = new Group(res.getInt("PrimaryGroupId"));
                 this.uuid = UUID.fromString(res.getString("UUID"));
+                this.lastSeen = res.getTimestamp("LastSeen");
             }
 
         } catch(SQLException e) {
@@ -105,6 +107,7 @@ public class QPlayer {
                     this.tokens = res.getInt("Tokens");
                     this.group = new Group(res.getInt("PrimaryGroupId"));
                     this.uuid = UUID.fromString(res.getString("UUID"));
+                    this.lastSeen = res.getTimestamp("LastSeen");
                 } else {
                     Util.log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
                 }
@@ -383,7 +386,9 @@ public class QPlayer {
      * @return String of the last seen date in X days/hours/minutes ago format.
      */
     public String getLastSeen() {
-        return this.lastSeen;
+        long lastSeen = this.lastSeen.getTime();
+        long current = System.currentTimeMillis();
+        return DurationFormatUtils.formatPeriod(lastSeen, current, "d 'days' H 'hours'");
     }
 	
 	public boolean createValidationCode() {
