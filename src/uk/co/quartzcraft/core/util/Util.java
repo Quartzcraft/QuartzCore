@@ -60,4 +60,8 @@ public class Util {
         }
         return false;
     }
+
+    public static String removeExtraChars(String str, int length) {
+        return str.substring(0, length);
+    }
 }

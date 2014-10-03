@@ -17,6 +17,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import uk.co.quartzcraft.core.systems.perms.Permissions;
+import uk.co.quartzcraft.core.util.Util;
 
 public class ConnectionListener implements Listener {
 	
@@ -68,7 +69,7 @@ public class ConnectionListener implements Listener {
 
         player.setDisplayName(player.getName());
         player.setDisplayName(qplayer.getGroup().getStyleForName() + player.getName() + ChatColor.RESET);
-        player.setPlayerListName(player.getDisplayName());
+        player.setPlayerListName(Util.removeExtraChars(player.getDisplayName(), 16));
 
         if(plugin.getConfig().getBoolean("settings.join-broadcast")) {
             String lastSeen = qplayer.getLastSeen();
