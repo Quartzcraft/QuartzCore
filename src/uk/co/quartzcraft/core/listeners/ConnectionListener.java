@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerJoinEvent;
+import uk.co.quartzcraft.core.features.ActionBar;
+import uk.co.quartzcraft.core.features.FancyMessages;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.data.QPlayer;
 
@@ -86,8 +88,8 @@ public class ConnectionListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoinHigh(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
-		
-		player.sendMessage("Welcome back, " + player.getDisplayName() + "!");
+
+        ActionBar.displayBar(player, FancyMessages.welcomeBack(player));
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)

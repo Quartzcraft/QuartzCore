@@ -7,16 +7,13 @@ import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 
 public class FancyMessages {
 
-    public static void welcome(Player player) {
-        new FancyMessage("Hello, ")
+    public static String welcomeBack(Player player) {
+        return new FancyMessage("Welcome back, ")
                 .color(YELLOW)
-                .then(player.getName())
-                .color(LIGHT_PURPLE)
-                .style(ITALIC, UNDERLINE)
+                .then(player.getDisplayName())
                 .then("!")
                 .color(YELLOW)
-                .style(ITALIC)
-                .send(player);
+                .toJSONString();
     }
 
     public static void advertisement(Player player) {
