@@ -3,6 +3,7 @@ package uk.co.quartzcraft.core.features;
 import static org.bukkit.ChatColor.*;
 
 import org.bukkit.entity.Player;
+import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 
 public class FancyMessages {
@@ -13,6 +14,12 @@ public class FancyMessages {
                 .then(player.getDisplayName())
                 .then("!")
                 .color(YELLOW)
+                .toJSONString();
+    }
+
+    public static String reportedPlayer() {
+        return new FancyMessage(QCChat.getPhrase("thank_you_for_reporting_user"))
+                .color(GREEN)
                 .toJSONString();
     }
 

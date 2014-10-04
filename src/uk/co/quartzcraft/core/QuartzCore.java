@@ -136,7 +136,7 @@ public class QuartzCore extends JavaPlugin {
         QCChat.addPhrase("last_seen", "&aLast online: &r");
 
         QCChat.addPhrase("please_specify_player_to_report", "&cYou must specify a player to report!");
-        QCChat.addPhrase("thank_you_for_reporting_user", "&aThank you for submitting a report. It is unlikely that we will need contact you.");
+        QCChat.addPhrase("thank_you_for_reporting_user", "Thank you for submitting a report. It is unlikely that we will need contact you.");
         QCChat.addPhrase("error_submitting_report", "&cAn error occurred while submitting your report! Please try again or contact a QuartzCraft administrator.");
 
         QCChat.addPhrase("you_are_currently_in_world", "&aYou are currently in world ");
