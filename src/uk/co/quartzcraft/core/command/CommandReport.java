@@ -7,7 +7,10 @@ import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.command.framework.*;
 import uk.co.quartzcraft.core.data.QPlayer;
 import uk.co.quartzcraft.core.QuartzCore;
+import uk.co.quartzcraft.core.features.ActionBar;
+import uk.co.quartzcraft.core.features.FancyMessages;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 
 import java.sql.SQLException;
 
@@ -38,7 +41,8 @@ public class CommandReport {
                 args.getSender().sendMessage(QCChat.getPhrase("please_specify_player_to_report"));
             } else {
                 target.report(qplayer, getReportContent(args1));
-                args.getSender().sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));
+                //args.getSender().sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));
+                ActionBar.displayBar((Player) args.getSender(), FancyMessages.reportedPlayer());
             }
         }
     }
