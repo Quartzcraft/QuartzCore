@@ -108,7 +108,7 @@ public class QuartzCore extends JavaPlugin {
 		log.info("[QC][STARTUP]Creating Phrases");
 		QCChat.addPhrase("test_phrase", "&3This is a test of the phrases system.");
 		
-		QCChat.addPhrase("could_not_create_player", "&cYou're playerdata could not be added to the database!");
+		QCChat.addPhrase("could_not_create_player", "&cYou're player data could not be added to the database!");
 		QCChat.addPhrase("to_register_on_the_website_please_visit_web", "&aTo register on the QuartzCraft website, please visit &rhttp://quartzcraft.co.uk");
 		QCChat.addPhrase("these_are_the_fields_required_for_website_registration", "&aThese are the values for the required website registration fields:");
 		QCChat.addPhrase("your_minecraft_username_is", "&aYour Minecraft username is:&r ");
@@ -121,8 +121,8 @@ public class QuartzCore extends JavaPlugin {
 		QCChat.addPhrase("no_permission", "&cYou do not have permission to perform this action!");
 		QCChat.addPhrase("Unknown_SubCommand", "&cCould not find the specified SubCommand! &aVisit the QuartzCraft Wiki for help.");
 		QCChat.addPhrase("Unknown_Command", "&cUnknown Command! &aPlease see the QuartzCraft Wiki for help.");
-		QCChat.addPhrase("Specify_Subcommand", "&cPlease specify a SubCommand. &aVisit the QuartzCraft Wiki for help.");
-		QCChat.addPhrase("feature_unavalible", "&cThis feature is currently unavalible &aVisit the QuartzCraft Website for information on new features.");
+		QCChat.addPhrase("Specify_Subcommand", "&cPlease specify a sub command. &aVisit the QuartzCraft Wiki for help.");
+		QCChat.addPhrase("feature_unavalible", "&cThis feature is currently unavailable &aVisit the QuartzCraft Website for information on new features.");
 		QCChat.addPhrase("database_error", "&cA database error occurred! ");
 		QCChat.addPhrase("database_error_contact", "&cA database error occurred! &aPlease contact an administrator on the QuartzCraft website immediately.");
 		QCChat.addPhrase("player_use_only", "&4This command can only be used in game by a player.");
