@@ -48,10 +48,14 @@ public class Util {
         player.sendMessage(finalmsg);
     }
 
-    public static void performCommand(Player player, String cmd) {
-        CommandSender exc = player;
+    public static void performCommand(final Player player, final String cmd) {
+        final CommandSender exc = player;
 
-        Bukkit.getServer().dispatchCommand(exc, cmd);
+        TaskChain.newChain().add(new TaskChain.GenericTask() {
+            public void run() {
+                Bukkit.getServer().dispatchCommand(exc, cmd);
+            }
+        }).execute();
     }
 
     public static boolean givePlayerItem(Player player, ItemStack itemStack) {
