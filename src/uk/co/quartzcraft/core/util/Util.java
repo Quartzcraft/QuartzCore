@@ -18,6 +18,11 @@ public class Util {
         e.printStackTrace();
     }
 
+    public static void printException(Level level, String message, Exception e) {
+        QuartzCore.log.log(level, "[QC] " + message);
+        e.printStackTrace();
+    }
+
     public static void printException(Exception e) {
         QuartzCore.log.log(Level.WARNING, "[QC]An exception occurred!");
         e.printStackTrace();
