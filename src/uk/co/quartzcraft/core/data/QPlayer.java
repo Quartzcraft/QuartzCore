@@ -86,7 +86,7 @@ public class QPlayer {
         } catch(SQLException e) {
             Util.printException("Failed to retrieve QPlayer from database", e);
         }
-        
+
         if(Bukkit.getServer().getPlayer(this.uuid) != null) {
             this.player = Bukkit.getServer().getPlayer(this.uuid);
         }
