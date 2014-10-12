@@ -31,7 +31,7 @@ public class QPlayer {
     private int id;
     private Timestamp lastSeen;
     private int tokens;
-    private Player player;
+    private Player player = null;
     private Group group;
 
     /**
@@ -65,7 +65,7 @@ public class QPlayer {
 	}
 
     /**
-     * Creates a QPlayer object using the specified player name. <b>Only use this if the player is not online.</b>
+     * Creates a QPlayer object using the specified player name.
      *
      * @param name
      */
@@ -86,7 +86,10 @@ public class QPlayer {
         } catch(SQLException e) {
             Util.printException("Failed to retrieve QPlayer from database", e);
         }
-        this.player = null;
+        
+        if(Bukkit.getServer().getPlayer(this.uuid) != null) {
+            this.player = Bukkit.getServer().getPlayer(this.uuid);
+        }
     }
 
     /**
@@ -117,8 +120,9 @@ public class QPlayer {
             Util.printException("Failed to retrieve QPlayer from database", e);
         }
 
-        Player player1 = Bukkit.getServer().getPlayer(this.uuid);
-        this.player = player1;
+        if(Bukkit.getServer().getPlayer(this.uuid) != null) {
+            this.player = Bukkit.getServer().getPlayer(this.uuid);
+        }
     }
 
     /**
