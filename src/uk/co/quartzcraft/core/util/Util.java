@@ -71,6 +71,12 @@ public class Util {
     }
 
     public static String removeExtraChars(String str, int length) {
-        return str.substring(0, length);
+        try {
+            return str.substring(0, length);
+        } catch(StringIndexOutOfBoundsException e) {
+            Util.printException("Failed to remove chars from string!", e);
+            return str;
+        }
+
     }
 }
