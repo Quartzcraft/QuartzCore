@@ -54,7 +54,7 @@ public class QPlayer {
                     this.group = new Group(res.getInt("PrimaryGroupId"));
                     this.lastSeen = res.getTimestamp("LastSeen");
                 } else {
-                    Util.log(Level.SEVERE, "QPLAYER UUID NOT EQUAL");
+                    Util.log(Level.SEVERE, "QPlayer UUID not equal");
                 }
             }
 
@@ -112,7 +112,7 @@ public class QPlayer {
                     this.uuid = UUID.fromString(res.getString("UUID"));
                     this.lastSeen = res.getTimestamp("LastSeen");
                 } else {
-                    Util.log(Level.SEVERE, "QPLAYER ID NOT EQUAL");
+                    Util.log(Level.SEVERE, "QPlayer ID not equal");
                 }
             }
 
