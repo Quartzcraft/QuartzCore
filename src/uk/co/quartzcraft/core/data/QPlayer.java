@@ -272,7 +272,9 @@ public class QPlayer {
      *
      */
     public void sendMessage(String message) {
-       Util.sendMsg(this.player, message);
+        if(this.player != null) {
+            Util.sendMsg(this.player, message);
+        }
     }
 
     /**
