@@ -7,9 +7,11 @@ import uk.co.quartzcraft.core.command.framework.CommandArgs;
 import uk.co.quartzcraft.core.command.framework.QCommand;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.data.QPlayer;
+import uk.co.quartzcraft.core.event.PInfoExtraFieldsEvent;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class CommandPinfo {
     private static QuartzCore plugin;
@@ -26,6 +28,8 @@ public class CommandPinfo {
         if(args.getArgs().length == 1) {
             String[] arg1 = args.getArgs();
             QPlayer target = new QPlayer(arg1[0]);
+            PInfoExtraFieldsEvent event = new PInfoExtraFieldsEvent(new QPlayer(args.getPlayer()), target);
+            Bukkit.getServer().getPluginManager().callEvent(event);
 
             args.getSender().sendMessage(QCChat.getPhrase("information_on_player_X") + arg1[0]);
             args.getSender().sendMessage(QCChat.getPhrase("group") + target.getGroup().getFancyName());
