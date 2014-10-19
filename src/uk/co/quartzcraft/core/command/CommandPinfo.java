@@ -23,7 +23,7 @@ public class CommandPinfo {
 
     @QCommand(name = "pinfo", aliases = { "p" }, permission = "QCC.pinfo", description = "Displays info on the specified player", usage = "Use /pinfo [playername]")
     public void pinfo(CommandArgs args) {
-        if(args.getArgs().length >= 1) {
+        if(args.getArgs().length == 1) {
             String[] arg1 = args.getArgs();
             QPlayer target = new QPlayer(arg1[0]);
 
