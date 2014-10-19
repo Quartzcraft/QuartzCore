@@ -33,7 +33,6 @@ public class CommandPinfo {
 
             args.getSender().sendMessage(QCChat.getPhrase("information_on_player_X") + arg1[0]);
             args.getSender().sendMessage(QCChat.getPhrase("group") + target.getGroup().getFancyName());
-            //TODO add extra fields from other plugins such as kingdoms
             args.getSender().sendMessage(QCChat.getPhrase("first_join") + target.getFirstJoin() + " ago");
             args.getSender().sendMessage(QCChat.getPhrase("last_seen") + target.getLastSeen());
             
