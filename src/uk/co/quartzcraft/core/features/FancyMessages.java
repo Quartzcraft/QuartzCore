@@ -33,7 +33,6 @@ public class FancyMessages {
                     .then("!")
                     .color(YELLOW)
                     .toJSONString());
-
     }
 
     public static String reportedPlayer() {
