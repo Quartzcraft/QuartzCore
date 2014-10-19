@@ -15,24 +15,27 @@ public class FancyMessages {
                 .then(player.getDisplayName())
                 .then("!")
                 .color(RED)
-                .toJSONString(), new FancyMessage("Check out our ")
-                .color(BLUE)
-                .then("website")
-                .color(BLUE)
-                .link("http://quartzcraft.co.uk")
-                .style(UNDERLINE)
-                .then("!")
-                .color(BLUE)
                 .toJSONString());
 
         CraftPlayer craftPlayer = (CraftPlayer) player;
-        if (craftPlayer.getHandle().playerConnection.networkManager.getVersion() != 47)
+        if (craftPlayer.getHandle().playerConnection.networkManager.getVersion() != 47) {
             ActionBar.displayBar(player, new FancyMessage("Welcome back, ")
                     .color(YELLOW)
                     .then(player.getDisplayName())
                     .then("!")
                     .color(YELLOW)
                     .toJSONString());
+        } else {
+            ActionBar.displayBar(player, new FancyMessage("Check out our ")
+                    .color(BLUE)
+                    .then("website")
+                    .color(BLUE)
+                    .link("http://quartzcraft.co.uk")
+                    .style(UNDERLINE)
+                    .then("!")
+                    .color(BLUE)
+                    .toJSONString());
+        }
     }
 
     public static String reportedPlayer() {
