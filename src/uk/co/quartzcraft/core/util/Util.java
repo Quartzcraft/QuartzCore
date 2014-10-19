@@ -74,7 +74,8 @@ public class Util {
         try {
             return str.substring(0, length);
         } catch(StringIndexOutOfBoundsException e) {
-            Util.printException("Failed to remove chars from string!", e);
+            //Util.printException("Failed to remove chars from string!", e);
+            Util.log(Level.INFO, "Failed to remove chars from string or string was not long enough");
             return str;
         }
 
