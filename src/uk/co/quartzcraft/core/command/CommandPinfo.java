@@ -36,6 +36,11 @@ public class CommandPinfo {
             //TODO add extra fields from other plugins such as kingdoms
             args.getSender().sendMessage(QCChat.getPhrase("first_join") + target.getFirstJoin() + " ago");
             args.getSender().sendMessage(QCChat.getPhrase("last_seen") + target.getLastSeen());
+            
+            List<String> fields = event.getFields();
+            for(int i = 0; i < fields.size(); i++) {
+                args.getSender().sendMessage(fields.get(i));
+            }
         } else {
             args.getSender().sendMessage(QCChat.getPhrase("specify_username"));
         }
