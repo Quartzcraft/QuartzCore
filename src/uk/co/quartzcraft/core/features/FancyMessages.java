@@ -2,19 +2,38 @@ package uk.co.quartzcraft.core.features;
 
 import static org.bukkit.ChatColor.*;
 
+import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 
 public class FancyMessages {
 
-    public static String welcomeBack(Player player) {
-        return new FancyMessage("Welcome back, ")
-                .color(YELLOW)
+    public static void welcomeBack(Player player) {
+        Title.sendTitle(player, 1, 4, 2, new FancyMessage("Welcome back, ")
+                .color(RED)
                 .then(player.getDisplayName())
                 .then("!")
-                .color(YELLOW)
-                .toJSONString();
+                .color(RED)
+                .toJSONString(), new FancyMessage("Check out our ")
+                .color(BLUE)
+                .then("website")
+                .color(BLUE)
+                .link("http://quartzcraft.co.uk")
+                .style(UNDERLINE)
+                .then("!")
+                .color(BLUE)
+                .toJSONString());
+
+        CraftPlayer craftPlayer = (CraftPlayer) player;
+        if (craftPlayer.getHandle().playerConnection.networkManager.getVersion() != 47)
+            ActionBar.displayBar(player, new FancyMessage("Welcome back, ")
+                    .color(YELLOW)
+                    .then(player.getDisplayName())
+                    .then("!")
+                    .color(YELLOW)
+                    .toJSONString());
+
     }
 
     public static String reportedPlayer() {
