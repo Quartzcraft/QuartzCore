@@ -9,20 +9,17 @@ import org.bukkit.permissions.PermissionAttachment;
 import uk.co.quartzcraft.core.QuartzCore;
 
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Permissions {
-    public static HashMap<String, PermissionAttachment> permissions = new HashMap<>();
+    public static HashMap<UUID, PermissionAttachment> permissions = new HashMap<>();
 
     public static void registerPlayerPerms(QPlayer qplayer, String[] extraPerms) {
         Player player = qplayer.getPlayer();
 
         Integer group = qplayer.getGroup().getId();
 
-        if (permissions.containsKey(player.getName())) {
+        if (permissions.containsKey(player.getUniqueId())) {
             unregisterPlayerPerms(player);
         }
         PermissionAttachment attachmentPrimary = player.addAttachment(QuartzCore.plugin);
@@ -83,17 +80,17 @@ public class Permissions {
             registerExtraPerms(qplayer, extraPerms);
         }
 
-        permissions.put(player.getName(), attachmentPrimary);
+        permissions.put(player.getUniqueId(), attachmentPrimary);
     }
 
     public static void unregisterPlayerPerms(Player player) {
-        if (permissions.containsKey(player.getName())) {
+        if (permissions.containsKey(player.getUniqueId())) {
             try {
-                player.removeAttachment(permissions.get(player.getName()));
+                player.removeAttachment(permissions.get(player.getUniqueId()));
             } catch (IllegalArgumentException ex) {
                 Util.printException("Failed to unregister permissions", ex);
             }
-            permissions.remove(player.getName());
+            permissions.remove(player.getUniqueId());
         }
     }
 
@@ -110,7 +107,7 @@ public class Permissions {
             attachmentExtras.setPermission(perm, true);
         }
 
-        permissions.put(player.getName(), attachmentExtras);
+        permissions.put(player.getUniqueId(), attachmentExtras);
     }
 
     public static void registerExtraPerm(QPlayer qplayer, String perm) {
@@ -124,6 +121,6 @@ public class Permissions {
 
         attachmentExtra.setPermission(perm, true);
 
-        permissions.put(player.getName(), attachmentExtra);
+        permissions.put(player.getUniqueId(), attachmentExtra);
     }
 }
