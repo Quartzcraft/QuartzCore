@@ -2,6 +2,7 @@ package uk.co.quartzcraft.core.systems.chat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import uk.co.quartzcraft.core.features.ActionBar;
 import uk.co.quartzcraft.core.features.Title;
 
 public class Announce {
@@ -33,6 +34,22 @@ public class Announce {
             Title.sendTitle(null, 20, 80, 40, message, null);
         }
 
+
+    }
+
+    /**
+     * Sends every online an action bar message
+     *
+     * @param message
+     */
+    public static void announceBar(String message) {
+
+        message = ChatFormat.parse(message);
+
+        ActionBar.displayBar(null, message);
+    }
+
+    /**
      * Makes a broadcast with a prefix.
      *
      * @param prefix
