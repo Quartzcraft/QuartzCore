@@ -2,6 +2,7 @@ package uk.co.quartzcraft.core.systems.chat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import uk.co.quartzcraft.core.features.Title;
 
 public class Announce {
 
@@ -18,6 +19,20 @@ public class Announce {
     }
 
     /**
+     * Sends every online player a title
+     *
+     * @param message
+     */
+    public static void announceTitle(String message) {
+
+        message = ChatFormat.parse(message);
+
+        if(message.length() >= 5) {
+            Title.sendTitle(null, 20, 80, 40, null, message);
+        } else {
+            Title.sendTitle(null, 20, 80, 40, message, null);
+        }
+
      * Makes a broadcast with a prefix.
      *
      * @param prefix
