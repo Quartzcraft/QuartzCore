@@ -17,7 +17,7 @@ public class CommandAnnounce {
         framework.registerCommands(this);
     }
 
-    @QCommand(name = "announce", aliases = { "an" }, permission = "QCC.announce", description = "Makes an announcement that all players can see.", usage = "Use /announce [announcement]")
+    @QCommand(name = "announce", aliases = { "an", "a" }, permission = "QCC.announce", description = "Makes an announcement that all players can see.", usage = "Use /announce [announcement]")
     public void announce(CommandArgs args) {
         Player player = (Player) args.getSender();
         String[] args0 = args.getArgs();
