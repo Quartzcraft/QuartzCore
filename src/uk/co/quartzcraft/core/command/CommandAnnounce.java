@@ -29,6 +29,18 @@ public class CommandAnnounce {
         }
     }
 
+    @QCommand(name = "announce.title", aliases = { "an.title", "a.title" }, permission = "QCC.announce.title", description = "Makes an announcement that all players can see in a title.", usage = "Use /announce title [announcement]")
+    public void announceTitle(CommandArgs args) {
+        Player player = (Player) args.getSender();
+        String[] args0 = args.getArgs();
+        if(args0.length >= 1) {
+            String announcement = getAnnouncementContent(args0);
+            Announce.announceTitle(announcement);
+        } else {
+            args.getSender().sendMessage(QCChat.getPhrase("specify_arguments"));
+        }
+    }
+
     public String getAnnouncementContent(String[] args) {
         StringBuilder builder = new StringBuilder();
         for(String s : args) {
