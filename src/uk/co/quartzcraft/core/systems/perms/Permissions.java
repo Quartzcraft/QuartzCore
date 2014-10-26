@@ -26,23 +26,28 @@ public class Permissions {
 
         attachmentPrimary.setPermission("QCC.everyone", true);
 
+        // guests
+        if (group == 1) {
+            attachmentPrimary.setPermission("QCC.guest", true);
+        }
+
         // everyone (not including guests)
-        if (group >= 1) {
+        if (group >= 2) {
             attachmentPrimary.setPermission("QCC.normal", true);
         }
 
         //Iron supporters and above
-        if (group >= 2) {
+        if (group >= 5) {
             attachmentPrimary.setPermission("QCC.premium.beta", true);
         }
 
         //Gold supporters and above
-        if (group >= 3) {
+        if (group >= 5) {
             attachmentPrimary.setPermission("QCC.premium.one", true);
         }
 
         //Diamond supporters and above
-        if (group >= 4) {
+        if (group >= 6) {
             attachmentPrimary.setPermission("QCC.premium.two", true);
         }
 
