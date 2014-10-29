@@ -36,19 +36,19 @@ public class Permissions {
             attachmentPrimary.setPermission("QCC.normal", true);
         }
 
-        //Iron supporters and above
+        //Beta Testers and above
         if (group >= 5) {
             attachmentPrimary.setPermission("QCC.premium.beta", true);
         }
 
-        //Gold supporters and above
-        if (group >= 5) {
-            attachmentPrimary.setPermission("QCC.premium.one", true);
+        //Premium and above
+        if (group >= 6) {
+            attachmentPrimary.setPermission("QCC.premium.basic", true);
         }
 
-        //Diamond supporters and above
-        if (group >= 6) {
-            attachmentPrimary.setPermission("QCC.premium.two", true);
+        //Premium Plus and above
+        if (group >= 7) {
+            attachmentPrimary.setPermission("QCC.premium.plus", true);
         }
 
         //staff and above
