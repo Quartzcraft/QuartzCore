@@ -10,7 +10,7 @@ import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 public class FancyMessages {
 
     public static void welcomeBack(Player player) {
-        Title.sendTitle(player, 40, 70, 40, null, new FancyMessage("Welcome back, ")
+        ActionBar.displayBar(player, new FancyMessage("Welcome back, ")
                 .color(RED)
                 .then(player.getDisplayName())
                 .then("!")
