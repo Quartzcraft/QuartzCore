@@ -312,31 +312,6 @@ public class QPlayer {
     public Group getGroup() {
         return this.group;
     }
-	
-	/**
-	 * Updates the QuartzCraft PlayerData to set the connection status. 
-	 *
-	 * @param conn Connection status 
-	 */
-    //TODO Finish up
-	public QPlayer setConnectionStatus(boolean conn) {
-        long time = System.currentTimeMillis();
-        Date date = new Date(System.currentTimeMillis());
-		try {
-            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET LastSeen=? WHERE id=?;");
-            s.setString(1, date.toString());
-            s.setInt(2, this.id);
-            if(s.executeUpdate() == 1) {
-                //QPlayerLoginEvent event = new QPlayerLoginEvent(this);
-                return this;
-            } else {
-                return this;
-            }
-        } catch (SQLException e) {
-            Util.printException("Failed to retrieve QPlayer data from database", e);
-            return this;
-        }
-	}
 
 	/**
 	 * Sets the users primary group.
