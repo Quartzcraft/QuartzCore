@@ -71,7 +71,7 @@ public class QuartzCore extends JavaPlugin {
 		//Config files
 		log.info("[QC]Running plugin configuration");
 		this.saveDefaultConfig();
-		boolean DBConnect = true;
+		boolean DBConnect = this.getConfig().getBoolean("settings.database-connect");
 		
 		if(DBConnect) {
 			//Core Database
@@ -87,7 +87,10 @@ public class QuartzCore extends JavaPlugin {
             String SQLLogUser = this.getConfig().getString("database.log.username");
             String SQLLogPassword = this.getConfig().getString("database.log.password");
             MySQLlog = new MySQL(plugin, SQLLogHost, "3306", SQLLogDatabase, SQLLogUser, SQLLogPassword);
-		}
+		} else {
+            log.warning("[QC]Database connection set to false! Please fix this in the config.yml file!");
+            this.getServer().shutdown();
+        }
 
         //Websync
         log.info("[QC][STARTUP]Initializing Websync");
