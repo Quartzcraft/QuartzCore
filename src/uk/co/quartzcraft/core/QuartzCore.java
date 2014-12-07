@@ -127,17 +127,20 @@ public class QuartzCore extends JavaPlugin {
 		QCChat.addPhrase("Unknown_Command", "&cUnknown Command! &aPlease see the QuartzCraft Wiki for help.");
 		QCChat.addPhrase("Specify_Subcommand", "&cPlease specify a sub command. &aVisit the QuartzCraft Wiki for help.");
 		QCChat.addPhrase("feature_unavalible", "&cThis feature is currently unavailable &aVisit the QuartzCraft Website for information on new features.");
-		QCChat.addPhrase("database_error", "&cA database error occurred! ");
+		QCChat.addPhrase("database_error", "&cA database error occurred!");
+        QCChat.addPhrase("database_error_try_again", "&cA database error occurred! &aPlease try again");
 		QCChat.addPhrase("database_error_contact", "&cA database error occurred! &aPlease contact an administrator on the QuartzCraft website immediately.");
 		QCChat.addPhrase("player_use_only", "&4This command can only be used in game by a player.");
         QCChat.addPhrase("specify_username", "&cPlease specify a player!");
         QCChat.addPhrase("specify_online_username", "&cPlease specify an online player!");
         QCChat.addPhrase("specify_arguments", "&cPlease specify some arguments!");
 
-        QCChat.addPhrase("information_on_player_X", "&aInformation on player: &r");
+        QCChat.addPhrase("information_on_player_X", "&aInformation on player &r");
         QCChat.addPhrase("group", "&aGroup: &r");
         QCChat.addPhrase("first_join", "&aFirst joined: &r");
         QCChat.addPhrase("last_seen", "&aLast online: &r");
+        QCChat.addPhrase("last_active", "&aLast active: &r");
+        QCChat.addPhrase("is_online_now", "&ais online now!");
 
         QCChat.addPhrase("please_specify_player_to_report", "&cYou must specify a player to report!");
         QCChat.addPhrase("thank_you_for_reporting_user", "Thank you for submitting a report. It is unlikely that we will need contact you.");
