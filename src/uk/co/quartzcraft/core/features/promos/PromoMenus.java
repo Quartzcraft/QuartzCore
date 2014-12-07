@@ -18,7 +18,7 @@ public class PromoMenus {
                 event.getPlayer().sendMessage("You can not claim this item!");
                 event.setCancelled(true);
             } else {
-                event.getPlayer().getInventory().addItem(PromoItems.MAGIC_DIRT);
+                event.getPlayer().getInventory().addItem(event.getItem());
                 event.getPlayer().sendMessage("You have claimed the " + ItemUtil.getName(event.getItem()) + " promo!");
                 event.setWillClose(true);
                 event.setWillDestroy(true);
