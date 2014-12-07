@@ -83,6 +83,10 @@ public class ConnectionListener implements Listener {
 
         QPlayerJoinEvent loginEvent = new QPlayerJoinEvent(qplayer);
         Bukkit.getServer().getPluginManager().callEvent(loginEvent);
+
+        if(!qplayer.setOnline(true)) {
+            player.kickPlayer(QCChat.getPhrase("database_error_try_again"));
+        }
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
@@ -101,6 +105,16 @@ public class ConnectionListener implements Listener {
 			
 			quit.setQuitMessage(message);
 		}
+
+
 	}
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerQuitHigh(PlayerQuitEvent join) {
+        Player player = join.getPlayer();
+        QPlayer qplayer = new QPlayer(player);
+
+        qplayer.setOnline(false);
+    }
 	
 }
