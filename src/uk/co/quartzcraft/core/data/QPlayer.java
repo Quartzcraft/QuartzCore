@@ -196,6 +196,15 @@ public class QPlayer {
 	}
 
     /**
+     * Gets the name of the player with full group styling.
+     *
+     * @return The display name of the player as defined in the QuartzCore database
+     */
+    public String getFancyName() {
+        return this.group.getStyleForName() + this.name;
+    }
+
+    /**
      * Gets the Minecraft UUID of a player
      *
      * @return The UUID of the player
