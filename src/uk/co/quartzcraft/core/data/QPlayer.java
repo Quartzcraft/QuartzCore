@@ -71,7 +71,7 @@ public class QPlayer {
      */
     public QPlayer(String name) {
         try {
-            PreparedStatement s = QuartzCore.DBCore.prepareStatement("SELECT * FROM PlayerData WHERE DisplayName=?;");
+            PreparedStatement s = QuartzCore.DBCore.prepareStatement("SELECT * FROM PlayerData WHERE DisplayName='?';");
             s.setString(1, name);
             ResultSet res = s.executeQuery();
             if(res.next()) {
