@@ -33,6 +33,7 @@ public class QPlayer {
     private int tokens;
     private Player player = null;
     private Group group;
+    private boolean online;
 
     /**
      * Creates a QPlayer object using the specified player
@@ -415,5 +416,37 @@ public class QPlayer {
 			return null;
 		}
 	}
+
+    /**
+     * Updates a users online status
+     *
+     * @param status
+     * @return
+     */
+    public boolean setOnline(boolean status) {
+        try {
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET online=? WHERE id=?;");
+            s.setBoolean(1, status);
+            s.setInt(2, this.id);
+            if(s.executeUpdate() == 1) {
+                QPlayerGroupChangeEvent event = new QPlayerGroupChangeEvent(this);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            Util.printException("Failed to update users online status", e);
+            return false;
+        }
+    }
+
+    /**
+     * Returns the users online status
+     *
+     * @return
+     */
+    public boolean isOnline() {
+        return this.online;
+    }
 
 }
