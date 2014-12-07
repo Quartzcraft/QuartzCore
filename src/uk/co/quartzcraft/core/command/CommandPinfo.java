@@ -31,7 +31,7 @@ public class CommandPinfo {
             PInfoExtraFieldsEvent event = new PInfoExtraFieldsEvent(new QPlayer(args.getPlayer()), target);
             Bukkit.getServer().getPluginManager().callEvent(event);
 
-            args.getSender().sendMessage(QCChat.getPhrase("information_on_player_X") + arg1[0]);
+            args.getSender().sendMessage(QCChat.getPhrase("information_on_player_X") + target.getFancyName());
             args.getSender().sendMessage(QCChat.getPhrase("group") + target.getGroup().getFancyName());
             args.getSender().sendMessage(QCChat.getPhrase("first_join") + target.getFirstJoin() + " ago");
             args.getSender().sendMessage(QCChat.getPhrase("last_seen") + target.getLastSeen());
