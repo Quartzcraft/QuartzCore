@@ -1,5 +1,6 @@
 package uk.co.quartzcraft.core.event;
 
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import uk.co.quartzcraft.core.data.QPlayer;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class PInfoExtraFieldsEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
-    private QPlayer qPlayer;
+    private CommandSender sender;
     private QPlayer tPlayer;
     private List<String> fields = new ArrayList<String>();
 
@@ -20,13 +21,13 @@ public class PInfoExtraFieldsEvent extends Event {
      * @param sender The player requesting information
      * @param target The player who's information has been requested
      */
-    public PInfoExtraFieldsEvent(QPlayer sender, QPlayer target) {
-        this.qPlayer = sender;
+    public PInfoExtraFieldsEvent(CommandSender sender, QPlayer target) {
+        this.sender = sender;
         this.tPlayer = target;
     }
 
-    public QPlayer getSender() {
-        return qPlayer;
+    public CommandSender getSender() {
+        return sender;
     }
 
     public QPlayer getTarget() {
