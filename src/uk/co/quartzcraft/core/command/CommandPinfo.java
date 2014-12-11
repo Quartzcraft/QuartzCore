@@ -28,7 +28,7 @@ public class CommandPinfo {
         if(args.getArgs().length == 1) {
             String[] arg1 = args.getArgs();
             QPlayer target = new QPlayer(arg1[0]);
-            PInfoExtraFieldsEvent event = new PInfoExtraFieldsEvent(new QPlayer(args.getPlayer()), target);
+            PInfoExtraFieldsEvent event = new PInfoExtraFieldsEvent(args.getSender(), target);
             Bukkit.getServer().getPluginManager().callEvent(event);
 
             args.getSender().sendMessage(QCChat.getPhrase("information_on_player_X") + target.getFancyName());
