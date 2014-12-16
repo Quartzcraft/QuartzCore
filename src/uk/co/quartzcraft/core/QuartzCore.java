@@ -141,6 +141,7 @@ public class QuartzCore extends JavaPlugin {
         QCChat.addPhrase("last_seen", "&aLast seen &r");
         QCChat.addPhrase("last_active", "&aLast active: &r");
         QCChat.addPhrase("is_online_now", "&ais online now!");
+        QCChat.addPhrase("is_online_now_on_server", "&ais online now on server&r");
 
         QCChat.addPhrase("please_specify_player_to_report", "&cYou must specify a player to report!");
         QCChat.addPhrase("thank_you_for_reporting_user", "Thank you for submitting a report. It is unlikely that we will need contact you.");
