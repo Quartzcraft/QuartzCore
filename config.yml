@@ -10,6 +10,8 @@ database:
       username:
       password:
 settings:
+   database-connect: false
+   server-name:
    server-id:
    join-broadcast: false
    websync:

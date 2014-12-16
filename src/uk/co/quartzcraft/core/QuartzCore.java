@@ -30,7 +30,7 @@ public class QuartzCore extends JavaPlugin {
 
 
     public static Plugin plugin;
-    public static int server;
+    public static String servername;
 	public static final Logger log = Logger.getLogger("Minecraft");
 	
 	public static Connection DBCore = null;
@@ -64,7 +64,7 @@ public class QuartzCore extends JavaPlugin {
 		
 		log.info("[QC][STARTUP LOGGER]Console logger discovered");
 
-        server = this.getConfig().getInt("settings.server-id");
+        servername = this.getConfig().getString("settings.server-name");
         plugin = this;
         version = plugin.getDescription().getVersion();
 		
@@ -138,7 +138,7 @@ public class QuartzCore extends JavaPlugin {
         QCChat.addPhrase("information_on_player_X", "&aInformation on player &r");
         QCChat.addPhrase("group", "&aGroup: &r");
         QCChat.addPhrase("first_join", "&aFirst joined: &r");
-        QCChat.addPhrase("last_seen", "&aLast online: &r");
+        QCChat.addPhrase("last_seen", "&aLast seen &r");
         QCChat.addPhrase("last_active", "&aLast active: &r");
         QCChat.addPhrase("is_online_now", "&ais online now!");
 
@@ -195,4 +195,8 @@ public class QuartzCore extends JavaPlugin {
 		String ReleaseVersion = version;
 		return ReleaseVersion;
 	}
+
+    public static String getServerName() {
+        return servername;
+    }
 }

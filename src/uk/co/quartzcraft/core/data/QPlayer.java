@@ -30,6 +30,7 @@ public class QPlayer {
     private UUID uuid;
     private int id;
     private Timestamp lastSeen;
+    private String lastServer;
     private int tokens;
     private Player player = null;
     private Group group;
@@ -54,6 +55,7 @@ public class QPlayer {
                     this.tokens = res.getInt("Tokens");
                     this.group = new Group(res.getInt("PrimaryGroupId"));
                     this.lastSeen = res.getTimestamp("LastSeen");
+                    this.lastServer = res.getString("last_server");
                 } else {
                     Util.log(Level.SEVERE, "QPlayer UUID not equal");
                 }
@@ -82,6 +84,7 @@ public class QPlayer {
                 this.group = new Group(res.getInt("PrimaryGroupId"));
                 this.uuid = UUID.fromString(res.getString("UUID"));
                 this.lastSeen = res.getTimestamp("LastSeen");
+                this.lastServer = res.getString("last_server");
             }
 
         } catch(SQLException e) {
@@ -112,6 +115,7 @@ public class QPlayer {
                     this.group = new Group(res.getInt("PrimaryGroupId"));
                     this.uuid = UUID.fromString(res.getString("UUID"));
                     this.lastSeen = res.getTimestamp("LastSeen");
+                    this.lastServer = res.getString("last_server");
                 } else {
                     Util.log(Level.SEVERE, "QPlayer ID not equal");
                 }
@@ -380,6 +384,15 @@ public class QPlayer {
         long current = System.currentTimeMillis();
         return DurationFormatUtils.formatPeriod(lastSeen, current, "d 'days' H 'hours'");
     }
+
+    /**
+     * Gets the name of the last server the player was on
+     *
+     * @return The name of the last seen server
+     */
+    public String getLastSeenServer() {
+        return this.lastServer;
+    }
 	
 	public boolean createValidationCode() {
 		String validationCode;
@@ -425,11 +438,11 @@ public class QPlayer {
      */
     public boolean setOnline(boolean status) {
         try {
-            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET online=? WHERE id=?;");
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET online=? AND last_server=? WHERE id=?;");
             s.setBoolean(1, status);
-            s.setInt(2, this.id);
+            s.setString(2, QuartzCore.getServerName());
+            s.setInt(3, this.id);
             if(s.executeUpdate() == 1) {
-                QPlayerGroupChangeEvent event = new QPlayerGroupChangeEvent(this);
                 return true;
             } else {
                 return false;
