@@ -67,11 +67,13 @@ public class ConnectionListener implements Listener {
         QPlayer qplayer = new QPlayer(player);
 		UUID UUID = player.getUniqueId();
 
-        Permissions.registerPlayerPerms(qplayer, null);
+        if(plugin.getConfig().getBoolean("settings.use-perm-system")) {
+            Permissions.registerPlayerPerms(qplayer, null);
 
-        player.setDisplayName(player.getName());
-        player.setDisplayName(qplayer.getGroup().getStyleForName() + player.getName() + ChatColor.RESET);
-        player.setPlayerListName(Util.removeExtraChars(player.getDisplayName(), 16));
+            player.setDisplayName(player.getName());
+            player.setDisplayName(qplayer.getGroup().getStyleForName() + player.getName() + ChatColor.RESET);
+            player.setPlayerListName(Util.removeExtraChars(player.getDisplayName(), 16));
+        }
 
         if(plugin.getConfig().getBoolean("settings.join-broadcast")) {
             String lastSeen = qplayer.getLastSeen();

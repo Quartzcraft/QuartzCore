@@ -11,6 +11,7 @@ database:
       password:
 settings:
    database-connect: false
+   use-perm-system: false
    server-name:
    server-id:
    join-broadcast: false
