@@ -1,5 +1,5 @@
 name: QuartzCore
-version: 20141217a
+version: 20141223a
 author: The QuartzCraft Team! mba2012 & nfell2009
 website: http://quartzcraft.co.uk/
 main: uk.co.quartzcraft.core.QuartzCore
@@ -34,12 +34,19 @@ Permissions:
          QCC.go: true
          QCC.admin.m: true
          QCC.quartz: true
-   QCC.tp:
+   QCC.tp.*:
       description: Allows access to all QCC tp permissions.
       default: op
       children:
-         QCC.get: true
-         QCC.go: true
+         QCC.tp.get: true
+         QCC.tp.go: true
+   QCC.announce.*:
+      description: Allows access to all QCC announce permissions.
+      default: op
+      children:
+         QCC.announce: true
+         QCC.announce.title: true
+         QCC.announce.bar: true
    QCC.chat.*:
       description: Allows access to all QCC chat permissions.
       default: op
