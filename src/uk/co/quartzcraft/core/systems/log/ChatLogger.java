@@ -22,7 +22,7 @@ public class ChatLogger {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         try{
             java.sql.PreparedStatement s = QuartzCore.DBLog.prepareStatement("INSERT INTO ChatLog (server_id, timestamp, player_id, message) VALUES (?, ?, ?, ?);");
-            s.setInt(1, QuartzCore.server);
+            s.setString(1, QuartzCore.getServerName());
             s.setTimestamp(2, timestamp);
             s.setInt(3, player.getID());
             s.setString(4, message);
@@ -43,7 +43,7 @@ public class ChatLogger {
         QPlayer qPlayer = new QPlayer(player);
         try{
             java.sql.PreparedStatement s = QuartzCore.DBLog.prepareStatement("INSERT INTO ChatLog (server_id, timestamp, player_id, message) VALUES (?, ?, ?, ?);");
-            s.setInt(1, QuartzCore.server);
+            s.setString(1, QuartzCore.getServerName());
             s.setTimestamp(2, timestamp);
             s.setInt(3, qPlayer.getID());
             s.setString(4, message);
