@@ -37,7 +37,7 @@ public class CommandPinfo {
             if(target.isOnline()) {
                 args.getSender().sendMessage(target.getFancyName() + " " + QCChat.getPhrase("is_online_now_on_server") + " " + target.getLastSeenServer()); //TODO Make this change for different servers and to specify activites and location
             } else {
-                args.getSender().sendMessage(QCChat.getPhrase("last_seen") + target.getLastSeen() + " &aon server &r" + target.getLastSeenServer());
+                args.getSender().sendMessage(QCChat.getPhrase("last_seen") + target.getLastSeen() + " on server &r" + target.getLastSeenServer());
             }
 
             List<String> fields = event.getFields();
