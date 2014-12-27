@@ -27,8 +27,6 @@ public class ChatFilter {
 		for(String s : wordsToFilter) {
 			if(message.toLowerCase().contains(s)) {
 				return true;
-			} else {
-				return false;
 			}
 		}
 		return true;
