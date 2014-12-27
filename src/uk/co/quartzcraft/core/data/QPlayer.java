@@ -437,12 +437,17 @@ public class QPlayer {
      * @return
      */
     public boolean setOnline(boolean status) {
+        int st = 0;
+        if(status) {
+            st = 1;
+        }
         try {
             java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET online=? AND last_server=? WHERE id=?;");
-            s.setBoolean(1, status);
+            s.setInt(1, st);
             s.setString(2, QuartzCore.getServerName());
             s.setInt(3, this.id);
             if(s.executeUpdate() == 1) {
+                this.online = status;
                 return true;
             } else {
                 return false;

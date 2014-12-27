@@ -86,9 +86,9 @@ public class ConnectionListener implements Listener {
         QPlayerJoinEvent loginEvent = new QPlayerJoinEvent(qplayer);
         Bukkit.getServer().getPluginManager().callEvent(loginEvent);
 
-        if(!qplayer.setOnline(true)) {
-            player.kickPlayer(QCChat.getPhrase("database_error_try_again"));
-        }
+//        if(!qplayer.setOnline(true)) {
+//            player.kickPlayer(QCChat.getPhrase("database_error_try_again"));
+//        }
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
