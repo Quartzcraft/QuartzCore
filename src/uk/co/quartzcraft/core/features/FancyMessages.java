@@ -2,6 +2,7 @@ package uk.co.quartzcraft.core.features;
 
 import static org.bukkit.ChatColor.*;
 
+import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
@@ -10,32 +11,22 @@ import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 public class FancyMessages {
 
     public static void welcomeBack(Player player) {
-        ActionBar.displayBar(player, new FancyMessage("Welcome back, ")
+        new FancyMessage("Welcome back, ")
                 .color(RED)
                 .then(player.getDisplayName())
                 .then("!")
                 .color(RED)
-                .toJSONString());
+                .send(player);
 
-        CraftPlayer craftPlayer = (CraftPlayer) player;
-        if (craftPlayer.getHandle().playerConnection.networkManager.getVersion() != 47) {
-            ActionBar.displayBar(player, new FancyMessage("Welcome back, ")
-                    .color(YELLOW)
-                    .then(player.getDisplayName())
-                    .then("!")
-                    .color(YELLOW)
-                    .toJSONString());
-        } else {
-            ActionBar.displayBar(player, new FancyMessage("Check out our ")
-                    .color(BLUE)
-                    .then("website")
-                    .color(BLUE)
-                    .link("http://quartzcraft.co.uk")
-                    .style(UNDERLINE)
-                    .then("!")
-                    .color(BLUE)
-                    .toJSONString());
-        }
+        new FancyMessage("Check out our ")
+                .color(GOLD)
+                .then("website")
+                .color(GOLD)
+                .link("http://quartzcraft.co.uk")
+                .style(UNDERLINE)
+                .then("!")
+                .color(GOLD)
+                .send(player);
     }
 
     public static String reportedPlayer() {
