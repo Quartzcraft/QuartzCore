@@ -138,7 +138,7 @@ public class QuartzCore extends JavaPlugin {
         QCChat.addPhrase("information_on_player_X", "&aInformation on player &r");
         QCChat.addPhrase("group", "&aGroup: &r");
         QCChat.addPhrase("first_join", "&aFirst joined: &r");
-        QCChat.addPhrase("last_seen", "&aLast seen &r");
+        QCChat.addPhrase("last_seen", "&aLast seen: &r");
         QCChat.addPhrase("last_active", "&aLast active: &r");
         QCChat.addPhrase("is_online_now", "&ais online now!");
         QCChat.addPhrase("is_online_now_on_server", "&ais online now on server&r");
