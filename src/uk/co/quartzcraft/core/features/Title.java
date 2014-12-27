@@ -22,8 +22,8 @@ public class Title {
      */
     public static void sendTitle(Player player, Integer fadeIn, Integer stay, Integer fadeOut, String title, String subtitle) {
         CraftPlayer craftPlayer = (CraftPlayer) player;
-        if (craftPlayer.getHandle().playerConnection.networkManager.getVersion() != 47)
-            return; // If using 1.8, allow method to run
+//        if (craftPlayer.getHandle().playerConnection.networkManager.getVersion() != 47)
+//            return; // If using 1.8, allow method to run
 
         if (title == null) title = "";
         title = ChatColor.translateAlternateColorCodes('&', title);
@@ -47,8 +47,8 @@ public class Title {
 
     public static void sendTabTitle(Player player, String header, String footer) {
         CraftPlayer craftPlayer = (CraftPlayer) player;
-        if (craftPlayer.getHandle().playerConnection.networkManager.getVersion() != 47)
-            return; // If using 1.8, allow method to run
+//        if (craftPlayer.getHandle().playerConnection.networkManager.getVersion() != 47)
+//            return; // If using 1.8, allow method to run
 
         PlayerConnection connection = craftPlayer.getHandle().playerConnection;
 
