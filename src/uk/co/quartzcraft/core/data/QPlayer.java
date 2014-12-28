@@ -450,6 +450,7 @@ public class QPlayer {
                 this.online = status;
                 return true;
             } else {
+                Util.log(Level.WARNING, "Failed to update users online status");
                 return false;
             }
         } catch (SQLException e) {
