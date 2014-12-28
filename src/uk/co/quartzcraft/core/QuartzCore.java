@@ -151,6 +151,7 @@ public class QuartzCore extends JavaPlugin {
 		
 		QCChat.addPhrase("Server_Full", "&cServer Full!\n &aIt appears that the server is full. Please try again later, or purchase a supporter rank at http://quartzcraft.co.uk/index.php?upgrade");
 		QCChat.addPhrase("Kick_Whitelist", "&cYou are not whitelisted");
+        QCChat.addPhrase("you_can_only_be_connected_to_one_server_at_a_time", "&cYou can only be connected to one server at a time!");
 		
 		QCChat.addPhrase("promoted_player_yes", "&aThe player was successfully moved groups!");
 		QCChat.addPhrase("promoted_player_no", "&cThe player failed to move groups!");
