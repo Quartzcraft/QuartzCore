@@ -34,7 +34,7 @@ public class QPlayer {
     private int tokens;
     private Player player = null;
     private Group group;
-    private boolean online;
+    private int online;
 
     /**
      * Creates a QPlayer object using the specified player
@@ -437,21 +437,29 @@ public class QPlayer {
      * @return
      */
     public boolean setOnline(boolean status) {
-        int st = 0;
-        if(status) {
-            st = 1;
-        }
         try {
-            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET online=? AND last_server=? WHERE id=?;");
-            s.setInt(1, st);
-            s.setString(2, QuartzCore.getServerName());
-            s.setInt(3, this.id);
-            if(s.executeUpdate() == 1) {
-                this.online = status;
-                return true;
+            if(status) {
+                java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET online=1 AND last_server=? WHERE id=?;");
+                s.setString(1, QuartzCore.getServerName());
+                s.setInt(2, this.id);
+                if (s.executeUpdate() == 1) {
+                    this.online = 1;
+                    return true;
+                } else {
+                    Util.log(Level.WARNING, "Failed to update users online status");
+                    return false;
+                }
             } else {
-                Util.log(Level.WARNING, "Failed to update users online status");
-                return false;
+                java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET online=0 AND last_server=? WHERE id=?;");
+                s.setString(1, QuartzCore.getServerName());
+                s.setInt(2, this.id);
+                if (s.executeUpdate() == 1) {
+                    this.online = 0;
+                    return true;
+                } else {
+                    Util.log(Level.WARNING, "Failed to update users online status");
+                    return false;
+                }
             }
         } catch (SQLException e) {
             Util.printException("Failed to update users online status", e);
@@ -465,7 +473,10 @@ public class QPlayer {
      * @return
      */
     public boolean isOnline() {
-        return this.online;
+        if(this.online != 0) {
+            return true;
+        }
+        return false;
     }
 
 }
