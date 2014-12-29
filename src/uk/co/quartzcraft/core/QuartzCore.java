@@ -194,8 +194,7 @@ public class QuartzCore extends JavaPlugin {
     }
 
 	public static String displayReleaseVersion() {
-		String ReleaseVersion = version;
-		return ReleaseVersion;
+		return version;
 	}
 
     public static String getServerName() {
