@@ -10,15 +10,17 @@ import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 
 public class FancyMessages {
 
-    public static void welcomeBack(Player player) {
-        new FancyMessage("Welcome back, ")
+    public static String welcomeBack(Player player) {
+        return new FancyMessage("Welcome back, ")
                 .color(RED)
                 .then(player.getDisplayName())
                 .then("!")
                 .color(RED)
-                .send(player);
+                .toJSONString();
+    }
 
-        new FancyMessage("Check out our ")
+    public static String checkWebsite(Player player) {
+        return new FancyMessage("Check out our ")
                 .color(GOLD)
                 .then("website")
                 .color(GOLD)
@@ -26,7 +28,7 @@ public class FancyMessages {
                 .style(UNDERLINE)
                 .then("!")
                 .color(GOLD)
-                .send(player);
+                .toJSONString();
     }
 
     public static String reportedPlayer() {
