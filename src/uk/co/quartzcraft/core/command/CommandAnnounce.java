@@ -6,6 +6,7 @@ import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.command.framework.*;
 import uk.co.quartzcraft.core.command.framework.QCommand;
 import uk.co.quartzcraft.core.systems.chat.Announce;
+import uk.co.quartzcraft.core.util.Util;
 
 public class CommandAnnounce {
     private static QuartzCore plugin;
@@ -24,6 +25,18 @@ public class CommandAnnounce {
         if(args0.length >= 1) {
             String announcement = getAnnouncementContent(args0);
             Announce.announce(announcement);
+        } else {
+            args.getSender().sendMessage(QCChat.getPhrase("specify_arguments"));
+        }
+    }
+
+    @QCommand(name = "announce.qc", aliases = { "an.qc", "a.qc" }, permission = "QCC.announce.official", description = "Makes an announcement that all players can see with the official QuartzCraft prefix", usage = "Use /announce qc [announcement]")
+    public void announceOfficial(CommandArgs args) {
+        Player player = (Player) args.getSender();
+        String[] args0 = args.getArgs();
+        if(args0.length >= 1) {
+            String announcement = getAnnouncementContent(args0);
+            Util.broadcastMsg(announcement);
         } else {
             args.getSender().sendMessage(QCChat.getPhrase("specify_arguments"));
         }
