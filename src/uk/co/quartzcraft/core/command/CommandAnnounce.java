@@ -26,7 +26,7 @@ public class CommandAnnounce {
             String announcement = getAnnouncementContent(args0);
             Announce.announce(announcement);
         } else {
-            args.getSender().sendMessage(QCChat.getPhrase("specify_arguments"));
+            Util.sendMsg(args.getPlayer(), QCChat.getPhrase("specify_arguments"));
         }
     }
 
@@ -38,7 +38,7 @@ public class CommandAnnounce {
             String announcement = getAnnouncementContent(args0);
             Util.broadcastMsg(announcement);
         } else {
-            args.getSender().sendMessage(QCChat.getPhrase("specify_arguments"));
+            Util.sendMsg(args.getPlayer(), QCChat.getPhrase("specify_arguments"));
         }
     }
 
@@ -50,7 +50,7 @@ public class CommandAnnounce {
             String announcement = getAnnouncementContent(args0);
             Announce.announceTitle(announcement);
         } else {
-            args.getSender().sendMessage(QCChat.getPhrase("specify_arguments"));
+            Util.sendMsg(args.getPlayer(), QCChat.getPhrase("specify_arguments"));
         }
     }
 
@@ -62,7 +62,7 @@ public class CommandAnnounce {
             String announcement = getAnnouncementContent(args0);
             Announce.announceBar(announcement);
         } else {
-            args.getSender().sendMessage(QCChat.getPhrase("specify_arguments"));
+            Util.sendMsg(args.getPlayer(), QCChat.getPhrase("specify_arguments"));
         }
     }
 
