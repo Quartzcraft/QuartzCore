@@ -99,7 +99,8 @@ public class ConnectionListener implements Listener {
 	public void onPlayerJoinHigh(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
 
-        FancyMessages.welcomeBack(player);
+        Util.sendMsg(player, FancyMessages.welcomeBack(player));
+        Util.sendMsg(player, FancyMessages.checkWebsite(player));
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
