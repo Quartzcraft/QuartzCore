@@ -45,12 +45,17 @@ public class Util {
 
     public static void sendMsg(Player player, String msg) {
         String finalmsg = Util.colour(msg);
-        player.sendMessage(finalmsg);
+        player.sendMessage(QCChat.getPhrase("official_prefix") + finalmsg);
     }
 
     public static void sendPhrase(Player player, String phrase) {
         String finalmsg = QCChat.getPhrase(phrase);
-        player.sendMessage(finalmsg);
+        player.sendMessage(QCChat.getPhrase("official_prefix") + finalmsg);
+    }
+
+    public static void broadcastMsg(String msg) {
+        String finalmsg = Util.colour(msg);
+        Bukkit.broadcastMessage(QCChat.getPhrase("official_prefix") + finalmsg);
     }
 
     public static void performCommand(final Player player, final String cmd) {
