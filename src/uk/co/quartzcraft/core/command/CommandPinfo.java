@@ -9,6 +9,7 @@ import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.data.QPlayer;
 import uk.co.quartzcraft.core.event.PInfoExtraFieldsEvent;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.util.Util;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,13 +32,13 @@ public class CommandPinfo {
             PInfoExtraFieldsEvent event = new PInfoExtraFieldsEvent(args.getSender(), target);
             Bukkit.getServer().getPluginManager().callEvent(event);
 
-            args.getSender().sendMessage(QCChat.getPhrase("information_on_player_X") + target.getFancyName());
-            args.getSender().sendMessage(QCChat.getPhrase("group") + target.getGroup().getFancyName());
-            args.getSender().sendMessage(QCChat.getPhrase("first_join") + target.getFirstJoin() + " ago");
+            Util.sendMsg(args.getPlayer(), QCChat.getPhrase("information_on_player_X") + target.getFancyName());
+            Util.sendMsg(args.getPlayer(), QCChat.getPhrase("group") + target.getGroup().getFancyName());
+            Util.sendMsg(args.getPlayer(), QCChat.getPhrase("first_join") + target.getFirstJoin() + " ago");
             if(target.isOnline()) {
-                args.getSender().sendMessage(target.getFancyName() + " " + QCChat.getPhrase("is_online_now_on_server") + " " + target.getLastSeenServer()); //TODO Make this change for different servers and to specify activites and location
+                Util.sendMsg(args.getPlayer(), target.getFancyName() + " " + QCChat.getPhrase("is_online_now_on_server") + " " + target.getLastSeenServer()); //TODO Make this change for different servers and to specify activites and location
             } else {
-                args.getSender().sendMessage(QCChat.getPhrase("last_seen") + target.getLastSeen() + " on server &r" + target.getLastSeenServer());
+                Util.sendMsg(args.getPlayer(), QCChat.getPhrase("last_seen") + target.getLastSeen() + " on server &r" + target.getLastSeenServer());
             }
 
             List<String> fields = event.getFields();
@@ -45,7 +46,7 @@ public class CommandPinfo {
                 args.getSender().sendMessage(fields.get(i));
             }
         } else {
-            args.getSender().sendMessage(QCChat.getPhrase("specify_username"));
+            Util.sendMsg(args.getPlayer(), QCChat.getPhrase("specify_username"));
         }
     }
 }

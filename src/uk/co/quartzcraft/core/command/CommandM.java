@@ -7,6 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
+import uk.co.quartzcraft.core.util.Util;
 
 public class CommandM implements CommandExecutor {
 
@@ -23,15 +24,15 @@ public class CommandM implements CommandExecutor {
 				
 				if (gameMode == GameMode.SURVIVAL) {
 					player.setGameMode(GameMode.CREATIVE);
-					player.sendMessage(ChatColor.GOLD + "Your gamemode is now " + ChatColor.GREEN + "CREATIVE" + ChatColor.GOLD + "!");
+					Util.sendMsg(player, ChatColor.GOLD + "Your gamemode is now " + ChatColor.GREEN + "CREATIVE" + ChatColor.GOLD + "!");
 				} else if (gameMode == GameMode.CREATIVE) {
 					player.setGameMode(GameMode.SURVIVAL);
-					player.sendMessage(ChatColor.GOLD + "Your gamemode is now " + ChatColor.GREEN + "SURVIVAL" + ChatColor.GOLD + "!");
+					Util.sendMsg(player, ChatColor.GOLD + "Your gamemode is now " + ChatColor.GREEN + "SURVIVAL" + ChatColor.GOLD + "!");
 				} else if (gameMode == GameMode.ADVENTURE) {
 					player.setGameMode(GameMode.SURVIVAL);
-					player.sendMessage(ChatColor.GOLD + "Your gamemode is now " + ChatColor.GREEN + "SURVIVAL" + ChatColor.GOLD + "!");
+					Util.sendMsg(player, ChatColor.GOLD + "Your gamemode is now " + ChatColor.GREEN + "SURVIVAL" + ChatColor.GOLD + "!");
 				} else {
-					player.sendMessage(ChatColor.RED + "Your gamemode could not be changed!");
+					Util.sendMsg(player, ChatColor.RED + "Your gamemode could not be changed!");
 				}
 			}
 			

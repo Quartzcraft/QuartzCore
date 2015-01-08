@@ -11,6 +11,7 @@ import uk.co.quartzcraft.core.features.ActionBar;
 import uk.co.quartzcraft.core.features.FancyMessages;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
+import uk.co.quartzcraft.core.util.Util;
 
 import java.sql.SQLException;
 
@@ -38,7 +39,7 @@ public class CommandReport {
             args.getSender().sendMessage(QCChat.getPhrase("player_use_only"));
         } else {
             if(args.getArgs().length == 0) {
-                args.getSender().sendMessage(QCChat.getPhrase("please_specify_player_to_report"));
+                Util.sendMsg(args.getPlayer(), QCChat.getPhrase("please_specify_player_to_report"));
             } else {
                 target.report(qplayer, getReportContent(args1));
                 //args.getSender().sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));

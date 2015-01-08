@@ -6,6 +6,7 @@ import uk.co.quartzcraft.core.features.promos.PromoItems;
 import uk.co.quartzcraft.core.systems.ChestUI.ChestUI;
 import uk.co.quartzcraft.core.systems.ChestUI.UnclaimableItem;
 import uk.co.quartzcraft.core.util.ItemUtil;
+import uk.co.quartzcraft.core.util.Util;
 
 public class PromoMenus {
 
@@ -15,11 +16,11 @@ public class PromoMenus {
         @Override
         public void onOptionClick(ChestUI.OptionClickEvent event) {
             if(UnclaimableItem.isUnclaimable(event.getItem())) {
-                event.getPlayer().sendMessage("You can not claim this item!");
+                Util.sendMsg(event.getPlayer(), "You can not claim this item!");
                 event.setCancelled(true);
             } else {
                 event.getPlayer().getInventory().addItem(event.getItem());
-                event.getPlayer().sendMessage("You have claimed the " + ItemUtil.getName(event.getItem()) + " promo!");
+                Util.sendMsg(event.getPlayer(), "You have claimed the " + ItemUtil.getName(event.getItem()) + " promo!");
                 event.setWillClose(true);
                 event.setWillDestroy(true);
             }

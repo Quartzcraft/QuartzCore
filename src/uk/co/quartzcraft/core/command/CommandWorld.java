@@ -7,6 +7,7 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.command.framework.QCommand;
 import uk.co.quartzcraft.core.command.framework.*;
+import uk.co.quartzcraft.core.util.Util;
 
 public class CommandWorld {
     private static QuartzCore plugin;
@@ -22,6 +23,6 @@ public class CommandWorld {
     public void world(CommandArgs args) {
         Player player = (Player) args.getSender();
         World world = player.getWorld();
-        player.sendMessage(QCChat.getPhrase("you_are_currently_in_world") + ChatColor.WHITE + world.getName());
+        Util.sendMsg(args.getPlayer(), QCChat.getPhrase("you_are_currently_in_world") + ChatColor.WHITE + world.getName());
     }
 }

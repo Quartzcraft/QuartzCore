@@ -8,6 +8,7 @@ import uk.co.quartzcraft.core.command.framework.CommandArgs;
 import uk.co.quartzcraft.core.command.framework.QCommand;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.util.Util;
 
 public class CommandTP {
 
@@ -27,9 +28,9 @@ public class CommandTP {
         Player target = Bukkit.getPlayer(args0[0]);
         if(Bukkit.getServer().getPlayer(args0[0]).isOnline()) {
             bukkitPlayer.teleport(target);
-            bukkitPlayer.sendMessage(QCChat.getPhrase("teleported_you_to_player_X") + target.getName());
+            Util.sendMsg(bukkitPlayer, QCChat.getPhrase("teleported_you_to_player_X") + target.getName());
         } else {
-            bukkitPlayer.sendMessage(QCChat.getPhrase("specify_online_username"));
+            Util.sendMsg(bukkitPlayer, QCChat.getPhrase("specify_online_username"));
         }
     }
 
@@ -40,10 +41,10 @@ public class CommandTP {
         Player target = Bukkit.getPlayer(args0[0]);
         if(target.isOnline()) {
             target.teleport(target);
-            target.sendMessage(QCChat.getPhrase("teleported_you_to_player_X") + bukkitPlayer.getName());
-            bukkitPlayer.sendMessage(target.getName() + QCChat.getPhrase("X_has_been_teleported_to_you"));
+            Util.sendMsg(target, QCChat.getPhrase("teleported_you_to_player_X") + bukkitPlayer.getName());
+            Util.sendMsg(bukkitPlayer, target.getName() + QCChat.getPhrase("X_has_been_teleported_to_you"));
         } else {
-            bukkitPlayer.sendMessage(QCChat.getPhrase("specify_online_username"));
+            Util.sendMsg(bukkitPlayer, QCChat.getPhrase("specify_online_username"));
         }
     }
 }
