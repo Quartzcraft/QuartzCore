@@ -82,7 +82,7 @@ public class ConnectionListener implements Listener {
         if(plugin.getConfig().getBoolean("settings.join-broadcast")) {
             String lastSeen = qplayer.getLastSeen();
 			//Long lastSeen = player.getLastPlayed();
-			String message = player.getDisplayName() + ChatColor.YELLOW + " joined, last seen " + lastSeen + " ago";
+			String message = QCChat.getPhrase("official_prefix") + player.getDisplayName() + ChatColor.YELLOW + " joined, last seen " + lastSeen + " ago";
 			
 			join.setJoinMessage(message);
 		}
@@ -108,7 +108,7 @@ public class ConnectionListener implements Listener {
 		Player player = quit.getPlayer();
 		
 		if(plugin.getConfig().getBoolean("settings.join-broadcast")) {
-			String message = player.getDisplayName() + ChatColor.YELLOW + " disconnected.";
+			String message = QCChat.getPhrase("official_prefix") + player.getDisplayName() + ChatColor.YELLOW + " disconnected.";
 			
 			quit.setQuitMessage(message);
 		}
