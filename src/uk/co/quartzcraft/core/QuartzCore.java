@@ -125,9 +125,9 @@ public class QuartzCore extends JavaPlugin {
         QCChat.addPhrase("X_has_been_teleported_to_you", " &ahas been teleported to you");
 		
 		QCChat.addPhrase("no_permission", "&cYou do not have permission to perform this action!");
-		QCChat.addPhrase("Unknown_SubCommand", "&cCould not find the specified SubCommand! &aVisit the QuartzCraft Wiki for help.");
-		QCChat.addPhrase("Unknown_Command", "&cUnknown Command! &aPlease see the QuartzCraft Wiki for help.");
-		QCChat.addPhrase("Specify_Subcommand", "&cPlease specify a sub command. &aVisit the QuartzCraft Wiki for help.");
+		QCChat.addPhrase("Unknown_SubCommand", "&cCould not find the specified SubCommand! &aType /help for help.");
+		QCChat.addPhrase("Unknown_Command", "&cUnknown Command! &aType /help for help.");
+		QCChat.addPhrase("Specify_Subcommand", "&cPlease specify a sub command. &aType /help for help.");
 		QCChat.addPhrase("feature_unavalible", "&cThis feature is currently unavailable &aVisit the QuartzCraft Website for information on new features.");
 		QCChat.addPhrase("database_error", "&cA database error occurred!");
         QCChat.addPhrase("database_error_try_again", "&cA database error occurred! &aPlease try again");
