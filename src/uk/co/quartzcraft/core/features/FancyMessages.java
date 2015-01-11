@@ -20,13 +20,9 @@ public class FancyMessages {
     }
 
     public static String checkWebsite(Player player) {
-        return new FancyMessage("Check out our ")
-                .color(GOLD)
-                .then("website")
-                .color(GOLD)
+        return new FancyMessage("Check out our website!")
                 .link("http://quartzcraft.co.uk")
                 .style(UNDERLINE)
-                .then("!")
                 .color(GOLD)
                 .toJSONString();
     }
