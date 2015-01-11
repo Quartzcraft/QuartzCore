@@ -377,12 +377,26 @@ public class QPlayer {
     /**
      * Gets the date the user was last seen
      *
-     * @return String of the last seen date in X days/hours/minutes ago format.
+     * @return String of the last seen date in X days/hours/minutes/seconds ago format.
      */
     public String getLastSeen() {
         long lastSeen = this.lastSeen.getTime();
         long current = System.currentTimeMillis();
-        return DurationFormatUtils.formatPeriod(lastSeen, current, "d 'days' H 'hours'");
+        String result1 =  DurationFormatUtils.formatPeriod(lastSeen, current, "d 'days,' H 'hours'");
+        if(result1.contains("0 days")) {
+            String result2 =  DurationFormatUtils.formatPeriod(lastSeen, current, "H 'hours,' m 'minutes'");
+            if(result2.contains("0 hours")) {
+                String result3 =  DurationFormatUtils.formatPeriod(lastSeen, current, "m 'minutes,' s 'seconds'");
+                if(result3.contains("0 minutes")) {
+                    return DurationFormatUtils.formatPeriod(lastSeen, current, "s 'seconds'");
+                } else {
+                    return result3;
+                }
+            } else {
+                return result2;
+            }
+        }
+        return result1;
     }
 
     /**
