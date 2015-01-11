@@ -119,7 +119,7 @@ public class QuartzCore extends JavaPlugin {
 		QCChat.addPhrase("these_are_the_fields_required_for_website_registration", "&aThese are the values for the required website registration fields:");
 		QCChat.addPhrase("your_minecraft_username_is", "&aYour Minecraft username is:&r ");
 		QCChat.addPhrase("your_validation_code_is", "&aYour validation code is:&r ");
-		QCChat.addPhrase("your_quartzcore_id_is", "&aYour QuartzCore id is:&r ");
+		QCChat.addPhrase("your_quartzcore_id_is", "&aYour QuartzCraft ID is:&r ");
 
         QCChat.addPhrase("teleported_you_to_player_X", "&aYou have been teleported to &r ");
         QCChat.addPhrase("X_has_been_teleported_to_you", " &ahas been teleported to you");
