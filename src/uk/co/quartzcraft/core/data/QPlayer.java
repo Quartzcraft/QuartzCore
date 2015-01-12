@@ -245,7 +245,7 @@ public class QPlayer {
                 return this;
             }
         } catch(SQLException e) {
-            Util.printException("Failed to retrieve QPlayer data from database", e);
+            Util.printException("Failed to updates tokens in database", e);
             return this;
         }
     }
@@ -268,7 +268,7 @@ public class QPlayer {
                 return this;
             }
         } catch(SQLException e) {
-            Util.printException("Failed to retrieve QPlayer data from database", e);
+            Util.printException("Failed to update tokens in database", e);
             return this;
         }
     }
