@@ -282,11 +282,23 @@ public class QPlayer {
     }
 
     /**
-     * Returns the bukkit player object for the specified player.
+     * Updates a users name
      *
+     * @param name
      */
-    public Player getPlayer() {
-        return this.player;
+    public void updateName(String name) {
+        if(!this.name.equals(name)) {
+            try {
+                java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET DisplayName=? WHERE id=?;");
+                s.setString(1, name);
+                s.setInt(2, this.id);
+                if(s.executeUpdate() == 1) {
+                    this.name = name;
+                }
+            } catch(SQLException e) {
+                Util.printException("Failed to update QPlayer DisplayName in database", e);
+            }
+        }
     }
 
     /**
