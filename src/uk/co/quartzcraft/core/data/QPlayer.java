@@ -219,6 +219,14 @@ public class QPlayer {
     }
 
     /**
+     * Returns the bukkit player object for the specified player.
+     *
+     */
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    /**
      * Gets the number of tokens a player has.
      *
      * @return The number of tokens.
