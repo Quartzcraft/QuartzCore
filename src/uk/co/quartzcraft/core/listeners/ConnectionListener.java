@@ -67,6 +67,10 @@ public class ConnectionListener implements Listener {
         QPlayer qplayer = new QPlayer(player);
 		UUID UUID = player.getUniqueId();
 
+        if(!player.getName().equals(qplayer.getName())) {
+            qplayer.updateName(player.getName());
+        }
+
         if(qplayer.isOnline()) {
             player.kickPlayer(QCChat.getPhrase("you_can_only_be_connected_to_one_server_at_a_time"));
         }
