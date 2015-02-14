@@ -18,6 +18,8 @@ import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 import uk.co.quartzcraft.core.event.QPlayerGroupChangeEvent;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.systems.notifications.Alert;
+import uk.co.quartzcraft.core.systems.notifications.AlertBuilder;
 import uk.co.quartzcraft.core.systems.perms.Group;
 import uk.co.quartzcraft.core.util.TaskChain;
 import uk.co.quartzcraft.core.util.Util;
@@ -312,6 +314,29 @@ public class QPlayer {
     }
 
     /**
+     * Sends an alert to a player
+     *
+     */
+    public void alert(Alert alert) {
+
+    }
+
+    /**
+     * Sends an alert to a player
+     *
+     */
+    public void alert(AlertBuilder builder) {
+        builder.getAlert().send(this);
+    }
+
+    /**
+     * Sends an alert to a player
+     *
+     */
+    public void alert(String message) {
+        new AlertBuilder().setMessage(message).getAlert().send(this);
+    }
+
      * Gets the the time the player first joined.
      */
     public String getFirstJoin() {
