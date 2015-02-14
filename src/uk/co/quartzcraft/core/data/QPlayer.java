@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
 
@@ -337,6 +339,17 @@ public class QPlayer {
         new AlertBuilder().setMessage(message).getAlert().send(this);
     }
 
+    /**
+     * Gets all the alerts the player has
+     *
+     */
+    public Map getAlerts(Alert alert) {
+        Map<String, Alert> alertMap = new HashMap<String, Alert>();
+
+        return alertMap;
+    }
+
+    /**
      * Gets the the time the player first joined.
      */
     public String getFirstJoin() {
