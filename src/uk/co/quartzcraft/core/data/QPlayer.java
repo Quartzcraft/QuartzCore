@@ -39,6 +39,7 @@ public class QPlayer {
     private Player player = null;
     private Group group;
     private int online;
+    private int unreadAlertCount;
 
     /**
      * Creates a QPlayer object using the specified player
@@ -228,6 +229,15 @@ public class QPlayer {
      */
     public Player getPlayer() {
         return this.player;
+    }
+
+    /**
+     * Returns the number of unread alerts the player has.
+     *
+     * @return The number of unread alerts
+     */
+    public int getUnreadAlertCount() {
+        return this.unreadAlertCount;
     }
 
     /**
