@@ -43,7 +43,7 @@ public class AlertTypeHandler {
     }
 
     public static Entry getAlertTypeMethod(String label) {
-        if(typeMap.get(label) != null && methodMap.get(label) != null) {
+        if(methodMap.containsKey(label)) {
             return methodMap.get(label);
         }
         return null;
