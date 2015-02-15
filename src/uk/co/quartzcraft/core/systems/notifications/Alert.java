@@ -1,5 +1,6 @@
 package uk.co.quartzcraft.core.systems.notifications;
 
+import org.bukkit.Sound;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.data.QPlayer;
 import uk.co.quartzcraft.core.data.Server;
@@ -82,6 +83,7 @@ public class Alert {
 
             if (player.isOnline()) {
                 player.getPlayer().sendMessage(message);
+                player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.LEVEL_UP, 5, 5);
             }
         }
     }
