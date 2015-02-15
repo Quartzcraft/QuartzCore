@@ -6,6 +6,10 @@ import uk.co.quartzcraft.core.data.Server;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.util.Util;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Map.Entry;
+import java.util.Map;
 import java.util.logging.Level;
 
 public class Alert {
@@ -57,7 +61,17 @@ public class Alert {
         String message = "";
         if(player.getPlayer().hasPermission(alertType.permission())) {
             if (alertType.requireArgs()) {
-                //TODO execute code from the AlertType
+                Entry<Method, Object> entry = AlertTypeHandler.getAlertTypeMethod(alertType.name());
+                try {
+                    entry.getKey().invoke(entry.getValue(), new AlertArgs());
+                } catch (IllegalArgumentException e) {
+                    Util.printException(e);
+                } catch (IllegalAccessException e) {
+                    Util.printException(e);
+                } catch (InvocationTargetException e) {
+                    Util.printException(e);
+                }
+
             } else {
                 message = Apre + alertType.prefix() + this.message;
             }
