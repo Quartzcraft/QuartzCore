@@ -20,7 +20,7 @@ public class AlertTypeHandler {
         for (Method m : obj.getClass().getMethods()) {
             if (m.getAnnotation(AlertType.class) != null) {
                 AlertType alertType = m.getAnnotation(AlertType.class);
-                if (m.getParameterTypes().length > 1 || m.getParameterTypes()[0] != String[].class) {
+                if (m.getParameterTypes().length > 1 || m.getParameterTypes()[0] != AlertArgs.class) {
                     System.out.println("Unable to register AlertType " + m.getName() + ". Unexpected method arguments");
                     continue;
                 }
