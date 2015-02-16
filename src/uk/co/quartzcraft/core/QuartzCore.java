@@ -10,6 +10,7 @@ import org.bukkit.command.CommandSender;
 import uk.co.quartzcraft.core.command.*;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.database.MySQL;
+import uk.co.quartzcraft.core.features.QCAlertTypes;
 import uk.co.quartzcraft.core.features.items.FinalItems;
 import uk.co.quartzcraft.core.features.items.SoulboundItems;
 import uk.co.quartzcraft.core.features.items.UnbreakableItems;
@@ -18,6 +19,7 @@ import uk.co.quartzcraft.core.listeners.*;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.systems.notifications.AlertTypeHandler;
 import uk.co.quartzcraft.core.systems.websync.UpdateGroups;
 import uk.co.quartzcraft.core.systems.websync.Websync;
 
@@ -161,7 +163,11 @@ public class QuartzCore extends JavaPlugin {
         QCChat.addPhrase("could_not_fit_item_dropped", "&cThe item could not fit in your inventory and was dropped on the ground!");
 
         QCChat.addPhrase("chat_contained_bad_words_blocked", "&cThe chat message you attempted to send contained inappropriate words and was blocked!");
-		
+
+        //Alert Types
+        log.info("[QC][STARTUP] Registering alert types");
+        AlertTypeHandler.registerAlertTypes(new QCAlertTypes());
+
 		//Listeners
 		log.info("[QC][STARTUP]Registering listeners...");
 		new ConnectionListener(this);
