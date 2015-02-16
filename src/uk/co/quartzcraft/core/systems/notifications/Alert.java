@@ -56,8 +56,12 @@ public class Alert {
 
     public void send(QPlayer player) {
         String Apre = "";
-        String message = "";
-        if(player.getPlayer().hasPermission(alertType.permission())) {
+        String msg = "";
+        if (displayPrefix) {
+            Apre = QCChat.getPhrase("alert_prefix");
+        }
+
+        if(alertType.permission().equals("") || player.getPlayer().hasPermission(alertType.permission())) {
             if (alertType.requireArgs()) {
                 Entry<Method, Object> entry = AlertTypeHandler.getAlertTypeMethod(alertType.name());
                 try {
