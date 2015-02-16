@@ -53,7 +53,7 @@ public class AlertBuilder {
     }
 
     public Alert getAlert() {
-        return new Alert(this.prefix, this.message, this.arguments, this.displayPrefix, this.alertType, this.server, this.receiver);
+        return new Alert(this.message, this.arguments, this.displayPrefix, this.alertType, this.server, this.receiver);
     }
 
     public void send() {

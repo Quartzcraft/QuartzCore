@@ -15,7 +15,6 @@ import java.util.logging.Level;
 
 public class Alert {
 
-    private String prefix = null;
     private String message = null;
     private String[] args = null;
     private boolean displayPrefix = true;
@@ -24,11 +23,10 @@ public class Alert {
     private QPlayer player = null;
     private boolean read = false;
 
-    public Alert(String pre, String msg, String[] argss, boolean dP, String type, Server s) {
+    public Alert(String msg, String[] argss, boolean dP, String type, Server s) {
         if(msg.equals("") && type.equals("") && args == null) {
             Util.log(Level.WARNING, "Invalid alert arguments!");
         }
-        this.prefix = pre;
         this.message = msg;
         this.args = argss;
         this.displayPrefix = dP;
@@ -36,11 +34,10 @@ public class Alert {
         this.server = s;
     }
 
-    public Alert(String pre, String msg, String[] argss, boolean dP, String type, Server s, QPlayer receiver) {
+    public Alert(String msg, String[] argss, boolean dP, String type, Server s, QPlayer receiver) {
         if(msg.equals("") && type.equals("") && args == null) {
             Util.log(Level.WARNING, "Invalid alert arguments!");
         }
-        this.prefix = pre;
         this.message = msg;
         this.args = argss;
         this.displayPrefix = dP;
@@ -72,17 +69,12 @@ public class Alert {
                 } catch (InvocationTargetException e) {
                     Util.printException(e);
                 }
-
             } else {
-                message = Apre + alertType.prefix() + this.message;
-            }
-
-            if(displayPrefix) {
-                Apre = QCChat.getPhrase("alert_prefix");
+                msg = Apre + alertType.prefix() + this.message;
             }
 
             if (player.isOnline()) {
-                player.getPlayer().sendMessage(message);
+                player.getPlayer().sendMessage(msg);
                 player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.LEVEL_UP, 5, 5);
             }
         }
