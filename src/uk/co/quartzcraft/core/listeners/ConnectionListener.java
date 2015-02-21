@@ -33,7 +33,7 @@ public class ConnectionListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerLogin(PlayerLoginEvent login) {
 		Player player = login.getPlayer();
-		String splayer = player.toString();
+		QuartzCore.getQServer().createPlayerSession(player);
 		
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
@@ -69,10 +69,6 @@ public class ConnectionListener implements Listener {
 
         if(!player.getName().equals(qplayer.getName())) {
             qplayer.updateName(player.getName());
-        }
-
-        if(qplayer.isOnline()) {
-            player.kickPlayer(QCChat.getPhrase("you_can_only_be_connected_to_one_server_at_a_time"));
         }
 
         if(plugin.getConfig().getBoolean("settings.use-perm-system")) {
