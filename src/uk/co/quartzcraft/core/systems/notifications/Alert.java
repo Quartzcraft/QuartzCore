@@ -1,5 +1,6 @@
 package uk.co.quartzcraft.core.systems.notifications;
 
+import org.bukkit.Note;
 import org.bukkit.Sound;
 import uk.co.quartzcraft.core.data.QPlayer;
 import uk.co.quartzcraft.core.data.QServer;
@@ -81,10 +82,12 @@ public class Alert {
                 msg = Apre + alertType.prefix() + this.message;
             }
 
-
             if (player.isOnline()) {
                 player.getPlayer().sendMessage(msg);
-                player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.LEVEL_UP, 5, 5);
+                player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.LEVEL_UP, 10, 1);
+                //player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.NOTE_PLING, 10, 1);
+            } else {
+                this.save(player);
             }
         }
     }
