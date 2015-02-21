@@ -62,18 +62,23 @@ public class Alert {
         if(alertType.permission().equals("") || player.getPlayer().hasPermission(alertType.permission())) {
             if (alertType.requireArgs()) {
                 Entry<Method, Object> entry = AlertTypeHandler.getAlertTypeMethod(alertType.name());
-                try {
-                    entry.getKey().invoke(entry.getValue(), new AlertArgs());
-                } catch (IllegalArgumentException e) {
-                    Util.printException(e);
-                } catch (IllegalAccessException e) {
-                    Util.printException(e);
-                } catch (InvocationTargetException e) {
-                    Util.printException(e);
+
+                if(entry.getKey().getReturnType() == String.class) {
+                    try {
+                        returnedMessage = entry.getKey().invoke(entry.getValue(), new AlertArgs());
+                    } catch (IllegalArgumentException e) {
+                        Util.printException(e);
+                    } catch (IllegalAccessException e) {
+                        Util.printException(e);
+                    } catch (InvocationTargetException e) {
+                        Util.printException(e);
+                    }
+
                 }
             } else {
                 msg = Apre + alertType.prefix() + this.message;
             }
+
 
             if (player.isOnline()) {
                 player.getPlayer().sendMessage(msg);
