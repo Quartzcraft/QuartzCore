@@ -73,6 +73,40 @@ public class QPlayer {
 	}
 
     /**
+     * Creates a QPlayer object using the specified player
+     *
+     * @param uuid1 A players UUID
+     */
+    public QPlayer(UUID uuid1) {
+        this.uuid = uuid1;
+        String SUUID = uuid1.toString();
+        try {
+            PreparedStatement s = QuartzCore.DBCore.prepareStatement("SELECT * FROM PlayerData WHERE UUID=?;");
+            s.setString(1, SUUID);
+            ResultSet res = s.executeQuery();
+            if(res.next()) {
+                if (res.getString("UUID").equals(uuid.toString())) {
+                    this.id = res.getInt("id");
+                    this.name = res.getString("DisplayName");
+                    this.tokens = res.getInt("Tokens");
+                    this.group = new Group(res.getInt("PrimaryGroupId"));
+                    this.lastSeen = res.getTimestamp("LastSeen");
+                    this.lastServer = res.getString("last_server");
+                } else {
+                    Util.log(Level.SEVERE, "QPlayer UUID not equal");
+                }
+            }
+
+        } catch(SQLException e) {
+            Util.printException("Failed to retrieve QPlayer from database", e);
+        }
+
+        if(Bukkit.getServer().getPlayer(this.uuid) != null) {
+            this.player = Bukkit.getServer().getPlayer(this.uuid);
+        }
+    }
+
+    /**
      * Creates a QPlayer object using the specified player name.
      *
      * @param name
@@ -559,6 +593,14 @@ public class QPlayer {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Saves all user data to the database
+     *
+     */
+    public void save() {
+
     }
 
 }
