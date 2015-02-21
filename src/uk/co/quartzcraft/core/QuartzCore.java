@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import uk.co.quartzcraft.core.command.*;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
@@ -30,7 +29,6 @@ import uk.co.quartzcraft.core.systems.websync.Websync;
 public class QuartzCore extends JavaPlugin {
 	
 	public static String version;
-
 
     public static Plugin plugin;
     public static String servername;
