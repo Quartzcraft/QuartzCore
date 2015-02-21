@@ -99,4 +99,16 @@ public class Alert {
     public void setAsUnRead() {
         this.read = true;
     }
+
+    public void save() {
+        if(this.player == null) {
+            Util.log(Level.WARNING, "Attempting to save alert with no specified player");
+            return;
+        }
+        this.save(this.player);
+    }
+
+    public void save(QPlayer player) {
+
+    }
 }
