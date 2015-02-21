@@ -3,7 +3,7 @@ package uk.co.quartzcraft.core.systems.notifications;
 import org.bukkit.Sound;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.data.QPlayer;
-import uk.co.quartzcraft.core.data.Server;
+import uk.co.quartzcraft.core.data.QServer;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.util.Util;
 
@@ -19,11 +19,11 @@ public class Alert {
     private String[] args = null;
     private boolean displayPrefix = true;
     private AlertType alertType = null;
-    private Server server = null;
+    private QServer server = null;
     private QPlayer player = null;
     private boolean read = false;
 
-    public Alert(String msg, String[] argss, boolean dP, String type, Server s) {
+    public Alert(String msg, String[] argss, boolean dP, String type, QServer s) {
         if(msg.equals("") && type.equals("") && args == null) {
             Util.log(Level.WARNING, "Invalid alert arguments!");
         }
@@ -34,7 +34,7 @@ public class Alert {
         this.server = s;
     }
 
-    public Alert(String msg, String[] argss, boolean dP, String type, Server s, QPlayer receiver) {
+    public Alert(String msg, String[] argss, boolean dP, String type, QServer s, QPlayer receiver) {
         if(msg.equals("") && type.equals("") && args == null) {
             Util.log(Level.WARNING, "Invalid alert arguments!");
         }

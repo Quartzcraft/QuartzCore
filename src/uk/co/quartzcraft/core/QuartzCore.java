@@ -9,6 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import uk.co.quartzcraft.core.command.*;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
+import uk.co.quartzcraft.core.data.QServer;
 import uk.co.quartzcraft.core.database.MySQL;
 import uk.co.quartzcraft.core.features.QCAlertTypes;
 import uk.co.quartzcraft.core.features.items.FinalItems;
@@ -33,6 +34,7 @@ public class QuartzCore extends JavaPlugin {
 
     public static Plugin plugin;
     public static String servername;
+    public static QServer server;
 	public static final Logger log = Logger.getLogger("Minecraft");
 	
 	public static Connection DBCore = null;
@@ -69,6 +71,9 @@ public class QuartzCore extends JavaPlugin {
         servername = this.getConfig().getString("settings.server-name");
         plugin = this;
         version = plugin.getDescription().getVersion();
+
+        log.info("[QC]Creating QServer instance");
+        server = new QServer();
 		
 		//Config files
 		log.info("[QC]Running plugin configuration");
@@ -208,5 +213,9 @@ public class QuartzCore extends JavaPlugin {
 
     public static String getServerName() {
         return servername;
+    }
+
+    public static QServer getQServer() {
+        return server;
     }
 }

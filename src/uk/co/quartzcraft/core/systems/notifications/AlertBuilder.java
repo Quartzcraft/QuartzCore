@@ -1,7 +1,7 @@
 package uk.co.quartzcraft.core.systems.notifications;
 
 import uk.co.quartzcraft.core.data.QPlayer;
-import uk.co.quartzcraft.core.data.Server;
+import uk.co.quartzcraft.core.data.QServer;
 
 public class AlertBuilder {
 
@@ -10,7 +10,7 @@ public class AlertBuilder {
     protected String[] arguments = null;
     protected boolean displayPrefix = true;
     protected String alertType = "";
-    protected Server server = null;
+    protected QServer server = null;
     private QPlayer receiver = null;
 
     public AlertBuilder() {
@@ -42,7 +42,7 @@ public class AlertBuilder {
         return this;
     }
 
-    public AlertBuilder setServer(Server s) {
+    public AlertBuilder setServer(QServer s) {
         this.server = s;
         return this;
     }
