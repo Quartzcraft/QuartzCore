@@ -11,7 +11,7 @@ public class QCAlertTypes {
     }
 
     @AlertType(name = "QC", prefix = "&8[&6QC&8]", permission = "QCC.everyone")
-    public void QC(AlertArgs args) {
-
+    public String QC(AlertArgs args) {
+        return "";
     }
 }
