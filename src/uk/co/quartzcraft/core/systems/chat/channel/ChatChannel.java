@@ -1,4 +1,4 @@
-package uk.co.quartzcraft.core.systems.chat;
+package uk.co.quartzcraft.core.systems.chat.channel;
 
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.entity.Player;
