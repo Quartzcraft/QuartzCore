@@ -97,7 +97,7 @@ public class Alert {
     }
 
     public void setAsUnRead() {
-        this.read = true;
+        this.read = false;
     }
 
     public void save() {
