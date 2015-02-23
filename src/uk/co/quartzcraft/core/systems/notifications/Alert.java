@@ -86,9 +86,10 @@ public class Alert {
                 player.getPlayer().sendMessage(msg);
                 player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.LEVEL_UP, 10, 1);
                 //player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.NOTE_PLING, 10, 1);
-            } else {
-                this.save(player);
+                this.read = true;
             }
+
+            this.save(player);
         }
     }
 
@@ -109,6 +110,8 @@ public class Alert {
     }
 
     public void save(QPlayer player) {
-
+        if(!this.read) {
+            player.getUnreadAlertCount();
+        }
     }
 }
