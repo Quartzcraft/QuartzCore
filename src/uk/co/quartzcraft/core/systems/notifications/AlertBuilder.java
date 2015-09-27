@@ -5,7 +5,6 @@ import uk.co.quartzcraft.core.data.QServer;
 
 public class AlertBuilder {
 
-    protected String prefix = "";
     protected String message = "";
     protected String[] arguments = null;
     protected boolean displayPrefix = true;
@@ -15,11 +14,6 @@ public class AlertBuilder {
 
     public AlertBuilder() {
 
-    }
-
-    public AlertBuilder setPrefix(String p) {
-        this.prefix = p;
-        return this;
     }
 
     public AlertBuilder setMessage(String msg) {
