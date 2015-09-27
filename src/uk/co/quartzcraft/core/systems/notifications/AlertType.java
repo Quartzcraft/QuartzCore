@@ -17,7 +17,7 @@ public @interface AlertType {
     public String name();
 
     /**
-     * Gets the required permission to recieve this type of alert
+     * Gets the required permission to receive this type of alert
      *
      * @return
      */

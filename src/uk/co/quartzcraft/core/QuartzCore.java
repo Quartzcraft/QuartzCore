@@ -160,12 +160,12 @@ public class QuartzCore extends JavaPlugin {
 		QCChat.addPhrase("Kick_Whitelist", "&cYou are not whitelisted");
         QCChat.addPhrase("you_can_only_be_connected_to_one_server_at_a_time", "&cYou can only be connected to one server at a time!");
 		
-		QCChat.addPhrase("promoted_player_yes", "&aThe player was successfully moved groups!");
+		QCChat.addPhrase("promoted_player_yes", "&aThe players group was successfully changed!");
 		QCChat.addPhrase("promoted_player_no", "&cThe player failed to move groups!");
 
         QCChat.addPhrase("could_not_fit_item_dropped", "&cThe item could not fit in your inventory and was dropped on the ground!");
 
-        QCChat.addPhrase("chat_contained_bad_words_blocked", "&cThe chat message you attempted to send contained inappropriate words and was blocked!");
+        QCChat.addPhrase("chat_contained_bad_words_blocked", "&cThe chat message you attempted to send contained inappropriate content and was blocked!");
 
         //Alert Types
         log.info("[QC][STARTUP] Registering alert types");
