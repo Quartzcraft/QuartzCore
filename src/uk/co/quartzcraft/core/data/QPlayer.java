@@ -364,7 +364,7 @@ public class QPlayer {
      *
      */
     public void alert(Alert alert) {
-
+        alert.send(this);
     }
 
     /**
