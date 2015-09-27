@@ -454,6 +454,12 @@ public class QPlayer {
 		return this;
 	}
 
+    /**
+     * Creates a report with the player as the subject
+     *
+     * @param rep The player reporting
+     * @param reason The reason for reporting the player
+     */
     public void report(QPlayer rep, String reason) {
         final QPlayer reported_user = this;
         final QPlayer reporting_user = rep;
@@ -531,7 +537,7 @@ public class QPlayer {
 			return false;
 		}
 	}
-	
+
 	public String getValidationCode() {
 		try {
 			ResultSet res = QuartzCore.DBCore.createStatement().executeQuery("SELECT * FROM validationCodes WHERE user_id ='" + this.id + "';");
