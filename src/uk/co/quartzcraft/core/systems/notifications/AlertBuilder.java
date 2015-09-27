@@ -6,7 +6,7 @@ import uk.co.quartzcraft.core.data.QServer;
 public class AlertBuilder {
 
     protected String message = "";
-    protected String[] arguments = null;
+    protected AlertArgs arguments = null;
     protected boolean displayPrefix = true;
     protected String alertType = "";
     protected QServer server = null;
@@ -21,7 +21,7 @@ public class AlertBuilder {
         return this;
     }
 
-    public AlertBuilder setArgs(String[] args) {
+    public AlertBuilder setArgs(AlertArgs args) {
         this.arguments = args;
         return this;
     }
