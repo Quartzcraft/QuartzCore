@@ -2,6 +2,7 @@ package uk.co.quartzcraft.core.systems.notifications;
 
 import org.bukkit.Note;
 import org.bukkit.Sound;
+import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.data.QPlayer;
 import uk.co.quartzcraft.core.data.QServer;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
@@ -9,6 +10,7 @@ import uk.co.quartzcraft.core.util.Util;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.SQLException;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 
