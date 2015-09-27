@@ -34,7 +34,7 @@ public class ConnectionListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerLogin(PlayerLoginEvent login) {
 		Player player = login.getPlayer();
-		QuartzCore.getQServer().createPlayerSession(player);
+		//QuartzCore.getQServer().createPlayerSession(player);
 		
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
