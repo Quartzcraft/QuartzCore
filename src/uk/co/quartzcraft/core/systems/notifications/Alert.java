@@ -17,14 +17,14 @@ import java.util.logging.Level;
 public class Alert {
 
     private String message = null;
-    private String[] args = null;
+    private AlertArgs args = new AlertArgs();
     private boolean displayPrefix = true;
     private AlertType alertType = null;
     private QServer server = null;
     private QPlayer player = null;
     private boolean read = false;
 
-    public Alert(String msg, String[] argss, boolean dP, String type, QServer s) {
+    public Alert(String msg, AlertArgs argss, boolean dP, String type, QServer s) {
         if(msg.equals("") && type.equals("") && args == null) {
             Util.log(Level.WARNING, "Invalid alert arguments!");
         }
@@ -35,7 +35,7 @@ public class Alert {
         this.server = s;
     }
 
-    public Alert(String msg, String[] argss, boolean dP, String type, QServer s, QPlayer receiver) {
+    public Alert(String msg, AlertArgs argss, boolean dP, String type, QServer s, QPlayer receiver) {
         if(msg.equals("") && type.equals("") && args == null) {
             Util.log(Level.WARNING, "Invalid alert arguments!");
         }
@@ -60,7 +60,7 @@ public class Alert {
         String msg = "";
         Object returnedMessage = "";
         if (displayPrefix) {
-            Apre = QCChat.getPhrase("alert_prefix");
+            Apre = Apre + QCChat.getPhrase("official_prefix");
         }
 
         if(alertType.permission().equals("") || player.getPlayer().hasPermission(alertType.permission())) {
@@ -69,7 +69,7 @@ public class Alert {
 
                 if(entry.getKey().getReturnType() == String.class) {
                     try {
-                        returnedMessage = entry.getKey().invoke(entry.getValue(), new AlertArgs());
+                        returnedMessage = entry.getKey().invoke(entry.getValue(), this.args);
                     } catch (IllegalArgumentException e) {
                         Util.printException(e);
                     } catch (IllegalAccessException e) {
