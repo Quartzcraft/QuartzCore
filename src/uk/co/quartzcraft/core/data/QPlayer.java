@@ -394,6 +394,26 @@ public class QPlayer {
     }
 
     /**
+     * Updates the number of unread alerts the player has
+     *
+     * @param n The amount to increase alert count by
+     */
+    public QPlayer setUnreadAlertCount(int n) {
+        try {
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET unread_alerts=? WHERE id=?;");
+            s.setInt(1, n);
+            s.setInt(2, this.id);
+            if(s.executeUpdate() == 1) {
+                return this;
+            }
+        } catch(SQLException e) {
+            Util.printException("Failed to update QPlayer UnreadAlertCount in database", e);
+            return this;
+        }
+        return this;
+    }
+
+    /**
      * Gets the the time the player first joined.
      */
     public String getFirstJoin() {
