@@ -54,7 +54,7 @@ public class Alert {
     }
 
     public void send(QPlayer player) {
-        String Apre = "";
+        String Apre = QCChat.getPhrase("alert_prefix");
         String msg = "";
         Object returnedMessage = "";
         if (displayPrefix) {

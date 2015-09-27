@@ -118,6 +118,7 @@ public class QuartzCore extends JavaPlugin {
 		QCChat.addPhrase("test_phrase", "&3This is a test of the phrases system.");
 
         QCChat.addPhrase("official_prefix", "&8[&6QC&8]");
+        QCChat.addPhrase("alert_prefix", "&a[Alert]");
 		
 		QCChat.addPhrase("could_not_create_player", "&cYou're player data could not be added to the database!");
 		QCChat.addPhrase("to_register_on_the_website_please_visit_web", "&aTo register on the QuartzCraft website, please visit &rhttp://quartzcraft.co.uk");
