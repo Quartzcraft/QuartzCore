@@ -36,10 +36,4 @@ public @interface AlertType {
      * @return
      */
     public boolean requireArgs() default false;
-
-    /**
-     * A list of the required arguments.
-     * @return
-     */
-    public String[] requiredArgs() default {};
 }
