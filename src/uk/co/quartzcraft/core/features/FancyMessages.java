@@ -5,6 +5,7 @@ import static org.bukkit.ChatColor.*;
 import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+import uk.co.quartzcraft.core.data.QPlayer;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 
@@ -30,6 +31,24 @@ public class FancyMessages {
     public static String reportedPlayer() {
         return new FancyMessage(QCChat.getPhrase("thank_you_for_reporting_user"))
                 .color(GREEN)
+                .toJSONString();
+    }
+
+    public static String hasUnreadAlerts(Player player) {
+        QPlayer qPlayer = new QPlayer(player);
+        if(qPlayer.getUnreadAlertCount() != 0) {
+            return new FancyMessage("You have ")
+                    .color(GREEN)
+                    .then(qPlayer.getUnreadAlertCount() + " unread alerts!")
+                    .command("/alerts")
+                    .style(UNDERLINE)
+                    .color(RED)
+                    .toJSONString();
+        }
+
+        return new FancyMessage("You have no unread alerts!")
+                .color(GREEN)
+                .style(UNDERLINE)
                 .toJSONString();
     }
 

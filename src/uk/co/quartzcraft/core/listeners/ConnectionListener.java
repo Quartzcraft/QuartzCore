@@ -18,6 +18,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 import uk.co.quartzcraft.core.systems.perms.Permissions;
 import uk.co.quartzcraft.core.util.Util;
 
@@ -101,6 +102,7 @@ public class ConnectionListener implements Listener {
 
         player.sendMessage(FancyMessages.welcomeBack(player));
         player.sendMessage(FancyMessages.checkWebsite(player));
+        player.sendMessage(FancyMessages.hasUnreadAlerts(player));
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
