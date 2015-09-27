@@ -89,29 +89,41 @@ public class Alert {
                 this.read = true;
             }
 
-            this.save(player);
+            this.message = msg;
+            this.save();
         }
     }
 
     public void setAsRead() {
         this.read = true;
+        this.player.setUnreadAlertCount(player.getUnreadAlertCount() - 1);
+        this.save();
     }
 
     public void setAsUnRead() {
         this.read = false;
+        this.save();
     }
 
-    public void save() {
+    private void save() {
         if(this.player == null) {
             Util.log(Level.WARNING, "Attempting to save alert with no specified player");
             return;
-        }
-        this.save(this.player);
-    }
+        } else {
+            if(!this.read) {
+                player.setUnreadAlertCount(player.getUnreadAlertCount() + 1);
+            }
 
-    public void save(QPlayer player) {
-        if(!this.read) {
-            player.getUnreadAlertCount();
+            try {
+                java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("INSERT INTO Alerts (player_id, display_prefix, alert_type, message, read) VALUES (?, ?, ?, ?, ?);");
+                s.setInt(1, this.player.getID());
+                s.setBoolean(2, this.displayPrefix);
+                s.setString(3, this.alertType.name());
+                s.setString(4, this.message);
+                s.setBoolean(4, this.read);
+            } catch (SQLException e) {
+                Util.printException("Failed to insert QPlayer into database", e);
+            }
         }
     }
 }
