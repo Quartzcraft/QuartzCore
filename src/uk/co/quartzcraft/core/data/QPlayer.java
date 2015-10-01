@@ -387,10 +387,8 @@ public class QPlayer {
      * Gets all the alerts the player has
      *
      */
-    public Map getAlerts(Alert alert) {
-        Map<String, Alert> alertMap = new HashMap<String, Alert>();
-
-        return alertMap;
+    public Alert[] getAlerts() {
+        return Alert.getAlerts(this);
     }
 
     /**
