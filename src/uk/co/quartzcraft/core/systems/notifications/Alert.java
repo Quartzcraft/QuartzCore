@@ -35,6 +35,16 @@ public class Alert {
         this.server = s;
     }
 
+    public Alert(String msg, boolean dP, String type, QServer s) {
+        if(!msg.equals("") && !type.equals("")) {
+            Util.log(Level.WARNING, "Invalid alert arguments!");
+        }
+        this.message = msg;
+        this.displayPrefix = dP;
+        this.alertType = AlertTypeHandler.getAlertType(type);
+        this.server = s;
+    }
+
     public Alert(String msg, AlertArgs argss, boolean dP, String type, QServer s, QPlayer receiver) {
         if(msg.equals("") && type.equals("") && args == null) {
             Util.log(Level.WARNING, "Invalid alert arguments!");
