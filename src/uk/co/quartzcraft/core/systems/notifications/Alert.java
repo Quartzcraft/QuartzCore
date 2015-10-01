@@ -10,7 +10,9 @@ import uk.co.quartzcraft.core.util.Util;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 
@@ -136,6 +138,30 @@ public class Alert {
             } catch (SQLException e) {
                 Util.printException("Failed to insert QPlayer into database", e);
             }
+        }
+    }
+
+    public static Alert[] getAlerts(QPlayer player) {
+        int rows = 0;
+
+        try {
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("SELECT * FROM Alerts WHERE player_id=?;");
+            s.setInt(1, player.getID());
+            ResultSet res = s.executeQuery();
+            if (res.last()) {
+                rows = res.getRow();
+                // Move to beginning
+                res.beforeFirst();
+            }
+
+            Alert[] map = new Alert[rows];
+            if(res.next()) {
+                map[res.getRow()] = new Alert(res.getString("message"), null, res.getBoolean("display_prefix"), res.getString("alert_type"), null, new QPlayer(res.getInt("player_id")));
+            }
+            return map;
+        } catch (SQLException e) {
+            Util.printException("Failed to retrieve alerts for player data from database", e);
+            return null;
         }
     }
 }
