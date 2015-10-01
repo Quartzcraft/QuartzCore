@@ -40,7 +40,7 @@ public class CommandTP {
         Player bukkitPlayer = (Player) args.getSender();
         Player target = Bukkit.getPlayer(args0[0]);
         if(target.isOnline()) {
-            target.teleport(target);
+            target.teleport(bukkitPlayer);
             Util.sendMsg(target, QCChat.getPhrase("teleported_you_to_player_X") + bukkitPlayer.getName());
             Util.sendMsg(bukkitPlayer, target.getName() + QCChat.getPhrase("X_has_been_teleported_to_you"));
         } else {
