@@ -25,7 +25,7 @@ public class Alert {
     private boolean read = false;
 
     public Alert(String msg, AlertArgs argss, boolean dP, String type, QServer s) {
-        if(msg.equals("") && type.equals("") && args == null) {
+        if(msg.equals("") && type.equals("") && argss == null) {
             Util.log(Level.WARNING, "Invalid alert arguments!");
         }
         this.message = msg;
