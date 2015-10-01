@@ -380,7 +380,7 @@ public class QPlayer {
      *
      */
     public void alert(String message) {
-        new AlertBuilder().setMessage(message).getAlert().send(this);
+        new AlertBuilder().displayPrefix(true).setMessage(message).getAlert().send(this);
     }
 
     /**
