@@ -41,7 +41,7 @@ public class CommandPinfo {
             Util.sendMsg(args.getPlayer(), QCChat.getPhrase("group") + target.getGroup().getFancyName());
             Util.sendMsg(args.getPlayer(), QCChat.getPhrase("first_join") + target.getFirstJoin() + " ago");
             if(target.isOnline()) {
-                Util.sendMsg(args.getPlayer(), target.getFancyName() + " " + QCChat.getPhrase("is_online_now_on_server") + " " + target.getLastSeenServer()); //TODO Make this change for different servers and to specify activites and location
+                Util.sendMsg(args.getPlayer(), target.getFancyName() + " " + QCChat.getPhrase("is_online_now_on_server") + " " + target.getLastSeenServer()); //TODO Make this change for different servers and to specify activities and location
             } else {
                 Util.sendMsg(args.getPlayer(), QCChat.getPhrase("last_seen") + target.getLastSeen() + " on server &r" + target.getLastSeenServer());
             }

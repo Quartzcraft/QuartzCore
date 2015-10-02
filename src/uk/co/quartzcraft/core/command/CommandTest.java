@@ -29,6 +29,6 @@ public class CommandTest {
         ActionBar.displayBar((Player) args.getSender(), new FancyMessage("This is a test ActionBar thingy! :D").toJSONString());
         args.getSender().sendMessage("The server name is: " + QuartzCore.getServerName());
 
-        new AlertBuilder().setType("QC").setMessage("This is a test alert! :D").setReceiver(new QPlayer(args.getPlayer())).send();
+        new AlertBuilder().setType("QC").displayPrefix(true).setMessage("This is a test alert! :D").setReceiver(new QPlayer(args.getPlayer())).send();
     }
 }
