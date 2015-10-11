@@ -70,3 +70,6 @@ Permissions:
    QCC.pinfo:
       description: Gives a player permission to perform the pinfo command.
       default: op
+   QCC.alerts:
+      description: Gives a player permission to perform the alerts command.
+      default: op
