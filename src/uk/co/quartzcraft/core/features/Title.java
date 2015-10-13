@@ -45,13 +45,6 @@ public class Title {
     }
 
     public static void sendTabTitle(Player player, String header, String footer) {
-        CraftPlayer craftPlayer = (CraftPlayer) player;
-//        if (craftPlayer.getHandle().playerConnection.networkManager.getVersion() != 47)
-//            return; // If using 1.8, allow method to run
-
-        PlayerConnection connection = craftPlayer.getHandle().playerConnection;
-
-
         if (header == null) header = "";
         header = ChatColor.translateAlternateColorCodes('&', header);
 
@@ -61,9 +54,20 @@ public class Title {
         header = header.replaceAll("%player%", player.getDisplayName());
         footer = footer.replaceAll("%player%", player.getDisplayName());
 
-        IChatBaseComponent header2 = ChatSerializer.a("{'color': 'white', 'text': '" + header + "'}");
-        IChatBaseComponent footer2 = ChatSerializer.a("{'color': 'white', 'text': '" + footer + "'}");
-        connection.sendPacket(new ProtocolInjector.PacketTabHeader(header2, footer2));
+        try {
+            Object tabHeader = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + header + "\"}");
+            Object tabFooter = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + footer + "\"}");
+            Constructor<?> titleConstructor = getNMSClass("PacketPlayOutPlayerListHeaderFooter").getConstructor(getNMSClass("IChatBaseComponent"));
+            Object packet = titleConstructor.newInstance(tabHeader);
+            Field field = packet.getClass().getDeclaredField("b");
+            field.setAccessible(true);
+            field.set(packet, tabFooter);
+            sendPacket(player, packet);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     protected static Class<?> getNMSClass(String name) {
         String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
         try {
