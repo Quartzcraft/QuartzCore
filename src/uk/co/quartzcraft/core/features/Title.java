@@ -12,12 +12,12 @@ public class Title {
     /**
      * Sends a title to the specified player if they are running 1.8
      *
-     * @param player
-     * @param fadeIn
-     * @param stay
-     * @param fadeOut
-     * @param title
-     * @param subtitle
+     * @param player The player the title is to be sent to
+     * @param fadeIn The time in ms taken for the title to fade in
+     * @param stay The time in ms the title should stay on the screen
+     * @param fadeOut The time in ms taken for the title to fade out
+     * @param title The value of the title
+     * @param subtitle The value of the subtitle
      */
     public static void sendTitle(Player player, Integer fadeIn, Integer stay, Integer fadeOut, String title, String subtitle) {
         try {
