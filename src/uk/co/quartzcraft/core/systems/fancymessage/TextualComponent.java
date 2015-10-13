@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gson.stream.JsonWriter;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
-import org.bukkit.craftbukkit.libs.com.google.gson.stream.JsonWriter;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
@@ -15,6 +15,7 @@ import com.google.common.collect.ImmutableMap;
  * Represents a textual component of a message part.
  * This can be used to not only represent string literals in a JSON message,
  * but also to represent localized strings and other text values.
+ * <p>Different instances of this class can be created with static constructor methods.</p>
  */
 public abstract class TextualComponent implements Cloneable {
 
@@ -67,6 +68,10 @@ public abstract class TextualComponent implements Cloneable {
 
     static boolean isTextKey(String key){
         return key.equals("translate") || key.equals("text") || key.equals("score") || key.equals("selector");
+    }
+
+    static boolean isTranslatableText(TextualComponent component){
+        return component instanceof ComplexTextTypeComponent && ((ComplexTextTypeComponent)component).getKey().equals("translate");
     }
 
     /**
