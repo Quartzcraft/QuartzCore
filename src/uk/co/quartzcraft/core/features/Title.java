@@ -20,28 +20,29 @@ public class Title {
      * @param subtitle
      */
     public static void sendTitle(Player player, Integer fadeIn, Integer stay, Integer fadeOut, String title, String subtitle) {
-        CraftPlayer craftPlayer = (CraftPlayer) player;
-//        if (craftPlayer.getHandle().playerConnection.networkManager.getVersion() != 47)
-//            return; // If using 1.8, allow method to run
+        try {
+            if (title != null) {
+                title = ChatColor.translateAlternateColorCodes('&', title);
+                title = title.replaceAll("%player%", player.getDisplayName());
+                Object enumTitle = getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0].getField("TITLE").get(null);
+                Object chatTitle = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + title + "\"}");
+                Constructor<?> titleConstructor = getNMSClass("PacketPlayOutTitle").getConstructor(getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0], getNMSClass("IChatBaseComponent"), int.class, int.class, int.class);
+                Object titlePacket = titleConstructor.newInstance(enumTitle, chatTitle, fadeIn, stay, fadeOut);
+                sendPacket(player, titlePacket);
+            }
 
-        if (title == null) title = "";
-        title = ChatColor.translateAlternateColorCodes('&', title);
-
-        if (subtitle == null) subtitle = "";
-        subtitle = ChatColor.translateAlternateColorCodes('&', subtitle);
-
-        IChatBaseComponent title2;
-        IChatBaseComponent subtitle2;
-        IChatBaseComponent serializedTitle = ChatSerializer.a(title);
-        IChatBaseComponent serializedSubTitle = ChatSerializer.a(subtitle);
-        title2 = serializedTitle;
-        subtitle2 = serializedSubTitle;
-
-        craftPlayer.getHandle().playerConnection.sendPacket(new ProtocolInjector.PacketTitle(ProtocolInjector.PacketTitle.Action.TIMES, fadeIn, stay, fadeOut));
-        if (title != null)
-            craftPlayer.getHandle().playerConnection.sendPacket(new ProtocolInjector.PacketTitle(ProtocolInjector.PacketTitle.Action.TITLE, title2));
-        if (subtitle != null)
-            craftPlayer.getHandle().playerConnection.sendPacket(new ProtocolInjector.PacketTitle(ProtocolInjector.PacketTitle.Action.SUBTITLE, subtitle2));
+            if (subtitle != null) {
+                subtitle = ChatColor.translateAlternateColorCodes('&', subtitle);
+                subtitle = subtitle.replaceAll("%player%", player.getDisplayName());
+                Object enumSubtitle = getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0].getField("SUBTITLE").get(null);
+                Object chatSubtitle = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + subtitle + "\"}");
+                Constructor<?> subtitleConstructor = getNMSClass("PacketPlayOutTitle").getConstructor(getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0], getNMSClass("IChatBaseComponent"), int.class, int.class, int.class);
+                Object subtitlePacket = subtitleConstructor.newInstance(enumSubtitle, chatSubtitle, fadeIn, stay, fadeOut);
+                sendPacket(player, subtitlePacket);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void sendTabTitle(Player player, String header, String footer) {
