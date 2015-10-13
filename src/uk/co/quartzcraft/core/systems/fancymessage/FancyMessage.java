@@ -5,6 +5,7 @@ import java.io.StringWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +14,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
+import static uk.co.quartzcraft.core.systems.fancymessage.TextualComponent.rawText;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonWriter;
 import uk.co.quartzcraft.core.util.ArrayWrapper;
 import uk.co.quartzcraft.core.util.Reflection;
 import org.bukkit.Achievement;
@@ -25,11 +32,6 @@ import org.bukkit.Statistic.Type;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
-import org.bukkit.craftbukkit.libs.com.google.gson.JsonArray;
-import org.bukkit.craftbukkit.libs.com.google.gson.JsonElement;
-import org.bukkit.craftbukkit.libs.com.google.gson.JsonObject;
-import org.bukkit.craftbukkit.libs.com.google.gson.JsonParser;
-import org.bukkit.craftbukkit.libs.com.google.gson.stream.JsonWriter;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -40,7 +42,7 @@ import org.bukkit.inventory.ItemStack;
  * <p>
  * This class follows the builder pattern, allowing for method chaining.
  * It is set up such that invocations of property-setting methods will affect the current editing component,
- * and a call to {@link #then()} or {@link #then (Object)} will append a new editing component to the end of the message,
+ * and a call to {@link #then()} or then(Object) will append a new editing component to the end of the message,
  * optionally initializing it with text. Further property-setting method calls will affect that editing component.
  * </p>
  */
@@ -73,7 +75,7 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
      * @param firstPartText The existing text in the message.
      */
     public FancyMessage(final String firstPartText) {
-        this(TextualComponent.rawText(firstPartText));
+        this(rawText(firstPartText));
     }
 
     public FancyMessage(final TextualComponent firstPartText) {
@@ -105,23 +107,21 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
      * Sets the text of the current editing component to a value.
      * @param text The new text of the current editing component.
      * @return This builder instance.
-     * @exception IllegalStateException If the text for the current editing component has already been set.
      */
     public FancyMessage text(String text) {
         MessagePart latest = latest();
-        if (latest.hasText()) {
-            throw new IllegalStateException("text for this message part is already set");
-        }
-        latest.text = TextualComponent.rawText(text);
+        latest.text = rawText(text);
         dirty = true;
         return this;
     }
 
+    /**
+     * Sets the text of the current editing component to a value.
+     * @param text The new text of the current editing component.
+     * @return This builder instance.
+     */
     public FancyMessage text(TextualComponent text) {
         MessagePart latest = latest();
-        if (latest.hasText()) {
-            throw new IllegalStateException("text for this message part is already set");
-        }
         latest.text = text;
         dirty = true;
         return this;
@@ -131,7 +131,7 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
      * Sets the color of the current editing component to a value.
      * @param color The new color of the current editing component.
      * @return This builder instance.
-     * @exception IllegalArgumentException If the specified enumeration value does not represent a color.
+     * @exception IllegalArgumentException If the specified {@code ChatColor} enumeration value is not a color (but a format value).
      */
     public FancyMessage color(final ChatColor color) {
         if (!color.isColor()) {
@@ -187,6 +187,18 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
      */
     public FancyMessage suggest(final String command) {
         onClick("suggest_command", command);
+        return this;
+    }
+
+    /**
+     * Set the behavior of the current editing component to instruct the client to append the chat input box content with the specified string when the currently edited part of the {@code FancyMessage} is SHIFT-CLICKED.
+     * The client will not immediately send the command to the server to be executed unless the client player submits the command/chat message, usually with the enter key.
+     * @param command The text to append to the chat bar of the client.
+     * @return This builder instance.
+     */
+    public FancyMessage insert(final String command) {
+        latest().insertionData = command;
+        dirty = true;
         return this;
     }
 
@@ -350,6 +362,7 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
         }
     }
 
+
     /**
      * Set the behavior of the current editing component to display raw text when the client hovers over the text.
      * <p>Tooltips do not inherit display characteristics, such as color and styles, from the message component on which they are applied.</p>
@@ -436,7 +449,7 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
                     }
                 }
                 if(i != lines.length - 1){
-                    result.messageParts.add(new MessagePart(TextualComponent.rawText("\n")));
+                    result.messageParts.add(new MessagePart(rawText("\n")));
                 }
             } catch (CloneNotSupportedException e) {
                 Bukkit.getLogger().log(Level.WARNING, "Failed to clone object", e);
@@ -457,13 +470,67 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
     }
 
     /**
+     * If the text is a translatable key, and it has replaceable values, this function can be used to set the replacements that will be used in the message.
+     * @param replacements The replacements, in order, that will be used in the language-specific message.
+     * @return This builder instance.
+     */
+    public FancyMessage translationReplacements(final String... replacements){
+        for(String str : replacements){
+            latest().translationReplacements.add(new JsonString(str));
+        }
+        dirty = true;
+
+        return this;
+    }
+	/*
+	
+	/**
+	 * If the text is a translatable key, and it has replaceable values, this function can be used to set the replacements that will be used in the message.
+	 * @param replacements The replacements, in order, that will be used in the language-specific message.
+	 * @return This builder instance.
+	 */   /* ------------
+	public FancyMessage translationReplacements(final Iterable<? extends CharSequence> replacements){
+		for(CharSequence str : replacements){
+			latest().translationReplacements.add(new JsonString(str));
+		}
+		
+		return this;
+	}
+	
+	*/
+
+    /**
+     * If the text is a translatable key, and it has replaceable values, this function can be used to set the replacements that will be used in the message.
+     * @param replacements The replacements, in order, that will be used in the language-specific message.
+     * @return This builder instance.
+     */
+    public FancyMessage translationReplacements(final FancyMessage... replacements){
+        for(FancyMessage str : replacements){
+            latest().translationReplacements.add(str);
+        }
+
+        dirty = true;
+
+        return this;
+    }
+
+    /**
+     * If the text is a translatable key, and it has replaceable values, this function can be used to set the replacements that will be used in the message.
+     * @param replacements The replacements, in order, that will be used in the language-specific message.
+     * @return This builder instance.
+     */
+    public FancyMessage translationReplacements(final Iterable<FancyMessage> replacements){
+        return translationReplacements(ArrayWrapper.toArray(replacements, FancyMessage.class));
+    }
+
+    /**
      * Terminate construction of the current editing component, and begin construction of a new message component.
      * After a successful call to this method, all setter methods will refer to a new message component, created as a result of the call to this method.
      * @param text The text which will populate the new message component.
      * @return This builder instance.
      */
     public FancyMessage then(final String text) {
-        return then(TextualComponent.rawText(text));
+        return then(rawText(text));
     }
 
     /**
@@ -495,6 +562,7 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
         return this;
     }
 
+    @Override
     public void writeJson(JsonWriter writer) throws IOException{
         if (messageParts.size() == 1) {
             latest().writeJson(writer);
@@ -555,20 +623,42 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
             Bukkit.getLogger().log(Level.WARNING, "Underlying class is abstract.", e);
         } catch (InvocationTargetException e) {
             Bukkit.getLogger().log(Level.WARNING, "A error has occured durring invoking of method.", e);
+        } catch (NoSuchMethodException e) {
+            Bukkit.getLogger().log(Level.WARNING, "Could not find method.", e);
+        } catch (ClassNotFoundException e) {
+            Bukkit.getLogger().log(Level.WARNING, "Could not find class.", e);
         }
     }
 
     // The ChatSerializer's instance of Gson
-    private static net.minecraft.util.com.google.gson.Gson nmsChatSerializerGsonInstance;
+    private static Object nmsChatSerializerGsonInstance;
+    private static Method fromJsonMethod;
 
-    private Object createChatPacket(String json) throws IllegalArgumentException, IllegalAccessException, InstantiationException, InvocationTargetException{
+    private Object createChatPacket(String json) throws IllegalArgumentException, IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException, ClassNotFoundException {
         if(nmsChatSerializerGsonInstance == null){
             // Find the field and its value, completely bypassing obfuscation
-            for(Field declaredField : Reflection.getNMSClass("ChatSerializer").getDeclaredFields()){
-                if(Modifier.isFinal(declaredField.getModifiers()) && Modifier.isStatic(declaredField.getModifiers()) && declaredField.getType() == net.minecraft.util.com.google.gson.Gson.class){
+            Class<?> chatSerializerClazz;
+
+            String version = Reflection.getVersion();
+            double majorVersion = Double.parseDouble(version.replace('_', '.').substring(1, 4));
+            int lesserVersion = Integer.parseInt(version.substring(6, 7));
+
+            if (majorVersion < 1.8 || (majorVersion == 1.8 && lesserVersion == 1)) {
+                chatSerializerClazz = Reflection.getNMSClass("ChatSerializer");
+            } else {
+                chatSerializerClazz = Reflection.getNMSClass("IChatBaseComponent$ChatSerializer");
+            }
+
+            if (chatSerializerClazz == null) {
+                throw new ClassNotFoundException("Can't find the ChatSerializer class");
+            }
+
+            for (Field declaredField : chatSerializerClazz.getDeclaredFields()) {
+                if (Modifier.isFinal(declaredField.getModifiers()) && Modifier.isStatic(declaredField.getModifiers()) && declaredField.getType().getName().endsWith("Gson")) {
                     // We've found our field
                     declaredField.setAccessible(true);
-                    nmsChatSerializerGsonInstance = (net.minecraft.util.com.google.gson.Gson)declaredField.get(null);
+                    nmsChatSerializerGsonInstance = declaredField.get(null);
+                    fromJsonMethod = nmsChatSerializerGsonInstance.getClass().getMethod("fromJson", String.class, Class.class);
                     break;
                 }
             }
@@ -576,7 +666,7 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
 
         // Since the method is so simple, and all the obfuscated methods have the same name, it's easier to reimplement 'IChatBaseComponent a(String)' than to reflectively call it
         // Of course, the implementation may change, but fuzzy matches might break with signature changes
-        Object serializedChatComponent = nmsChatSerializerGsonInstance.fromJson(json, Reflection.getNMSClass("IChatBaseComponent"));
+        Object serializedChatComponent = fromJsonMethod.invoke(nmsChatSerializerGsonInstance, json, Reflection.getNMSClass("IChatBaseComponent"));
 
         return nmsPacketPlayOutChatConstructor.newInstance(serializedChatComponent);
     }
@@ -733,6 +823,18 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
                         // The only composite type we currently store is another FancyMessage
                         // Therefore, recursion time!
                         component.hoverActionData = deserialize(object.get("value").toString() /* This should properly serialize the JSON object as a JSON string */);
+                    }
+                }else if(entry.getKey().equals("insertion")){
+                    component.insertionData = entry.getValue().getAsString();
+                }else if(entry.getKey().equals("with")){
+                    for(JsonElement object : entry.getValue().getAsJsonArray()){
+                        if(object.isJsonPrimitive()){
+                            component.translationReplacements.add(new JsonString(object.getAsString()));
+                        }else{
+                            // Only composite type stored in this array is - again - FancyMessages
+                            // Recurse within this function to parse this as a translation replacement
+                            component.translationReplacements.add(deserialize(object.toString()));
+                        }
                     }
                 }
             }
