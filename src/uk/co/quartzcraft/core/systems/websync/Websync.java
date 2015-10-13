@@ -1,18 +1,11 @@
 package uk.co.quartzcraft.core.systems.websync;
 
-import net.minecraft.util.io.netty.handler.codec.http.HttpMethod;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.exception.WebsyncException;
 import uk.co.quartzcraft.core.systems.config.QCConfig;
 import uk.co.quartzcraft.core.util.Util;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 
 public class Websync {
     public static String url;

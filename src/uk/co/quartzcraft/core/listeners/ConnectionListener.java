@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerJoinEvent;
-import uk.co.quartzcraft.core.features.ActionBar;
 import uk.co.quartzcraft.core.features.FancyMessages;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.data.QPlayer;
@@ -18,7 +17,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 import uk.co.quartzcraft.core.systems.perms.Permissions;
 import uk.co.quartzcraft.core.util.Util;
 

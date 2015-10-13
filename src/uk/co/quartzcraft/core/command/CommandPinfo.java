@@ -11,7 +11,6 @@ import uk.co.quartzcraft.core.event.PInfoExtraFieldsEvent;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.util.Util;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class CommandPinfo {

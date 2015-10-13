@@ -1,6 +1,5 @@
 package uk.co.quartzcraft.core.features;
 
-import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.systems.notifications.AlertArgs;
 import uk.co.quartzcraft.core.systems.notifications.AlertType;
 

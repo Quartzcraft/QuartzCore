@@ -2,8 +2,6 @@ package uk.co.quartzcraft.core.features;
 
 import static org.bukkit.ChatColor.*;
 
-import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import uk.co.quartzcraft.core.data.QPlayer;
 import uk.co.quartzcraft.core.systems.chat.QCChat;

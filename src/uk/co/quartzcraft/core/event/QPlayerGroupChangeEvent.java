@@ -1,6 +1,5 @@
 package uk.co.quartzcraft.core.event;
 
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import uk.co.quartzcraft.core.data.QPlayer;

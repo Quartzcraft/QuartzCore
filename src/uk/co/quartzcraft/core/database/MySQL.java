@@ -10,8 +10,6 @@ import java.util.logging.Level;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
-import uk.co.quartzcraft.core.database.*;
-
 /**
  * Connects to and uses a MySQL database
  * 

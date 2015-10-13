@@ -1,10 +1,8 @@
 package uk.co.quartzcraft.core.systems.log;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.data.QPlayer;
-import uk.co.quartzcraft.core.event.QPlayerCreationEvent;
 import uk.co.quartzcraft.core.util.Util;
 
 import java.sql.SQLException;

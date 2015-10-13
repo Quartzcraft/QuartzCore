@@ -7,13 +7,7 @@ import uk.co.quartzcraft.core.command.framework.CommandArgs;
 import uk.co.quartzcraft.core.command.framework.QCommand;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.data.QPlayer;
-import uk.co.quartzcraft.core.features.ActionBar;
-import uk.co.quartzcraft.core.features.FancyMessages;
-import uk.co.quartzcraft.core.systems.fancymessage.FancyMessage;
 import uk.co.quartzcraft.core.systems.notifications.Alert;
-
-import java.util.HashMap;
-import java.util.Iterator;
 
 public class CommandAlerts {
 

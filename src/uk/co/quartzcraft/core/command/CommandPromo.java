@@ -2,8 +2,10 @@ package uk.co.quartzcraft.core.command;
 
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import uk.co.quartzcraft.core.command.framework.*;
+import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.features.promos.PromoMenus;
+import uk.co.quartzcraft.core.command.framework.CommandArgs;
+import uk.co.quartzcraft.core.command.framework.QCommand;
 
 public class CommandPromo {
 

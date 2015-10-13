@@ -1,6 +1,5 @@
 package uk.co.quartzcraft.core.systems.chat;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 public class ChatFormat {

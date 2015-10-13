@@ -1,14 +1,11 @@
 package uk.co.quartzcraft.core.systems.perms;
 
-import org.bukkit.ChatColor;
 import uk.co.quartzcraft.core.data.QPlayer;
 import uk.co.quartzcraft.core.util.Util;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 import uk.co.quartzcraft.core.QuartzCore;
 
-import java.sql.ResultSet;
 import java.util.*;
 
 public class Permissions {
