@@ -1,8 +1,8 @@
 package uk.co.quartzcraft.core.systems.fancymessage;
 
-import java.io.IOException;
+import com.google.gson.stream.JsonWriter;
 
-import org.bukkit.craftbukkit.libs.com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 /**
  * Represents an object that can be serialized to a JSON writer instance.
