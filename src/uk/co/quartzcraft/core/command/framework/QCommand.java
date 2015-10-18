@@ -62,4 +62,11 @@ public @interface QCommand {
 	 * @return
 	 */
 	public String usage() default "";
+
+	/**
+	 * Whether the sender must be a player or not
+	 *
+	 * @return
+	 */
+	public boolean requirePlayer() default true;
 }
