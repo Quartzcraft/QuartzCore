@@ -15,12 +15,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.entity.Player;
 import org.bukkit.help.GenericCommandHelpTopic;
 import org.bukkit.help.HelpTopic;
 import org.bukkit.help.HelpTopicComparator;
 import org.bukkit.help.IndexHelpTopic;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.SimplePluginManager;
+import uk.co.quartzcraft.core.systems.chat.QCChat;
 
 /**
  * Command Framework - CommandFramework <br>
@@ -85,6 +87,10 @@ public class QCommandFramework {
 				Entry<Method, Object> entry = commandMap.get(cmdLabel);
 				QCommand command = entry.getKey().getAnnotation(QCommand.class);
 				if (!sender.hasPermission(command.permission())) {
+					if(command.requirePlayer() && !(sender instanceof Player)) {
+						sender.sendMessage(QCChat.getPhrase("player_use_only"));
+						return true;
+					}
 					sender.sendMessage(command.noPerm());
 					return true;
 				}
