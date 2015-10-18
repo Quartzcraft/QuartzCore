@@ -16,7 +16,7 @@ public class CommandQCReload {
         framework.registerCommands(this);
     }
 
-    @QCommand(name = "qcreload", aliases = { "qcr" }, permission = "QCC.reload", description = "Reloads the plugin", usage = "Use /qcreload")
+    @QCommand(name = "qcreload", aliases = { "qcr" }, permission = "QCC.reload", description = "Reloads the plugin", usage = "Use /qcreload", requirePlayer = false)
     public void qcreload(CommandArgs args) {
         CommandSender sender = args.getSender();
         plugin.getPluginLoader().disablePlugin(plugin);

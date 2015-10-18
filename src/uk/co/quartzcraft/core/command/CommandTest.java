@@ -22,7 +22,7 @@ public class CommandTest {
         framework.registerCommands(this);
     }
 
-    @QCommand(name = "test", aliases = { "testing" }, permission = "QCC.test", description = "This is a test command", usage = "This is how you use it")
+    @QCommand(name = "test", aliases = { "testing" }, permission = "QCC.test", description = "This is a test command", usage = "This is how you use it", requirePlayer = false)
     public void test(CommandArgs args) {
         args.getSender().sendMessage("This is a test command");
         FancyMessages.gui(args.getPlayer(), 5);
