@@ -193,8 +193,8 @@ public class QuartzCore extends JavaPlugin {
         commandFramework.registerCommands(new CommandPinfo(this));
         commandFramework.registerCommands(new CommandTP(this));
         commandFramework.registerCommands(new CommandAlerts(this));
+        commandFramework.registerCommands(new CommandM(this));
 	   	getCommand("quartz").setExecutor(new CommandQuartz());
-	   	getCommand("m").setExecutor(new CommandM());
 	   	getCommand("register").setExecutor(new CommandRegister());
 	  		
 	   	//Startup notice
