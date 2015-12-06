@@ -34,7 +34,7 @@ public class QuartzCore extends JavaPlugin {
     public static Plugin plugin;
     public static String servername;
     public static QServer server;
-	public static final Logger log = Logger.getLogger("Minecraft");
+	public static final Logger logger = Logger.getLogger("Minecraft");
 	
 	public static Connection DBCore = null;
     public static Connection DBLog = null;
