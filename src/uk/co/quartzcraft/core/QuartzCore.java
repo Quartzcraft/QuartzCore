@@ -201,8 +201,8 @@ public class QuartzCore extends JavaPlugin {
 	   	getCommand("register").setExecutor(new CommandRegister());
 	  		
 	   	//Startup notice
-	  	log.info("[QC]QuartzCore Version " + version);
 	  	Util.log("The QuartzCore Plugin has been enabled!");
+	  	Util.log("QuartzCore Version " + getVersion());
 	}
 
     @Override
@@ -210,7 +210,7 @@ public class QuartzCore extends JavaPlugin {
         return commandFramework.handleCommand(sender, label, command, args);
     }
 
-	public static String displayReleaseVersion() {
+	public static String getVersion() {
 		return version;
 	}
 
