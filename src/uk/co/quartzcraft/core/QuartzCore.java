@@ -218,4 +218,10 @@ public class QuartzCore extends JavaPlugin {
     public static QServer getQServer() {
         return server;
     }
+
+    @Override
+    public void reloadConfig() {
+        //loadConfig();
+    }
+
 }
