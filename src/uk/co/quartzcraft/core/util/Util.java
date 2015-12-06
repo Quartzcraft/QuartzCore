@@ -14,22 +14,26 @@ import java.util.logging.Level;
 public class Util {
 
     public static void printException(String message, Exception e) {
-        QuartzCore.log.log(Level.WARNING, "[QC] " + message);
+        QuartzCore.logger.log(Level.WARNING, "[QC] " + message);
         e.printStackTrace();
     }
 
     public static void printException(Level level, String message, Exception e) {
-        QuartzCore.log.log(level, "[QC] " + message);
+        QuartzCore.logger.log(level, "[QC] " + message);
         e.printStackTrace();
     }
 
     public static void printException(Exception e) {
-        QuartzCore.log.log(Level.WARNING, "[QC]An exception occurred!");
+        QuartzCore.logger.log(Level.WARNING, "[QC]An exception occurred!");
         e.printStackTrace();
     }
 
     public static void log(Level level, String message) {
-        QuartzCore.log.log(level, message);
+        QuartzCore.logger.log(level, "[QC]" + message);
+    }
+
+    public static void log(String message) {
+        QuartzCore.logger.log(Level.INFO, "[QC]" + message);
     }
 
     public static String colour(String s) {
