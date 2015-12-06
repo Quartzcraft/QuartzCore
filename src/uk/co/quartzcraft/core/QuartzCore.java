@@ -23,6 +23,7 @@ import uk.co.quartzcraft.core.systems.websync.UpdateGroups;
 import uk.co.quartzcraft.core.systems.websync.Websync;
 import uk.co.quartzcraft.core.listeners.ChatListener;
 import uk.co.quartzcraft.core.listeners.ConnectionListener;
+import uk.co.quartzcraft.core.util.Util;
 
 /**
  * Core file for QuartzCore plugin.
@@ -47,35 +48,37 @@ public class QuartzCore extends JavaPlugin {
 	@Override
 	public void onDisable() {
 
+
         //Close database
-        log.info("[QC]Closing database connections");
+        Util.log("Closing database connections");
         MySQLcore.closeConnection();
         MySQLlog.closeConnection();
         try {
             DBCore.close();
             DBLog.close();
-            log.info("[QC]Successfully closed database connections");
+            Util.log("Successfully closed database connections");
         } catch(SQLException e) {
-            log.log(Level.SEVERE,"[QC]Failed to close database connections!");
+            Util.log(Level.SEVERE, "Failed to close database connections!");
         }
 
     	//Shutdown notice
-		log.info("[QC]The QuartzCore Plugin has been disabled!");
+		Util.log("The QuartzCore Plugin has been disabled!");
 	}
+
 	@Override
 	public void onEnable() {
 		
-		log.info("[QC][STARTUP LOGGER]Console logger discovered");
+		Util.log("[STARTUP LOGGER]Console logger discovered");
 
         servername = this.getConfig().getString("settings.server-name");
         plugin = this;
         version = plugin.getDescription().getVersion();
 
-        log.info("[QC]Creating QServer instance");
+        Util.log("Creating QServer instance");
         server = new QServer();
 		
 		//Config files
-		log.info("[QC]Running plugin configuration");
+		Util.log("Running plugin configuration");
 		this.saveDefaultConfig();
 		boolean DBConnect = this.getConfig().getBoolean("settings.database-connect");
 		
@@ -88,34 +91,34 @@ public class QuartzCore extends JavaPlugin {
 			MySQLcore = new MySQL(plugin, SQLCoreHost, "3306", SQLCoreDatabase, SQLCoreUser, SQLCorePassword);
 
             //Logging Database
-            String SQLLogHost = this.getConfig().getString("database.log.host");
-            String SQLLogDatabase = this.getConfig().getString("database.log.database");
-            String SQLLogUser = this.getConfig().getString("database.log.username");
-            String SQLLogPassword = this.getConfig().getString("database.log.password");
+            String SQLLogHost = this.getConfig().getString("database.logger.host");
+            String SQLLogDatabase = this.getConfig().getString("database.logger.database");
+            String SQLLogUser = this.getConfig().getString("database.logger.username");
+            String SQLLogPassword = this.getConfig().getString("database.logger.password");
             MySQLlog = new MySQL(plugin, SQLLogHost, "3306", SQLLogDatabase, SQLLogUser, SQLLogPassword);
 		} else {
-            log.warning("[QC]Database connection set to false! Please fix this in the config.yml file!");
+            Util.log(Level.SEVERE, "Database connection set to false! Please fix this in the config.yml file!");
             this.getServer().shutdown();
         }
 
         //Websync
-        log.info("[QC][STARTUP]Initializing Websync");
+        Util.log("[STARTUP]Initializing Websync");
         if(this.getConfig().getBoolean("settings.websync.active")) {
             Websync.init();
 
-            log.info("[QC][STARTUP]Performing websync operations");
+            Util.log("[STARTUP]Performing websync operations");
             UpdateGroups.update();
         }
 
         //Database
         if(DBConnect) {
-            log.info("[QC][STARTUP]Connecting to Database");
+            Util.log("[STARTUP]Connecting to Database");
             DBCore = MySQLcore.openConnection();
             DBLog = MySQLlog.openConnection();
         }
 
 		//Phrases
-		log.info("[QC][STARTUP]Creating Phrases");
+		Util.log("[STARTUP]Creating Phrases");
 		QCChat.addPhrase("test_phrase", "&3This is a test of the phrases system.");
 
         QCChat.addPhrase("official_prefix", "&8[&6QC&8]");
@@ -170,11 +173,11 @@ public class QuartzCore extends JavaPlugin {
         QCChat.addPhrase("chat_contained_bad_words_blocked", "&cThe chat message you attempted to send contained inappropriate content and was blocked!");
 
         //Alert Types
-        log.info("[QC][STARTUP] Registering alert types");
+        Util.log("[STARTUP] Registering alert types");
         AlertTypeHandler.registerAlertTypes(new QCAlertTypes());
 
 		//Listeners
-		log.info("[QC][STARTUP]Registering listeners...");
+		Util.log("[STARTUP]Registering listeners...");
 		new ConnectionListener(this);
 		new ChatListener(this);
         new UnbreakableItems(this);
@@ -182,7 +185,7 @@ public class QuartzCore extends JavaPlugin {
         new FinalItems(this);
 
 	    //Commands
-		log.info("[QC][STARTUP]Registering commands...");
+		Util.log("[STARTUP]Registering commands...");
         commandFramework = new QCommandFramework(this);
         commandFramework.registerCommands(new CommandTest(this));
         commandFramework.registerCommands(new CommandWorld(this));
@@ -198,8 +201,8 @@ public class QuartzCore extends JavaPlugin {
 	   	getCommand("register").setExecutor(new CommandRegister());
 	  		
 	   	//Startup notice
-	  	log.info("[QC]The QuartzCore Plugin has been enabled!");
 	  	log.info("[QC]QuartzCore Version " + version);
+	  	Util.log("The QuartzCore Plugin has been enabled!");
 	}
 
     @Override
