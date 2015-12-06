@@ -11,12 +11,6 @@ commands:
       permission: QCC.quartz
       default: op
       permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
-   m:
-      description: Switches player gamemode between 0 and 1.
-      usage: /m
-      permission: QCC.admin.m
-      default: op
-      permission-message: Unknown Command. Visit the QuartzCraft Wiki for help.
    register:
       description: Begins the website registration process.
       usage: /register
