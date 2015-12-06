@@ -48,7 +48,6 @@ public class QuartzCore extends JavaPlugin {
 	@Override
 	public void onDisable() {
 
-
         //Close database
         Util.log("Closing database connections");
         MySQLcore.closeConnection();
