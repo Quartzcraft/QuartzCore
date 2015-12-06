@@ -21,23 +21,10 @@ public class ChatListener implements Listener {
 	public void onChatEvent(AsyncPlayerChatEvent chat) {
 		String msg = chat.getMessage();
 
-        //TODO log message
-
         if(ChatFilter.filterChatFind(msg)) {
             Util.sendMsg(chat.getPlayer(), QCChat.getPhrase("chat_contained_bad_words_blocked"));
             chat.setCancelled(true);
         }
 		
 	}
-
-    @EventHandler(priority = EventPriority.MONITOR)
-    public void onChatEventLog(AsyncPlayerChatEvent chat) {
-        String msg = chat.getMessage();
-
-        if(!chat.isCancelled()) {
-            //ChatLogger.log(chat.getPlayer(), msg);
-        }
-        //TODO logging
-
-    }
 }
