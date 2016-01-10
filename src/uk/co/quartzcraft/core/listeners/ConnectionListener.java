@@ -78,15 +78,16 @@ public class ConnectionListener implements Listener {
             }
         }
 
+        if(!qplayer.setOnline(true)) {
+            player.kickPlayer(QCChat.getPhrase("database_error_try_again"));
+        }
+
         /*
         if(QuartzCore.getQServer().createPlayerSession(player)) {
             Util.log("Player, " + player.getName() + " successfully joined!");
         }
         */
 
-//        if(!qplayer.setOnline(true)) {
-//            player.kickPlayer(QCChat.getPhrase("database_error_try_again"));
-//        }
         Util.log("Player, " + player.getName() + " successfully joined!");
 	}
 	
