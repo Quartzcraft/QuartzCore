@@ -40,9 +40,9 @@ public class ConnectionListener implements Listener {
             plugin.logger.info("[QC] Player, " + player.getName() + " successfully joined!");
         } else {
             if(QPlayer.createPlayer(player)) {
-                plugin.logger.info("[QC] Player, " + player.getName() + " was created with UUID of " + SUUID);
+                Util.log("QPlayer, " + player.getName() + " was created with UUID of " + SUUID);
             } else {
-                plugin.logger.info("[QC] Could not create player!");
+                Util.log("Could not create player!");
                 player.kickPlayer(QCChat.getPhrase("database_error_contact") + "\n" + QCChat.getPhrase("could_not_create_player"));
             }
         }
