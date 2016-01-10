@@ -35,15 +35,6 @@ public class ConnectionListener implements Listener {
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
 
-        if(login.getResult() == PlayerLoginEvent.Result.KICK_WHITELIST){
-            String message = QCChat.getPhrase("Kick_Whitelist");
-            login.setKickMessage(message);
-
-        } else if(login.getResult() == PlayerLoginEvent.Result.KICK_FULL){
-            String message = QCChat.getPhrase("Server_Full");
-            login.setKickMessage(message);
-
-        }
 
         if(QPlayer.exists(player.getUniqueId())) {
             plugin.logger.info("[QC] Player, " + player.getName() + " successfully joined!");
@@ -83,6 +74,19 @@ public class ConnectionListener implements Listener {
 			
 			join.setJoinMessage(message);
 		}
+        if(login.getResult() == PlayerLoginEvent.Result.KICK_WHITELIST){
+            String message = QCChat.getPhrase("Kick_Whitelist");
+            login.setKickMessage(message);
+        }
+
+        if(login.getResult() == PlayerLoginEvent.Result.KICK_FULL){
+            if(!(Bukkit.getOnlinePlayers().size() > QuartzCore.getQServer().getMaxPlayers()) && player.hasPermission("QCC.bypassmax")) {
+                login.setResult(PlayerLoginEvent.Result.ALLOWED);
+            } else {
+                String message = QCChat.getPhrase("Server_Full");
+                login.setKickMessage(message);
+            }
+        }
 
         QPlayerJoinEvent loginEvent = new QPlayerJoinEvent(qplayer);
         Bukkit.getServer().getPluginManager().callEvent(loginEvent);
