@@ -67,3 +67,6 @@ Permissions:
    QCC.alerts:
       description: Gives a player permission to perform the alerts command.
       default: op
+   QCC.bypassmax:
+      description: Gives a player permission to perform the alerts command.
+      default: op
