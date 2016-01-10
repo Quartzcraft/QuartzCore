@@ -64,13 +64,6 @@ public class ConnectionListener implements Listener {
             player.setPlayerListName(Util.removeExtraChars(player.getDisplayName(), 16));
         }
 
-        if(plugin.getConfig().getBoolean("settings.join-broadcast")) {
-            String lastSeen = qplayer.getLastSeen();
-			//Long lastSeen = player.getLastPlayed();
-			String message = QCChat.getPhrase("official_prefix") + player.getDisplayName() + ChatColor.YELLOW + " joined, last seen " + lastSeen + " ago";
-			
-			join.setJoinMessage(message);
-		}
         if(login.getResult() == PlayerLoginEvent.Result.KICK_WHITELIST){
             String message = QCChat.getPhrase("Kick_Whitelist");
             login.setKickMessage(message);
@@ -102,6 +95,16 @@ public class ConnectionListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoinHigh(PlayerJoinEvent join) {
 		Player player = join.getPlayer();
+        QPlayer qplayer = new QPlayer(player);
+
+        if(plugin.getConfig().getBoolean("settings.join-broadcast")) {
+            String lastSeen = qplayer.getLastSeen();
+            //Long lastSeen = player.getLastPlayed();
+            String message = QCChat.getPhrase("official_prefix") + player.getDisplayName() + ChatColor.YELLOW + " joined, last seen " + lastSeen + " ago";
+
+            join.setJoinMessage(message);
+        }
+
 
         player.sendMessage(FancyMessages.welcomeBack(player));
         player.sendMessage(FancyMessages.checkWebsite(player));
