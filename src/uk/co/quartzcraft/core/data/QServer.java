@@ -22,17 +22,22 @@ public class QServer {
 
     }
 
-    public void createPlayerSession(Player player) {
+    public boolean createPlayerSession(Player player) {
         QPlayer qPlayer = new QPlayer(player);
 
         if(qPlayer.isOnline()) {
             player.kickPlayer(QCChat.getPhrase("you_can_only_be_connected_to_one_server_at_a_time"));
+            return false;
         }
 
         playerMap.put(qPlayer.getID(), qPlayer);
         playerUUIDMap.put(qPlayer.getUniqueId(), qPlayer.getID());
         playerPlayerMap.put(player, qPlayer.getID());
         playerNameMap.put(player.getName(), qPlayer.getID());
+
+        return true;
+    }
+
     public void updatePlayerSession(QPlayer player) {
         if(playerMap.containsKey(player.getID())) {
             playerMap.remove(player.getID());
