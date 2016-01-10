@@ -34,7 +34,6 @@ public class QuartzCore extends JavaPlugin {
 	public static String version;
 
     public static Plugin plugin;
-    public static String servername;
     public static QServer server;
 	public static final Logger logger = Logger.getLogger("Minecraft");
 	
@@ -70,7 +69,6 @@ public class QuartzCore extends JavaPlugin {
 		
 		Util.log("[STARTUP LOGGER]Console logger discovered");
 
-        servername = this.getConfig().getString("settings.server-name");
         plugin = this;
         version = plugin.getDescription().getVersion();
 
@@ -162,10 +160,6 @@ public class QuartzCore extends JavaPlugin {
 	public static String getVersion() {
 		return version;
 	}
-
-    public static String getServerName() {
-        return servername;
-    }
 
     public static QServer getQServer() {
         return server;
