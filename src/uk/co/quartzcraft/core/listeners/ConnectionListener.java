@@ -43,14 +43,8 @@ public class ConnectionListener implements Listener {
                 player.kickPlayer(QCChat.getPhrase("database_error_contact") + "\n" + QCChat.getPhrase("could_not_create_player"));
             }
         }
-		
-	}
-	
-	@EventHandler(priority = EventPriority.LOWEST)
-	public void onPlayerJoinLow(PlayerJoinEvent join) {
-		Player player = join.getPlayer();
+
         QPlayer qplayer = new QPlayer(player);
-		UUID UUID = player.getUniqueId();
 
         if(!player.getName().equals(qplayer.getName())) {
             qplayer.updateName(player.getName());
