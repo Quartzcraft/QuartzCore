@@ -33,38 +33,54 @@ public class Permissions {
             attachmentPrimary.setPermission("QCC.normal", true);
         }
 
-        //Beta Testers and above
-        if (group >= 5) {
-            attachmentPrimary.setPermission("QCC.premium.beta", true);
-        }
-
         //Premium and above
-        if (group >= 6) {
+        if (group >= 10) {
             attachmentPrimary.setPermission("QCC.premium.basic", true);
         }
 
+        //Beta Testers and above
+        if (group >= 11) {
+            attachmentPrimary.setPermission("QCC.premium.beta", true);
+        }
+
         //Premium Plus and above
-        if (group >= 7) {
+        if (group >= 12) {
             attachmentPrimary.setPermission("QCC.premium.plus", true);
         }
 
         //staff and above
-        if (group >= 90) {
+        if (group >= 50) {
             attachmentPrimary.setPermission("QCC.staff", true);
         }
 
         //builders and above
-        if (group >= 92) {
+        if (group >= 55) {
             attachmentPrimary.setPermission("QCC.staff.builder", true);
         }
 
+        //training moderators and above
+        if(group >= 60) {
+            attachmentPrimary.setPermission("QCC.staff.trainingmod", true);
+        }
+
         //moderators and above
-        if(group >= 95) {
+        if(group >= 61) {
             attachmentPrimary.setPermission("QCC.staff.mod", true);
         }
 
-        //senior moderators and above
-        if (group >= 97) {
+        //specific server moderator groups//
+
+
+
+        //end of specific server moderator groups//
+
+        //global moderators and above
+        if(group >= 80) {
+            attachmentPrimary.setPermission("QCC.staff.globalmod", true);
+        }
+
+        //senior staff and above
+        if (group >= 90) {
             attachmentPrimary.setPermission("QCC.staff.srstaff", true);
         }
 
