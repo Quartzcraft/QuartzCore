@@ -32,8 +32,6 @@ public class ConnectionListener implements Listener {
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerLogin(PlayerLoginEvent login) {
 		Player player = login.getPlayer();
-		//QuartzCore.getQServer().createPlayerSession(player);
-		
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
 
@@ -88,6 +86,11 @@ public class ConnectionListener implements Listener {
 
         QPlayerJoinEvent loginEvent = new QPlayerJoinEvent(qplayer);
         Bukkit.getServer().getPluginManager().callEvent(loginEvent);
+        /*
+        if(QuartzCore.getQServer().createPlayerSession(player)) {
+            Util.log("Player, " + player.getName() + " successfully joined!");
+        }
+        */
 
 //        if(!qplayer.setOnline(true)) {
 //            player.kickPlayer(QCChat.getPhrase("database_error_try_again"));
