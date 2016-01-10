@@ -54,6 +54,8 @@ public class QServer {
         return this.name;
     }
 
+    public int getMaxPlayers() {
+        return this.maxPlayers;
     }
 
     public boolean createPlayerSession(Player player) {
