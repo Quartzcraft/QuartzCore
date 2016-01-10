@@ -576,7 +576,7 @@ public class QPlayer {
         try {
             if(status) {
                 java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET online=1 AND last_server=? WHERE id=?;");
-                s.setString(1, QuartzCore.getServerName());
+                s.setInt(1, QuartzCore.getQServer().getId());
                 s.setInt(2, this.id);
                 if (s.executeUpdate() == 1) {
                     this.online = 1;
@@ -587,7 +587,7 @@ public class QPlayer {
                 }
             } else {
                 java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("UPDATE PlayerData SET online=0 AND last_server=? WHERE id=?;");
-                s.setString(1, QuartzCore.getServerName());
+                s.setInt(1, QuartzCore.getQServer().getId());
                 s.setInt(2, this.id);
                 if (s.executeUpdate() == 1) {
                     this.online = 0;
