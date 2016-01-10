@@ -1,16 +1,24 @@
 package uk.co.quartzcraft.core.data;
 
 import org.bukkit.entity.Player;
+import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
+import uk.co.quartzcraft.core.util.Util;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.logging.Level;
 
 public class QServer {
 
     private int id;
     private String name;
+
+    private int maxPlayers;
 
     private Map<Integer, QPlayer> playerMap = new HashMap<Integer, QPlayer>();
 
@@ -18,7 +26,26 @@ public class QServer {
     private Map<Player, Integer> playerPlayerMap = new HashMap<Player, Integer>();
     private Map<String, Integer> playerNameMap = new HashMap<String, Integer>();
 
-    public QServer() {
+    public QServer(int serverID) {
+        this.id = serverID;
+        try {
+            PreparedStatement s = QuartzCore.DBCore.prepareStatement("SELECT * FROM Servers WHERE id=?;");
+            s.setInt(1, serverID);
+            ResultSet res = s.executeQuery();
+            if(res.next()) {
+                if(res.getInt("id") == serverID) {
+                    this.name = res.getString("server_name");
+                    this.maxPlayers = res.getInt("max_players");
+                } else {
+                    Util.log(Level.SEVERE, "QServer ID not equal");
+                }
+            }
+
+        } catch(SQLException e) {
+            Util.printException("Failed to retrieve QServer from database", e);
+        }
+    }
+
 
     }
 
