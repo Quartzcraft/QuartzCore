@@ -78,8 +78,6 @@ public class ConnectionListener implements Listener {
             }
         }
 
-        QPlayerJoinEvent loginEvent = new QPlayerJoinEvent(qplayer);
-        Bukkit.getServer().getPluginManager().callEvent(loginEvent);
         /*
         if(QuartzCore.getQServer().createPlayerSession(player)) {
             Util.log("Player, " + player.getName() + " successfully joined!");
@@ -105,6 +103,8 @@ public class ConnectionListener implements Listener {
             join.setJoinMessage(message);
         }
 
+        QPlayerJoinEvent joinEvent = new QPlayerJoinEvent(qplayer);
+        Bukkit.getServer().getPluginManager().callEvent(joinEvent);
 
         player.sendMessage(FancyMessages.welcomeBack(player));
         player.sendMessage(FancyMessages.checkWebsite(player));
