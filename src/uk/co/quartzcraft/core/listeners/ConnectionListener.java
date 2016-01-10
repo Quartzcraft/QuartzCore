@@ -35,10 +35,7 @@ public class ConnectionListener implements Listener {
 		UUID UUID = player.getUniqueId();
 		String SUUID = UUID.toString();
 
-
-        if(QPlayer.exists(player.getUniqueId())) {
-            plugin.logger.info("[QC] Player, " + player.getName() + " successfully joined!");
-        } else {
+        if(!QPlayer.exists(player.getUniqueId())) {
             if(QPlayer.createPlayer(player)) {
                 Util.log("QPlayer, " + player.getName() + " was created with UUID of " + SUUID);
             } else {
@@ -99,6 +96,7 @@ public class ConnectionListener implements Listener {
 //        if(!qplayer.setOnline(true)) {
 //            player.kickPlayer(QCChat.getPhrase("database_error_try_again"));
 //        }
+        Util.log("Player, " + player.getName() + " successfully joined!");
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
