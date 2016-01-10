@@ -46,6 +46,9 @@ public class QServer {
         }
     }
 
+    public int getId() {
+        return this.id;
+    }
 
     }
 
