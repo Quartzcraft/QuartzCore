@@ -29,7 +29,7 @@ public class ConnectionListener implements Listener {
         this.plugin = plugin;
     }
 
-	@EventHandler(priority = EventPriority.HIGHEST)
+	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerLogin(PlayerLoginEvent login) {
 		Player player = login.getPlayer();
 		//QuartzCore.getQServer().createPlayerSession(player);
