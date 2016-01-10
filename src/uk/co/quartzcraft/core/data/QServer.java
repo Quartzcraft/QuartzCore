@@ -50,6 +50,10 @@ public class QServer {
         return this.id;
     }
 
+    public String getServerName() {
+        return this.name;
+    }
+
     }
 
     public boolean createPlayerSession(Player player) {
