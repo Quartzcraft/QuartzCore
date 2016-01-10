@@ -33,6 +33,11 @@ public class QServer {
         playerUUIDMap.put(qPlayer.getUniqueId(), qPlayer.getID());
         playerPlayerMap.put(player, qPlayer.getID());
         playerNameMap.put(player.getName(), qPlayer.getID());
+    public void updatePlayerSession(QPlayer player) {
+        if(playerMap.containsKey(player.getID())) {
+            playerMap.remove(player.getID());
+            playerMap.put(player.getID(), player);
+        }
     }
 
     public QPlayer getPlayer(UUID uuid) {
