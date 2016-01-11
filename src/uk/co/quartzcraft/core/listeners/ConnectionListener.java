@@ -106,7 +106,7 @@ public class ConnectionListener implements Listener {
         player.sendMessage(FancyMessages.hasUnreadAlerts(player));
 	}
 	
-	@EventHandler(priority = EventPriority.MONITOR)
+	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerQuit(PlayerQuitEvent quit) {
 		Player player = quit.getPlayer();
 		
@@ -119,9 +119,9 @@ public class ConnectionListener implements Listener {
 
 	}
 
-    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerQuitHigh(PlayerQuitEvent join) {
         Player player = join.getPlayer();
+    @EventHandler(priority = EventPriority.MONITOR)
         QPlayer qplayer = new QPlayer(player);
 
         qplayer.setOnline(false);
