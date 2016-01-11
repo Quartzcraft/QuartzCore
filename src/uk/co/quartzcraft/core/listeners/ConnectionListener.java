@@ -119,9 +119,9 @@ public class ConnectionListener implements Listener {
 
 	}
 
-    public void onPlayerQuitHigh(PlayerQuitEvent join) {
-        Player player = join.getPlayer();
     @EventHandler(priority = EventPriority.MONITOR)
+    public void onPlayerQuitHigh(PlayerQuitEvent quit) {
+        Player player = quit.getPlayer();
         QPlayer qplayer = new QPlayer(player);
 
         qplayer.setOnline(false);
