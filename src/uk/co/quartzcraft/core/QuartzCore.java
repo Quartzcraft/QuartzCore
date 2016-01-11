@@ -18,7 +18,6 @@ import uk.co.quartzcraft.core.features.items.UnbreakableItems;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.systems.notifications.AlertTypeHandler;
 import uk.co.quartzcraft.core.systems.websync.UpdateGroups;
 import uk.co.quartzcraft.core.systems.websync.Websync;
