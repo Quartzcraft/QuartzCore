@@ -124,7 +124,11 @@ public class ConnectionListener implements Listener {
         Player player = quit.getPlayer();
         QPlayer qplayer = new QPlayer(player);
 
-        qplayer.setOnline(false);
+        if(!qplayer.setOnline(false)) {
+            Util.log("Player, " + player.getName() + " was not set offline");
+            return;
+        }
+
+        Util.log("Player, " + player.getName() + " successfully disconnected!");
     }
-	
 }
