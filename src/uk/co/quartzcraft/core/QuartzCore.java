@@ -70,14 +70,17 @@ public class QuartzCore extends JavaPlugin {
 		Util.log("[STARTUP LOGGER]Console logger discovered");
 
         plugin = this;
-        
         version = plugin.getDescription().getVersion();
+       	Util.log("Running plugin configuration");
+       	this.saveDefaultConfig();
         serverid = this.getConfig().getInt("settings.server-id");
 
         Util.log("Creating QServer instance");
         server = new QServer(serverid);
 		
 		//Config files
+		Util.log("Running plugin configuration");
+		
 		boolean DBConnect = this.getConfig().getBoolean("settings.database-connect");
 		
 		if(DBConnect) {
