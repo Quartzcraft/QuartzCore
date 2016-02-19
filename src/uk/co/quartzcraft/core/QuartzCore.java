@@ -71,15 +71,16 @@ public class QuartzCore extends JavaPlugin {
 
         plugin = this;
         version = plugin.getDescription().getVersion();
-       	Util.log("Running plugin configuration");
+
+        //Config files
+        Util.log("Running plugin configuration");
        	this.saveDefaultConfig();
-        serverid = this.getConfig().getInt("settings.server-id");
 
         Util.log("Creating QServer instance");
+        serverid = this.getConfig().getInt("settings.server-id");
         server = new QServer(serverid);
 		
-		//Config files
-		Util.log("Running plugin configuration");
+
 		
 		boolean DBConnect = this.getConfig().getBoolean("settings.database-connect");
 		
