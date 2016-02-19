@@ -33,7 +33,6 @@ public class QuartzCore extends JavaPlugin {
 	public static String version;
 
     public static Plugin plugin;
-    public static int serverid;
     public static QServer server;
 	public static final Logger logger = Logger.getLogger("Minecraft");
 	
@@ -77,7 +76,7 @@ public class QuartzCore extends JavaPlugin {
        	this.saveDefaultConfig();
 
         Util.log("Creating QServer instance");
-        serverid = this.getConfig().getInt("settings.server-id");
+        int serverid = this.getConfig().getInt("settings.server-id");
         server = new QServer(serverid);
 		
 

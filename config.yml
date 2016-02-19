@@ -13,7 +13,7 @@ settings:
    database-connect: false
    use-perm-system: false
    server-name:
-   server-id:
+   server-id: 1
    join-broadcast: false
    websync:
       active: false
