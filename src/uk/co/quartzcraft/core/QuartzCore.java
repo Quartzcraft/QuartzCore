@@ -92,6 +92,8 @@ public class QuartzCore extends JavaPlugin {
 			String SQLCorePassword = this.pluginConfig.getString("database.core.password");
 			MySQLcore = new MySQL(this, SQLCoreHost, "3306", SQLCoreDatabase, SQLCoreUser, SQLCorePassword);
 
+            Util.log("[STARTUP]Connecting to Database");
+            DBCore = MySQLcore.openConnection();
 		} else {
             Util.log(Level.SEVERE, "Database connection set to false! Please fix this in the config.yml file!");
             this.getServer().shutdown();
