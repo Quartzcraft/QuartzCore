@@ -77,10 +77,6 @@ public class QuartzCore extends JavaPlugin {
         config = plugin.getConfig();
         this.pluginConfig = plugin.getConfig();
 
-        Util.log("Creating QServer instance");
-        int serverid = this.getConfig().getInt("settings.server-id");
-        server = new QServer(serverid);
-		
 
 		
 		boolean DBConnect = this.getConfig().getBoolean("settings.database-connect");
@@ -97,6 +93,10 @@ public class QuartzCore extends JavaPlugin {
             Util.log(Level.SEVERE, "Database connection set to false! Please fix this in the config.yml file!");
             this.getServer().shutdown();
         }
+
+        Util.log("[STARTUP]Creating QServer instance");
+        server = new QServer(this.pluginConfig.getInt("settings.server-id"));
+        //server = new QServer(1);
 
         //Websync
         Util.log("[STARTUP]Initializing Websync");
