@@ -96,7 +96,7 @@ public class Alert {
 
             if (player.isOnline()) {
                 player.getPlayer().sendMessage(msg);
-                player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.LEVEL_UP, 10, 1);
+                player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
                 //player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.NOTE_PLING, 10, 1);
                 this.read = true;
             }
