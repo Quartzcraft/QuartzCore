@@ -96,6 +96,7 @@ public class QuartzCore extends JavaPlugin {
             DBCore = MySQLcore.openConnection();
 		} else {
             Util.log(Level.SEVERE, "Database connection set to false! Please fix this in the config.yml file!");
+            Util.log(Level.SEVERE, "The server is now shutting down!");
             this.getServer().shutdown();
         }
 
