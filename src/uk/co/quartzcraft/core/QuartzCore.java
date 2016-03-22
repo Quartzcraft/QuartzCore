@@ -82,8 +82,7 @@ public class QuartzCore extends JavaPlugin {
         boolean DBConnect = this.pluginConfig.getBoolean("settings.database-connect");
         //boolean DBConnect = false;
 
-		
-		boolean DBConnect = this.getConfig().getBoolean("settings.database-connect");
+        Util.log("DBConnect value is: " + DBConnect);
 		
 		if(DBConnect) {
 			//Core Database
