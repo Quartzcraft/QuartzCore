@@ -45,8 +45,8 @@ public class QuartzCore extends JavaPlugin {
 	public static MySQL MySQLcore = null;
 
     public QCommandFramework commandFramework;
-	
-	@Override
+
+    @Override
 	public void onDisable() {
 
         //Close database
