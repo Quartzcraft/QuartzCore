@@ -4,11 +4,6 @@ database:
       database: 
       username: 
       password:
-   log:
-      host:
-      database:
-      username:
-      password:
 settings:
    database-connect: false
    use-perm-system: false

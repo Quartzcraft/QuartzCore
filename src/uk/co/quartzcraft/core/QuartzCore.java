@@ -37,10 +37,8 @@ public class QuartzCore extends JavaPlugin {
 	public static final Logger logger = Logger.getLogger("Minecraft");
 	
 	public static Connection DBCore = null;
-    public static Connection DBLog = null;
     
 	public static MySQL MySQLcore = null;
-    public static MySQL MySQLlog = null;
 
     public QCommandFramework commandFramework;
 	
@@ -91,12 +89,6 @@ public class QuartzCore extends JavaPlugin {
 			String SQLCorePassword = this.getConfig().getString("database.core.password");
 			MySQLcore = new MySQL(plugin, SQLCoreHost, "3306", SQLCoreDatabase, SQLCoreUser, SQLCorePassword);
 
-            //Logging Database
-            String SQLLogHost = this.getConfig().getString("database.logger.host");
-            String SQLLogDatabase = this.getConfig().getString("database.logger.database");
-            String SQLLogUser = this.getConfig().getString("database.logger.username");
-            String SQLLogPassword = this.getConfig().getString("database.logger.password");
-            MySQLlog = new MySQL(plugin, SQLLogHost, "3306", SQLLogDatabase, SQLLogUser, SQLLogPassword);
 		} else {
             Util.log(Level.SEVERE, "Database connection set to false! Please fix this in the config.yml file!");
             this.getServer().shutdown();
@@ -115,7 +107,6 @@ public class QuartzCore extends JavaPlugin {
         if(DBConnect) {
             Util.log("[STARTUP]Connecting to Database");
             DBCore = MySQLcore.openConnection();
-            DBLog = MySQLlog.openConnection();
         }
 
 		//Phrases
