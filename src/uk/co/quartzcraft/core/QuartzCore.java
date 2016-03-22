@@ -48,10 +48,8 @@ public class QuartzCore extends JavaPlugin {
         //Close database
         Util.log("Closing database connections");
         MySQLcore.closeConnection();
-        MySQLlog.closeConnection();
         try {
             DBCore.close();
-            DBLog.close();
             Util.log("Successfully closed database connections");
         } catch(SQLException e) {
             Util.log(Level.SEVERE, "Failed to close database connections!");
