@@ -105,8 +105,9 @@ public class QuartzCore extends JavaPlugin {
         //server = new QServer(1);
 
         //Websync
-        Util.log("[STARTUP]Initializing Websync");
+        Util.log("[STARTUP]Preparing Websync");
         if(this.getConfig().getBoolean("settings.websync.active")) {
+            Util.log("[STARTUP]Initializing Websync");
             Websync.init();
 
             Util.log("[STARTUP]Performing websync operations");
