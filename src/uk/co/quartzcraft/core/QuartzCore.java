@@ -114,12 +114,6 @@ public class QuartzCore extends JavaPlugin {
             UpdateGroups.update();
         }
 
-        //Database
-        if(DBConnect) {
-            Util.log("[STARTUP]Connecting to Database");
-            DBCore = MySQLcore.openConnection();
-        }
-
 		//Phrases
 		Util.log("[STARTUP]Creating Phrases");
         ChatPhrases.phrases();
@@ -168,11 +162,6 @@ public class QuartzCore extends JavaPlugin {
 
     public static QServer getQServer() {
         return server;
-    }
-
-    @Override
-    public void reloadConfig() {
-        //loadConfig();
     }
 
 }
