@@ -148,17 +148,13 @@ public class QuartzCore extends JavaPlugin {
 	  		
 	   	//Startup notice
 	  	Util.log("The QuartzCore Plugin has been enabled!");
-	  	Util.log("QuartzCore Version " + getVersion());
+	  	Util.log("QuartzCore Version " + version);
 	}
 
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         return commandFramework.handleCommand(sender, label, command, args);
     }
-
-	public static String getVersion() {
-		return version;
-	}
 
     public static QServer getQServer() {
         return server;
