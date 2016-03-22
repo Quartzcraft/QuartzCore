@@ -69,7 +69,7 @@ public class QuartzCore extends JavaPlugin {
 		Util.log("[STARTUP LOGGER]Console logger discovered");
 
         plugin = this;
-        version = plugin.getDescription().getVersion();
+        version = this.getDescription().getVersion();
 
         //Config files
         Util.log("Running plugin configuration");
