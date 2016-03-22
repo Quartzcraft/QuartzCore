@@ -1,9 +1,3 @@
-database:
-   core:
-      host: 
-      database: 
-      username: 
-      password:
 settings:
    database-connect: false
    use-perm-system: false
@@ -14,6 +8,13 @@ settings:
       active: false
       url: http://quartzcraft.co.uk/api.php
       key: API_Key
+database:
+   core:
+      host: 127.0.0.1
+      database: QuartzCore
+      username: root
+      password: Database1
+
 
 
    
