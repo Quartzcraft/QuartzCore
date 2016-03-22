@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import uk.co.quartzcraft.core.command.*;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.data.QServer;
@@ -35,6 +36,9 @@ public class QuartzCore extends JavaPlugin {
     public static Plugin plugin;
     public static QServer server;
 	public static final Logger logger = Logger.getLogger("Minecraft");
+    public static FileConfiguration config;
+
+    private FileConfiguration pluginConfig;
 	
 	public static Connection DBCore = null;
     
@@ -70,6 +74,8 @@ public class QuartzCore extends JavaPlugin {
         //Config files
         Util.log("Running plugin configuration");
        	this.saveDefaultConfig();
+        config = plugin.getConfig();
+        this.pluginConfig = plugin.getConfig();
 
         Util.log("Creating QServer instance");
         int serverid = this.getConfig().getInt("settings.server-id");
