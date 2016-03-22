@@ -72,7 +72,7 @@ public class QuartzCore extends JavaPlugin {
         version = this.getDescription().getVersion();
 
         //Config files
-        Util.log("Running plugin configuration");
+        Util.log("[STARTUP]Running plugin configuration");
        	this.saveDefaultConfig();
         config = plugin.getConfig();
         this.pluginConfig = plugin.getConfig();
