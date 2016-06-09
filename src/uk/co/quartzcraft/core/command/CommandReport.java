@@ -1,13 +1,14 @@
 package uk.co.quartzcraft.core.command;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import org.bukkit.plugin.Plugin;
 import uk.co.quartzcraft.core.command.framework.QCommand;
 import uk.co.quartzcraft.core.command.framework.QCommandFramework;
 import uk.co.quartzcraft.core.data.QPlayer;
-import uk.co.quartzcraft.core.features.ActionBar;
-import uk.co.quartzcraft.core.features.FancyMessages;
+import uk.co.quartzcraft.core.features.TextComponentMessages;
+import uk.co.quartzcraft.core.features.bountifulapi.BountifulAPI;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.util.Util;
 import uk.co.quartzcraft.core.command.framework.CommandArgs;
@@ -40,7 +41,7 @@ public class CommandReport {
             } else {
                 target.report(qplayer, getReportContent(args1));
                 //args.getSender().sendMessage(QCChat.getPhrase("thank_you_for_reporting_user"));
-                ActionBar.displayBar((Player) args.getSender(), FancyMessages.reportedPlayer());
+                BountifulAPI.sendActionBar((Player) args.getSender(), ChatColor.GREEN + QCChat.getPhrase("thank_you_for_reporting_user"));
             }
         }
     }

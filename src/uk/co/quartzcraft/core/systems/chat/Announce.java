@@ -2,8 +2,7 @@ package uk.co.quartzcraft.core.systems.chat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import uk.co.quartzcraft.core.features.ActionBar;
-import uk.co.quartzcraft.core.features.Title;
+import uk.co.quartzcraft.core.features.bountifulapi.BountifulAPI;
 
 public class Announce {
 
@@ -29,9 +28,9 @@ public class Announce {
         message = ChatFormat.parse(message);
 
         if(message.length() >= 5) {
-            Title.sendTitle(null, 20, 80, 40, null, message);
+            BountifulAPI.sendTitle(null, 20, 80, 40, null, message);
         } else {
-            Title.sendTitle(null, 20, 80, 40, message, null);
+            BountifulAPI.sendTitle(null, 20, 80, 40, message, null);
         }
 
 
@@ -46,7 +45,7 @@ public class Announce {
 
         message = ChatFormat.parse(message);
 
-        ActionBar.displayBar(null, message);
+        BountifulAPI.sendActionBar(null, message);
     }
 
     /**
