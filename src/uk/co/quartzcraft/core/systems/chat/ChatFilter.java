@@ -23,6 +23,7 @@ public class ChatFilter {
 		wordsToFilter[8] = "motherfucking";
 		wordsToFilter[9] = "cunt";
 		wordsToFilter[10] = "dickhead";
+		wordsToFilter[11] = "twat";
 		
 		for(String s : wordsToFilter) {
 			if(message.toLowerCase().contains(s)) {
