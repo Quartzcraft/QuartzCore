@@ -1,5 +1,7 @@
 package uk.co.quartzcraft.core.util;
 
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -50,6 +52,12 @@ public class Util {
     public static void sendMsg(Player player, String msg) {
         String finalmsg = Util.colour(msg);
         player.sendMessage(QCChat.getPhrase("official_prefix") + finalmsg);
+    }
+
+    public static void sendMsg(Player player, TextComponent msg) {
+        TextComponent finalmsg = new TextComponent(QCChat.getPhrase("official_prefix"));
+        finalmsg.addExtra(msg);
+        player.spigot().sendMessage(finalmsg);
     }
 
     public static void sendPhrase(Player player, String phrase) {

@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.UUID;
 import java.util.logging.Level;
 
+import net.md_5.bungee.api.chat.TextComponent;
 import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -350,6 +351,16 @@ public class QPlayer {
      *
      */
     public void sendMessage(String message) {
+        if(this.player != null) {
+            Util.sendMsg(this.player, message);
+        }
+    }
+
+    /**
+     * Sends the player a message
+     *
+     */
+    public void sendMessage(TextComponent message) {
         if(this.player != null) {
             Util.sendMsg(this.player, message);
         }
