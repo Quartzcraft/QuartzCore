@@ -2,9 +2,10 @@ package uk.co.quartzcraft.core.listeners;
 
 import java.util.UUID;
 
+import net.md_5.bungee.api.chat.TextComponent;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.event.QPlayerJoinEvent;
-import uk.co.quartzcraft.core.features.FancyMessages;
+import uk.co.quartzcraft.core.features.TextComponentMessages;
 import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.data.QPlayer;
 
@@ -101,9 +102,9 @@ public class ConnectionListener implements Listener {
         QPlayerJoinEvent joinEvent = new QPlayerJoinEvent(qplayer);
         Bukkit.getServer().getPluginManager().callEvent(joinEvent);
 
-        player.sendMessage(FancyMessages.welcomeBack(player));
-        player.sendMessage(FancyMessages.checkWebsite(player));
-        player.sendMessage(FancyMessages.hasUnreadAlerts(player));
+        player.spigot().sendMessage(TextComponentMessages.welcomeBack(player));
+        player.spigot().sendMessage(TextComponentMessages.checkWebsite(player));
+        player.spigot().sendMessage(TextComponentMessages.hasUnreadAlerts(player));
 	}
 	
 	@EventHandler(priority = EventPriority.LOWEST)
