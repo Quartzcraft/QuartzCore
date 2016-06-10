@@ -79,59 +79,59 @@ public class Alert {
             Apre = Apre + QCChat.getPhrase("official_prefix");
         }
 
-        if(alertType.permission().equals("") || player.getPlayer().hasPermission(alertType.permission())) {
-            if (alertType.requireArgs()) {
-                Entry<Method, Object> entry = AlertTypeHandler.getAlertTypeMethod(alertType.name());
+        if(alertType.requireArgs()) { //TODO fix an issue here
+            Entry<Method, Object> entry = AlertTypeHandler.getAlertTypeMethod(alertType.name());
 
-                if(entry.getKey().getReturnType() == String.class) {
-                    try {
-                        returnedMessage = entry.getKey().invoke(entry.getValue(), this.args);
-                    } catch (IllegalArgumentException e) {
-                        Util.printException(e);
-                    } catch (IllegalAccessException e) {
-                        Util.printException(e);
-                    } catch (InvocationTargetException e) {
-                        Util.printException(e);
-                    }
-
-                    msg = Apre + alertType.prefix() + returnedMessage;
+            if(entry.getKey().getReturnType() == String.class) {
+                try {
+                    returnedMessage = entry.getKey().invoke(entry.getValue(), this.args);
+                } catch (IllegalArgumentException e) {
+                    Util.printException(e);
+                } catch (IllegalAccessException e) {
+                    Util.printException(e);
+                } catch (InvocationTargetException e) {
+                    Util.printException(e);
+                } catch(NullPointerException e) {
+                    Util.printException(e);
                 }
 
-                if(entry.getKey().getReturnType() == BaseComponent[].class) {
-                    try {
-                        returnedComponent = (TextComponent) entry.getKey().invoke(entry.getValue(), this.args);
-                    } catch (IllegalArgumentException e) {
-                        Util.printException(e);
-                    } catch (IllegalAccessException e) {
-                        Util.printException(e);
-                    } catch (InvocationTargetException e) {
-                        Util.printException(e);
-                    }
+                msg = Apre + alertType.prefix() + returnedMessage;
+            }
 
-                    componentMsg = new TextComponent(TextComponent.fromLegacyText(Apre));
-                    componentMsg.addExtra(returnedComponent);
-
-                    msg = Apre + alertType.prefix() + this.message;
+            if(entry.getKey().getReturnType() == BaseComponent[].class) {
+                try {
+                    returnedComponent = (TextComponent) entry.getKey().invoke(entry.getValue(), this.args);
+                } catch (IllegalArgumentException e) {
+                    Util.printException(e);
+                } catch (IllegalAccessException e) {
+                    Util.printException(e);
+                } catch (InvocationTargetException e) {
+                    Util.printException(e);
                 }
-            } else {
+
+                componentMsg = new TextComponent(TextComponent.fromLegacyText(Apre));
+                componentMsg.addExtra(returnedComponent);
+
                 msg = Apre + alertType.prefix() + this.message;
             }
-
-            if(player.isOnline()) {
-                if (msg.equals("")) {
-                    player.getPlayer().spigot().sendMessage(componentMsg);
-                    player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
-                    this.read = true;
-                } else {
-                    player.sendMessage(msg);
-                    player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
-                    this.read = true;
-                }
-            }
-
-            this.message = msg;
-            this.save();
+        } else {
+            msg = Apre + alertType.prefix() + this.message;
         }
+
+        if(player.isOnline()) {
+            if (msg.equals("")) {
+                player.getPlayer().spigot().sendMessage(componentMsg);
+                player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
+                this.read = true;
+            } else {
+                player.sendMessage(msg);
+                player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
+                this.read = true;
+            }
+        }
+
+        this.message = msg;
+        this.save();
     }
 
     public void setAsRead() {

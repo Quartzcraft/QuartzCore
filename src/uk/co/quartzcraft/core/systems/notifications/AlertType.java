@@ -17,13 +17,6 @@ public @interface AlertType {
     public String name();
 
     /**
-     * Gets the required permission to receive this type of alert
-     *
-     * @return
-     */
-    public String permission() default "";
-
-    /**
      * The prefix displayed in front of the alert so that the user receiving knows what plugin or subsystem sent the alert
      *
      * @return
