@@ -1,5 +1,8 @@
 package uk.co.quartzcraft.core.systems.notifications;
 
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Sound;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.data.QPlayer;
@@ -69,6 +72,9 @@ public class Alert {
         String Apre = QCChat.getPhrase("alert_prefix");
         String msg = "";
         Object returnedMessage = "";
+
+        TextComponent componentMsg = new TextComponent("Hi");
+        TextComponent returnedComponent = new TextComponent("Hi");
         if (displayPrefix) {
             Apre = Apre + QCChat.getPhrase("official_prefix");
         }
@@ -90,15 +96,37 @@ public class Alert {
 
                     msg = Apre + alertType.prefix() + returnedMessage;
                 }
+
+                if(entry.getKey().getReturnType() == BaseComponent[].class) {
+                    try {
+                        returnedComponent = (TextComponent) entry.getKey().invoke(entry.getValue(), this.args);
+                    } catch (IllegalArgumentException e) {
+                        Util.printException(e);
+                    } catch (IllegalAccessException e) {
+                        Util.printException(e);
+                    } catch (InvocationTargetException e) {
+                        Util.printException(e);
+                    }
+
+                    componentMsg = new TextComponent(TextComponent.fromLegacyText(Apre));
+                    componentMsg.addExtra(returnedComponent);
+
+                    msg = Apre + alertType.prefix() + this.message;
+                }
             } else {
                 msg = Apre + alertType.prefix() + this.message;
             }
 
-            if (player.isOnline()) {
-                player.getPlayer().sendMessage(msg);
-                player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
-                //player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.NOTE_PLING, 10, 1);
-                this.read = true;
+            if(player.isOnline()) {
+                if (msg.equals("")) {
+                    player.getPlayer().spigot().sendMessage(componentMsg);
+                    player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
+                    this.read = true;
+                } else {
+                    player.sendMessage(msg);
+                    player.getPlayer().playSound(player.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
+                    this.read = true;
+                }
             }
 
             this.message = msg;
