@@ -1,5 +1,7 @@
 package uk.co.quartzcraft.core.systems.notifications;
 
+import uk.co.quartzcraft.core.util.Util;
+
 import java.lang.reflect.Method;
 import java.util.AbstractMap;
 import java.util.HashMap;
@@ -21,10 +23,11 @@ public class AlertTypeHandler {
             if (m.getAnnotation(AlertType.class) != null) {
                 AlertType alertType = m.getAnnotation(AlertType.class);
                 if (m.getParameterTypes().length > 1 || m.getParameterTypes()[0] != AlertArgs.class) {
-                    System.out.println("Unable to register AlertType " + m.getName() + ". Unexpected method arguments");
+                    Util.log("Unable to register AlertType " + m.getName() + ". Unexpected method arguments");
                     continue;
                 }
                 registerAlertType(alertType, alertType.name(), m, obj);
+                Util.log("Registers AlertType " + m.getName());
             }
         }
     }

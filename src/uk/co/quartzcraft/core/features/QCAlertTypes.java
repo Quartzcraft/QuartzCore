@@ -9,6 +9,7 @@ public class QCAlertTypes {
 
     }
 
+    @AlertType(name = "QC", prefix = "&8[&6QC&8]", requireArgs = false)
     public String QC(AlertArgs args) {
         return "";
     }
