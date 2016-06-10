@@ -41,6 +41,8 @@ public class ChatPhrases {
         QCChat.addPhrase("is_online_now", "&ais online now!");
         QCChat.addPhrase("is_online_now_on_server", "&ais online now on server&r");
 
+        QCChat.addPhrase("you_have_no_unread_alerts", "&aYou have no unseen alerts!");
+
         QCChat.addPhrase("please_specify_player_to_report", "&cYou must specify a player to report!");
         QCChat.addPhrase("thank_you_for_reporting_user", "Thank you for submitting a report. It is unlikely that we will need contact you.");
         QCChat.addPhrase("error_submitting_report", "&cAn error occurred while submitting your report! Please try again or contact a QuartzCraft administrator.");
