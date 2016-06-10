@@ -36,7 +36,7 @@ public class TextComponentMessages {
             return new ComponentBuilder("You have ")
                     .color(ChatColor.GREEN)
                     .append(qPlayer.getUnreadAlertCount() + " unread alerts!")
-                    .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "alerts"))
+                    .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/alerts"))
                     .underlined(true)
                     .color(ChatColor.RED)
                     .create();
