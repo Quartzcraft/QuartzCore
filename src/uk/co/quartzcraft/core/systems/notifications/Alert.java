@@ -121,21 +121,21 @@ public class Alert {
         if(this.player == null) {
             Util.log(Level.WARNING, "Attempting to save alert with no specified player");
             return;
-        } else {
-            if(!this.read) {
-                player.setUnreadAlertCount(player.getUnreadAlertCount() + 1);
-            }
+        }
 
-            try {
-                java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("INSERT INTO Alerts (player_id, display_prefix, alert_type, message, read) VALUES (?, ?, ?, ?, ?);");
-                s.setInt(1, this.player.getID());
-                s.setBoolean(2, this.displayPrefix);
-                s.setString(3, this.alertType.name());
-                s.setString(4, this.message);
-                s.setBoolean(4, this.read);
-            } catch (SQLException e) {
-                Util.printException("Failed to insert QPlayer into database", e);
-            }
+        if(!this.read) {
+            player.setUnreadAlertCount(player.getUnreadAlertCount() + 1);
+        }
+
+        try {
+            java.sql.PreparedStatement s = QuartzCore.DBCore.prepareStatement("INSERT INTO Alerts (player_id, display_prefix, alert_type, message, read) VALUES (?, ?, ?, ?, ?);");
+            s.setInt(1, this.player.getID());
+            s.setBoolean(2, this.displayPrefix);
+            s.setString(3, this.alertType.name());
+            s.setString(4, this.message);
+            s.setBoolean(4, this.read);
+        } catch (SQLException e) {
+            Util.printException("Failed to insert alert into database", e);
         }
     }
 
