@@ -1,5 +1,6 @@
 package uk.co.quartzcraft.core.systems.websync;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import uk.co.quartzcraft.core.QuartzCore;
 import uk.co.quartzcraft.core.data.QPlayer;
@@ -39,8 +40,13 @@ public class UpdateGroups {
                         if(QuartzCore.plugin.getConfig().getBoolean("settings.websync.active")) {
                             JSONObject jsonObject = JSONMethods.decode(Websync.getUser(player.getName()));
 
+                            String groups = "";
                             // Getting the value of a attribute in a JSONObject
-                            String groups = jsonObject.getString("secondary_group_ids");
+                            try {
+                                groups = jsonObject.getString("secondary_group_ids");
+                            } catch(JSONException e) {
+                                Util.printException(e);
+                            }
 
                             String siteGroups = groups;
                             player.setPrimaryGroup(Groups.findGroupFromSite(siteGroups));
