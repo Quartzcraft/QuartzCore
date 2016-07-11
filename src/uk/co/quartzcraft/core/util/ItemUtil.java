@@ -4,7 +4,7 @@ import uk.co.quartzcraft.core.systems.chat.QCChat;
 import uk.co.quartzcraft.core.features.items.FinalItems;
 import uk.co.quartzcraft.core.features.items.SoulboundItems;
 import uk.co.quartzcraft.core.features.items.UnbreakableItems;
-import uk.co.quartzcraft.core.systems.ChestUI.UnclaimableItem;
+import uk.co.quartzcraft.core.systems.ChestUI.UnClaimableItem;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -210,7 +210,7 @@ public class ItemUtil {
 
         public LoreBuilder makeUnclaimable() {
             int oldindex = index;
-            UnclaimableItem.makeUnclaimable(this);
+            UnClaimableItem.makeUnclaimable(this);
             index = oldindex + 1;
             return this;
         }

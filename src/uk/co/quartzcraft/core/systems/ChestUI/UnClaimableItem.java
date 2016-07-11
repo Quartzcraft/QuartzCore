@@ -3,7 +3,7 @@ package uk.co.quartzcraft.core.systems.ChestUI;
 import org.bukkit.inventory.ItemStack;
 import uk.co.quartzcraft.core.util.ItemUtil;
 
-public class UnclaimableItem {
+public class UnClaimableItem {
 
     public static final String NOCLAIMING_KEY = "__noclaim";
 
