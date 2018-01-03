@@ -1,0 +1,70 @@
+QCC.everyone:
+    description: Permissions for everyone
+    default: true
+    children:
+        QCC.pinfo: true
+        QCC.report: true
+        QCC.register: true
+        QCC.quartz: true
+ 
+QCC.normal:
+    description: Permissions for free players
+    default: op
+    children:
+        QCC.promo: true
+
+QCC.premium.beta:
+    description: Permissions for beta testing players
+    default: op
+    children:
+        QCC.replace.this.permission: true
+
+QCC.premium.one:
+    description: Permissions for premium one players
+    default: op
+    children:
+        QCC.replace.this.permission: true
+
+QCC.premium.two:
+    description: Permissions for premium two players
+    default: op
+    children:
+        QCC.replace.this.permission: true
+ 
+QCC.staff:
+    description: Permissions for staff members
+    default: op
+    children:
+        QCC.chat.filterBybass: true
+
+QCC.staff.builder:
+    description: Permissions for builders
+    default: op
+    children:
+        QCC.replace.this.permission: true
+
+QCC.staff.mod:
+    description: Permissions for moderators
+    default: op
+    children:
+        QCC.tp.get: true
+
+QCC.staff.srstaff:
+    description: Permissions for senior staff
+    default: op
+    children:
+        QCC.admin.m: true
+        QCC.tp: true
+
+QCC.staff.admin:
+    description: Permissions for admins
+    default: op
+    children:
+        QCC.reload: true
+        QCC.test: true
+
+QCC.staff.owner:
+    description: Permissions for owner(s)
+    default: op
+    children:
+        QCC.replace.this.permission: true
